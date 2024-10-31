@@ -82,9 +82,9 @@
 </div>
 
 
-    <div class="py-1" >
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg flex flex-wrap" >
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row">
+            <div class="flex-1 p-4 bg-blue-200">
             
 
                 <div class="p-6 text-gray-900" >
