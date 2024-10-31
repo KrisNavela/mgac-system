@@ -87,7 +87,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg flex space-x-4">
             
 
-                <div class="p-6 text-gray-900 flex space-x-4">
+                <div class="p-6 text-gray-900 flex flex-wrap" >
                     <div class="flex justify-end">
                         <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
                     </div>
