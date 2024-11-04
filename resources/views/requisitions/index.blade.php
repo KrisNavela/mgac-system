@@ -88,7 +88,7 @@
                         <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
                     </div>
 
-                    <div class="overflow-auto rounded-lg shadow md:block">
+          
                         <table class="w-full">
                             <thead class="bg-gray-50 border-b-2 border-gray-200">
                                 <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">ID</th>
@@ -131,23 +131,8 @@
                                 @endforeach
                             </tbody>
                         </table>
-                    </div>
 
-                    <div class="grid grid-cols-1 gap-4 md:hidden">
-                        <div class="bg-white p-4">
-                            <div>
-                                <div>ID</div>
-                                <div>Requestion Number</div>
-                                <div>Date</div>
-                                <div>Status</div>
-                                <div>User</div>
-                                <div># Items</div>
-                                <div>Branch</div>
-                                <div>Type</div>
-                                <div>Actions</div>
-                            </div>
-                        </div>
-                    </div>
+
 
 
 
