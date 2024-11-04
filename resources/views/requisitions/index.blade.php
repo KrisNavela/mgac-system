@@ -87,9 +87,7 @@
 
                 <!-- Table view for desktop screens -->
                 <div class="hidden md:block overflow-x-auto">
-                    <div class="flex justify-end">
-                        <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
-                    </div>
+                    
 
           
                         <table class="w-full">
@@ -146,6 +144,9 @@
     <!-- Card view for mobile screens -->
     <div class="block md:hidden">
         <div class="space-y-4">
+            <div class="flex justify-end">
+                <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
+            </div>
             <div class="grid gap-8 md:grid-cols-6 lg:grid-cols-7">
                 @foreach ($requisitions as $requisition)
                 <div class="bg-white shadow-md rounded-lg p-6">
