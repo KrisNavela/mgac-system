@@ -65,10 +65,10 @@
                                 <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unit</th>
                                 <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200 text-xs">
+                            <tbody class="bg-white divide-y divide-gray-200">
                                 <template x-for="(item, index) in items" :key="index">
                                     <tr class="hover:bg-gray-200">
-                                        <td class="px-2 py-2">
+                                        <td class="px-2 py-2 text-xs">
                                             <select class="" x-model="item.id" :name="'items['+index+'][id]'" >
                                                 <option value="">Please Select Item</option>
                                                 @foreach($items as $item)
@@ -77,11 +77,11 @@
                                             </select>
                                         </td>
 
-                                        <td class="px-2 py-2">
+                                        <td class="px-2 py-2 text-xs">
                                             <input type="number" style="width: 100px;" x-model="item.quantity" :name="'items['+index+'][quantity]'">
                                         </td>
 
-                                        <td class="px-2 py-2">
+                                        <td class="px-2 py-2 text-xs">
                                             <select class="" x-model="item.quantity_unit" :name="'items['+index+'][quantity_unit]'">
                                                 <option value="Pad">Pad</option>
                                                 <option value="Pcs">Pcs</option>
@@ -89,7 +89,7 @@
                                             </select>
                                         </td>
 
-                                        <td class="px-2 py-2">
+                                        <td class="px-2 py-2 text-xs">
                                             <button type="button" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md" @click="removeItem(index)">Remove</button>
                                         </td>
                                     </tr>
