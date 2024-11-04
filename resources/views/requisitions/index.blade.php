@@ -83,25 +83,14 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     
                     <div class="flex justify-end">
                         <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
                     </div>
-
+                    <div class="overflow-x-auto">
 
                     <table class="w-full">
-                        <thead class="bg-gray-50">
+                        <thead class="bg-gray-50 border-b-2 border-gray-200">
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">ID</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Requestion Number</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Date</th>
@@ -137,14 +126,14 @@
                                     </form>
                                 @endcan
                             
-                            </td>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
 
 
-
+                    </div>
                     <div>
                         {{ $requisitions->links() }}
                     </div>
