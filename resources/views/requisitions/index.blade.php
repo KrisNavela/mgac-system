@@ -82,7 +82,7 @@
 </div>
 
 
-@section('content')
+
     <div class="container mx-auto px-4">
         <h1 class="text-2xl font-bold mb-6">Responsive Data View</h1>
     <div class="overflow-x-auto">
@@ -133,14 +133,15 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div>
+                            {{ $requisitions->links() }}
+                        </div>
                     
     </div>
     </div>
-    @endsection
 
-                    <div>
-                        {{ $requisitions->links() }}
-                    </div>
+
+                    
 </x-app-layout>
 
 
