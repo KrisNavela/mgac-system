@@ -5,13 +5,12 @@
         </h2>
     </x-slot>
 
-    <div class="py-7">
+<div class="py-7">
+    <!-- Navigation Links -->
+    <div class="sm:overflow-x-auto sm:whitespace-nowrap md:overflow-x-visible md:whitespace-normal">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-gray-200 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     
                     <x-nav-link :href="route('requisitions.index')" :active="request()->routeIs('requisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('All') }}  
@@ -75,13 +74,11 @@
                         </div>
                     </x-nav-link>
                     @endif
-                </div>
-
-                    
-                </div>
+                </div>  
             </div>
         </div>
     </div>
+</div>
 
     <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
         <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
