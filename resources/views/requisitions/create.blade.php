@@ -57,7 +57,7 @@
                                 <x-input-error :messages="$errors->get('replenishment_year')" class="mt-2" />
                             </div>
 
-                    <div class="container mx-auto p-4 overflow-x-auto">
+                    <div class="overflow-x-auto">
                         <table class="min-w-full divide-y divide-gray-200 mt-2">
                             <thead class="bg-gray-50">
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Item Name</th>
@@ -65,9 +65,9 @@
                                 <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unit</th>
                                 <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200" id="table-body">
+                            <tbody class="bg-white divide-y divide-gray-200">
                                 
-                                <template id="row-template" x-for="(item, index) in items" :key="index">
+                                <template x-for="(item, index) in items" :key="index">
                                     <tr class="hover:bg-gray-200">
                                         <td class="px-2 py-2">
                                             <select class="" x-model="item.id" :name="'items['+index+'][id]'" >
@@ -98,10 +98,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <script>
-                        const template = document.getElementById('row-template');
-                        const tableBody = document.getElementById('table-body');
-                    </script>
+                   
                         <div>
                             <button type="button" @click="addItem" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">
                                 Add Item
