@@ -57,7 +57,7 @@
                                 <x-input-error :messages="$errors->get('replenishment_year')" class="mt-2" />
                             </div>
 
-                            <div class="w-64 h-64 overflow-auto border p-4">
+                    <div class="w-full overflow-x-auto whitespace-nowrap border p-4">
                         <table class="min-w-full divide-y divide-gray-200 mt-2">
                             <thead class="bg-gray-50">
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Item Name</th>
@@ -96,7 +96,8 @@
                                 </template>
                             </tbody>
                         </table>
-                </div>
+                    </div>
+
                         <div>
                             <button type="button" @click="addItem" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">
                                 Add Item
