@@ -87,7 +87,7 @@
                     <div class="flex justify-end">
                         <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
                     </div>
-                    <template>
+
 
 
                     <table class="w-full">
@@ -133,7 +133,7 @@
                         </tbody>
                     </table>
 
-                    </template>
+
 
                     <div>
                         {{ $requisitions->links() }}
