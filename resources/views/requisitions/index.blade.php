@@ -1,9 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Requisitions') }}
-        </h2>
-    </x-slot>
+
 
 <div class="py-7">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -82,7 +78,7 @@
 </div>
 
 
-
+@section('content')
     <div class="container mx-auto px-4">
         <h1 class="text-2xl font-bold mb-6">Responsive Data View</h1>
     <div class="overflow-x-auto">
@@ -139,7 +135,7 @@
                     
     </div>
     </div>
-
+    @endsection
 
                     
 </x-app-layout>
