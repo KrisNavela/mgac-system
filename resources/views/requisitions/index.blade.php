@@ -146,7 +146,7 @@
     <!-- Card view for mobile screens -->
     <div class="block md:hidden">
         <div class="space-y-4">
-            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div class="grid gap-8 md:grid-cols-6 lg:grid-cols-7">
                 @foreach ($requisitions as $requisition)
                 <div class="bg-white shadow-md rounded-lg p-6">
                     <h2 class="text-lg font-semibold text-gray-900">{{ $requisition->id }}</h2>
