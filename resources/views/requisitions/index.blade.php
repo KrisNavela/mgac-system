@@ -1,5 +1,9 @@
 <x-app-layout>
-
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Requisitions') }}
+        </h2>
+    </x-slot>
 
 <div class="py-7">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -77,8 +81,8 @@
     </div>
 </div>
 
-@extends('layouts.app')
-@section('content')
+
+
     <div class="container mx-auto px-4">
         <h1 class="text-2xl font-bold mb-6">Responsive Data View</h1>
     <div class="overflow-x-auto">
@@ -135,7 +139,24 @@
                     
     </div>
     </div>
-    @endsection
+
+    <div class="container mx-auto px-4">
+    <h1 class="text-2xl font-bold mb-6">Responsive Data View</h1>
+
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        @foreach ($requisitions as $requisition)
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-lg font-semibold text-gray-900">{{ $requisition->id }}</h2>
+            <p class="text-sm text-gray-600">{{ $requisition->req_no }}</p>
+            <p class="text-sm text-gray-600">Role: {{ $requisition->req_date }}</p>
+            <div class="mt-4">
+                <button class="bg-blue-500 text-white px-3 py-1 rounded">Edit</button>
+                <button class="bg-red-500 text-white px-3 py-1 rounded">Delete</button>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>
 
                     
 </x-app-layout>
