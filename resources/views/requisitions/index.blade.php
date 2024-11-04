@@ -82,71 +82,15 @@
 </div>
 
 
-<div class="container mx-auto px-4">
-
-         <!-- Table view for desktop screens -->
-                <div class="hidden md:block overflow-x-auto">
-                    
-
-          
-                        <table class="w-full">
-                            <thead class="bg-gray-50 border-b-2 border-gray-200">
-                                <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">ID</th>
-                                <th class="p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">Requestion Number</th>
-                                <th class="p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">Date</th>
-                                <th class="p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">Status</th>
-                                <th class="p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">User</th>
-                                <th class="p-3 text-sm font-semibold tracking-wide text-left text-black uppercase"># Items</th>
-                                <th class="p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">Branch</th>
-                                <th class="p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">Type</th>
-                                <th class="p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">Actions</th>
-                            </thead>                
-                            <tbody class="divide-y divide-gray-100">
-                                @foreach ($requisitions as $requisition)
-                                <tr class="bg-white">
-                                    <td class="p-3 text-sm text-gray-700 whitespace-nowrap uppercase"> {{ $requisition->id }}</td>
-                                    <td class="p-3 text-sm text-gray-700 whitespace-nowrap uppercase"> {{ $requisition->req_no }}</td>
-                                    <td class="p-3 text-sm text-gray-700 whitespace-nowrap uppercase"> {{ $requisition->req_date }}</td>
-                                    <td class="p-3 text-sm text-gray-700 whitespace-nowrap uppercase"> {{ $requisition->status }}</td>
-                                    <td class="p-3 text-sm text-gray-700 whitespace-nowrap uppercase"> {{ $requisition->user->first_name }} {{ $requisition->user->last_name }}</td>
-                                    <td class="p-3 text-sm text-gray-700 whitespace-nowrap uppercase"> {{ $requisition->items_count }}</td>
-                                    <td class="p-3 text-sm text-gray-700 whitespace-nowrap uppercase"> {{ $requisition->user->branch->branch_name }}</td>
-                                    <td class="p-3 text-sm text-gray-700 whitespace-nowrap uppercase"> {{ $requisition->user->branch->type_office }}</td>
-
-                                    <td>
-
-                                    <a href="{{ route('requisitions.show', $requisition->id) }}" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Show</a>
-                                    @can('view', $requisition)
-                                        <a href="{{ route('requisitions.edit', $requisition->id)}}" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Edit</a>
-
-                                        <form action="{{ route('requisitions.destroy', $requisition->id) }}" method="POST" class="inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md">Delete</button> 
-                                        </form>
-                                    @endcan
-                                
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        <div>
-                            {{ $requisitions->links() }}
-                        </div>
-                    
-                </div>
-
-
-
-
     <!-- Card view for mobile screens -->
-    <div class="block md:hidden">
+ 
         <div class="space-y-4">
+
             <div class="flex justify-end">
                 <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
             </div>
-            <div class="grid gap-8 md:grid-cols-6 lg:grid-cols-7">
+
+            <div class="grid gap-4 md:grid-cols-6 lg:grid-cols-8">
                 @foreach ($requisitions as $requisition)
                 <div class="bg-white shadow-md rounded-lg p-6">
                     <h2 class="text-lg font-semibold text-gray-900">{{ $requisition->id }}</h2>
@@ -176,8 +120,7 @@
                 {{ $requisitions->links() }}
             </div>
         </div>
-    </div>
-</div>
+
                     
 </x-app-layout>
 
