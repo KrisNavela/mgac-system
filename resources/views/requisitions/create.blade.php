@@ -65,7 +65,7 @@
                                 <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unit</th>
                                 <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
+                            <tbody class="bg-white divide-y divide-gray-200 text-sm">
                                 <template x-for="(item, index) in items" :key="index">
                                     <tr class="hover:bg-gray-200">
                                         <td class="px-2 py-2">
@@ -97,7 +97,7 @@
                             </tbody>
                         </table>
                     </div>
-                    
+
                         <div>
                             <button type="button" @click="addItem" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">
                                 Add Item
