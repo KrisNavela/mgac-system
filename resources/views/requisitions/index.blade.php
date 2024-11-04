@@ -90,7 +90,7 @@
                 <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
             </div>
 
-            <div class="grid gap-4 md:grid-cols-4 lg:grid-cols-5">
+            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 @foreach ($requisitions as $requisition)
                 <div class="bg-white shadow-md rounded-lg p-6">
                     <h2 class="text-lg font-semibold text-gray-900">{{ $requisition->id }}</h2>
