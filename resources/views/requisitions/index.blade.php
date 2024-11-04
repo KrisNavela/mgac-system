@@ -82,13 +82,13 @@
 </div>
 
 
-
+<template>
                 <div class="p-5 h-screen bg-gray-100">
                     <div class="flex justify-end">
                         <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
                     </div>
 
-                    <div class="overflow-auto round-lg shadow md:block">
+                    <div class="overflow-auto rounded-lg shadow md:block">
                         <table class="w-full">
                             <thead class="bg-gray-50 border-b-2 border-gray-200">
                                 <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">ID</th>
@@ -156,7 +156,7 @@
                         {{ $requisitions->links() }}
                     </div>
                 </div>
-
+</template>
 
 
 
