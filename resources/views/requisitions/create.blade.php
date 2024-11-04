@@ -29,7 +29,6 @@
                     <form action="{{ route('requisitions.store') }}" method="POST">
                         @csrf
 
-                        <div class="flex space-x-4">
                             <div class="mt-4" style="width: 300px;">
                                 <x-input-label for="req_date" :value="__('Date')" />
                                 <x-text-input id="req_date" class="block mt-1 w-full" type="date" name="req_date" autofocus autocomplete="req_date" />
@@ -57,10 +56,9 @@
                                 <x-text-input id="replenishment_year" class="block mt-1 w-full" type="text" name="replenishment_year" autofocus autocomplete="replenishment_year" />
                                 <x-input-error :messages="$errors->get('replenishment_year')" class="mt-2" />
                             </div>
-                        </div>
 
 
-                        <table class="sm:overflow-x-auto sm:whitespace-nowrap md:overflow-x-visible md:whitespace-normal">
+                        <table class="min-w-full divide-y divide-gray-200 mt-2">
                             <thead class="bg-gray-50">
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Item Name</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Quantity</th>
