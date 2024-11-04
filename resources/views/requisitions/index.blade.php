@@ -8,8 +8,10 @@
 <div class="py-7">
 
                 <!-- Navigation Links -->
-                <!-- Mobile-only scrollable nav link -->
-                <div class="sm:overflow-x-auto sm:whitespace-nowrap md:overflow-x-visible md:whitespace-normal">
+                <div class="overflow-x-auto whitespace-nowrap">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-gray-200 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900"
                     
                     <x-nav-link :href="route('requisitions.index')" :active="request()->routeIs('requisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm inline-block px-2 py-1 rounded-md ">
                         {{ __('All') }}  
@@ -74,6 +76,9 @@
                         </div>
                     </x-nav-link>
                     @endif
+                </div>
+                </div>
+                </div>
                 </div>
 </div>
 
