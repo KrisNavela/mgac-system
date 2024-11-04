@@ -92,27 +92,27 @@
 
                     <table class="w-full">
                         <thead class="bg-gray-50 border-b-2 border-gray-200">
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">ID</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Requestion Number</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Date</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Status</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">User</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase"># Items</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Branch</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Type</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Actions</th>
+                            <th class="w-20 p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">ID</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">Requestion Number</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">Date</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">Status</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">User</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left text-black uppercase"># Items</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">Branch</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">Type</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">Actions</th>
                         </thead>                
-                        <tbody class="bg-white divide-y divide-gray-200">
+                        <tbody class="">
                             @foreach ($requisitions as $requisition)
-                            <tr class="px-6 py-4 whitespace-nowrap">
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase"> {{ $requisition->id }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase"> {{ $requisition->req_no }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase"> {{ $requisition->req_date }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase"> {{ $requisition->status }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase"> {{ $requisition->user->first_name }} {{ $requisition->user->last_name }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase"> {{ $requisition->items_count }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase"> {{ $requisition->user->branch->branch_name }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase"> {{ $requisition->user->branch->type_office }}</td>
+                            <tr class="bg-white">
+                                <td class="p-3 text-sm text-gray-700 uppercase"> {{ $requisition->id }}</td>
+                                <td class="p-3 text-sm text-gray-700 uppercase"> {{ $requisition->req_no }}</td>
+                                <td class="p-3 text-sm text-gray-700 uppercase"> {{ $requisition->req_date }}</td>
+                                <td class="p-3 text-sm text-gray-700 uppercase"> {{ $requisition->status }}</td>
+                                <td class="p-3 text-sm text-gray-700 uppercase"> {{ $requisition->user->first_name }} {{ $requisition->user->last_name }}</td>
+                                <td class="p-3 text-sm text-gray-700 uppercase"> {{ $requisition->items_count }}</td>
+                                <td class="p-3 text-sm text-gray-700 uppercase"> {{ $requisition->user->branch->branch_name }}</td>
+                                <td class="p-3 text-sm text-gray-700 uppercase"> {{ $requisition->user->branch->type_office }}</td>
 
                                 <td>
 
