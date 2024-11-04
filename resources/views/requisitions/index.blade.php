@@ -84,7 +84,7 @@
 
     <!-- Card view for mobile screens -->
     <div class="p-6 text-gray-900 overflow-x-auto" >
-        <div class="space-y-4">
+        <div class="space-y-6">
 
             <div class="flex justify-end">
                 <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
