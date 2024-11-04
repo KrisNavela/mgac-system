@@ -6,11 +6,12 @@
     </x-slot>
 
 <div class="py-7">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-gray-200 overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 text-gray-900">
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+    <!-- Navigation Links -->
+    <div class="sm:overflow-x-auto sm:whitespace-nowrap md:overflow-x-visible md:whitespace-normal">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-gray-200 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    
                 <x-nav-link :href="route('requisitions.index')" :active="request()->routeIs('requisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('All') }}  
                         <div class="text-red-500 font-bold px-1 py-1 rounded relative" role="alert">
@@ -78,50 +79,42 @@
     </div>
 </div>
 
-    <div class="py-1">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <table class="min-w-full divide-y divide-gray-200 mt-2">
-                        <thead class="bg-gray-50">
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">ID</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Requestion Number</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Date</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Status</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">User</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase"># Items</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Branch</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Type</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Actions</th>
-                        </thead>                
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ($requisitions as $requisition)
-                            <tr class="px-6 py-4 whitespace-nowrap">
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase"> {{ $requisition->id }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase"> {{ $requisition->req_no }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase"> {{ $requisition->req_date }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase"> {{ $requisition->status }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase"> {{ $requisition->user->first_name }} {{ $requisition->user->last_name }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase"> {{ $requisition->items_count }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase"> {{ $requisition->user->branch->branch_name }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase"> {{ $requisition->user->branch->type_office }}</td>
+    <!-- Card view for mobile screens -->
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
+        <div class="space-y-4">
 
-                                <td>
-                                    <a href="{{ route('pendingrequisitions.show', $requisition->id) }}" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Show</a>
-                                    <a href="{{ route('pendingrequisitions.edit', $requisition->id)}}" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Edit</a>
-                                </td>
+            <div class="flex justify-end">
+                <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
+            </div>
 
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                @foreach ($requisitions as $requisition)
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <h2 class="text-lg font-semibold text-gray-900">{{ $requisition->id }}</h2>
+                    <p class="text-sm text-gray-600">Requestion Number: {{ $requisition->req_no }}</p>
+                    <p class="text-sm text-gray-600">Date: {{ $requisition->req_date }}</p>
+                    <p class="text-sm text-gray-600">Status: {{ $requisition->status }}</p>
+                    <p class="text-sm text-gray-600">Request By: {{ $requisition->user->first_name }} {{ $requisition->user->last_name }}</p>
+                    <p class="text-sm text-gray-600"># Items: {{ $requisition->items_count }}</p>
+                    <p class="text-sm text-gray-600">Branch: {{ $requisition->user->branch->branch_name }}</p>
+                    <p class="text-sm text-gray-600">Type: {{ $requisition->user->branch->type_office }}</p>
+                    <div class="mt-4">
+                    <a href="{{ route('requisitions.show', $requisition->id) }}" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Show</a>
+                        @can('view', $requisition)
+                            <a href="{{ route('requisitions.edit', $requisition->id)}}" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Edit</a>
 
-                    <div>
-                        {{ $requisitions->links() }}
+                            <form action="{{ route('requisitions.destroy', $requisition->id) }}" method="POST" class="inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md">Delete</button> 
+                            </form>
+                        @endcan
                     </div>
                 </div>
-
-                
+                @endforeach
+            </div>
+            <div>
+                {{ $requisitions->links() }}
             </div>
         </div>
     </div>
