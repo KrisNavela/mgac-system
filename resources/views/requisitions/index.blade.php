@@ -135,12 +135,14 @@
                                 @endforeach
                             </tbody>
                         </table>
-                    <div>
-                        {{ $requisitions->links() }}
-                    </div>
+                    
     </div>
     </div>
     @endsection
+
+                    <div>
+                        {{ $requisitions->links() }}
+                    </div>
 
 
 
