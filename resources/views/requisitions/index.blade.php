@@ -88,7 +88,7 @@
                         <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
                     </div>
 
-                    <div class="overflow-auto round-lg shadow">
+                    <div class="overflow-auto round-lg shadow md:block">
 
                     <table class="w-full">
                         <thead class="bg-gray-50 border-b-2 border-gray-200">
