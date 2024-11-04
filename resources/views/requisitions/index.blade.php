@@ -83,7 +83,7 @@
 
 
     <!-- Card view for mobile screens -->
- 
+    <div class="p-6 text-gray-900 overflow-x-auto" >
         <div class="space-y-4">
 
             <div class="flex justify-end">
@@ -120,6 +120,7 @@
                 {{ $requisitions->links() }}
             </div>
         </div>
+    </div>
 
                     
 </x-app-layout>
