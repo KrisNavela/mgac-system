@@ -150,11 +150,24 @@
                 @foreach ($requisitions as $requisition)
                 <div class="bg-white shadow-md rounded-lg p-6">
                     <h2 class="text-lg font-semibold text-gray-900">{{ $requisition->id }}</h2>
-                    <p class="text-sm text-gray-600">{{ $requisition->req_no }}</p>
-                    <p class="text-sm text-gray-600">Role: {{ $requisition->req_date }}</p>
+                    <p class="text-sm text-gray-600">Requestion Number: {{ $requisition->req_no }}</p>
+                    <p class="text-sm text-gray-600">Date: {{ $requisition->req_date }}</p>
+                    <p class="text-sm text-gray-600">Status: {{ $requisition->status }}</p>
+                    <p class="text-sm text-gray-600">Request By: {{ $requisition->user->first_name }} {{ $requisition->user->last_name }}</p>
+                    <p class="text-sm text-gray-600"># Items: {{ $requisition->items_count }}</p>
+                    <p class="text-sm text-gray-600">Branch: {{ $requisition->user->branch->branch_name }}</p>
+                    <p class="text-sm text-gray-600">Type: {{ $requisition->user->branch->type_office }}</p>
                     <div class="mt-4">
-                        <button class="bg-blue-500 text-white px-3 py-1 rounded">Edit</button>
-                        <button class="bg-red-500 text-white px-3 py-1 rounded">Delete</button>
+                    <a href="{{ route('requisitions.show', $requisition->id) }}" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Show</a>
+                        @can('view', $requisition)
+                            <a href="{{ route('requisitions.edit', $requisition->id)}}" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Edit</a>
+
+                            <form action="{{ route('requisitions.destroy', $requisition->id) }}" method="POST" class="inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md">Delete</button> 
+                            </form>
+                        @endcan
                     </div>
                 </div>
                 @endforeach
