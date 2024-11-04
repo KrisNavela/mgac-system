@@ -57,7 +57,7 @@
                                 <x-input-error :messages="$errors->get('replenishment_year')" class="mt-2" />
                             </div>
 
-                        <div class="sm:overflow-x-auto sm:whitespace-nowrap md:overflow-x-visible md:whitespace-normal">
+                        
                         <table class="min-w-full divide-y divide-gray-200 mt-2">
                             <thead class="bg-gray-50">
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Item Name</th>
@@ -77,11 +77,11 @@
                                             </select>
                                         </td>
 
-                                        <td class="px-2 py-2">
+                                        <td class="px-2 py-2" style="width: 100px;">
                                             <input type="number" x-model="item.quantity" :name="'items['+index+'][quantity]'">
                                         </td>
 
-                                        <td class="px-2 py-2">
+                                        <td class="px-2 py-2" style="width: 100px;">
                                             <select class="" x-model="item.quantity_unit" :name="'items['+index+'][quantity_unit]'">
                                                 <option value="Pad">Pad</option>
                                                 <option value="Pcs">Pcs</option>
@@ -96,7 +96,7 @@
                                 </template>
                             </tbody>
                         </table>
-                        </div>
+
                         <div>
                             <button type="button" @click="addItem" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">
                                 Add Item
