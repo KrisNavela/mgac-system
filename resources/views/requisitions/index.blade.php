@@ -81,10 +81,13 @@
     </div>
 </div>
 
+@extends('layouts.app')
 
-    <div class="py-1">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
-                <div class="p-5 h-screen bg-gray-100">
+@section('content')
+
+    <div class="container mx-auto px-4">
+    <h1 class="text-2xl font-bold mb-6">Responsive Data View</h1>
+    <div class="overflow-x-auto">
                     <div class="flex justify-end">
                         <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
                     </div>
@@ -132,19 +135,12 @@
                                 @endforeach
                             </tbody>
                         </table>
-
-
-
-
-
-
                     <div>
                         {{ $requisitions->links() }}
                     </div>
-                </div>
-        </div>
     </div>
-
+    </div>
+    @endsection
 
 
 
