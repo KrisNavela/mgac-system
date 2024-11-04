@@ -83,9 +83,8 @@
 
 
 <div class="container mx-auto px-4">
-    <h1 class="text-2xl font-bold mb-6">Responsive Data View</h1>
 
-                <!-- Table view for desktop screens -->
+         <!-- Table view for desktop screens -->
                 <div class="hidden md:block overflow-x-auto">
                     
 
@@ -172,6 +171,9 @@
                     </div>
                 </div>
                 @endforeach
+            </div>
+            <div>
+                {{ $requisitions->links() }}
             </div>
         </div>
     </div>
