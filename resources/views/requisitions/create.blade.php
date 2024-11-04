@@ -61,9 +61,9 @@
                         <table class="min-w-full divide-y divide-gray-200 mt-2">
                             <thead class="bg-gray-50">
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Item Name</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Quantity</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unit</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
+                                <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase">Quantity</th>
+                                <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unit</th>
+                                <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
                                 <template x-for="(item, index) in items" :key="index">
