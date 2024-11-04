@@ -85,8 +85,8 @@
 <div class="container mx-auto px-4">
     <h1 class="text-2xl font-bold mb-6">Responsive Data View</h1>
 
-<!-- Table view for desktop screens -->
-<div class="hidden md:block overflow-x-auto">
+                <!-- Table view for desktop screens -->
+                <div class="hidden md:block overflow-x-auto">
                     <div class="flex justify-end">
                         <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
                     </div>
@@ -138,33 +138,29 @@
                             {{ $requisitions->links() }}
                         </div>
                     
-</div>
-</div>
+                </div>
 
 
 
-<!-- Card view for mobile screens -->
-<div class="block md:hidden">
+
+    <!-- Card view for mobile screens -->
+    <div class="block md:hidden">
         <div class="space-y-4">
-
-    <div class="container mx-auto px-4">
-    <h1 class="text-2xl font-bold mb-6">Responsive Data View</h1>
-
-    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        @foreach ($requisitions as $requisition)
-        <div class="bg-white shadow-md rounded-lg p-6">
-            <h2 class="text-lg font-semibold text-gray-900">{{ $requisition->id }}</h2>
-            <p class="text-sm text-gray-600">{{ $requisition->req_no }}</p>
-            <p class="text-sm text-gray-600">Role: {{ $requisition->req_date }}</p>
-            <div class="mt-4">
-                <button class="bg-blue-500 text-white px-3 py-1 rounded">Edit</button>
-                <button class="bg-red-500 text-white px-3 py-1 rounded">Delete</button>
+            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                @foreach ($requisitions as $requisition)
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <h2 class="text-lg font-semibold text-gray-900">{{ $requisition->id }}</h2>
+                    <p class="text-sm text-gray-600">{{ $requisition->req_no }}</p>
+                    <p class="text-sm text-gray-600">Role: {{ $requisition->req_date }}</p>
+                    <div class="mt-4">
+                        <button class="bg-blue-500 text-white px-3 py-1 rounded">Edit</button>
+                        <button class="bg-red-500 text-white px-3 py-1 rounded">Delete</button>
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div>
-        @endforeach
     </div>
-</div>
-</div>
 </div>
 @endsection
                     
