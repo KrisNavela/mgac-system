@@ -57,7 +57,7 @@
                                 <x-input-error :messages="$errors->get('replenishment_year')" class="mt-2" />
                             </div>
 
-                    <div class="container mx-auto p-4">
+                    <div class="container mx-auto p-4 overflow-x-auto">
                         <table class="min-w-full divide-y divide-gray-200 mt-2">
                             <thead class="bg-gray-50">
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Item Name</th>
