@@ -7,8 +7,7 @@
 
 <div class="py-7">
 
-        <div class="bg-gray-200 overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 text-gray-900">
+    
                 <!-- Navigation Links -->
                 <div class="overflow-x-auto whitespace-nowrap">
                     
@@ -76,9 +75,6 @@
                     </x-nav-link>
                     @endif
                 </div>
-            </div>
-        
-        </div>
 </div>
 
 
