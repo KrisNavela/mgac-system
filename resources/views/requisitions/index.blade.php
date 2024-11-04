@@ -102,17 +102,17 @@
                             <th class="p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">Type</th>
                             <th class="p-3 text-sm font-semibold tracking-wide text-left text-black uppercase">Actions</th>
                         </thead>                
-                        <tbody class="">
+                        <tbody class="divide-y divide-gray-100">
                             @foreach ($requisitions as $requisition)
                             <tr class="bg-white">
-                                <td class="p-3 text-sm text-gray-700 uppercase"> {{ $requisition->id }}</td>
-                                <td class="p-3 text-sm text-gray-700 uppercase"> {{ $requisition->req_no }}</td>
-                                <td class="p-3 text-sm text-gray-700 uppercase"> {{ $requisition->req_date }}</td>
-                                <td class="p-3 text-sm text-gray-700 uppercase"> {{ $requisition->status }}</td>
-                                <td class="p-3 text-sm text-gray-700 uppercase"> {{ $requisition->user->first_name }} {{ $requisition->user->last_name }}</td>
-                                <td class="p-3 text-sm text-gray-700 uppercase"> {{ $requisition->items_count }}</td>
-                                <td class="p-3 text-sm text-gray-700 uppercase"> {{ $requisition->user->branch->branch_name }}</td>
-                                <td class="p-3 text-sm text-gray-700 uppercase"> {{ $requisition->user->branch->type_office }}</td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap uppercase"> {{ $requisition->id }}</td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap uppercase"> {{ $requisition->req_no }}</td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap uppercase"> {{ $requisition->req_date }}</td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap uppercase"> {{ $requisition->status }}</td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap uppercase"> {{ $requisition->user->first_name }} {{ $requisition->user->last_name }}</td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap uppercase"> {{ $requisition->items_count }}</td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap uppercase"> {{ $requisition->user->branch->branch_name }}</td>
+                                <td class="p-3 text-sm text-gray-700 whitespace-nowrap uppercase"> {{ $requisition->user->branch->type_office }}</td>
 
                                 <td>
 
