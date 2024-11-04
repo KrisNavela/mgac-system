@@ -94,10 +94,7 @@
 
 
 
-    <div class="py-1">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 overflow-x-auto" >
+    
                     <div class="flex justify-end">
                         <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
                     </div>
@@ -151,10 +148,7 @@
                         {{ $requisitions->links() }}
                     </div>
                     
-                </div>
-            </div>
-        </div>
-    </div>
+
 
 
     
