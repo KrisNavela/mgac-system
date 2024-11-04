@@ -88,7 +88,7 @@
                         <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
                     </div>
                     <template>
-                    <div class="overflow-auto round-lg shadow hidden md:block">
+
 
                     <table class="w-full">
                         <thead class="bg-gray-50 border-b-2 border-gray-200">
@@ -132,7 +132,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    </div>
+
                     </template>
 
                     <div>
