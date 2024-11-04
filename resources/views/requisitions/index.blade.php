@@ -81,7 +81,9 @@
     </div>
 </div>
 
-
+@section('content')
+<div class="container mx-auto px-4">
+    <h1 class="text-2xl font-bold mb-6">Responsive Data View</h1>
 
 <!-- Table view for desktop screens -->
 <div class="hidden md:block overflow-x-auto">
@@ -137,7 +139,7 @@
                         </div>
                     
 </div>
-
+</div>
 
 
 
@@ -164,7 +166,7 @@
 </div>
 </div>
 </div>
-
+@endsection
                     
 </x-app-layout>
 
