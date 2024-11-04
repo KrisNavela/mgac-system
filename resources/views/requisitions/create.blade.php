@@ -77,11 +77,11 @@
                                             </select>
                                         </td>
 
-                                        <td class="px-2 py-2" style="width: 100px;">
+                                        <td class="px-2 py-2">
                                             <input type="number" x-model="item.quantity" :name="'items['+index+'][quantity]'">
                                         </td>
 
-                                        <td class="px-2 py-2" style="width: 100px;">
+                                        <td class="px-2 py-2">
                                             <select class="" x-model="item.quantity_unit" :name="'items['+index+'][quantity_unit]'">
                                                 <option value="Pad">Pad</option>
                                                 <option value="Pcs">Pcs</option>
