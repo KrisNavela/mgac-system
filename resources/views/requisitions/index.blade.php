@@ -85,16 +85,12 @@
     <div class="py-1">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            
-
                 <div class="p-6 text-gray-900 overflow-x-auto" >
                     <div class="flex justify-end">
                         <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
                     </div>
-                    
-                    
-                    
-                    <table class="min-w-full divide-y divide-gray-200 mt-2">
+                    <div class="overflow-x-auto max-w-full">
+                    <table class="min-w-full bg-white divide-y divide-gray-200 mt-2">
                         <thead class="bg-gray-50">
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">ID</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Requestion Number</th>
@@ -136,13 +132,12 @@
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
 
                     <div>
                         {{ $requisitions->links() }}
                     </div>
                 </div>
-
-                
             </div>
         </div>
     </div>
