@@ -26,15 +26,15 @@ class ForTransmittalController extends Controller
         $userId = $user->id;
         $roleId = $user->role_id;
         
-        //Admin Access
-        if ($roleId === 1 || $roleId === 5) {
+        //Admin, Final Approver Agencies and Branches, Coll Assistant and Collection Manager Access
+        if ($roleId === 1 || $roleId === 5 || $roleId === 7 || $roleId === 8) {
             $branches = branch::all();
             $users = User::all();
 
             $requisitionsCount = Requisition::withCount('items')
             ->orderBy('id', 'desc')
             ->count();
-            
+
             $pendingrequisitionCount = Requisition::where('status', '=', 'pending')->count();
 
             $uwapprovalCount = Requisition::withCount('items')
@@ -74,6 +74,10 @@ class ForTransmittalController extends Controller
             ->where('finalapproval_status', '=', 'for approval')
             ->count();
 
+            $fortransmittalCount = Requisition::withCount('items')
+            ->where('status', '=', 'approved')
+            ->count();
+
             $requisitions = Requisition::withCount('items')
             ->where('status', '=', 'approved')
             ->orderBy('id', 'desc')
@@ -92,7 +96,9 @@ class ForTransmittalController extends Controller
                 'collmngapprovalCount' => $collmngapprovalCount,
                 'cancelrequisitionsCount' => $cancelrequisitionsCount,
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
+                'fortransmittalCount' => $fortransmittalCount,
             ]);
+        //Initial approver Branches and Final approver Branches Access
         } elseif ($roleId === 4 || $roleId === 6) {
             $branches = branch::all();
             $users = User::all();
@@ -110,41 +116,59 @@ class ForTransmittalController extends Controller
             ->where('status', '=', 'pending')
             ->count();
 
-            $uwapprovalCount = Requisition::withCount('items')
+            $uwapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Branch');}
+            );})
             ->where('status', '=', 'pending')
             ->where('uw_status', '=', 'for approval')
             ->count();
 
-            $bondsapprovalCount = Requisition::withCount('items')
+            $bondsapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Branch');}
+            );})
             ->where('status', '=', 'pending')
             ->where('bonds_status', '=', 'for approval')
             ->count();
 
-            $collasstapprovalCount = Requisition::withCount('items')
+            $collasstapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Branch');}
+            );})
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'for approval')
             ->where('collmanager_status', '=', 'for approval')
             ->count();
 
-            $collmngapprovalCount = Requisition::withCount('items')
+            $collmngapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Branch');}
+            );})
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'approved')
             ->where('collmanager_status', '=', 'for approval')
             ->count();
 
-            $cancelrequisitionsCount = Requisition::withCount('items')
+            $cancelrequisitionsCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Branch');}
+            );})
             ->where('status', '=', 'Cancelled')
             ->count();
 
-            //$approvedrequisitionsCount = Requisition::whereHas('user', function ($query) {
-            //    $query->whereHas('branch', function ($query1) {
-            //        $query1->where('type_office', 'Agency');}
-            //);})
-            //->where('finalapproval_status', '=', 'for approval')
-            //->count();
-
-            $approvedrequisitionsCount = Requisition::withCount('items')
+            $approvedrequisitionsCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Branch');}
+            );})
             ->where('finalapproval_status', '=', 'for approval')
+            ->count();
+
+            $fortransmittalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Branch');}
+            );})
+            ->where('status', '=', 'approved')
             ->count();
 
             $requisitions = Requisition::whereHas('user', function ($query) {
@@ -168,8 +192,9 @@ class ForTransmittalController extends Controller
                 'collmngapprovalCount' => $collmngapprovalCount,
                 'cancelrequisitionsCount' => $cancelrequisitionsCount,
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
+                'fortransmittalCount' => $fortransmittalCount,
             ]);
-
+        //Initial Approver Agencies Access
         } elseif ($roleId === 3){
             $branches = branch::all();
             $users = User::all();
@@ -187,41 +212,59 @@ class ForTransmittalController extends Controller
             ->where('status', '=', 'pending')
             ->count();
 
-            $uwapprovalCount = Requisition::withCount('items')
+            $uwapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Agency');}
+            );})
             ->where('status', '=', 'pending')
             ->where('uw_status', '=', 'for approval')
             ->count();
 
-            $bondsapprovalCount = Requisition::withCount('items')
+            $bondsapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Agency');}
+            );})
             ->where('status', '=', 'pending')
             ->where('bonds_status', '=', 'for approval')
             ->count();
 
-            $collasstapprovalCount = Requisition::withCount('items')
+            $collasstapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Agency');}
+            );})
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'for approval')
             ->where('collmanager_status', '=', 'for approval')
             ->count();
 
-            $collmngapprovalCount = Requisition::withCount('items')
+            $collmngapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Agency');}
+            );})
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'approved')
             ->where('collmanager_status', '=', 'for approval')
             ->count();
 
-            $cancelrequisitionsCount = Requisition::withCount('items')
+            $cancelrequisitionsCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Agency');}
+            );})
             ->where('status', '=', 'Cancelled')
             ->count();
 
-            //$approvedrequisitionsCount = Requisition::whereHas('user', function ($query) {
-            //    $query->whereHas('branch', function ($query1) {
-            //        $query1->where('type_office', 'Agency');}
-            //);})
-            //->where('finalapproval_status', '=', 'for approval')
-            //->count();
-
-            $approvedrequisitionsCount = Requisition::withCount('items')
+            $approvedrequisitionsCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Agency');}
+            );})
             ->where('finalapproval_status', '=', 'for approval')
+            ->count();
+
+            $fortransmittalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Agency');}
+            );})
+            ->where('status', '=', 'approved')
             ->count();
 
             $requisitions = Requisition::whereHas('user', function ($query) {
@@ -245,6 +288,7 @@ class ForTransmittalController extends Controller
                 'collmngapprovalCount' => $collmngapprovalCount,
                 'cancelrequisitionsCount' => $cancelrequisitionsCount,
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
+                'fortransmittalCount' => $fortransmittalCount,
             ]);
         }
 
@@ -295,6 +339,11 @@ class ForTransmittalController extends Controller
             ->where('finalapproval_status', '=', 'for approval')
             ->where('user_id', $userId)
             ->count();
+        
+        $fortransmittalCount = Requisition::withCount('items')
+            ->where('status', '=', 'approved')
+            ->where('user_id', $userId)
+            ->count();
 
         $requisitions = Requisition::withCount('items')
             ->where('status', '=', 'approved')
@@ -315,6 +364,7 @@ class ForTransmittalController extends Controller
                 'collmngapprovalCount' => $collmngapprovalCount,
                 'cancelrequisitionsCount' => $cancelrequisitionsCount,
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
+                'fortransmittalCount' => $fortransmittalCount,
             ]);
 
     }
