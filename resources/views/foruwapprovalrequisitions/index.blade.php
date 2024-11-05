@@ -65,6 +65,9 @@
 
                     <x-nav-link :href="route('fortransmittal.index')" :active="request()->routeIs('fortransmittal.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('For Transmittal') }}
+                        <div class="text-red-500 font-bold px-1 py-1 rounded relative" role="alert">
+                            <span class="block sm:inline">{{ $fortransmittalCount }}</span>
+                        </div>
                     </x-nav-link>
 
                     <x-nav-link :href="route('cancelrequisitions.index')" :active="request()->routeIs('cancelrequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
