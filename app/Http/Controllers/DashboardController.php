@@ -24,6 +24,7 @@ class DashboardController extends Controller
         if ($roleId === 1 || $roleId === 5 || $roleId === 7 || $roleId === 8) {
             $branches = branch::all();
             $users = User::all();
+            $roleId = $user->role_id;
 
             $requisitionsCount = Requisition::withCount('items')
             ->orderBy('id', 'desc')
@@ -96,6 +97,7 @@ class DashboardController extends Controller
         } elseif ($roleId === 4 || $roleId === 6){
             $branches = branch::all();
             $users = User::all();
+            $roleId = $user->role_id;
 
             $requisitionsCount = Requisition::whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
@@ -186,6 +188,7 @@ class DashboardController extends Controller
                 'collmngapprovalCount' => $collmngapprovalCount,
                 'cancelrequisitionsCount' => $cancelrequisitionsCount,
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
+                'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
             ]);
             
@@ -193,6 +196,7 @@ class DashboardController extends Controller
         } elseif ($roleId === 3){
             $branches = branch::all();
             $users = User::all();
+            $roleId = $user->role_id;
 
             $requisitionsCount = Requisition::whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
@@ -283,6 +287,7 @@ class DashboardController extends Controller
                 'collmngapprovalCount' => $collmngapprovalCount,
                 'cancelrequisitionsCount' => $cancelrequisitionsCount,
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
+                'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
             ]);
         }
@@ -290,6 +295,7 @@ class DashboardController extends Controller
         //User Access
         $branches = branch::all();
         $users = User::all();
+        $roleId = $user->role_id;
 
         $requisitionsCount = Requisition::withCount('items')
             ->where('user_id', $userId)
