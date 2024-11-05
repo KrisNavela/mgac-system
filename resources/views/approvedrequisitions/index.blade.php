@@ -13,70 +13,83 @@
             <div class="bg-gray-200 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     
+                @if ($roleId == 1 || $roleId == 2 || $roleId == 3 || $roleId == 4 || $roleId == 5 || $roleId == 6 || $roleId == 7 || $roleId == 8 || $roleId == 9 || $roleId == 10 || $roleId == 11)
                     <x-nav-link :href="route('requisitions.index')" :active="request()->routeIs('requisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('All') }}  
                         <div class="text-red-500 font-bold px-1 py-1 rounded relative" role="alert">
                             <span class="block sm:inline">{{ $requisitionsCount }}</span>
                         </div>
-                    
                     </x-nav-link>
+                @endif
 
+                @if ($roleId == 1 || $roleId == 3 || $roleId == 4)
                     <x-nav-link :href="route('pendingrequisitions.index')" :active="request()->routeIs('pendingrequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('Pending') }} 
                         <div class="text-red-500 font-bold px-1 py-1 rounded relative" role="alert">
                             <span class="block sm:inline">{{ $pendingrequisitionCount }}</span>
                         </div>
                     </x-nav-link>
-
+                @endif
+                
+                @if ($roleId == 1 || $roleId == 9)
                     <x-nav-link :href="route('forbondapprovalrequisitions.index')" :active="request()->routeIs('forbondapprovalrequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('Bonds Approval') }} 
                         <div class="text-red-500 font-bold px-1 py-1 rounded relative" role="alert">
                             <span class="block sm:inline">{{ $bondsapprovalCount }}</span>
                         </div>
-                        
                     </x-nav-link>
+                @endif
 
+                @if ($roleId == 1 || $roleId == 10)
                     <x-nav-link :href="route('foruwapprovalrequisitions.index')" :active="request()->routeIs('foruwapprovalrequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('Underwriting Approval') }}
                         <div class="text-red-500 font-bold px-1 py-1 rounded relative" role="alert">
                             <span class="block sm:inline">{{ $uwapprovalCount }}</span>
                         </div>
                     </x-nav-link>
+                @endif
 
+                @if ($roleId == 1 || $roleId == 7)
                     <x-nav-link :href="route('collasstrequisitions.index')" :active="request()->routeIs('collasstrequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('Coll Asst Approval') }}
                         <div class="text-red-500 font-bold px-1 py-1 rounded relative" role="alert">
                             <span class="block sm:inline">{{ $collasstapprovalCount }}</span>
                         </div>
                     </x-nav-link>
+                @endif
 
+                @if ($roleId == 1 || $roleId == 8)
                     <x-nav-link :href="route('collmngrequisitions.index')" :active="request()->routeIs('collmngrequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('Coll Manager Approval') }}
                         <div class="text-red-500 font-bold px-1 py-1 rounded relative" role="alert">
                             <span class="block sm:inline">{{ $collmngapprovalCount }}</span>
                         </div>
                     </x-nav-link>
+                @endif
 
+                @if ($roleId == 1 || $roleId == 5 || $roleId == 6)
                     <x-nav-link :href="route('approvedrequisitions.index')" :active="request()->routeIs('approvedrequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('Final Approval') }}
                         <div class="text-red-500 font-bold px-1 py-1 rounded relative" role="alert">
                             <span class="block sm:inline">{{ $approvedrequisitionsCount }}</span>
                         </div>
                     </x-nav-link>
+                @endif
 
+                @if ($roleId == 1 || $roleId == 11)
                     <x-nav-link :href="route('fortransmittal.index')" :active="request()->routeIs('fortransmittal.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('For Transmittal') }}
-                        <div class="text-red-500 font-bold px-1 py-1 rounded relative" role="alert">
-                            <span class="block sm:inline">{{ $fortransmittalCount }}</span>
-                        </div>
                     </x-nav-link>
+                @endif
 
+                @if ($roleId == 1 || $roleId == 2 || $roleId == 3 || $roleId == 4 || $roleId == 5 || $roleId == 6 || $roleId == 7 || $roleId == 8 || $roleId == 9 || $roleId == 10 || $roleId == 11)
                     <x-nav-link :href="route('cancelrequisitions.index')" :active="request()->routeIs('cancelrequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('Cancel') }}
                         <div class="text-red-500 font-bold px-1 py-1 rounded relative" role="alert">
                             <span class="block sm:inline">{{ $cancelrequisitionsCount }}</span>
                         </div>
                     </x-nav-link>
+                @endif
                 </div>
             </div>
         </div>
