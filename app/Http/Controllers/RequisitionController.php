@@ -102,6 +102,7 @@ class RequisitionController extends Controller
                 'cancelrequisitionsCount' => $cancelrequisitionsCount,
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
                 'roleId' => $roleId,
+                'fortransmittalCount' => $fortransmittalCount,
             ]);
         } elseif ($roleId === 4 || $roleId === 6){
             $branches = branch::all();
