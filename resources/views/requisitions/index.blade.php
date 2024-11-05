@@ -112,7 +112,7 @@
                     <h2 class="text-lg font-semibold text-gray-900">{{ $requisition->id }}</h2>
                     <p class="text-sm text-gray-600">Requestion Number: {{ $requisition->req_no }}</p>
                     <p class="text-sm text-gray-600">Date: {{ $requisition->req_date }}</p>
-                    <p class="text-sm text-gray-600">Status: <a href="{{ $requisition->status }}" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md"></a></p>
+                    <p class="text-sm text-gray-600">Status: <a href="" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">{{ $requisition->status }}</a></p>
                     <p class="text-sm text-gray-600">Request By: {{ $requisition->user->first_name }} {{ $requisition->user->last_name }}</p>
                     <p class="text-sm text-gray-600"># Items: {{ $requisition->items_count }}</p>
                     <p class="text-sm text-gray-600">Branch: {{ $requisition->user->branch->branch_name }}</p>
