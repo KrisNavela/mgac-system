@@ -341,7 +341,12 @@ class RequisitionController extends Controller
      */
     public function store(StoreRequisitionRequest $request) 
     {
-        
+        $user = auth()->user(); // Get the authenticated user
+        $userId = $user->id;
+        $roleId = $user->role_id;
+        $typeOffice = $user->branch->type_office;
+
+
         $type_request = $request->type_request;
 
         if ($type_request === 'Replenishment'){
@@ -384,7 +389,11 @@ class RequisitionController extends Controller
             }
         }
 
-        Mail::to('knavela@milestoneguaranty.com')->send(new RequisitionCreatedMail($requisition));
+        if ($typeOffice === 'Branch'){
+            Mail::to('knavela@milestoneguaranty.com')->send(new RequisitionCreatedMail($requisition));
+        } else {
+            Mail::to('cj.soriano@milestoneguaranty.com')->send(new RequisitionCreatedMail($requisition));
+        }
         //return redirect()->route('requisitions.index')->with('success', 'Requisition created successfully');
         // Redirect to the edit page for the newly created requisition
         return redirect()->route('requisitions.edit', $requisition->id)
