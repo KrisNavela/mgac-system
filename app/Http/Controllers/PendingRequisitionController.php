@@ -94,6 +94,7 @@ class PendingRequisitionController extends Controller
                 'collmngapprovalCount' => $collmngapprovalCount,
                 'cancelrequisitionsCount' => $cancelrequisitionsCount,
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
+                'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
             ]);
         //Initial approver Branches and Final approver Branches Access
@@ -190,6 +191,7 @@ class PendingRequisitionController extends Controller
                 'collmngapprovalCount' => $collmngapprovalCount,
                 'cancelrequisitionsCount' => $cancelrequisitionsCount,
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
+                'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
             ]);
 
@@ -287,6 +289,7 @@ class PendingRequisitionController extends Controller
                 'collmngapprovalCount' => $collmngapprovalCount,
                 'cancelrequisitionsCount' => $cancelrequisitionsCount,
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
+                'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
             ]);
         }
@@ -363,6 +366,7 @@ class PendingRequisitionController extends Controller
                 'collmngapprovalCount' => $collmngapprovalCount,
                 'cancelrequisitionsCount' => $cancelrequisitionsCount,
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
+                'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
             ]);
 

@@ -92,6 +92,7 @@ class CollectionMngRequisitionController extends Controller
                 'collmngapprovalCount' => $collmngapprovalCount,
                 'cancelrequisitionsCount' => $cancelrequisitionsCount,
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
+                'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
             ]);
         //Initial approver Branches and Final approver Branches Access
@@ -188,6 +189,7 @@ class CollectionMngRequisitionController extends Controller
                 'collmngapprovalCount' => $collmngapprovalCount,
                 'cancelrequisitionsCount' => $cancelrequisitionsCount,
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
+                'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
             ]);
         //Initial Approver Agencies Access
@@ -285,6 +287,7 @@ class CollectionMngRequisitionController extends Controller
                 'collmngapprovalCount' => $collmngapprovalCount,
                 'cancelrequisitionsCount' => $cancelrequisitionsCount,
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
+                'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
             ]);
 
@@ -362,6 +365,7 @@ class CollectionMngRequisitionController extends Controller
             'collmngapprovalCount' => $collmngapprovalCount,
             'cancelrequisitionsCount' => $cancelrequisitionsCount,
             'approvedrequisitionsCount' => $approvedrequisitionsCount,
+            'roleId' => $roleId,
             'fortransmittalCount' => $fortransmittalCount,
         ]);
 

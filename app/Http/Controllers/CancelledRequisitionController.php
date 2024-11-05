@@ -81,6 +81,7 @@ class CancelledRequisitionController extends Controller
                 'collmngapprovalCount' => $collmngapprovalCount,
                 'cancelrequisitionsCount' => $cancelrequisitionsCount,
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
+                'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
             ]);
 
@@ -175,6 +176,7 @@ class CancelledRequisitionController extends Controller
                 'collmngapprovalCount' => $collmngapprovalCount,
                 'cancelrequisitionsCount' => $cancelrequisitionsCount,
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
+                'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
             ]);
             
@@ -269,6 +271,7 @@ class CancelledRequisitionController extends Controller
                 'collmngapprovalCount' => $collmngapprovalCount,
                 'cancelrequisitionsCount' => $cancelrequisitionsCount,
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
+                'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
             ]);
         }
@@ -343,6 +346,7 @@ class CancelledRequisitionController extends Controller
                 'collmngapprovalCount' => $collmngapprovalCount,
                 'cancelrequisitionsCount' => $cancelrequisitionsCount,
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
+                'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
             ]);
 
