@@ -46,7 +46,7 @@ class RoleSeeder extends Seeder
         ]);
 
         Role::Create([
-            'name' => 'Bond Approver',
+            'name' => 'Bonds Approver',
         ]);
 
         Role::Create([
