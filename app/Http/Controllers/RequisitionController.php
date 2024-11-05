@@ -400,7 +400,8 @@ class RequisitionController extends Controller
         //For Final Approval Email Notification
         if ($typeOffice === 'Branch'){
             Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalRequisitionBranchMail($requisition));
-        } elseif ($typeOffice === 'Branch' || $typeOffice === 'Agency'){
+            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($requisition));
+        } else {
             Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($requisition));
         }
 
