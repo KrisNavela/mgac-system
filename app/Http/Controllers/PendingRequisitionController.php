@@ -415,10 +415,10 @@ class PendingRequisitionController extends Controller
             'user_id' => Auth::id(),
         ]);
 
-        if ($validatedData['bonds_status_modal'] === 'For Approval'){
+        if ($pendingrequisition->bonds_status === 'For Approval'){
             Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalBondsMail($requisition));
         } 
-        if ($validatedData['uw_status_modal'] === 'For Approval'){
+        if ($pendingrequisition->uw_status === 'For Approval'){
             Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalUwMail($requisition));
         }
 
