@@ -275,6 +275,17 @@ class CollectionMngRequisitionController extends Controller
             ->paginate(5)
             ->withQueryString();
 
+            $requisitions = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Agency');}
+            );})
+            ->where('type_request', '=', 'replenishment')
+            ->where('collasst_status', '=', 'approved')
+            ->where('collmanager_status', '=', 'for approval')
+            ->orderBy('id', 'desc')
+            ->paginate(5)
+            ->withQueryString();
+
             return view('collmngrequisitions.index', [
                 'requisitions' => $requisitions,
                 'requisitionsCount' => $requisitionsCount,
