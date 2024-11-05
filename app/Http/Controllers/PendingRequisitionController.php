@@ -401,6 +401,13 @@ class PendingRequisitionController extends Controller
             'uw_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
         ]);
 
+        if ($validatedData['bonds_status_modal'] === 'For Approval'){
+            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalBondsMail($pendingrequisition));
+        } 
+        if ($validatedData['uw_status_modal'] === 'For Approval'){
+            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalUwMail($pendingrequisition));
+        }
+
         // Find the user record in the database
         $pendingrequisition = Requisition::findOrFail($id);
 
@@ -409,18 +416,15 @@ class PendingRequisitionController extends Controller
         $pendingrequisition->uw_status = $validatedData['uw_status_modal'];
         $pendingrequisition->save(); // Save the changes
 
+
+
         RequisitionRemarks::create([
             'requisition_id' => $pendingrequisition->id,
             'content' => $request->content,
             'user_id' => Auth::id(),
         ]);
 
-        //if ($pendingrequisition->bonds_status === 'For Approval'){
-            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalBondsMail($pendingrequisition));
-        //} 
-        //if ($pendingrequisition->uw_status === 'For Approval'){
-        //    Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalUwMail($requisition));
-        //}
+        
 
         return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition created successfully');
     }
