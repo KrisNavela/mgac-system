@@ -80,6 +80,10 @@ class RequisitionController extends Controller
             ->where('finalapproval_status', '=', 'for approval')
             ->count();
 
+            $fortransmittalCount = Requisition::withCount('items')
+            ->where('status', '=', 'approved')
+            ->count();
+
             $requisitions = Requisition::withCount('items')
             ->orderBy('id', 'desc')
             ->paginate(10)
