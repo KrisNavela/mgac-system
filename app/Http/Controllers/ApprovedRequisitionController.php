@@ -86,7 +86,7 @@ class ApprovedRequisitionController extends Controller
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
                 'fortransmittalCount' => $fortransmittalCount,
             ]);
-
+        //Initial approver Branches and Final approver Branches Access
         } elseif ($roleId === 4 || $roleId === 6) {
             $branches = branch::all();
             $users = User::all();
@@ -160,7 +160,7 @@ class ApprovedRequisitionController extends Controller
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
                 'fortransmittalCount' => $fortransmittalCount,
             ]);
-            
+        //Initial Approver Agencies Access
         } elseif ($roleId === 3) {
             $branches = branch::all();
             $users = User::all();
