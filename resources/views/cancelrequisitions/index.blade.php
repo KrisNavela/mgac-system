@@ -83,10 +83,6 @@
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
         <div class="space-y-4">
 
-            <div class="flex justify-end">
-                <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
-            </div>
-
             <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                 @foreach ($requisitions as $requisition)
                 <div class="bg-white shadow-md rounded-lg p-6">
