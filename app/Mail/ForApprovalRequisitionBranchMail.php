@@ -56,7 +56,7 @@ class ForApprovalRequisitionBranchMail extends Mailable
     {
         return $this->from('noreply@milestoneguaranty.com')
                     ->subject('For Approval Requisition')
-                    ->view('emails.forapprovalrequisitionagency')
+                    ->view('emails.forapprovalrequisitionbranch')
                     ->with(['requisition' => $this->requisition]);
     }
 }
