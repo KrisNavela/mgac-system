@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Mail\RequisitionCreatedMail;
 use App\Mail\ForApprovalRequisitionAgencyMail;
 use App\Mail\ForApprovalRequisitionBranchMail;
+use App\Mail\ForApprovalCollAsstMail;
+
 use Illuminate\Support\Facades\Mail;
 
 
@@ -405,8 +407,9 @@ class RequisitionController extends Controller
             Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($requisition));
         }
 
-
-
+        if ($type_request === 'Replenishment'){
+            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCollAsstMail($requisition));
+        }
 
         //return redirect()->route('requisitions.index')->with('success', 'Requisition created successfully');
         // Redirect to the edit page for the newly created requisition

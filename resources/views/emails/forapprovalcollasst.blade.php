@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Requisition Collection Assistant Approval</title>
+    <title>Requisition Bonds Approval</title>
 </head>
 <body>
     <h1>For your Approval</h1>
