@@ -32,7 +32,7 @@ class RequisitionController extends Controller
         $userId = $user->id;
         $roleId = $user->role_id;
         
-        //Admin Access
+        //Admin, Final Approver Agencies and Branches, Coll Assistant and Collection Manager Access
         if ($roleId === 1 || $roleId === 5 || $roleId === 7 || $roleId === 8) {
             $branches = branch::all();
             $users = User::all();
@@ -104,6 +104,7 @@ class RequisitionController extends Controller
                 'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
             ]);
+        //Initial approver Branches and Final approver Branches Access
         } elseif ($roleId === 4 || $roleId === 6){
             $branches = branch::all();
             $users = User::all();
@@ -199,7 +200,8 @@ class RequisitionController extends Controller
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
                 'fortransmittalCount' => $fortransmittalCount,
             ]);
-
+            
+        //Initial Approver Agencies Access
         } elseif ($roleId === 3){
             $branches = branch::all();
             $users = User::all();
