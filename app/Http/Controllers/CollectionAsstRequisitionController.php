@@ -12,6 +12,8 @@ use App\Models\User;
 use App\Models\RequisitionAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\ForApprovalBondsMail;
+use App\Mail\ForApprovalUwMail;
 
 class CollectionAsstRequisitionController extends Controller
 {
@@ -225,6 +227,9 @@ class CollectionAsstRequisitionController extends Controller
             'uw_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
         ]);
 
+        $bondStatus = $request->bonds_status_modal;
+        $uwStatus = $request->uw_status_modal;
+
         // Find the user record in the database
         $collasstrequisition = Requisition::findOrFail($id);
 
@@ -238,6 +243,14 @@ class CollectionAsstRequisitionController extends Controller
             'content' => $request->content,
             'user_id' => Auth::id(),
         ]);
+
+        if ($bondStatus === 'for approval'){
+            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalBondsMail($collasstrequisition));
+        } 
+        
+        if ($uwStatus === 'for approval'){
+            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalUwMail($collasstrequisition));
+        }
 
          return redirect()->route('collasstrequisitions.index')->with('success', 'Requisition created successfully');
     }
