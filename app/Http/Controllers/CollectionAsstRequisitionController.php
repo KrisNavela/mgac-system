@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\ForApprovalBondsMail;
 use App\Mail\ForApprovalUwMail;
+use Illuminate\Support\Facades\Mail;
 
 class CollectionAsstRequisitionController extends Controller
 {
