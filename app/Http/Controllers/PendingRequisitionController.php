@@ -12,6 +12,9 @@ use App\Models\User;
 use App\Models\RequisitionAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\ForApprovalBondsMail;
+use App\Mail\ForApprovalUwMail;
+use Illuminate\Support\Facades\Mail;
 
 class PendingRequisitionController extends Controller
 {
@@ -412,7 +415,14 @@ class PendingRequisitionController extends Controller
             'user_id' => Auth::id(),
         ]);
 
-         return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition created successfully');
+        if ($validatedData['bonds_status_modal'] === 'For Approval'){
+            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalBondsMail($requisition));
+        } 
+        if ($validatedData['uw_status_modal'] === 'For Approval'){
+            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalUwMail($requisition));
+        }
+
+        return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition created successfully');
     }
 
 }
