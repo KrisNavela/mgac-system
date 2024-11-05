@@ -13,6 +13,8 @@ use App\Models\RequisitionAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\RequisitionCreatedMail;
+use App\Mail\ForApprovalRequisitionAgencyMail;
+use App\Mail\ForApprovalRequisitionBranchMail;
 use Illuminate\Support\Facades\Mail;
 
 
@@ -394,6 +396,16 @@ class RequisitionController extends Controller
         } else {
             Mail::to('cj.soriano@milestoneguaranty.com')->send(new RequisitionCreatedMail($requisition));
         }
+
+        if ($typeOffice === 'Branch'){
+            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalRequisitionBranchMail($requisition));
+        }
+            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($requisition));
+        
+
+
+
+
         //return redirect()->route('requisitions.index')->with('success', 'Requisition created successfully');
         // Redirect to the edit page for the newly created requisition
         return redirect()->route('requisitions.edit', $requisition->id)
