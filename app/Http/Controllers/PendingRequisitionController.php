@@ -401,8 +401,8 @@ class PendingRequisitionController extends Controller
             'uw_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
         ]);
 
-        $bondStatus = $validatedData['bonds_status_modal'];
-        $uwStatus = $validatedData['uw_status_modal'];
+        $bondStatus = $request->bonds_status_modal;
+        $uwStatus = $request->uw_status_modal;
 
         if ($bondStatus === 'For Approval'){
             Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalBondsMail($pendingrequisition));
