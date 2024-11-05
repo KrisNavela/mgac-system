@@ -91,35 +91,57 @@ class ApprovedRequisitionController extends Controller
             $branches = branch::all();
             $users = User::all();
 
-            $requisitionsCount = Requisition::withCount('items')
-            ->orderBy('id', 'desc')
+            $requisitionsCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Branch');}
+            );})
             ->count();
-            
-            $pendingrequisitionCount = Requisition::where('status', '=', 'pending')->count();
 
-            $uwapprovalCount = Requisition::withCount('items')
+            $pendingrequisitionCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Branch');}
+            );})
+            ->where('status', '=', 'pending')
+            ->count();
+
+            $uwapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Branch');}
+            );})
             ->where('status', '=', 'pending')
             ->where('uw_status', '=', 'for approval')
             ->count();
 
-            $bondsapprovalCount = Requisition::withCount('items')
+            $bondsapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Branch');}
+            );})
             ->where('status', '=', 'pending')
             ->where('bonds_status', '=', 'for approval')
             ->count();
 
-            $collasstapprovalCount = Requisition::withCount('items')
+            $collasstapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Branch');}
+            );})
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'for approval')
             ->where('collmanager_status', '=', 'for approval')
             ->count();
 
-            $collmngapprovalCount = Requisition::withCount('items')
+            $collmngapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Branch');}
+            );})
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'approved')
             ->where('collmanager_status', '=', 'for approval')
             ->count();
 
-            $cancelrequisitionsCount = Requisition::withCount('items')
+            $cancelrequisitionsCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Branch');}
+            );})
             ->where('status', '=', 'Cancelled')
             ->count();
 
@@ -165,35 +187,57 @@ class ApprovedRequisitionController extends Controller
             $branches = branch::all();
             $users = User::all();
 
-            $requisitionsCount = Requisition::withCount('items')
-            ->orderBy('id', 'desc')
+            $requisitionsCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Agency');}
+            );})
             ->count();
-            
-            $pendingrequisitionCount = Requisition::where('status', '=', 'pending')->count();
 
-            $uwapprovalCount = Requisition::withCount('items')
+            $pendingrequisitionCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Agency');}
+            );})
+            ->where('status', '=', 'pending')
+            ->count();
+
+            $uwapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Agency');}
+            );})
             ->where('status', '=', 'pending')
             ->where('uw_status', '=', 'for approval')
             ->count();
 
-            $bondsapprovalCount = Requisition::withCount('items')
+            $bondsapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Agency');}
+            );})
             ->where('status', '=', 'pending')
             ->where('bonds_status', '=', 'for approval')
             ->count();
 
-            $collasstapprovalCount = Requisition::withCount('items')
+            $collasstapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Agency');}
+            );})
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'for approval')
             ->where('collmanager_status', '=', 'for approval')
             ->count();
 
-            $collmngapprovalCount = Requisition::withCount('items')
+            $collmngapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Agency');}
+            );})
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'approved')
             ->where('collmanager_status', '=', 'for approval')
             ->count();
 
-            $cancelrequisitionsCount = Requisition::withCount('items')
+            $cancelrequisitionsCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Agency');}
+            );})
             ->where('status', '=', 'Cancelled')
             ->count();
 
