@@ -415,12 +415,12 @@ class PendingRequisitionController extends Controller
             'user_id' => Auth::id(),
         ]);
 
-        if ($pendingrequisition->bonds_status === 'For Approval'){
+        //if ($pendingrequisition->bonds_status === 'For Approval'){
             Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalBondsMail($requisition));
-        } 
-        if ($pendingrequisition->uw_status === 'For Approval'){
-            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalUwMail($requisition));
-        }
+        //} 
+        //if ($pendingrequisition->uw_status === 'For Approval'){
+        //    Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalUwMail($requisition));
+        //}
 
         return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition created successfully');
     }
