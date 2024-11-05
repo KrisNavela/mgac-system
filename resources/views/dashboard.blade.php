@@ -19,7 +19,7 @@
                         </div>
                     </x-nav-link>
 
-                    @if ($roleId == 1)
+                    @if ($roleId == 1 || $roleId == 3 || $roleId == 4 || $roleId == 5 || $roleId == 6 || $roleId == 7 || $roleId == 8)
                     <x-nav-link :href="route('pendingrequisitions.index')" :active="request()->routeIs('pendingrequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('Pending') }} 
                         <div class="text-red-500 font-bold px-1 py-1 rounded relative" role="alert">
