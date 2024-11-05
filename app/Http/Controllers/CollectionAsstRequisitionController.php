@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\ForApprovalBondsMail;
 use App\Mail\ForApprovalUwMail;
+use App\Mail\ForApprovalCollMngMail;
 use Illuminate\Support\Facades\Mail;
 
 class CollectionAsstRequisitionController extends Controller
@@ -209,6 +210,12 @@ class CollectionAsstRequisitionController extends Controller
             'uw_status' => $request->uw_status,
             'collasst_status' => $request->collasst_status,
         ]);
+
+        $collasstStatus = $request->collasst_status;
+
+        if ($collasstStatus === 'approved'){
+            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCollMngMail($collasstrequisition));
+        }
         
         $collasstrequisition->items()->detach();
 
