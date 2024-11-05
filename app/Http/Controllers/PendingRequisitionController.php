@@ -404,13 +404,13 @@ class PendingRequisitionController extends Controller
         $bondStatus = $request->bonds_status_modal;
         $uwStatus = $request->uw_status_modal;
 
-        if ($bondStatus === 'For Approval'){
+        //if ($bondStatus === 'For Approval'){
             Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalBondsMail($pendingrequisition));
-        } 
+        //} 
         
-        if ($uwStatus === 'For Approval'){
+        //if ($uwStatus === 'For Approval'){
             Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalUwMail($pendingrequisition));
-        }
+        //}
 
         // Find the user record in the database
         $pendingrequisition = Requisition::findOrFail($id);
