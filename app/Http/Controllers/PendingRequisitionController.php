@@ -416,7 +416,7 @@ class PendingRequisitionController extends Controller
         ]);
 
         //if ($pendingrequisition->bonds_status === 'For Approval'){
-            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalBondsMail($requisition));
+            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalBondsMail($pendingrequisition));
         //} 
         //if ($pendingrequisition->uw_status === 'For Approval'){
         //    Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalUwMail($requisition));
