@@ -47,7 +47,7 @@
 
                             <div class="mt-4" style="width: 100px;">
                                 <x-input-label for="coc_request_status" :value="__('COC Request')" />
-                                <select class="" id="coc_request_status" class="block mt-1 w-full" type="text" name="coc_request_status" autofocus autocomplete="coc_request_status">
+                                <select class="" style="width: 100px;" id="coc_request_status" class="block mt-1 w-full" type="text" name="coc_request_status" autofocus autocomplete="coc_request_status">
                                     <option value="No">No</option>
                                     <option value="Yes">Yes</option>
                                 </select>
