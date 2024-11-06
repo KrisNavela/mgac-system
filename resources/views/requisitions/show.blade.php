@@ -143,9 +143,9 @@
                             <x-text-input id="status" class="block mt-1 w-full text-gray-500 uppercase" type="text" name="status" :value="$requisition->status" disable/>
                         </div>
 
-                        <div class="mt-4">
-                            <x-input-label for="user_id" :value="__('User ID')" />
-                            <x-text-input id="user_id" class="block mt-1 w-full" type="text" name="user_id" :value="$requisition->user_id" disable/>
+                        <div class="mt-4" style="width: 300px;">
+                            <x-input-label for="full_name" :value="__('Request By')" />
+                            <x-text-input id="full_name" class="block mt-1 w-full" type="text" name="full_name" value="{{ $requisition->user->first_name }} {{ $requisition->user->last_name }}" disable/>
                         </div>
 
                         <div class="mt-4">
