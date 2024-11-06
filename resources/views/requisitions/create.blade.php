@@ -37,7 +37,7 @@
 
                             <div class="mt-4">
                                 <x-input-label for="type_request" :value="__('Type of Request')" />
-                                <select class="" id="type_request" class="block mt-1 w-full" type="text" name="type_request" autofocus autocomplete="type_request">
+                                <select class="" style="width: 200px;" id="type_request" class="block mt-1 w-full" type="text" name="type_request" autofocus autocomplete="type_request">
                                     <option value="Initial">Initial</option>
                                     <option value="Additional">Additional</option>
                                     <option value="Replenishment">Replenishment</option>
