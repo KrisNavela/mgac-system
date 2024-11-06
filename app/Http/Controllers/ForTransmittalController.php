@@ -423,7 +423,6 @@ class ForTransmittalController extends Controller
                     'ho_ctrl_end' => $item['ho_ctrl_end'],
                     'series_start' => $item['series_start'],
                     'series_end' => $item['series_end']
-                    
                 ]);
             } else {
                 $fortransmittal->items()->attach($item['item_id'], [
@@ -458,11 +457,7 @@ class ForTransmittalController extends Controller
                     'number_status' => "Unused",
                 ]);
             }
-
-
-
         }
-
 
         $requisitionid = $fortransmittal->id;
         $branches = branch::all();

@@ -30,6 +30,11 @@ return new class extends Migration
             $table->timestamp('collmanager_date')->nullable();
             $table->string('finalapproval_status')->default('For Approval');
             $table->timestamp('finalapproval_date')->nullable();
+            $table->string('coc_request_status')->nullable();
+            $table->string('treasuryapproval_status')->nullable();
+            $table->timestamp('treasuryapproval_date')->nullable();
+            $table->string('cocapproval_status')->nullable();
+            $table->timestamp('cocapproval_date')->nullable();
             $table->timestamps();
         });
     }

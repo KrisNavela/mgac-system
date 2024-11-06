@@ -56,5 +56,17 @@ class RoleSeeder extends Seeder
         Role::Create([
             'name' => 'Inventory Clerk',
         ]);
+
+        Role::Create([
+            'name' => 'Treasury Approver',
+        ]);
+
+        Role::Create([
+            'name' => 'COC Approver',
+        ]);
+
+        Role::Create([
+            'name' => 'COC Clerk',
+        ]);
     }
 }
