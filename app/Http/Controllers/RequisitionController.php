@@ -411,6 +411,7 @@ class RequisitionController extends Controller
             $requisition = Requisition::create([
                 'req_date' => $request->req_date,
                 'type_request' => $request->type_request,
+                'coc_request_status' => $request->coc_request_status,
                 'collasst_status' => 'for approval',
                 'collmanager_status' => 'for approval',
                 'replenishment_month' => $request->replenishment_month,
