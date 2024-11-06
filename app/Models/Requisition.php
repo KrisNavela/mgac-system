@@ -24,6 +24,10 @@ class Requisition extends Model
         'collasst_status',
         'collmanager_status',
         'finalapproval_status',
+        'coc_request_status',
+        'treasuryapproval_status',
+        'cocapproval_status',
+
     ];
 
     public function user()
