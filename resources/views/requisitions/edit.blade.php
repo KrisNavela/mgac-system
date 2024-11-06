@@ -110,9 +110,10 @@
                             <x-input-label for="req_date" :value="__('Request Date')" />
                             <x-text-input id="req_date" class="block mt-1 w-full" type="text" name="req_date" :value="$requisition->req_date" disable/>
                         </div>
-                        <div class="mt-4" style="width: 300px;">
+                        
+                        <div class="mt-4">
                             <x-input-label for="status" :value="__('Status')" />
-                            <select name="status" id="">
+                            <select name="status" id="" style="width: 300px;">
                                 <option value="pending" {{ 'pending' === $requisition->status ? 'selected' : '' }}>Pending</option>
                                 <option value="approved" {{ 'approved' === $requisition->status ? 'selected' : '' }}>Approved</option>
                                 <option value="return" {{ 'return' === $requisition->status ? 'selected' : '' }}>Return</option>
@@ -120,6 +121,15 @@
                                 <option value="done" {{ 'done' === $requisition->status ? 'selected' : '' }}>Done</option>
                             </select>
                             <x-input-error :messages="$errors->get('status')" class="mt-2" />
+                        </div>
+
+                        <div class="mt-4">
+                            <x-input-label for="coc_request_status" :value="__('COC Request')" />
+                            <select name="coc_request_status" id="" style="width: 300px;">
+                                <option value="No" {{ 'No' === $requisition->coc_request_status ? 'selected' : '' }}>No</option>
+                                <option value="Yes" {{ 'Yes' === $requisition->coc_request_status ? 'selected' : '' }}>Yes</option>
+                            </select>
+                            <x-input-error :messages="$errors->get('coc_request_status')" class="mt-2" />
                         </div>
 
                         <div class="mt-4" style="width: 300px;">
