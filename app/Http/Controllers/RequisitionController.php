@@ -554,6 +554,7 @@ class RequisitionController extends Controller
             'req_no' => $request->req_no,
             'req_date' => $request->req_date,
             'status' => $request->status,
+            'coc_request_status' => $request->coc_request_status,
             'type_request' => $request->type_request,
             'replenishment_month' => $request->replenishment_month,
             'replenishment_year' => $request->replenishment_year,
