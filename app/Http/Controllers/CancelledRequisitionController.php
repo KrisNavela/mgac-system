@@ -91,8 +91,8 @@ class CancelledRequisitionController extends Controller
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
                 'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
-                'treasuryapprovalCount ' => $treasuryapprovalCount,
-                'cocapprovalCount ' => $cocapprovalCount,
+                'treasuryapprovalCount' => $treasuryapprovalCount,
+                'cocapprovalCount' => $cocapprovalCount,
             ]);
 
         } elseif ($roleId === 4 || $roleId === 6) {
@@ -202,8 +202,8 @@ class CancelledRequisitionController extends Controller
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
                 'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
-                'treasuryapprovalCount ' => $treasuryapprovalCount,
-                'cocapprovalCount ' => $cocapprovalCount,
+                'treasuryapprovalCount' => $treasuryapprovalCount,
+                'cocapprovalCount' => $cocapprovalCount,
             ]);
             
         } elseif ($roleId === 3) {
@@ -313,8 +313,8 @@ class CancelledRequisitionController extends Controller
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
                 'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
-                'treasuryapprovalCount ' => $treasuryapprovalCount,
-                'cocapprovalCount ' => $cocapprovalCount,
+                'treasuryapprovalCount' => $treasuryapprovalCount,
+                'cocapprovalCount' => $cocapprovalCount,
             ]);
         }
 
@@ -400,8 +400,8 @@ class CancelledRequisitionController extends Controller
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
                 'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
-                'treasuryapprovalCount ' => $treasuryapprovalCount,
-                'cocapprovalCount ' => $cocapprovalCount,
+                'treasuryapprovalCount' => $treasuryapprovalCount,
+                'cocapprovalCount' => $cocapprovalCount,
             ]);
 
     }
