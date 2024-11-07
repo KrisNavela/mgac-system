@@ -460,4 +460,38 @@ class COCApprovalController extends Controller
             'attachments' => $attachments,
         ]);
     }
+
+    // Method to update additional user information (password, profile picture)
+    public function updateapproval(UpdateRequisitionRequest $request, Requisition $cocapprovalrequisition, RequisitionRemarks $remarks, $id)
+    {
+        // Validate the incoming request data
+        $validatedData = $request->validate([
+            'status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
+            'finalapproval_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
+        ]);
+
+        // Find the user record in the database
+        $cocapprovalrequisition = Requisition::findOrFail($id);
+
+        if ($cocapprovalrequisition->type_request === 'Replenishment' ){
+            // Update the user's basic information
+            $cocapprovalrequisition->status = $validatedData['status_modal'];
+            $cocapprovalrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
+            $cocapprovalrequisition->save(); // Save the changes
+        } else {
+            // Update the user's basic information
+            $cocapprovalrequisition->status = $validatedData['finalapproval_status_modal'];
+            $cocapprovalrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
+            $cocapprovalrequisition->save(); // Save the changes
+        }
+        
+
+        RequisitionRemarks::create([
+            'requisition_id' => $cocapprovalrequisition->id,
+            'content' => $request->content,
+            'user_id' => Auth::id(),
+        ]);
+
+         return redirect()->route('cocapprovalrequisition.index')->with('success', 'Requisition created successfully');
+    }
 }

@@ -94,7 +94,7 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
-                                            <form method="POST" action="{{ route('approvedrequisitions.update.approval', $requisition->id) }}" method="POST">
+                                            <form method="POST" action="{{ route('cocapprovalrequisitions.update.approval', $requisition->id) }}" method="POST">
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="mt-4">
