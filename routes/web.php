@@ -57,7 +57,8 @@ Route::middleware('auth')->group(function () {
     Route::put('/collasstrequisitions/{id}/update-collasstapproval', [CollectionAsstRequisitionController::class, 'updatecollasstapproval'])->name('collasstrequisitions.update.collasstapproval');
     Route::put('/collmngrequisitions/{id}/update-collmngapproval', [CollectionMngRequisitionController::class, 'updatecollmngapproval'])->name('collmngrequisitions.update.collmngapproval');
     Route::put('/cocapprovalrequisitions/{id}/update-cocapproval', [COCApprovalController::class, 'updatecocapproval'])->name('cocapprovalrequisitions.update.cocapproval');
-
+    Route::put('/treasuryapprovalrequisitions/{id}/update-treasuryapproval', [TreasuryApprovalController::class, 'updatetreasuryapproval'])->name('treasuryapprovalrequisitions.update.treasuryapproval');
+    
     Route::put('/items/{id}/update-addstock', [ItemController::class, 'addstock'])->name('items.update.addstock');
 
 

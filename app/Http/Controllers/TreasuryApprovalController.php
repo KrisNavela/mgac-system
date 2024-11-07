@@ -483,6 +483,6 @@ class TreasuryApprovalController extends Controller
             'user_id' => Auth::id(),
         ]);
 
-         return redirect()->route('cocapprovalrequisitions.index')->with('success', 'Requisition created successfully');
+         return redirect()->route('treasuryapprovalrequisitions.index')->with('success', 'Requisition created successfully');
     }
 }
