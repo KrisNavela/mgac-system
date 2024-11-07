@@ -425,4 +425,39 @@ class COCApprovalController extends Controller
             ]); 
 
     }
+
+    public function show(Requisition $cocapproval)
+    {
+        $requisitionid = $cocapproval->id;
+        $attachments = RequisitionAttachment::where('requisition_id',$requisitionid)->get();
+        $remarks = RequisitionRemarks::where('requisition_id',$requisitionid)->get();
+        $items = Item::all();
+        $requisitionItems = $cocapproval->items->pluck('pivot');
+
+        return view('cocapprovalrequisitions.show', [
+            'requisition' => $cocapproval,
+            'items' => $items,
+            'requisitionItems' => $requisitionItems,
+            'remarks' => $remarks,
+            'attachments' => $attachments,
+        ]);
+    }
+
+    public function edit(Requisition $cocapproval)
+    {
+        $requisitionid = $cocapproval->id;
+
+        $attachments = RequisitionAttachment::where('requisition_id',$requisitionid)->get();
+        $remarks = RequisitionRemarks::where('requisition_id',$requisitionid)->get();
+        $items = Item::all();
+        $requisitionItems = $cocapproval->items->pluck('pivot');
+
+        return view('cocapprovalrequisitions.edit', [
+            'requisition' => $cocapproval,
+            'items' => $items,
+            'requisitionItems' => $requisitionItems,
+            'remarks' => $remarks,
+            'attachments' => $attachments,
+        ]);
+    }
 }

@@ -426,4 +426,39 @@ class TreasuryApprovalController extends Controller
         
 
     }
+
+    public function show(Requisition $treasuryapproval)
+    {
+        $requisitionid = $treasuryapproval->id;
+        $attachments = RequisitionAttachment::where('requisition_id',$requisitionid)->get();
+        $remarks = RequisitionRemarks::where('requisition_id',$requisitionid)->get();
+        $items = Item::all();
+        $requisitionItems = $treasuryapproval->items->pluck('pivot');
+
+        return view('treasuryapprovalrequisitions.show', [
+            'requisition' => $treasuryapproval,
+            'items' => $items,
+            'requisitionItems' => $requisitionItems,
+            'remarks' => $remarks,
+            'attachments' => $attachments,
+        ]);
+    }
+
+    public function edit(Requisition $treasuryapproval)
+    {
+        $requisitionid = $treasuryapproval->id;
+
+        $attachments = RequisitionAttachment::where('requisition_id',$requisitionid)->get();
+        $remarks = RequisitionRemarks::where('requisition_id',$requisitionid)->get();
+        $items = Item::all();
+        $requisitionItems = $treasuryapproval->items->pluck('pivot');
+
+        return view('treasuryapprovalrequisitions.edit', [
+            'requisition' => $treasuryapproval,
+            'items' => $items,
+            'requisitionItems' => $requisitionItems,
+            'remarks' => $remarks,
+            'attachments' => $attachments,
+        ]);
+    }
 }
