@@ -492,6 +492,6 @@ class COCApprovalController extends Controller
             'user_id' => Auth::id(),
         ]);
 
-         return redirect()->route('cocapprovalrequisition.index')->with('success', 'Requisition created successfully');
+         return redirect()->route('cocapprovalrequisitions.index')->with('success', 'Requisition created successfully');
     }
 }
