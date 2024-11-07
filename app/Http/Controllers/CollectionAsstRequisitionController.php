@@ -78,6 +78,14 @@ class CollectionAsstRequisitionController extends Controller
             ->where('status', '=', 'approved')
             ->count();
 
+            $treasuryapprovalCount = Requisition::withCount('items')
+            ->where('treasuryapproval_status', '=', 'for approval')
+            ->count();
+
+            $cocapprovalCount = Requisition::withCount('items')
+            ->where('cocapproval_status', '=', 'for approval')
+            ->count();
+
             $requisitions = Requisition::withCount('items')
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'for approval')
@@ -100,6 +108,8 @@ class CollectionAsstRequisitionController extends Controller
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
                 'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
+                'treasuryapprovalCount ' => $treasuryapprovalCount,
+                'cocapprovalCount ' => $cocapprovalCount,
             ]);
         //Initial approver Branches and Final approver Branches Access
         } elseif ($roleId === 4 || $roleId === 6){
@@ -174,6 +184,20 @@ class CollectionAsstRequisitionController extends Controller
             ->where('status', '=', 'approved')
             ->count();
 
+            $treasuryapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Branch');}
+            );})
+            ->where('treasuryapproval_status', '=', 'for approval')
+            ->count();
+
+            $cocapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Branch');}
+            );})
+            ->where('cocapproval_status', '=', 'for approval')
+            ->count();
+
             $requisitions = Requisition::whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
                     $query1->where('type_office', 'Branch');}
@@ -199,6 +223,8 @@ class CollectionAsstRequisitionController extends Controller
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
                 'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
+                'treasuryapprovalCount ' => $treasuryapprovalCount,
+                'cocapprovalCount ' => $cocapprovalCount,
             ]);
         //Initial Approver Agencies Access
         } elseif ($roleId === 3){
@@ -273,6 +299,20 @@ class CollectionAsstRequisitionController extends Controller
             ->where('status', '=', 'approved')
             ->count();
 
+            $treasuryapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Agency');}
+            );})
+            ->where('treasuryapproval_status', '=', 'for approval')
+            ->count();
+
+            $cocapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Agency');}
+            );})
+            ->where('cocapproval_status', '=', 'for approval')
+            ->count();
+
             $requisitions = Requisition::whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
                     $query1->where('type_office', 'Agency');}
@@ -298,6 +338,8 @@ class CollectionAsstRequisitionController extends Controller
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
                 'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
+                'treasuryapprovalCount ' => $treasuryapprovalCount,
+                'cocapprovalCount ' => $cocapprovalCount,
             ]);
         }
 
@@ -352,7 +394,17 @@ class CollectionAsstRequisitionController extends Controller
         $fortransmittalCount = Requisition::withCount('items')
             ->where('status', '=', 'approved')
             ->where('user_id', $userId)
-            ->count();           
+            ->count();
+        
+        $treasuryapprovalCount = Requisition::withCount('items')
+            ->where('treasuryapproval_status', '=', 'for approval')
+            ->where('user_id', $userId)
+            ->count();
+
+        $cocapprovalCount = Requisition::withCount('items')
+            ->where('cocapproval_status', '=', 'for approval')
+            ->where('user_id', $userId)
+            ->count();
 
         $requisitions = Requisition::withCount('items')
             ->where('type_request', '=', 'replenishment')
@@ -377,6 +429,8 @@ class CollectionAsstRequisitionController extends Controller
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
                 'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
+                'treasuryapprovalCount ' => $treasuryapprovalCount,
+                'cocapprovalCount ' => $cocapprovalCount,
             ]);
 
     }
