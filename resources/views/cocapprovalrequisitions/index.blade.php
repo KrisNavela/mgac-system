@@ -1,7 +1,8 @@
 <x-app-layout>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Requisitions') }}
+            {{ __('For Approval COC/CTPL Requisitions') }}
         </h2>
     </x-slot>
 
@@ -11,6 +12,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-gray-200 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+                    
                 @if ($roleId == 1 || $roleId == 2 || $roleId == 3 || $roleId == 4 || $roleId == 5 || $roleId == 6 || $roleId == 7 || $roleId == 8 || $roleId == 9 || $roleId == 10 || $roleId == 11)
                     <x-nav-link :href="route('requisitions.index')" :active="request()->routeIs('requisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('All') }}  
@@ -112,13 +114,9 @@
 </div>
 
 
-    <!-- Card view for mobile screens -->
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
+<!-- Card view for mobile screens -->
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
         <div class="space-y-4">
-
-            <div class="flex justify-end">
-                <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
-            </div>
 
             <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                 @foreach ($requisitions as $requisition)
@@ -126,22 +124,14 @@
                     <h2 class="text-lg font-semibold text-gray-900">{{ $requisition->id }}</h2>
                     <p class="text-sm text-gray-600">Requestion Number: {{ $requisition->req_no }}</p>
                     <p class="text-sm text-gray-600">Date: {{ $requisition->req_date }}</p>
-                    <p class="text-sm text-gray-600">Status: <a href="" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md uppercase">{{ $requisition->status }}</a></p>
+                    <p class="text-sm text-gray-600">Status: {{ $requisition->status }}</p>
                     <p class="text-sm text-gray-600">Request By: {{ $requisition->user->first_name }} {{ $requisition->user->last_name }}</p>
                     <p class="text-sm text-gray-600"># Items: {{ $requisition->items_count }}</p>
                     <p class="text-sm text-gray-600">Branch: {{ $requisition->user->branch->branch_name }}</p>
                     <p class="text-sm text-gray-600">Type: {{ $requisition->user->branch->type_office }}</p>
                     <div class="mt-4">
-                    <a href="{{ route('requisitions.show', $requisition->id) }}" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Show</a>
-                        @can('view', $requisition)
-                            <a href="{{ route('requisitions.edit', $requisition->id)}}" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md" >Edit</a>
-
-                            <form action="{{ route('requisitions.destroy', $requisition->id) }}" method="POST" class="inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md">Delete</button> 
-                            </form>
-                        @endcan
+                        <a href="{{ route('cocapprovalrequisitions.show', $requisition->id) }}" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Show</a>
+                        <a href="{{ route('cocapprovalrequisitions.edit', $requisition->id)}}" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Edit</a>
                     </div>
                 </div>
                 @endforeach
@@ -151,10 +141,5 @@
             </div>
         </div>
     </div>
-
-                    
-</x-app-layout>
-
-
     
-
+</x-app-layout>

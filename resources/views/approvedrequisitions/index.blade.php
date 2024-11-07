@@ -93,6 +93,20 @@
                         </div>
                     </x-nav-link>
                 @endif
+
+                    <x-nav-link :href="route('cocapprovalrequisitions.index')" :active="request()->routeIs('cocapprovalrequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
+                        {{ __('COC Approval') }}
+                        <div class="text-red-500 font-bold px-1 py-1 rounded relative" role="alert">
+                            <span class="block sm:inline"></span>
+                        </div>
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('treasuryapprovalrequisitions.index')" :active="request()->routeIs('treasuryapprovalrequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
+                        {{ __('Treasury Approval') }}
+                        <div class="text-red-500 font-bold px-1 py-1 rounded relative" role="alert">
+                            <span class="block sm:inline"></span>
+                        </div>
+                    </x-nav-link>
                 </div>
             </div>
         </div>
