@@ -117,8 +117,8 @@
                                                 <div class="mt-4">
                                                     <x-input-label for="cocapproval_status" :value="__('COC Approval?')" />
                                                     <select name="cocapproval_status" id="">
-                                                        <option value="No" {{ 'No' === $requisition->cocapproval_status ? 'selected' : '' }}>No</option>
-                                                        <option value="Yes" {{ 'Yes' === $requisition->cocapproval_status ? 'selected' : '' }}>Yes</option>
+                                                        <option value="Approved" {{ 'Approved' === $requisition->cocapproval_status ? 'selected' : '' }}>Approved</option>
+                                                        <option value="For Approval" {{ 'For Approval' === $requisition->cocapproval_status ? 'selected' : '' }}>For Approval</option>
                                                     </select>
                                                     <x-input-error :messages="$errors->get('cocapproval_status')" class="mt-2" />
                                                 </div>
