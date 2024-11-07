@@ -91,7 +91,7 @@
                             <span class="block sm:inline">{{ $cancelrequisitionsCount }}</span>
                         </div>
                     </x-nav-link>
-                @endif
+                
 
                     <x-nav-link :href="route('cocapprovalrequisitions.index')" :active="request()->routeIs('cocapprovalrequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('COC Approval') }}
@@ -106,7 +106,7 @@
                             <span class="block sm:inline">{{ $treasuryapprovalCount }}</span>
                         </div>
                     </x-nav-link>
-
+                @endif
                 </div>  
             </div>
         </div>
