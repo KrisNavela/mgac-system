@@ -443,17 +443,17 @@ class COCApprovalController extends Controller
         ]);
     }
 
-    public function edit(Requisition $cocapproval)
+    public function edit(Requisition $cocapprovalrequisition)
     {
-        $requisitionid = $cocapproval->id;
+        $requisitionid = $cocapprovalrequisition->id;
 
         $attachments = RequisitionAttachment::where('requisition_id',$requisitionid)->get();
         $remarks = RequisitionRemarks::where('requisition_id',$requisitionid)->get();
         $items = Item::all();
-        $requisitionItems = $cocapproval->items->pluck('pivot');
+        $requisitionItems = $cocapprovalrequisition->items->pluck('pivot');
 
         return view('cocapprovalrequisitions.edit', [
-            'requisition' => $cocapproval,
+            'requisition' => $cocapprovalrequisition,
             'items' => $items,
             'requisitionItems' => $requisitionItems,
             'remarks' => $remarks,

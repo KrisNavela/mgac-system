@@ -427,16 +427,16 @@ class TreasuryApprovalController extends Controller
 
     }
 
-    public function show(Requisition $treasuryapproval)
+    public function show(Requisition $treasuryapprovalrequisition)
     {
-        $requisitionid = $treasuryapproval->id;
+        $requisitionid = $treasuryapprovalrequisition->id;
         $attachments = RequisitionAttachment::where('requisition_id',$requisitionid)->get();
         $remarks = RequisitionRemarks::where('requisition_id',$requisitionid)->get();
         $items = Item::all();
-        $requisitionItems = $treasuryapproval->items->pluck('pivot');
+        $requisitionItems = $treasuryapprovalrequisition->items->pluck('pivot');
 
         return view('treasuryapprovalrequisitions.show', [
-            'requisition' => $treasuryapproval,
+            'requisition' => $treasuryapprovalrequisition,
             'items' => $items,
             'requisitionItems' => $requisitionItems,
             'remarks' => $remarks,
@@ -444,17 +444,17 @@ class TreasuryApprovalController extends Controller
         ]);
     }
 
-    public function edit(Requisition $treasuryapproval)
+    public function edit(Requisition $treasuryapprovalrequisition)
     {
-        $requisitionid = $treasuryapproval->id;
+        $requisitionid = $treasuryapprovalrequisition->id;
 
         $attachments = RequisitionAttachment::where('requisition_id',$requisitionid)->get();
         $remarks = RequisitionRemarks::where('requisition_id',$requisitionid)->get();
         $items = Item::all();
-        $requisitionItems = $treasuryapproval->items->pluck('pivot');
+        $requisitionItems = $treasuryapprovalrequisition->items->pluck('pivot');
 
         return view('treasuryapprovalrequisitions.edit', [
-            'requisition' => $treasuryapproval,
+            'requisition' => $treasuryapprovalrequisition,
             'items' => $items,
             'requisitionItems' => $requisitionItems,
             'remarks' => $remarks,
