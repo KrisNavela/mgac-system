@@ -403,10 +403,19 @@ class RequisitionController extends Controller
         $userId = $user->id;
         $roleId = $user->role_id;
         $typeOffice = $user->branch->type_office;
-
-
         $type_request = $request->type_request;
+        $coc_request_status = $request->coc_request_status;
 
+        
+        if ($coc_request_status === 'Yes'){ 
+            $cocapproval_status ='for approval';
+            $treasuryapproval_status ='for approval';
+        } else {
+            $cocapproval_status ='no';
+            $treasuryapproval_status ='no';
+        }
+
+        
         if ($type_request === 'Replenishment'){
             $requisition = Requisition::create([
                 'req_date' => $request->req_date,
@@ -416,6 +425,8 @@ class RequisitionController extends Controller
                 'collmanager_status' => 'for approval',
                 'replenishment_month' => $request->replenishment_month,
                 'replenishment_year' => $request->replenishment_year,
+                'cocapproval_status' =>  $cocapproval_status,
+                'treasuryapproval_status' => $treasuryapproval_status,
                 'user_id' => Auth::id(),
             ]);
         } else {
@@ -427,6 +438,8 @@ class RequisitionController extends Controller
                 'collmanager_status' => 'no',
                 'replenishment_month' => $request->replenishment_month,
                 'replenishment_year' => $request->replenishment_year,
+                'cocapproval_status' =>  $cocapproval_status,
+                'treasuryapproval_status' => $treasuryapproval_status,
                 'user_id' => Auth::id(),
             ]);
         }
