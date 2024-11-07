@@ -115,14 +115,12 @@
                                                 </div>
 
                                                 <div class="mt-4">
-                                                    <x-input-label for="finalapproval_status_modal" :value="__('For Final Approval?')" />
-                                                    <select name="finalapproval_status_modal" id="">
-                                                        <option value="for approval" {{ 'for approval' === $requisition->finalapproval_status ? 'selected' : '' }}>For Approval</option>
-                                                        <option value="approved" {{ 'approved' === $requisition->finalapproval_status ? 'selected' : '' }}>Approved</option>
-                                                        <option value="return" {{ 'return' === $requisition->finalapproval_status ? 'selected' : '' }}>Return</option>
-                                                        <option value="cancelled" {{ 'cancelled' === $requisition->finalapproval_status ? 'selected' : '' }}>Cancelled</option>
+                                                    <x-input-label for="treasuryapproval_status" :value="__('Treasury Approval?')" />
+                                                    <select name="treasuryapproval_status" id="">
+                                                        <option value="approved" {{ 'approved' === $requisition->treasuryapproval_status ? 'selected' : '' }}>Approved</option>
+                                                        <option value="for approval" {{ 'for approval' === $requisition->treasuryapproval_status ? 'selected' : '' }}>For Approval</option>
                                                     </select>
-                                                    <x-input-error :messages="$errors->get('finalapproval_status_modal')" class="mt-2" />
+                                                    <x-input-error :messages="$errors->get('treasuryapproval_status')" class="mt-2" />
                                                 </div>
                         
                                                 <div class="py-2">

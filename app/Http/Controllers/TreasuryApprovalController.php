@@ -461,4 +461,28 @@ class TreasuryApprovalController extends Controller
             'attachments' => $attachments,
         ]);
     }
+
+    // Method to update additional user information (password, profile picture)
+    public function updatetreasuryapproval(UpdateRequisitionRequest $request, Requisition $treasuryapprovalrequisition, RequisitionRemarks $remarks, $id)
+    {
+        // Validate the incoming request data
+        $validatedData = $request->validate([
+            'treasuryapproval_status' => 'required|string|max:255', // Password is optional, but must be confirmed
+        ]);
+
+        // Find the user record in the database
+        $treasuryapprovalrequisition = Requisition::findOrFail($id);
+
+            // Update the user's basic information
+            $treasuryapprovalrequisition->treasuryapproval_status = $validatedData['treasuryapproval_status'];
+            $treasuryapprovalrequisition->save(); // Save the changes
+        
+        RequisitionRemarks::create([
+            'requisition_id' => $treasuryapprovalrequisition->id,
+            'content' => $request->content,
+            'user_id' => Auth::id(),
+        ]);
+
+         return redirect()->route('cocapprovalrequisitions.index')->with('success', 'Requisition created successfully');
+    }
 }
