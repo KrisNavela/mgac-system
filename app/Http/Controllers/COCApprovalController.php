@@ -462,7 +462,7 @@ class COCApprovalController extends Controller
     }
 
     // Method to update additional user information (password, profile picture)
-    public function updateapproval(UpdateRequisitionRequest $request, Requisition $cocapprovalrequisition, RequisitionRemarks $remarks, $id)
+    public function updatecocapproval(UpdateRequisitionRequest $request, Requisition $cocapprovalrequisition, RequisitionRemarks $remarks, $id)
     {
         // Validate the incoming request data
         $validatedData = $request->validate([
@@ -472,7 +472,6 @@ class COCApprovalController extends Controller
         // Find the user record in the database
         $cocapprovalrequisition = Requisition::findOrFail($id);
 
-        
             // Update the user's basic information
             $cocapprovalrequisition->cocapproval_status = $validatedData['cocapproval_status'];
             $cocapprovalrequisition->save(); // Save the changes
