@@ -77,8 +77,9 @@ class TreasuryApprovalController extends Controller
             ->count();
 
             $requisitions = Requisition::withCount('items')
+            ->where('treasuryapproval_status', '=', 'for approval')
             ->orderBy('id', 'desc')
-            ->paginate(10)
+            ->paginate(5)
             ->withQueryString();
 
             return view('treasuryapprovalrequisitions.index', [
