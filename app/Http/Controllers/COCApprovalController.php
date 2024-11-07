@@ -81,7 +81,7 @@ class COCApprovalController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-            return view('requisitions.index', [
+            return view('cocapprovalrequisitions.index', [
                 'requisitions' => $requisitions,
                 'branches'=> $branches,
                 'users'=> $users,
@@ -178,7 +178,7 @@ class COCApprovalController extends Controller
             ->withQueryString();
 
 
-            return view('requisitions.index', [
+            return view('cocapprovalrequisitions.index', [
                 'requisitions' => $requisitions,
                 'branches'=> $branches,
                 'users'=> $users,
@@ -276,7 +276,7 @@ class COCApprovalController extends Controller
             ->withQueryString();
 
 
-            return view('requisitions.index', [
+            return view('cocapprovalrequisitions.index', [
                 'requisitions' => $requisitions,
                 'branches'=> $branches,
                 'users'=> $users,
