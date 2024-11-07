@@ -113,6 +113,7 @@ class RequisitionController extends Controller
                 'fortransmittalCount' => $fortransmittalCount,
                 'treasuryapprovalCount ' => $treasuryapprovalCount,
                 'cocapprovalCount ' => $cocapprovalCount,
+                
             ]);
         //Initial approver Branches and Final approver Branches Access
         } elseif ($roleId === 4 || $roleId === 6){
