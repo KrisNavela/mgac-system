@@ -77,8 +77,9 @@ class COCApprovalController extends Controller
             ->count();
 
             $requisitions = Requisition::withCount('items')
+            ->where('cocapproval_status', '=', 'for approval')
             ->orderBy('id', 'desc')
-            ->paginate(10)
+            ->paginate(5)
             ->withQueryString();
 
             return view('cocapprovalrequisitions.index', [
@@ -367,8 +368,7 @@ class COCApprovalController extends Controller
                 'approvedrequisitionsCount' => $approvedrequisitionsCount,
                 'roleId' => $roleId,
                 'fortransmittalCount' => $fortransmittalCount,
-            ]);
-        
+            ]); 
 
     }
 }
