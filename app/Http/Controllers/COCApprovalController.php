@@ -347,7 +347,7 @@ class COCApprovalController extends Controller
             ->where('user_id', $userId)
             ->count();
 
-        $requisitions = Requisition::withCount('items')
+            $requisitions = Requisition::withCount('items')
             ->where('cocapproval_status', '=', 'for approval')
             ->orderBy('id', 'desc')
             ->paginate(5)
