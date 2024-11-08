@@ -112,25 +112,20 @@
                             </button>
                         </div>
 
-                        <div class="flex items-center justify-end mt-4">
-                            <button type="submit" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">
-                                Create Item
-                        </div>
+                        
+
+
+                        <button type="submit" 
+                                :disabled="submitting"
+                                x-bind:class="{ 'bg-gray-400 cursor-not-allowed': submitting, 'bg-blue-500 hover:bg-blue-600': !submitting }"
+                                class="px-4 py-2 text-white rounded focus:outline-none">
+                            <span x-show="!submitting">Create</span>
+                            <span x-show="submitting">Submitting...</span>
+                        </button>
                     </form>
 
 
-                    <!-- Success Message Popup -->
-                    <div x-data="{ show: @json(session('success') ? true : false) }" 
-                        x-show="show" 
-                        x-transition 
-                        x-init="setTimeout(() => show = false, 3000)" 
-                        class="fixed bottom-4 right-4 bg-green-500 text-white text-sm px-4 py-2 rounded shadow-lg z-50">
 
-                        <div class="flex items-center">
-                            <span>{{ session('success') }}</span>
-                            <button @click="show = false" class="ml-4 font-bold text-white">&times;</button>
-                        </div>
-                    </div>
 
                 </div>
             </div>
