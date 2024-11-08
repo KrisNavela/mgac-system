@@ -214,16 +214,7 @@
 
                     <script>
                         document.addEventListener('DOMContentLoaded', function() {
-                            const notification = document.getElementById('successNotification');
-                            if (notification) {
-                                // Show the notification immediately
-                                notification.style.display = 'block';
-
-                                // Hide after 3 seconds
-                                setTimeout(() => {
-                                    notification.style.display = 'none';
-                                }, 3000); // 3 seconds
-                            }
+                            alert('JavaScript is working!');
                         });
                     </script>
                     
