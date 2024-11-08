@@ -119,24 +119,6 @@
                         </div>
                     </form>
 
-                    
-
-                    <style>
-                        /* Basic styles for notification */
-                        .notification {
-                            display: none;
-                            position: fixed;
-                            top: 20px;
-                            right: 20px;
-                            background-color: #4CAF50; /* Success green */
-                            color: white;
-                            padding: 15px;
-                            border-radius: 5px;
-                            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-                            z-index: 1000;
-                        }
-                    </style>
-
                     <script>
                         function disableSubmitButton(form) {
                             // Find the submit button inside the form
