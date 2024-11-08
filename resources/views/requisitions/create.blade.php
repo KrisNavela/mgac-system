@@ -118,6 +118,20 @@
                         </div>
                     </form>
 
+
+                    <!-- Success Message Popup -->
+                    <div x-data="{ show: @json(session('success') ? true : false) }" 
+                        x-show="show" 
+                        x-transition 
+                        x-init="setTimeout(() => show = false, 3000)" 
+                        class="fixed bottom-4 right-4 bg-green-500 text-white text-sm px-4 py-2 rounded shadow-lg z-50">
+
+                        <div class="flex items-center">
+                            <span>{{ session('success') }}</span>
+                            <button @click="show = false" class="ml-4 font-bold text-white">&times;</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
