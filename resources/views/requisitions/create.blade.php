@@ -25,9 +25,15 @@
                     this.items.splice(index, 1);
                 }
                 }">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Form</title>
+</head>
+<body>
                 
-
-
                     <form action="{{ route('requisitions.store') }}" method="POST" onsubmit="disableSubmitButton(this)">
                         @csrf
 
@@ -131,7 +137,31 @@
                             return true; // Allow form submission to continue
                         }
                     </script>
+<!-- Success Message -->
+@if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
+    <!-- Your Form Here -->
+    <form action="{{ route('your.route') }}" method="POST">
+        @csrf
+        <!-- Your form fields here -->
+        <button type="submit">Save</button>
+    </form>
+
+    <!-- Optional JavaScript for Auto-Close -->
+    <script>
+        setTimeout(function() {
+            let alert = document.querySelector('.alert-success');
+            if (alert) {
+                alert.style.display = 'none';
+            }
+        }, 3000);
+    </script>
+</body>
+</html>
 
                 </div>
             </div>

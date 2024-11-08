@@ -206,41 +206,7 @@
                                 Update Requisition
                             </button>
                         </div>
-                    </form>
-                    
-                    
-                    <div id="successNotification" style="display: none; position: fixed; top: 20px; right: 20px; background-color: #4CAF50; color: white; padding: 15px; border-radius: 5px; z-index: 1000;">
-                        {{ session('success') }}
-                    </div>
-                    
-
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            const notification = document.getElementById('successNotification');
-                                if (notification) {
-                                    notification.style.display = 'block'; // Make it visible immediately
-                                    setTimeout(() => {
-                                        notification.style.display = 'none';
-                                    }, 3000); // Hide after 3 seconds
-                                }
-                        });
-                    </script>
-                    
-                    <style>
-                        /* Basic styles for notification */
-                        #successNotification {
-                            display: block; /* Ensure it's visible by default */
-                            position: fixed;
-                            top: 20px;
-                            right: 20px;
-                            background-color: #4CAF50; /* Success green */
-                            color: white;
-                            padding: 15px;
-                            border-radius: 5px;
-                            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-                            z-index: 1000;
-                        }
-                    </style>
+                    </form>   
 
                 </div>
             </div>
