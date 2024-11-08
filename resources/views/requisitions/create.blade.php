@@ -28,7 +28,7 @@
                 
 
 
-                    <form action="{{ route('requisitions.store') }}" method="POST">
+                    <form action="{{ route('requisitions.store') }}" method="POST" onsubmit="disableSubmitButton(this)">
                         @csrf
 
                             <div class="mt-4" style="width: 300px;">
