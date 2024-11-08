@@ -209,7 +209,9 @@
                     </form>
                     
                     @if(session('success'))
-                        <h2>{{ session('success') }}</h2>
+                    <div id="successNotification" style="display: none; position: fixed; top: 20px; right: 20px; background-color: #4CAF50; color: white; padding: 15px; border-radius: 5px; z-index: 1000;">
+                        {{ session('success') }}
+                    </div>
                     @endif
 
                     <script>
