@@ -25,18 +25,22 @@
                     this.items.splice(index, 1);
                 }
                 }">
-<!DOCTYPE html>
+                <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Save Form</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <!-- Success Message -->
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
+   <!-- Success Notification -->
+   @if (session('success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <strong class="font-bold">Success!</strong>
+            <span class="block sm:inline">{{ session('success') }}</span>
         </div>
     @endif
                 
@@ -145,14 +149,16 @@
                     </script>
 
 
-    <!-- Optional JavaScript for Auto-Close -->
+    <!-- Optional Auto-Close JavaScript -->
     <script>
         setTimeout(function() {
-            let alert = document.querySelector('.alert-success');
+            let alert = document.querySelector('[role="alert"]');
             if (alert) {
-                alert.style.display = 'none';
+                alert.style.transition = "opacity 0.5s ease";
+                alert.style.opacity = "0";
+                setTimeout(() => alert.remove(), 500);
             }
-        }, 3000);
+        }, 3000); // Hide after 3 seconds
     </script>
 
 
