@@ -538,13 +538,10 @@ class RequisitionController extends Controller
 
         // Flash success message to session
         session()->flash('success', 'Requisition created successfully! You can now update it.');
-
+        dd(session()->all()); // Check if the message is in the session
         //return redirect()->route('requisitions.index')->with('success', 'Requisition created successfully');
         // Redirect to the edit page for the newly created requisition
-        return redirect()->route('requisitions.edit', $requisition->id)
-                         ->with('success', 'Requisition created successfully! You can now update it.');
-
-        
+        return redirect()->route('requisitions.edit', $requisition->id);
     }
 
 
