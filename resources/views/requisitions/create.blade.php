@@ -119,6 +119,44 @@
                         </div>
                     </form>
 
+                    @if(session('success'))
+                        <div id="successNotification" class="notification">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    <script>
+                        // Display the success notification if it exists
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const notification = document.getElementById('successNotification');
+                            if (notification) {
+                                // Show the notification
+                                notification.style.display = 'block';
+                                
+                                // Hide after a few seconds
+                                setTimeout(() => {
+                                    notification.style.display = 'none';
+                                }, 3000); // 3 seconds
+                            }
+                        });
+                    </script>
+
+                    <style>
+                        /* Basic styles for notification */
+                        .notification {
+                            display: none;
+                            position: fixed;
+                            top: 20px;
+                            right: 20px;
+                            background-color: #4CAF50; /* Success green */
+                            color: white;
+                            padding: 15px;
+                            border-radius: 5px;
+                            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                            z-index: 1000;
+                        }
+                    </style>
+
                     <script>
                         function disableSubmitButton(form) {
                             // Find the submit button inside the form
@@ -126,7 +164,7 @@
                             
                             // Disable the button and change its text (optional)
                             submitButton.disabled = true;
-                            submitButton.innerText = 'Submitting...';
+                            submitButton.innerText = 'Creating...';
                             
                             return true; // Allow form submission to continue
                         }
