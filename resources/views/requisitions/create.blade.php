@@ -25,24 +25,7 @@
                     this.items.splice(index, 1);
                 }
                 }">
-                <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Save Form</title>
-    <!-- Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
-</head>
-
-<body>
-   <!-- Success Notification -->
-   @if (session('success'))
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
-            <strong class="font-bold">Success!</strong>
-            <span class="block sm:inline">{{ session('success') }}</span>
-        </div>
-    @endif
+               
                 
                     <form action="{{ route('requisitions.store') }}" method="POST" onsubmit="disableSubmitButton(this)">
                         @csrf
@@ -146,25 +129,7 @@
                             
                             return true; // Allow form submission to continue
                         }
-                    </script>
-
-
-    <!-- Optional Auto-Close JavaScript -->
-    <script>
-        setTimeout(function() {
-            let alert = document.querySelector('[role="alert"]');
-            if (alert) {
-                alert.style.transition = "opacity 0.5s ease";
-                alert.style.opacity = "0";
-                setTimeout(() => alert.remove(), 500);
-            }
-        }, 3000); // Hide after 3 seconds
-    </script>
-
-
-
-</body>
-</html>
+                    </script> 
 
                 </div>
             </div>
