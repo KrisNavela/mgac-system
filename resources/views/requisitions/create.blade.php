@@ -112,15 +112,9 @@
                             </button>
                         </div>
 
-                        
-
                         <div class="flex items-center justify-end mt-4">
-                            <button type="submit" 
-                                    :disabled="submitting"
-                                    x-bind:class="{ 'bg-gray-400 cursor-not-allowed': submitting, 'bg-blue-500 hover:bg-blue-600': !submitting }"
-                                    class="px-4 py-2 text-white rounded focus:outline-none">
-                                <span x-show="!submitting">Create</span>
-                                <span x-show="submitting">Submitting...</span>
+                            <button type="submit" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">
+                                Create Item
                             </button>
                         </div>
                     </form>
