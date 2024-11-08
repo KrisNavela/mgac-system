@@ -119,7 +119,18 @@
                         </div>
                     </form>
 
-
+                    <script>
+                        function disableSubmitButton(form) {
+                            // Find the submit button inside the form
+                            const submitButton = form.querySelector('#submitButton');
+                            
+                            // Disable the button and change its text (optional)
+                            submitButton.disabled = true;
+                            submitButton.innerText = 'Submitting...';
+                            
+                            return true; // Allow form submission to continue
+                        }
+                    </script>
 
 
                 </div>
