@@ -25,24 +25,8 @@
                     this.items.splice(index, 1);
                 }
                 }">
-                <head>
-                    <!-- Add SweetAlert2 CSS and JS -->
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                    </head>
+                
 
-                    <script>
-                        document.addEventListener("DOMContentLoaded", function() {
-                            @if(session('success'))
-                                Swal.fire({
-                                    title: 'Success!',
-                                    text: "{{ session('success') }}",
-                                    icon: 'success',
-                                    confirmButtonText: 'OK'
-                                });
-                            @endif
-                        });
-                    </script>
 
                     <form action="{{ route('requisitions.store') }}" method="POST">
                         @csrf
@@ -133,6 +117,21 @@
                                 Create Item
                         </div>
                     </form>
+
+                    <!-- Success Message Popup -->
+                    <div x-data="{ show: @json(session('success') ? true : false) }" 
+                        x-show="show" 
+                        x-transition 
+                        x-init="setTimeout(() => show = false, 3000)" 
+                        class="fixed bottom-4 right-4 bg-green-500 text-white text-sm px-4 py-2 rounded shadow-lg z-50">
+
+                        <div class="flex items-center">
+                            <span>{{ session('success') }}</span>
+                            <button @click="show = false" class="ml-4 font-bold text-white">&times;</button>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
