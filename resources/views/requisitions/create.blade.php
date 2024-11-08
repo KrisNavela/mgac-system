@@ -34,7 +34,7 @@
 </head>
 <body>
     <!-- Success Message -->
-@if (session('success'))
+    @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
@@ -154,6 +154,9 @@
             }
         }, 3000);
     </script>
+
+
+
 </body>
 </html>
 
