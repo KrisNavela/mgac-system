@@ -214,7 +214,13 @@
 
                     <script>
                         document.addEventListener('DOMContentLoaded', function() {
-                            alert('JavaScript is working!');
+                            const notification = document.getElementById('successNotification');
+                                if (notification) {
+                                    notification.style.display = 'block'; // Make it visible immediately
+                                    setTimeout(() => {
+                                        notification.style.display = 'none';
+                                    }, 3000); // Hide after 3 seconds
+                                }
                         });
                     </script>
                     
