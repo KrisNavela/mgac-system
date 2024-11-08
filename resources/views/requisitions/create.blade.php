@@ -119,26 +119,7 @@
                         </div>
                     </form>
 
-                    @if(session('success'))
-    <div id="successNotification" style="display: block; position: fixed; top: 20px; right: 20px; background-color: #4CAF50; color: white; padding: 15px; border-radius: 5px; z-index: 1000;">
-        {{ session('success') }}
-    </div>
-@endif
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const notification = document.getElementById('successNotification');
-        if (notification) {
-            // Show the notification immediately
-            notification.style.display = 'block';
-
-            // Hide after 3 seconds
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 3000); // 3 seconds
-        }
-    });
-</script>
+                    
 
                     <style>
                         /* Basic styles for notification */
