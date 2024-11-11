@@ -21,7 +21,7 @@
                                 this.requisitionItems.splice(index, 1);
                             }}">
 
-        <div class="flex justify-end space-x-4">
+        <div class="flex justify-center space-x-4">
             <div>
             <p>Status</p>
             <p class="uppercase">{{ $requisition->status }}</p>
