@@ -20,8 +20,9 @@
                             removeItem(index) {
                                 this.requisitionItems.splice(index, 1);
                             }}">
-        <div class="uppercase">
-        <p>{{ $requisition->status }}</p>
+        <div>
+        <p>Status</p>
+        <p class="uppercase">{{ $requisition->status }}</p>
         </div>
                             <div class="flex justify-end space-x-4">
                                         <div class="flex justify-end">    
