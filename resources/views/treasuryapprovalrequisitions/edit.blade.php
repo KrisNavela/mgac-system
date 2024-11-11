@@ -176,10 +176,10 @@
 
                         
 
-                        <div class="mt-4">
-                            <x-input-label for="user_id" :value="__('User ID')" />
-                            <x-text-input id="user_id" class="block mt-1 w-full" type="text" name="user_id" :value="old('user_id', $requisition->user_id)" autofocus autocomplete="user_id" />
-                            <x-input-error :messages="$errors->get('user_id')" class="mt-2" />
+                        <div class="mt-4" style="width: 300px;">
+                            <x-input-label for="full_name" :value="__('Request By')" />
+                            <x-text-input id="full_name" class="block mt-1 w-full" type="text" name="full_name" value="{{ $requisition->user->first_name }} {{ $requisition->user->last_name }}" autofocus autocomplete="full_name" />
+                            <x-input-error :messages="$errors->get('full_name')" class="mt-2" />
                         </div>
 
                         <div class="mt-4">
@@ -190,6 +190,15 @@
                                 <option value="Replenishment" {{ 'Replenishment' === $requisition->type_request ? 'selected' : '' }}>Replenishment</option>
                             </select>
                             <x-input-error :messages="$errors->get('type_request')" class="mt-2" />
+                        </div>
+
+                        <div class="mt-4">
+                            <x-input-label for="coc_request_status" :value="__('COC Request')" />
+                            <select name="coc_request_status" id="" style="width: 100px;">
+                                <option value="No" {{ 'No' === $requisition->coc_request_status ? 'selected' : '' }}>No</option>
+                                <option value="Yes" {{ 'Yes' === $requisition->coc_request_status ? 'selected' : '' }}>Yes</option>
+                            </select>
+                            <x-input-error :messages="$errors->get('coc_request_status')" class="mt-2" />
                         </div>
 
                         <table class="min-w-full divide-y divide-gray-200 mt-2">
