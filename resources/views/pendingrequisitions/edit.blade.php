@@ -23,12 +23,20 @@
 
         <div class="flex justify-center space-x-4">
             <div>
-            <p>Status</p>
-            <p class="uppercase">{{ $requisition->status }}</p>
+                <p>Status</p>
+                <p class="uppercase">{{ $requisition->status }}</p>
             </div>
             <div>
-            <p>Status</p>
-            <p class="uppercase">{{ $requisition->status }}</p>
+                <p>Bonds Approval</p>
+                <p class="uppercase">{{ $requisition->bonds_status }}</p>
+            </div>
+            <div>
+                <p>UW Approval</p>
+                <p class="uppercase">{{ $requisition->uw_tatus }}</p>
+            </div>
+            <div>
+                <p>Final Approval</p>
+                <p class="uppercase">{{ $requisition->finalapproval_status }}</p>
             </div>
         </div>
 
