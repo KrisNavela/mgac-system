@@ -39,6 +39,14 @@
                 <p class="uppercase text-center">{{ $requisition->finalapproval_status }}</p>
             </div>
             <div class="w-1/2 p-4 bg-gray-200">
+                <p class="text-center">Coll Asst</p>
+                <p class="uppercase text-center">{{ $requisition->collasst_status }}</p>
+            </div>
+            <div class="w-1/2 p-4 bg-gray-200">
+                <p class="text-center">Coll Manager</p>
+                <p class="uppercase text-center">{{ $requisition->collmanager_status }}</p>
+            </div>
+            <div class="w-1/2 p-4 bg-gray-200">
                 <p class="text-center">Treasury Approval</p>
                 <p class="uppercase text-center">{{ $requisition->treasuryapproval_status }}</p>
             </div>
