@@ -38,6 +38,14 @@
                 <p>Final Approval</p>
                 <p class="uppercase">{{ $requisition->finalapproval_status }}</p>
             </div>
+            <div>
+                <p>Treasury Approval</p>
+                <p class="uppercase">{{ $requisition->treasuryapproval_status }}</p>
+            </div>
+            <div>
+                <p>COC Approval</p>
+                <p class="uppercase">{{ $requisition->cocapproval_status }}</p>
+            </div>
         </div>
 
 
