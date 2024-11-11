@@ -193,7 +193,7 @@
 
                         <div class="mt-4">
                             <x-input-label for="coc_request_status" :value="__('COC Request')" />
-                            <select name="coc_request_status" id="" style="width: 300px;">
+                            <select name="coc_request_status" id="" style="width: 100px;">
                                 <option value="No" {{ 'No' === $requisition->coc_request_status ? 'selected' : '' }}>No</option>
                                 <option value="Yes" {{ 'Yes' === $requisition->coc_request_status ? 'selected' : '' }}>Yes</option>
                             </select>
