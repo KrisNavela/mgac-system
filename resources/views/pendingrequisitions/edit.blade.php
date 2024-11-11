@@ -27,8 +27,8 @@
                 <p class="uppercase text-center">{{ $requisition->status }}</p>
             </div>
             <div class="w-1/2 p-4 bg-gray-200">
-                <p>Bonds Approval</p>
-                <p class="uppercase">{{ $requisition->bonds_status }}</p>
+                <p class="text-center">Bonds Approval</p>
+                <p class="uppercase text-center">{{ $requisition->bonds_status }}</p>
             </div>
             <div class="w-1/2 p-4 bg-gray-200">
                 <p>UW Approval</p>
