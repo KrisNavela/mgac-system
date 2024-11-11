@@ -105,15 +105,8 @@
                         
                                                 <div class="mt-4">
                                                     <x-input-label for="status_modal" :value="__('Requisition Status')" />
-                                                    <x-text-input id="status_modal" class="block mt-1 w-full" type="text" name="status_modal" :value="old('status_modal', $requisition->status)" autofocus autocomplete="status_modal" />
+                                                    <x-text-input id="status_modal" class="block mt-1 w-full" style="width: 200px;" type="text" name="status_modal" :value="old('status_modal', $requisition->status)" autofocus autocomplete="status_modal" />
                                                     <x-input-error :messages="$errors->get('status_modal')" class="mt-2" />
-                                                </div>
-
-
-                                                <div class="mt-4">
-                                                    <x-input-label for="content" :value="__('Content')" />
-                                                    <x-text-input id="content" class="block mt-1 w-full" type="text" name="content" :value="old('content', $requisition->content)" autofocus autocomplete="content" />
-                                                    <x-input-error :messages="$errors->get('content')" class="mt-2" />
                                                 </div>
 
 
