@@ -110,9 +110,9 @@
                                                 </div>
 
                                                 <div class="mt-4">
-                                                    <x-input-label for="status_modal" :value="__('Treasury Status')" />
-                                                    <x-text-input id="status_modal" class="block mt-1 w-full uppercase" style="width: 200px;" type="text" name="status_modal" :value="old('status_modal', $requisition->treasuryapproval_status)" autofocus autocomplete="status_modal" />
-                                                    <x-input-error :messages="$errors->get('status_modal')" class="mt-2" />
+                                                    <x-input-label for="treasurystatus_modal" :value="__('Treasury Status')" />
+                                                    <x-text-input id="treasurystatus_modal" class="block mt-1 w-full uppercase" style="width: 200px;" type="text" name="treasurystatus_modal" :value="old('treasurystatus_modal', $requisition->treasuryapproval_status)" autofocus autocomplete="treasurystatus_modal" />
+                                                    <x-input-error :messages="$errors->get('treasurystatus_modal')" class="mt-2" />
                                                 </div>
 
 

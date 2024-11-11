@@ -468,7 +468,7 @@ class COCApprovalController extends Controller
         $validatedData = $request->validate([
             'cocapproval_status' => 'required|string|max:255', // Password is optional, but must be confirmed
         ]);
-
+        
         // Find the user record in the database
         $cocapprovalrequisition = Requisition::findOrFail($id);
 
