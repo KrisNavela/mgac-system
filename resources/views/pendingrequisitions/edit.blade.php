@@ -247,6 +247,12 @@
                         </div>
 
                         <div class="mt-4">
+                            <x-input-label for="coc_request_status" :value="__('COC Request')" />
+                            <x-text-input id="coc_request_status" class="block mt-1 w-full" style="width: 300px;" type="text" name="coc_request_status" value="{{ $requisition->coc_request_status }}" autofocus autocomplete="coc_request_status" />
+                            <x-input-error :messages="$errors->get('coc_request_status')" class="mt-2" />
+                        </div>
+
+                        <div class="mt-4">
                             <x-input-label for="replenishment_month" :value="__('Month')" />
                             <x-text-input id="replenishment_month" class="block mt-1 w-full" type="text" name="replenishment_month" :value="$requisition->replenishment_month" disable/>
                         </div>
