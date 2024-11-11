@@ -104,13 +104,14 @@
                                                 </div>
                         
                                                 <div class="mt-4">
-                                                    <x-input-label for="status_modal" :value="__('Status')" />
-                                                    <select name="status_modal" id="">
-                                                        <option value="pending" {{ 'pending' === $requisition->status ? 'selected' : '' }}>Pending</option>
-                                                        <option value="approved" {{ 'approved' === $requisition->status ? 'selected' : '' }}>Approved</option>
-                                                        <option value="return" {{ 'return' === $requisition->status ? 'selected' : '' }}>Return</option>
-                                                        <option value="cancelled" {{ 'cancelled' === $requisition->status ? 'selected' : '' }}>Cancelled</option>
-                                                    </select>
+                                                    <x-input-label for="status_modal" :value="__('Requisition Status')" />
+                                                    <x-text-input id="status_modal" class="block mt-1 w-full uppercase" style="width: 200px;" type="text" name="status_modal" :value="old('status_modal', $requisition->status)" autofocus autocomplete="status_modal" />
+                                                    <x-input-error :messages="$errors->get('status_modal')" class="mt-2" />
+                                                </div>
+
+                                                <div class="mt-4">
+                                                    <x-input-label for="status_modal" :value="__('COC Approval Status')" />
+                                                    <x-text-input id="status_modal" class="block mt-1 w-full uppercase" style="width: 200px;" type="text" name="status_modal" :value="old('status_modal', $requisition->cocapproval_status)" autofocus autocomplete="status_modal" />
                                                     <x-input-error :messages="$errors->get('status_modal')" class="mt-2" />
                                                 </div>
 
