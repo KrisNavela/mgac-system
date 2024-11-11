@@ -31,20 +31,20 @@
                 <p class="uppercase text-center">{{ $requisition->bonds_status }}</p>
             </div>
             <div class="w-1/2 p-4 bg-gray-200">
-                <p>UW Approval</p>
-                <p class="uppercase">{{ $requisition->uw_tatus }}</p>
+                <p class="text-center">UW Approval</p>
+                <p class="uppercase text-center">{{ $requisition->uw_tatus }}</p>
             </div>
             <div class="w-1/2 p-4 bg-gray-200">
-                <p>Final Approval</p>
-                <p class="uppercase">{{ $requisition->finalapproval_status }}</p>
+                <p class="text-center">Final Approval</p>
+                <p class="uppercase text-center">{{ $requisition->finalapproval_status }}</p>
             </div>
             <div class="w-1/2 p-4 bg-gray-200">
-                <p>Treasury Approval</p>
-                <p class="uppercase">{{ $requisition->treasuryapproval_status }}</p>
+                <p class="text-center">Treasury Approval</p>
+                <p class="uppercase text-center">{{ $requisition->treasuryapproval_status }}</p>
             </div>
             <div class="w-1/2 p-4 bg-gray-200">
-                <p>COC Approval</p>
-                <p class="uppercase">{{ $requisition->cocapproval_status }}</p>
+                <p class="text-center">COC Approval</p>
+                <p class="uppercase text-center">{{ $requisition->cocapproval_status }}</p>
             </div>
         </div>
 
