@@ -20,10 +20,20 @@
                             removeItem(index) {
                                 this.requisitionItems.splice(index, 1);
                             }}">
-        <div>
-        <p>Status</p>
-        <p class="uppercase">{{ $requisition->status }}</p>
+
+        <div class="flex justify-end space-x-4">
+            <div>
+            <p>Status</p>
+            <p class="uppercase">{{ $requisition->status }}</p>
+            </div>
+            <div>
+            <p>Status</p>
+            <p class="uppercase">{{ $requisition->status }}</p>
+            </div>
         </div>
+
+
+
                             <div class="flex justify-end space-x-4">
                                         <div class="flex justify-end">    
                                             <!-- Button to open the modal -->
