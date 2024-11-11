@@ -22,13 +22,13 @@
                             }}">
 
         <div class="flex justify-center space-x-4">
-            <div class="flex items-center p-4 rounded-lg bg-green-500 text-white">
+            <div class="flex items-center p-4 rounded-lg bg-green-500 text-white">Status
                 <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1.293-9.707a1 1 0 011.414 0L10 10.586l.293-.293a1 1 0 111.414 1.414l-1 1a1 1 0 01-1.414 0l-1-1a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                 </svg>
-                <p class="text-center">Status</p>
                 <p class="uppercase text-center">{{ $requisition->status }}</p>
             </div>
+
             <div class="w-1/2 p-4 bg-gray-200">
                 <p class="text-center">Bonds Approval</p>
                 <p class="uppercase text-center">{{ $requisition->bonds_status }}</p>
