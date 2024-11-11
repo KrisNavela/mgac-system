@@ -22,27 +22,27 @@
                             }}">
 
         <div class="flex justify-center space-x-4">
-            <div>
+            <div class="w-1/2 p-4 bg-gray-200">
                 <p>Status</p>
                 <p class="uppercase">{{ $requisition->status }}</p>
             </div>
-            <div>
+            <div class="w-1/2 p-4 bg-gray-200">
                 <p>Bonds Approval</p>
                 <p class="uppercase">{{ $requisition->bonds_status }}</p>
             </div>
-            <div>
+            <div class="w-1/2 p-4 bg-gray-200">
                 <p>UW Approval</p>
                 <p class="uppercase">{{ $requisition->uw_tatus }}</p>
             </div>
-            <div>
+            <div class="w-1/2 p-4 bg-gray-200">
                 <p>Final Approval</p>
                 <p class="uppercase">{{ $requisition->finalapproval_status }}</p>
             </div>
-            <div>
+            <div class="w-1/2 p-4 bg-gray-200">
                 <p>Treasury Approval</p>
                 <p class="uppercase">{{ $requisition->treasuryapproval_status }}</p>
             </div>
-            <div>
+            <div class="w-1/2 p-4 bg-gray-200">
                 <p>COC Approval</p>
                 <p class="uppercase">{{ $requisition->cocapproval_status }}</p>
             </div>
