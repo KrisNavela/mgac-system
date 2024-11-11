@@ -32,7 +32,7 @@
             </div>
             <div class="w-1/2 p-4 bg-gray-200">
                 <p class="text-center">UW Approval</p>
-                <p class="uppercase text-center">{{ $requisition->uw_tatus }}</p>
+                <p class="uppercase text-center">{{ $requisition->uw_status }}</p>
             </div>
             <div class="w-1/2 p-4 bg-gray-200">
                 <p class="text-center">Final Approval</p>
