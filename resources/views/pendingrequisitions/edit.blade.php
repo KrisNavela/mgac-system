@@ -22,7 +22,7 @@
                             }}">
 
         <div class="flex justify-center space-x-4">
-            <div class="flex items-center p-4 rounded-lg bg-green-500 text-white">Status
+            <div class="items-center p-4 rounded-lg bg-green-500 text-white">
                 <p class="text-center">Status</p>
                 <p class="uppercase text-center">{{ $requisition->status }}</p>
             </div>
