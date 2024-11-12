@@ -460,9 +460,6 @@ class RequisitionController extends Controller
         $typeOffice = $user->branch->type_office;
         $type_request = $request->type_request;
         $coc_request_status = $request->coc_request_status;
-
-        // Set default datetime if not provided by user
-        $datetime = $request->input('datetime', Carbon::now('Asia/Manila')->format('Y-m-d H:i:s'));
         
         if ($coc_request_status === 'Yes'){ 
             $cocapproval_status ='for approval';
@@ -488,7 +485,7 @@ class RequisitionController extends Controller
             ]);
         } else {
             $requisition = Requisition::create([
-                'req_date' => $request->req_date,
+                'req_date' => Carbon::now('Asia/Manila')->format('Y-m-d H:i:s'),
                 'type_request' => $request->type_request,
                 'coc_request_status' => $request->coc_request_status,
                 'collasst_status' => 'no',
