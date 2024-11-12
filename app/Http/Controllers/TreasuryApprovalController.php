@@ -476,7 +476,7 @@ class TreasuryApprovalController extends Controller
 
             // Update the user's basic information
             $treasuryapprovalrequisition->treasuryapproval_status = $validatedData['treasuryapproval_status'];
-            $treasuryapprovalrequisition->treasuryapproval_status = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
+            $treasuryapprovalrequisition->treasuryapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
             $treasuryapprovalrequisition->save(); // Save the changes
         
         RequisitionRemarks::create([
