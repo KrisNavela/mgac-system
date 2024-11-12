@@ -27,6 +27,7 @@ class Requisition extends Model
         'coc_request_status',
         'treasuryapproval_status',
         'cocapproval_status',
+        'collasst_date',
 
     ];
 
