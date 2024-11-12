@@ -5,8 +5,9 @@
         </h2>
     </x-slot>
 
+    <div class="py-12">
 
-    <div class="flex justify-center space-x-4">
+        <div class="flex justify-center space-x-4">
             <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                 <p class="text-center">Status</p>
                 <p class="uppercase text-center">{{ $requisition->status }}</p>
@@ -48,7 +49,7 @@
             </div>
         </div>
 
-    <div class="py-12">
+    
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900" x-data="{requisitionItems: {{ $requisitionItems }}}">

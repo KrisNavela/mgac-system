@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-3">
+    <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900"  x-data="{
@@ -21,11 +21,7 @@
                                 this.requisitionItems.splice(index, 1);
                             }}">
 
-        
-
-
-
-                            <div class="flex justify-end space-x-4 py-12">
+                            <div class="flex justify-end ">
                                         <div class="flex justify-end">    
                                             <!-- Button to open the modal -->
                                             <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modalAttachment-id')">Attachment</button>
