@@ -477,7 +477,7 @@ class CollectionAsstRequisitionController extends Controller
         $collasstrequisition->update([
             'branch_code'=> $request->branch_code,
             'req_no' => $request->req_no,
-            'req_date' => $request->req_date,
+            //'req_date' => $request->req_date,
             'status' => $request->status,
             'bonds_status' => $request->bonds_status,
             'uw_status' => $request->uw_status,
