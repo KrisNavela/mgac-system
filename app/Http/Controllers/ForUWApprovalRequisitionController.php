@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\RequisitionAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ForUWApprovalRequisitionController extends Controller
 {
@@ -459,12 +460,12 @@ class ForUWApprovalRequisitionController extends Controller
     public function update(UpdateRequisitionRequest $request, Requisition $foruwapprovalrequisition)
     {
         $foruwapprovalrequisition->update([
-            'branch_code'=> $request->branch_code,
-            'req_no' => $request->req_no,
-            'req_date' => $request->req_date,
-            'status' => $request->status,
+            //'branch_code'=> $request->branch_code,
+            //'req_no' => $request->req_no,
+            //'req_date' => $request->req_date,
+            //'status' => $request->status,
             //'bonds_status' => $request->bonds_status,
-            'uw_status' => $request->uw_status,
+            //'uw_status' => $request->uw_status,
         ]);
         
         $foruwapprovalrequisition->items()->detach();
@@ -481,7 +482,7 @@ class ForUWApprovalRequisitionController extends Controller
     {
         // Validate the incoming request data
         $validatedData = $request->validate([
-            'bonds_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
+            //'bonds_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
             'uw_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
         ]);
 
@@ -489,8 +490,9 @@ class ForUWApprovalRequisitionController extends Controller
         $foruwapprovalrequisition = Requisition::findOrFail($id);
 
         // Update the user's basic information
-        $foruwapprovalrequisition->bonds_status = $validatedData['bonds_status_modal'];
+        //$foruwapprovalrequisition->bonds_status = $validatedData['bonds_status_modal'];
         $foruwapprovalrequisition->uw_status = $validatedData['uw_status_modal'];
+        $foruwapprovalrequisition->uw_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
         $foruwapprovalrequisition->save(); // Save the changes
 
         RequisitionRemarks::create([

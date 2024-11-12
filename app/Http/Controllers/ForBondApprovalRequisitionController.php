@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\RequisitionAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ForBondApprovalRequisitionController extends Controller
 {
@@ -461,11 +462,11 @@ class ForBondApprovalRequisitionController extends Controller
     public function update(UpdateRequisitionRequest $request, Requisition $forbondapprovalrequisition)
     {
         $forbondapprovalrequisition->update([
-            'branch_code'=> $request->branch_code,
-            'req_no' => $request->req_no,
-            'req_date' => $request->req_date,
-            'status' => $request->status,
-            'bonds_status' => $request->bonds_status,
+            //'branch_code'=> $request->branch_code,
+            //'req_no' => $request->req_no,
+            //'req_date' => $request->req_date,
+            //'status' => $request->status,
+            //'bonds_status' => $request->bonds_status,
             //'uw_status' => $request->uw_status,
         ]);
         
@@ -484,7 +485,7 @@ class ForBondApprovalRequisitionController extends Controller
         // Validate the incoming request data
         $validatedData = $request->validate([
             'bonds_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
-            'uw_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
+            //'uw_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
         ]);
 
         // Find the user record in the database
@@ -492,7 +493,8 @@ class ForBondApprovalRequisitionController extends Controller
 
         // Update the user's basic information
         $forbondapprovalrequisition->bonds_status = $validatedData['bonds_status_modal'];
-        $forbondapprovalrequisition->uw_status = $validatedData['uw_status_modal'];
+        $forbondapprovalrequisition->bonds_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
+        //$forbondapprovalrequisition->uw_status = $validatedData['uw_status_modal'];
         $forbondapprovalrequisition->save(); // Save the changes
 
         RequisitionRemarks::create([
