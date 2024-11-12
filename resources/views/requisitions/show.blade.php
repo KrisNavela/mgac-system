@@ -351,11 +351,11 @@
                                         </td>
 
                                         <td class="px-2 py-2">
-                                            <input type="number" style="width: 150px" x-model="item.quantity"/>
+                                            <input type="number" style="width: 80px" x-model="item.quantity"/>
                                         </td>
 
                                         <td class="px-2 py-2">
-                                            <input type="text" style="width: 150px"x-model="item.quantity_unit "/>
+                                            <input type="text" style="width: 80px"x-model="item.quantity_unit "/>
                                         </td>
 
                                         <td class="px-2 py-2">
