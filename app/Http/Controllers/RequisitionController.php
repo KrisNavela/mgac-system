@@ -473,7 +473,7 @@ class RequisitionController extends Controller
         
         if ($type_request === 'Replenishment'){
             $requisition = Requisition::create([
-                'req_date' => $request->req_date,
+                //'req_date' => $request->req_date,
                 'type_request' => $request->type_request,
                 'coc_request_status' => $request->coc_request_status,
                 'collasst_status' => 'for approval',
