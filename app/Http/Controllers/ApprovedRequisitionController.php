@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\RequisitionAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ApprovedRequisitionController extends Controller
 {
@@ -455,10 +456,10 @@ class ApprovedRequisitionController extends Controller
     public function update(UpdateRequisitionRequest $request, Requisition $approvedrequisition)
     {
         $approvedrequisition->update([
-            'branch_code'=> $request->branch_code,
-            'req_no' => $request->req_no,
-            'req_date' => $request->req_date,
-            'status' => $request->status,
+            //'branch_code'=> $request->branch_code,
+            //'req_no' => $request->req_no,
+            //'req_date' => $request->req_date,
+            //'status' => $request->status,
         ]);
         
         $approvedrequisition->items()->detach();
@@ -486,11 +487,13 @@ class ApprovedRequisitionController extends Controller
             // Update the user's basic information
             $approvedrequisition->status = $validatedData['status_modal'];
             $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
+            $approvedrequisition->finalapproval_status = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
             $approvedrequisition->save(); // Save the changes
         } else {
             // Update the user's basic information
             $approvedrequisition->status = $validatedData['finalapproval_status_modal'];
             $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
+            $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
             $approvedrequisition->save(); // Save the changes
         }
         
