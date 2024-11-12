@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\RequisitionAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class CollectionMngRequisitionController extends Controller
 {
@@ -496,6 +497,7 @@ class CollectionMngRequisitionController extends Controller
 
         // Update the user's basic information
         $collmngrequisition->collmanager_status = $validatedData['collmanager_status_modal'];
+        $collmngrequisition->collmanager_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
         $collmngrequisition->status = $validatedData['collmanager_status_modal'];
         $collmngrequisition->save(); // Save the changes
 
