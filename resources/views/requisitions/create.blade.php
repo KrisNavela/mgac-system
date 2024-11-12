@@ -32,7 +32,7 @@
 
                             <div class="mt-4" style="width: 300px;">
                                 <x-input-label for="req_date" :value="__('Date')" />
-                                <x-text-input id="req_date" class="block mt-1 w-full" type="datetime-local" name="req_date" autofocus autocomplete="req_date" value="{{ old('req_date', date('Y-m-d H:i:s')) }}" />
+                                <x-text-input id="req_date" class="block mt-1 w-full" type="datetime-local" name="req_date" autofocus autocomplete="req_date" value="{{ old('req_date', date('Y-m-d H:i:s')) }}" disabled/>
                                 <x-input-error :messages="$errors->get('req_date')" class="mt-2" />
                             </div>
 
