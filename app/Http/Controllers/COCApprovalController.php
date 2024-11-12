@@ -12,6 +12,7 @@ use App\Models\RequisitionRemarks;
 use App\Models\RequisitionAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class COCApprovalController extends Controller
 {
@@ -474,6 +475,7 @@ class COCApprovalController extends Controller
 
             // Update the user's basic information
             $cocapprovalrequisition->cocapproval_status = $validatedData['cocapproval_status'];
+            $cocapprovalrequisition->cocapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
             $cocapprovalrequisition->save(); // Save the changes
         
         RequisitionRemarks::create([

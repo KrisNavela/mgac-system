@@ -12,6 +12,7 @@ use App\Models\RequisitionRemarks;
 use App\Models\RequisitionAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class TreasuryApprovalController extends Controller
 {
@@ -475,6 +476,7 @@ class TreasuryApprovalController extends Controller
 
             // Update the user's basic information
             $treasuryapprovalrequisition->treasuryapproval_status = $validatedData['treasuryapproval_status'];
+            $treasuryapprovalrequisition->treasuryapproval_status = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
             $treasuryapprovalrequisition->save(); // Save the changes
         
         RequisitionRemarks::create([
