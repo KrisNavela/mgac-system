@@ -29,13 +29,13 @@
                 
                     <form action="{{ route('requisitions.store') }}" method="POST" onsubmit="disableSubmitButton(this)">
                         @csrf
-
+                            <!--
                             <div class="mt-4" style="width: 300px;">
                                 <x-input-label for="req_date" :value="__('Date')" />
-                                <x-text-input id="req_date" class="block mt-1 w-full" type="datetime-local" name="req_date" autofocus autocomplete="req_date" value="{{ old('req_date', date('Y-m-d H:i:s')) }}" disabled/>
+                                <x-text-input id="req_date" class="block mt-1 w-full" type="datetime-local" name="req_date" autofocus autocomplete="req_date" value="{{ old('req_date', date('Y-m-d H:i:s')) }}"/>
                                 <x-input-error :messages="$errors->get('req_date')" class="mt-2" />
                             </div>
-
+                            -->
                             <div class="mt-4">
                                 <x-input-label for="type_request" :value="__('Type of Request')" />
                                 <select class="" style="width: 200px;" id="type_request" class="block mt-1 w-full" type="text" name="type_request" autofocus autocomplete="type_request">
