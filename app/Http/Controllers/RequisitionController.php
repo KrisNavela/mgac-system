@@ -475,7 +475,7 @@ class RequisitionController extends Controller
         
         if ($type_request === 'Replenishment'){
             $requisition = Requisition::create([
-                'req_date' => $datetime,
+                'req_date' => Carbon::now('Asia/Manila')->format('Y-m-d H:i:s'),
                 'type_request' => $request->type_request,
                 'coc_request_status' => $request->coc_request_status,
                 'collasst_status' => 'for approval',
