@@ -99,7 +99,13 @@
 
                     </div>
 
-                    <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @if ($requisition->bonds_status == 'No')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->bonds_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->bonds_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @endif
                         <p class="text-center">Bonds Approval</p>
                         <p class="uppercase text-center">{{ $requisition->bonds_status }}</p>
                         <p class="uppercase text-center">{{ $requisition->bonds_date }}</p>
@@ -151,7 +157,14 @@
                         
                     </div>
 
-                    <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @if ($requisition->bonds_status == 'No')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->bonds_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->bonds_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @endif
+                    
                         <p class="text-center">Bonds Approval</p>
                         <p class="uppercase text-center">{{ $requisition->bonds_status }}</p>
                         <p class="uppercase text-center">{{ $requisition->bonds_date }}</p>
@@ -200,7 +213,14 @@
                         
                     </div>
 
-                    <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @if ($requisition->bonds_status == 'No')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->bonds_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->bonds_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @endif
+
                         <p class="text-center">Bonds Approval</p>
                         <p class="uppercase text-center">{{ $requisition->bonds_status }}</p>
                         <p class="uppercase text-center">{{ $requisition->bonds_date }}</p>
