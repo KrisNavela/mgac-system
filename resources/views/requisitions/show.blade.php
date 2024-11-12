@@ -75,6 +75,7 @@
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                         <p class="text-center">Final Approval</p>
                         <p class="uppercase text-center">{{ $requisition->finalapproval_status }}</p>
+                        <p class="uppercase text-center">{{ $requisition->finalapproval_date }}</p>
                     </div>
 
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
