@@ -18,7 +18,7 @@ use App\Mail\ForApprovalRequisitionBranchMail;
 use App\Mail\ForApprovalCollAsstMail;
 
 use Illuminate\Support\Facades\Mail;
-
+use Carbon\Carbon;
 
 class RequisitionController extends Controller
 {
@@ -461,6 +461,8 @@ class RequisitionController extends Controller
         $type_request = $request->type_request;
         $coc_request_status = $request->coc_request_status;
 
+        // Set default datetime if not provided by user
+        $datetime = $request->input('datetime', Carbon::now('Asia/Manila')->format('Y-m-d H:i:s'));
         
         if ($coc_request_status === 'Yes'){ 
             $cocapproval_status ='for approval';
@@ -473,7 +475,7 @@ class RequisitionController extends Controller
         
         if ($type_request === 'Replenishment'){
             $requisition = Requisition::create([
-                'req_date' => $request->req_date,
+                'req_date' => $datetime,
                 'type_request' => $request->type_request,
                 'coc_request_status' => $request->coc_request_status,
                 'collasst_status' => 'for approval',
