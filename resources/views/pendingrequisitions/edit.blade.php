@@ -22,7 +22,7 @@
                             }}">
 
                             <div class="flex justify-end ">
-                                        <div class="flex justify-end">    
+                                        <div class="flex justify-end space-x-4">   
                                             <!-- Button to open the modal -->
                                             <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modalAttachment-id')">Attachment</button>
                                         </div>
@@ -65,7 +65,7 @@
                         
                         
                                 
-    <div class="flex justify-end">    
+    <div class="flex justify-end space-x-4">
         <!-- Button to open the modal -->
         <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modal-id')">Action</button>
     </div>
