@@ -16,6 +16,7 @@ use App\Mail\ForApprovalBondsMail;
 use App\Mail\ForApprovalUwMail;
 use App\Mail\ForApprovalCollMngMail;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 
 class CollectionAsstRequisitionController extends Controller
 {
@@ -481,6 +482,7 @@ class CollectionAsstRequisitionController extends Controller
             'bonds_status' => $request->bonds_status,
             'uw_status' => $request->uw_status,
             'collasst_status' => $request->collasst_status,
+            'collasst_date' => Carbon::now('Asia/Manila')->format('Y-m-d H:i:s'),
         ]);
 
         $collasstStatus = $request->collasst_status;
