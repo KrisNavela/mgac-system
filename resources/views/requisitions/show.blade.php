@@ -23,10 +23,10 @@
                     @endif
 
                         <p class="text-center font-bold">Status</p>
-                        <p class="uppercase text-center font-medium">{{ $requisition->status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->status }}</p>
 
                         @if ($requisition->status == 'done')
-                            <p class="uppercase text-center">{{ $requisition->updated_at }}</p>
+                            <p class="uppercase text-center text-sm">{{ $requisition->updated_at }}</p>
                         @endif
 
                     </div>
@@ -40,44 +40,44 @@
                     @endif
 
                         <p class="text-center font-bold">Bonds Approval</p>
-                        <p class="uppercase text-center">{{ $requisition->bonds_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->bonds_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->bonds_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->bonds_date }}</p>
                     </div>
 
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                         <p class="text-center font-bold">UW Approval</p>
-                        <p class="uppercase text-center">{{ $requisition->uw_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->uw_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->uw_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->uw_date }}</p>
                     </div>
 
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                         <p class="text-center font-bold">Final Approval</p>
-                        <p class="uppercase text-center">{{ $requisition->finalapproval_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->finalapproval_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->finalapproval_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->finalapproval_date }}</p>
                     </div>
 
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                         <p class="text-center font-bold">Coll Asst</p>
-                        <p class="uppercase text-center">{{ $requisition->collasst_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->collasst_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->collasst_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->collasst_date }}</p>
                     </div>
 
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                         <p class="text-center font-bold">Coll Manager</p>
-                        <p class="uppercase text-center">{{ $requisition->collmanager_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->collmanager_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->collmanager_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->collmanager_date }}</p>
                     </div>
 
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                         <p class="text-center font-bold">Treasury Approval</p>
-                        <p class="uppercase text-center">{{ $requisition->treasuryapproval_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->treasuryapproval_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->treasuryapproval_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->treasuryapproval_date }}</p>
                     </div>
 
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                         <p class="text-center font-bold">COC Approval</p>
-                        <p class="uppercase text-center">{{ $requisition->cocapproval_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->cocapproval_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->cocapproval_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->cocapproval_date }}</p>
                     </div>
                 </div>
             @else
@@ -91,10 +91,10 @@
                     @endif
 
                         <p class="text-center font-bold">Status</p>
-                        <p class="uppercase text-center font-medium">{{ $requisition->status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->status }}</p>
 
                         @if ($requisition->status == 'done')
-                            <p class="uppercase text-center">{{ $requisition->updated_at }}</p>
+                            <p class="uppercase text-center text-sm">{{ $requisition->updated_at }}</p>
                         @endif
 
                     </div>
@@ -107,32 +107,32 @@
                         <div class="items-center p-4 rounded-lg bg-green-500 text-white">
                     @endif
                         <p class="text-center font-bold">Bonds Approval</p>
-                        <p class="uppercase text-center">{{ $requisition->bonds_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->bonds_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->bonds_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->bonds_date }}</p>
                     </div>
 
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                         <p class="text-center font-bold">UW Approval</p>
-                        <p class="uppercase text-center">{{ $requisition->uw_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->uw_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->uw_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->uw_date }}</p>
                     </div>
 
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                         <p class="text-center font-bold">Final Approval</p>
-                        <p class="uppercase text-center">{{ $requisition->finalapproval_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->finalapproval_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->finalapproval_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->finalapproval_date }}</p>
                     </div>
 
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                         <p class="text-center font-bold">Treasury Approval</p>
-                        <p class="uppercase text-center">{{ $requisition->treasuryapproval_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->treasuryapproval_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->treasuryapproval_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->treasuryapproval_date }}</p>
                     </div>
 
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                         <p class="text-center font-bold">COC Approval</p>
-                        <p class="uppercase text-center">{{ $requisition->cocapproval_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->cocapproval_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->cocapproval_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->cocapproval_date }}</p>
                     </div>
                 </div>
             @endif
@@ -149,10 +149,10 @@
                     @endif
 
                         <p class="text-center font-bold">Status</p>
-                        <p class="uppercase text-center">{{ $requisition->status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->status }}</p>
                         
                         @if ($requisition->status == 'done')
-                            <p class="uppercase text-center">{{ $requisition->updated_at }}</p>
+                            <p class="uppercase text-center text-sm">{{ $requisition->updated_at }}</p>
                         @endif
                         
                     </div>
@@ -166,32 +166,32 @@
                     @endif
                     
                         <p class="text-center font-bold">Bonds Approval</p>
-                        <p class="uppercase text-center">{{ $requisition->bonds_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->bonds_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->bonds_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->bonds_date }}</p>
                     </div>
 
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                         <p class="text-center font-bold">UW Approval</p>
-                        <p class="uppercase text-center">{{ $requisition->uw_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->uw_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->uw_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->uw_date }}</p>
                     </div>
 
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                         <p class="text-center font-bold">Final Approval</p>
-                        <p class="uppercase text-center">{{ $requisition->finalapproval_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->finalapproval_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->finalapproval_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->finalapproval_date }}</p>
                     </div>
 
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                         <p class="text-center font-bold">Coll Asst</p>
-                        <p class="uppercase text-center">{{ $requisition->collasst_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->collasst_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->collasst_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->collasst_date }}</p>
                     </div>
 
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                         <p class="text-center font-bold">Coll Manager</p>
-                        <p class="uppercase text-center">{{ $requisition->collmanager_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->collmanager_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->collmanager_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->collmanager_date }}</p>
                     </div>
                 </div>
             @else
@@ -205,10 +205,10 @@
                     @endif
 
                         <p class="text-center font-bold">Status</p>
-                        <p class="uppercase text-center">{{ $requisition->status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->status }}</p>
                         
                         @if ($requisition->status == 'done')
-                            <p class="uppercase text-center">{{ $requisition->updated_at }}</p>
+                            <p class="uppercase text-center text-sm">{{ $requisition->updated_at }}</p>
                         @endif
                         
                     </div>
@@ -222,20 +222,20 @@
                     @endif
 
                         <p class="text-center font-bold">Bonds Approval</p>
-                        <p class="uppercase text-center">{{ $requisition->bonds_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->bonds_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->bonds_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->bonds_date }}</p>
                     </div>
 
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                         <p class="text-center font-bold">UW Approval</p>
-                        <p class="uppercase text-center">{{ $requisition->uw_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->uw_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->uw_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->uw_date }}</p>
                     </div>
 
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                         <p class="text-center font-bold">Final Approval</p>
-                        <p class="uppercase text-center">{{ $requisition->finalapproval_status }}</p>
-                        <p class="uppercase text-center">{{ $requisition->finalapproval_date }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->finalapproval_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->finalapproval_date }}</p>
                     </div>
                 </div>
             @endif
