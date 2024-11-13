@@ -37,6 +37,8 @@
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
                     @elseif ($requisition->bonds_status == 'approved')
                         <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->bonds_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
                     @endif
 
                         <p class="text-center font-bold">Bonds Approval</p>
