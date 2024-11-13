@@ -23,7 +23,7 @@
                     @endif
 
                         <p class="text-center font-bold">Status</p>
-                        <p class="uppercase text-center">{{ $requisition->status }}</p>
+                        <p class="uppercase text-center font-medium">{{ $requisition->status }}</p>
 
                         @if ($requisition->status == 'done')
                             <p class="uppercase text-center">{{ $requisition->updated_at }}</p>
@@ -91,7 +91,7 @@
                     @endif
 
                         <p class="text-center font-bold">Status</p>
-                        <p class="uppercase text-center">{{ $requisition->status }}</p>
+                        <p class="uppercase text-center font-medium">{{ $requisition->status }}</p>
 
                         @if ($requisition->status == 'done')
                             <p class="uppercase text-center">{{ $requisition->updated_at }}</p>
@@ -112,7 +112,7 @@
                     </div>
 
                     <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
-                        <p class="text-center font-bold>UW Approval</p>
+                        <p class="text-center font-bold">UW Approval</p>
                         <p class="uppercase text-center">{{ $requisition->uw_status }}</p>
                         <p class="uppercase text-center">{{ $requisition->uw_date }}</p>
                     </div>
