@@ -146,9 +146,6 @@
                 modal.classList.toggle('hidden');
             }
         </script>
-
-
-
                 <form action="{{ route('collasstrequisitions.update', $requisition->id) }}" method="POST">
                         @csrf
                         @method('PUT')
