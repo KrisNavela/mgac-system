@@ -100,7 +100,7 @@
 
                     <!-- Success Notification -->
                     @if (session('success'))
-                        <div class="alert alert-success">
+                        <div class="mb-4 p-4 bg-green-100 text-green-800 border border-green-300 rounded">
                             {{ session('success') }}
                         </div>
                     @endif
