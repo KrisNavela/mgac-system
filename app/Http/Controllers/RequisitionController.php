@@ -561,6 +561,7 @@ class RequisitionController extends Controller
             'requisition_id' => $request->req_id,
             'file_path' => $filePath ?? null, // Save the file path in the database
         ]);
+        session()->flash('success', 'File has been uploaded successfully!');
 
         return back()->with('success', 'File has been uploaded successfully!');
     }
