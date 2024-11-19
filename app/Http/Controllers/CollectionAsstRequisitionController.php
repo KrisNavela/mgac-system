@@ -28,7 +28,7 @@ class CollectionAsstRequisitionController extends Controller
         $roleId = $user->role_id;
         
         //Admin, Final Approver Agencies and Branches, Coll Assistant and Collection Manager Access
-        if ($roleId === 1 || $roleId === 5 || $roleId === 7 || $roleId === 8 || $roleId === 9 || $roleId === 10 || $roleId === 11) {
+        if ($roleId === 1 || $roleId === 5 || $roleId === 7 || $roleId === 8 || $roleId === 9 || $roleId === 10 || $roleId === 11 || $roleId === 12 || $roleId === 13) {
             $branches = branch::all();
             $users = User::all();
 
