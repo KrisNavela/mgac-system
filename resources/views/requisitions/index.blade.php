@@ -115,6 +115,12 @@
     <!-- Card view for mobile screens -->
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
         <div class="space-y-4">
+            
+
+            <div class="flex justify-end">
+                <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
+            </div>
+
             <!-- Success Notification -->
             @if (session('success'))
                 <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
@@ -133,10 +139,6 @@
                     }
                 }, 3000); // Hide after 3 seconds
             </script>
-
-            <div class="flex justify-end">
-                <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
-            </div>
             
             <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                 @foreach ($requisitions as $requisition)
