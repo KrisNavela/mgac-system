@@ -10,7 +10,6 @@
         <strong class="font-bold">Success!</strong>
         <span class="block sm:inline">{{ session('success') }}</span>
     </div>
-@endif
 <!-- Optional Auto-Close JavaScript -->
 <script>
     setTimeout(function() {
@@ -22,6 +21,10 @@
         }
     }, 3000); // Hide after 3 seconds
 </script>
+@endif
+
+
+
 <div class="py-7">
     <!-- Navigation Links -->
     <div class="sm:overflow-x-auto sm:whitespace-nowrap md:overflow-x-visible md:whitespace-normal">
