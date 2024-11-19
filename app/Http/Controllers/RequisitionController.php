@@ -562,7 +562,7 @@ class RequisitionController extends Controller
             'file_path' => $filePath ?? null, // Save the file path in the database
         ]);
 
-        return back()->with('success', 'Data has been saved successfully!');
+        return back()->with('success', 'File has been uploaded successfully!');
     }
 
 
