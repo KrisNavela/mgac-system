@@ -282,7 +282,7 @@
                         <p class="uppercase text-center text-sm">{{ $requisition->uw_date }}</p>
                     </div>
 
-                    @if ($requisition->finalapproval_status == 'No')
+                    @if ($requisition->finalapproval_status == 'No' || $requisition->finalapproval_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                     @elseif ($requisition->finalapproval_status == 'For Approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
