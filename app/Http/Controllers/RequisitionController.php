@@ -85,10 +85,12 @@ class RequisitionController extends Controller
             ->count();
 
             $treasuryapprovalCount = Requisition::withCount('items')
+            ->where('finalapproval_status', '=', 'approved')
             ->where('treasuryapproval_status', '=', 'for approval')
             ->count();
 
             $cocapprovalCount = Requisition::withCount('items')
+            ->where('finalapproval_status', '=', 'approved')
             ->where('cocapproval_status', '=', 'for approval')
             ->count();
 
@@ -156,6 +158,7 @@ class RequisitionController extends Controller
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'for approval')
             ->where('collmanager_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $collmngapprovalCount = Requisition::whereHas('user', function ($query) {
@@ -165,6 +168,7 @@ class RequisitionController extends Controller
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'approved')
             ->where('collmanager_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $cancelrequisitionsCount = Requisition::whereHas('user', function ($query) {
@@ -193,6 +197,7 @@ class RequisitionController extends Controller
                     $query1->where('type_office', 'Branch');}
             );})
             ->where('treasuryapproval_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $cocapprovalCount = Requisition::whereHas('user', function ($query) {
@@ -200,6 +205,7 @@ class RequisitionController extends Controller
                     $query1->where('type_office', 'Branch');}
             );})
             ->where('cocapproval_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $requisitions = Requisition::whereHas('user', function ($query) {
