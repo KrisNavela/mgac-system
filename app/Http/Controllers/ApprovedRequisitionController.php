@@ -487,7 +487,7 @@ class ApprovedRequisitionController extends Controller
             // Update the user's basic information
             $approvedrequisition->status = $validatedData['status_modal'];
             $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
-            $approvedrequisition->finalapproval_status = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
+            $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
             $approvedrequisition->save(); // Save the changes
         } else {
             // Update the user's basic information
