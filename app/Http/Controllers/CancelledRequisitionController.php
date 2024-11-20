@@ -28,7 +28,7 @@ class CancelledRequisitionController extends Controller
             $requisitionsCount = Requisition::withCount('items')
             ->orderBy('id', 'desc')
             ->count();
-            
+
             $pendingrequisitionCount = Requisition::where('status', '=', 'pending')->count();
 
             $uwapprovalCount = Requisition::withCount('items')
@@ -45,12 +45,14 @@ class CancelledRequisitionController extends Controller
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'for approval')
             ->where('collmanager_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $collmngapprovalCount = Requisition::withCount('items')
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'approved')
             ->where('collmanager_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $cancelrequisitionsCount = Requisition::withCount('items')
@@ -66,10 +68,12 @@ class CancelledRequisitionController extends Controller
             ->count();
 
             $treasuryapprovalCount = Requisition::withCount('items')
+            ->where('finalapproval_status', '=', 'approved')
             ->where('treasuryapproval_status', '=', 'for approval')
             ->count();
 
             $cocapprovalCount = Requisition::withCount('items')
+            ->where('finalapproval_status', '=', 'approved')
             ->where('cocapproval_status', '=', 'for approval')
             ->count();
 
@@ -135,6 +139,7 @@ class CancelledRequisitionController extends Controller
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'for approval')
             ->where('collmanager_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $collmngapprovalCount = Requisition::whereHas('user', function ($query) {
@@ -144,6 +149,7 @@ class CancelledRequisitionController extends Controller
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'approved')
             ->where('collmanager_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $cancelrequisitionsCount = Requisition::whereHas('user', function ($query) {
@@ -172,6 +178,7 @@ class CancelledRequisitionController extends Controller
                     $query1->where('type_office', 'Branch');}
             );})
             ->where('treasuryapproval_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $cocapprovalCount = Requisition::whereHas('user', function ($query) {
@@ -179,6 +186,7 @@ class CancelledRequisitionController extends Controller
                     $query1->where('type_office', 'Branch');}
             );})
             ->where('cocapproval_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $requisitions = Requisition::whereHas('user', function ($query) {
@@ -246,6 +254,7 @@ class CancelledRequisitionController extends Controller
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'for approval')
             ->where('collmanager_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $collmngapprovalCount = Requisition::whereHas('user', function ($query) {
@@ -255,6 +264,7 @@ class CancelledRequisitionController extends Controller
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'approved')
             ->where('collmanager_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $cancelrequisitionsCount = Requisition::whereHas('user', function ($query) {
@@ -283,6 +293,7 @@ class CancelledRequisitionController extends Controller
                     $query1->where('type_office', 'Agency');}
             );})
             ->where('treasuryapproval_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $cocapprovalCount = Requisition::whereHas('user', function ($query) {
@@ -290,6 +301,7 @@ class CancelledRequisitionController extends Controller
                     $query1->where('type_office', 'Agency');}
             );})
             ->where('cocapproval_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $requisitions = Requisition::whereHas('user', function ($query) {
@@ -346,6 +358,7 @@ class CancelledRequisitionController extends Controller
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'for approval')
             ->where('collmanager_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->where('user_id', $userId)
             ->count();
         
@@ -353,6 +366,7 @@ class CancelledRequisitionController extends Controller
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'approved')
             ->where('collmanager_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->where('user_id', $userId)
             ->count();
 
@@ -373,13 +387,16 @@ class CancelledRequisitionController extends Controller
 
         $treasuryapprovalCount = Requisition::withCount('items')
             ->where('treasuryapproval_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->where('user_id', $userId)
             ->count();
 
         $cocapprovalCount = Requisition::withCount('items')
             ->where('cocapproval_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->where('user_id', $userId)
             ->count();
+
 
         $requisitions = Requisition::withCount('items')
             ->where('status', '=', 'Cancelled')
