@@ -89,6 +89,7 @@ class CollectionAsstRequisitionController extends Controller
 
             $requisitions = Requisition::withCount('items')
             ->where('type_request', '=', 'replenishment')
+            ->where('finalapproval_status', '=', 'approved')
             ->where('collasst_status', '=', 'for approval')
             ->where('collmanager_status', '=', 'for approval')
             ->orderBy('id', 'desc')
