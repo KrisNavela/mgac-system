@@ -31,7 +31,7 @@
 
                     </div>
 
-                    @if ($requisition->bonds_status == 'No')
+                    @if ($requisition->bonds_status == 'No' || $requisition->bonds_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                     @elseif ($requisition->bonds_status == 'for approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
@@ -46,7 +46,7 @@
                         <p class="uppercase text-center text-sm">{{ $requisition->bonds_date }}</p>
                     </div>
 
-                    @if ($requisition->uw_status == 'No')
+                    @if ($requisition->uw_status == 'No' || $requisition->uw_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                     @elseif ($requisition->uw_status == 'for approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
@@ -61,7 +61,7 @@
                         <p class="uppercase text-center text-sm">{{ $requisition->uw_date }}</p>
                     </div>
 
-                    @if ($requisition->finalapproval_status == 'No')
+                    @if ($requisition->finalapproval_status == 'No' || $requisition->finalapproval_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                     @elseif ($requisition->finalapproval_status == 'For Approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
@@ -155,7 +155,7 @@
 
                     </div>
 
-                    @if ($requisition->bonds_status == 'No')
+                    @if ($requisition->bonds_status == 'No' || $requisition->bonds_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                     @elseif ($requisition->bonds_status == 'for approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
@@ -170,7 +170,7 @@
                         <p class="uppercase text-center text-sm">{{ $requisition->bonds_date }}</p>
                     </div>
 
-                    @if ($requisition->uw_status == 'No')
+                    @if ($requisition->uw_status == 'No' || $requisition->uw_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                     @elseif ($requisition->uw_status == 'for approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
@@ -185,7 +185,7 @@
                         <p class="uppercase text-center text-sm">{{ $requisition->uw_date }}</p>
                     </div>
 
-                    @if ($requisition->finalapproval_status == 'No')
+                    @if ($requisition->finalapproval_status == 'No' || $requisition->finalapproval_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                     @elseif ($requisition->finalapproval_status == 'For Approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
@@ -346,7 +346,7 @@
                         
                     </div>
 
-                    @if ($requisition->bonds_status == 'No')
+                    @if ($requisition->bonds_status == 'No' || $requisition->bonds_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                     @elseif ($requisition->bonds_status == 'for approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
@@ -361,7 +361,7 @@
                         <p class="uppercase text-center text-sm">{{ $requisition->bonds_date }}</p>
                     </div>
 
-                    @if ($requisition->uw_status == 'No')
+                    @if ($requisition->uw_status == 'No' || $requisition->uw_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                     @elseif ($requisition->uw_status == 'for approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
@@ -376,7 +376,7 @@
                         <p class="uppercase text-center text-sm">{{ $requisition->uw_date }}</p>
                     </div>
 
-                    @if ($requisition->finalapproval_status == 'No')
+                    @if ($requisition->finalapproval_status == 'No' || $requisition->finalapproval_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                     @elseif ($requisition->finalapproval_status == 'For Approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
