@@ -204,6 +204,7 @@ class CollectionAsstRequisitionController extends Controller
                 $query->whereHas('branch', function ($query1) {
                     $query1->where('type_office', 'Branch');}
             );})
+            ->where('finalapproval_status', '=', 'approved')
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'for approval')
             ->where('collmanager_status', '=', 'for approval')
@@ -319,6 +320,7 @@ class CollectionAsstRequisitionController extends Controller
                 $query->whereHas('branch', function ($query1) {
                     $query1->where('type_office', 'Agency');}
             );})
+            ->where('finalapproval_status', '=', 'approved')
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'for approval')
             ->where('collmanager_status', '=', 'for approval')
@@ -409,6 +411,7 @@ class CollectionAsstRequisitionController extends Controller
             ->count();
 
         $requisitions = Requisition::withCount('items')
+            ->where('finalapproval_status', '=', 'approved')
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'for approval')
             ->where('collmanager_status', '=', 'for approval')
