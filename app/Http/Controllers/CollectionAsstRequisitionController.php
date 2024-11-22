@@ -533,6 +533,7 @@ class CollectionAsstRequisitionController extends Controller
         $collasstrequisition->bonds_status = $validatedData['bonds_status_modal'];
         $collasstrequisition->uw_status = $validatedData['uw_status_modal'];
         $collasstrequisition->collasst_status = $validatedData['collasst_status_modal'];
+        $collasstrequisition->collasst_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
         $collasstrequisition->save(); // Save the changes
 
         RequisitionRemarks::create([
