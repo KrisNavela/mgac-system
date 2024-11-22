@@ -155,10 +155,9 @@
                             <x-input-error :messages="$errors->get('req_no')" class="mt-2" />
                         </div>
 
-                        <div class="mt-4">
-                            <x-input-label for="req_date" :value="__('Date')" />
-                            <x-text-input id="req_date" class="block mt-1 w-full" type="date" name="req_date" :value="old('req_date', $requisition->req_date)" autofocus autocomplete="req_date" />
-                            <x-input-error :messages="$errors->get('req_date')" class="mt-2" />
+                        <div class="mt-4" style="width: 300px;">
+                            <x-input-label for="req_date" :value="__('Request Date')" />
+                            <x-text-input id="req_date" class="block mt-1 w-full" type="text" name="req_date" :value="$requisition->req_date" disable/>
                         </div>
 
                         <div class="mt-4">
@@ -191,9 +190,9 @@
                         </div>
                         -->
                         <div class="mt-4">
-                            <x-input-label for="user_id" :value="__('User ID')" />
-                            <x-text-input id="user_id" class="block mt-1 w-full" style="width: 150px" type="text" name="user_id" :value="old('user_id', $requisition->user_id)" autofocus autocomplete="user_id" />
-                            <x-input-error :messages="$errors->get('user_id')" class="mt-2" />
+                            <x-input-label for="full_name" :value="__('Request By')" />
+                            <x-text-input id="full_name" class="block mt-1 w-full" style="width: 300px;" type="text" name="full_name" value="{{ $requisition->user->first_name }} {{ $requisition->user->last_name }}" autofocus autocomplete="full_name" />
+                            <x-input-error :messages="$errors->get('full_name')" class="mt-2" />
                         </div>
 
                         <div class="mt-4">
@@ -203,15 +202,15 @@
                         </div>
 
                         <div class="mt-4">
-                            <x-input-label for="branch_code" :value="__('Branch Code')" />
-                            <x-text-input id="branch_code" class="block mt-1 w-full" style="width: 150px" type="text" name="branch_code" :value="old('branch_code', $requisition->user->branch->branch_code)" autofocus autocomplete="branch_code" />
-                            <x-input-error :messages="$errors->get('branch_code')" class="mt-2" />
-                        </div>
-
-                        <div class="mt-4">
                             <x-input-label for="type_request" :value="__('Type of Request')" />
                             <x-text-input id="type_request" class="block mt-1 w-full text-gray-500 uppercase" style="width: 150px" type="text" name="type_request" :value="old('type_request', $requisition->type_request)" autofocus autocomplete="type_request" />
                             <x-input-error :messages="$errors->get('type_request')" class="mt-2" />
+                        </div>
+
+                        <div class="mt-4">
+                            <x-input-label for="coc_request_status" :value="__('COC Request')" />
+                            <x-text-input id="coc_request_status" class="block mt-1 w-full uppercase" style="width: 300px;" type="text" name="coc_request_status" value="{{ $requisition->coc_request_status }}" autofocus autocomplete="coc_request_status" />
+                            <x-input-error :messages="$errors->get('coc_request_status')" class="mt-2" />
                         </div>
 
                         <div class="mt-4">
