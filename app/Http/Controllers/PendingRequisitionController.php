@@ -563,7 +563,7 @@ class PendingRequisitionController extends Controller
         //$bondStatus = $request->bonds_status_modal;
         //$uwStatus = $request->uw_status_modal;
 
-        $typeOffice = $pendingrequisition->$user->branch->type_office;
+        $typeOffice = $pendingrequisition->user->branch->type_office;
 
         // Find the user record in the database
         $pendingrequisition = Requisition::findOrFail($id);
