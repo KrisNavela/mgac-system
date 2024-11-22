@@ -201,7 +201,7 @@
 
                         <div class="mt-4">
                             <x-input-label for="coc_request_status" :value="__('COC Request')" />
-                            <x-text-input id="coc_request_status" class="block mt-1 w-full" style="width: 300px;" type="text" name="coc_request_status" value="{{ $requisition->coc_request_status }}" autofocus autocomplete="coc_request_status" />
+                            <x-text-input id="coc_request_status" class="block mt-1 w-full uppercase" style="width: 300px;" type="text" name="coc_request_status" value="{{ $requisition->coc_request_status }}" autofocus autocomplete="coc_request_status" />
                             <x-input-error :messages="$errors->get('coc_request_status')" class="mt-2" />
                         </div>
 
