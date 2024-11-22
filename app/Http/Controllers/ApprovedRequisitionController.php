@@ -491,7 +491,20 @@ class ApprovedRequisitionController extends Controller
         $approvedrequisition->items()->detach();
 
         foreach($request->items as $item) {
-            $approvedrequisition->items()->attach($item['item_id'], ['quantity' => $item['quantity']]);
+
+            if ($item['quantity_unit'] === 'Pad'){
+                $approvedrequisition->items()->attach($item['item_id'], [
+                    'quantity' => $item['quantity'], 
+                    'quantity_unit' => $item['quantity_unit'],
+                    'in_pcs' => $item['quantity'] * 50
+                ]);
+            } else {
+                $approvedrequisition->items()->attach($item['item_id'], [
+                    'quantity' => $item['quantity'], 
+                    'quantity_unit' => $item['quantity_unit'],
+                    'in_pcs' => $item['quantity']
+                ]);
+            }
         }
         
         return redirect()->route('approvedrequisitions.index')->with('success', 'Requisition created successfully');
