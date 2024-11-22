@@ -533,6 +533,10 @@ class CollectionAsstRequisitionController extends Controller
             }
         }
         
+        session()->flash('success', 'Requisition Sucessfully Created!');
+        
+        return redirect()->back()->with('success', 'Action was successful!');
+        
         //return redirect()->route('collasstrequisitions.index')->with('success', 'Requisition created successfully');
     }
 

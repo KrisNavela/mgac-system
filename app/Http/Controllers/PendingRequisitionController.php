@@ -487,10 +487,10 @@ class PendingRequisitionController extends Controller
     public function update(UpdateRequisitionRequest $request, Requisition $pendingrequisition)
     {
         $pendingrequisition->update([
-            'branch_code'=> $request->branch_code,
-            'req_no' => $request->req_no,
-            'req_date' => $request->req_date,
-            'status' => $request->status,
+            //'branch_code'=> $request->branch_code,
+            //'req_no' => $request->req_no,
+            //'req_date' => $request->req_date,
+            //'status' => $request->status,
             //'bonds_status' => $request->bonds_status,
             //'uw_status' => $request->uw_status,
             'type_request' => $request->type_request,
@@ -517,7 +517,11 @@ class PendingRequisitionController extends Controller
             }
         }
         
-        return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition created successfully');
+        session()->flash('success', 'Requisition Sucessfully Created!');
+        
+        return redirect()->back()->with('success', 'Action was successful!');
+
+        //return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition created successfully');
     }
 
 
