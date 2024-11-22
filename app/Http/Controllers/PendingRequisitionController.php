@@ -517,6 +517,7 @@ class PendingRequisitionController extends Controller
         $validatedData = $request->validate([
             'bonds_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
             'uw_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
+            'finalapproval_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
         ]);
 
         $bondStatus = $request->bonds_status_modal;
@@ -531,6 +532,7 @@ class PendingRequisitionController extends Controller
         // Update the user's basic information
         $pendingrequisition->bonds_status = $validatedData['bonds_status_modal'];
         $pendingrequisition->uw_status = $validatedData['uw_status_modal'];
+        $pendingrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
         $pendingrequisition->save(); // Save the changes
 
         

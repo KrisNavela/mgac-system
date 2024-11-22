@@ -145,8 +145,8 @@
                             <button class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">
                                 Save
                             </button>
-                        
                         </div>
+                        
                         @endif
                     </form>
 
