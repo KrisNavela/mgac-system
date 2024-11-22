@@ -516,7 +516,7 @@ class CollectionMngRequisitionController extends Controller
                 ]);
             }
         }
-        
+        return redirect()->back()->with('success', 'Action was successful!');
         //return redirect()->route('collmngrequisitions.index')->with('success', 'Requisition created successfully');
     }
 
