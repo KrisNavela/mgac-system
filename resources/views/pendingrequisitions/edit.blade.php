@@ -149,6 +149,7 @@
                             <select name="finalapproval_status_modal" id="">
                                 <option value="no" {{ 'no' === $requisition->finalapproval_status ? 'selected' : '' }}>No</option>
                                 <option value="for approval" {{ 'for approval' === $requisition->finalapproval_status ? 'selected' : '' }}>For Approval</option>
+                                <option value="for approval" {{ 'return' === $requisition->finalapproval_status ? 'selected' : '' }}>Return</option>
                             </select>
                             <x-input-error :messages="$errors->get('finalapproval_status_modal')" class="mt-2" />
                         </div>
