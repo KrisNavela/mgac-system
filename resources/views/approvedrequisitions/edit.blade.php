@@ -200,6 +200,12 @@
                             <x-input-error :messages="$errors->get('type_request')" class="mt-2" />
                         </div>
 
+                        <div class="mt-4">
+                            <x-input-label for="coc_request_status" :value="__('COC Request')" />
+                            <x-text-input id="coc_request_status" class="block mt-1 w-full" style="width: 300px;" type="text" name="coc_request_status" value="{{ $requisition->coc_request_status }}" autofocus autocomplete="coc_request_status" />
+                            <x-input-error :messages="$errors->get('coc_request_status')" class="mt-2" />
+                        </div>
+
                         <table class="min-w-full divide-y divide-gray-200 mt-2">
                             <thead class="bg-gray-50">
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Item Name</th>
