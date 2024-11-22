@@ -503,13 +503,13 @@ class CollectionMngRequisitionController extends Controller
         foreach($request->items as $item) {
 
             if ($item['quantity_unit'] === 'Pad'){
-                $collasstrequisition->items()->attach($item['item_id'], [
+                $collmngrequisition->items()->attach($item['item_id'], [
                     'quantity' => $item['quantity'], 
                     'quantity_unit' => $item['quantity_unit'],
                     'in_pcs' => $item['quantity'] * 50
                 ]);
             } else {
-                $collasstrequisition->items()->attach($item['item_id'], [
+                $collmngrequisition->items()->attach($item['item_id'], [
                     'quantity' => $item['quantity'], 
                     'quantity_unit' => $item['quantity_unit'],
                     'in_pcs' => $item['quantity']
