@@ -28,7 +28,7 @@ return new class extends Migration
             $table->timestamp('collasst_date')->nullable();
             $table->string('collmanager_status')->default('No');
             $table->timestamp('collmanager_date')->nullable();
-            $table->string('finalapproval_status')->default('For Approval');
+            $table->timestamp('collmanager_date')->nullable();
             $table->timestamp('finalapproval_date')->nullable();
             $table->string('coc_request_status')->nullable();
             $table->string('treasuryapproval_status')->nullable();
