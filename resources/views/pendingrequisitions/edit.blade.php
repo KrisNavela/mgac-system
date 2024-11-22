@@ -129,7 +129,8 @@
                             </select>
                             <x-input-error :messages="$errors->get('uw_status_modal')" class="mt-2" />
                         </div>
-
+                        @endif
+                        
                         <div class="mt-4">
                             <x-input-label for="finalapproval_status_modal" :value="__('For final approval?')" />
                             <select name="finalapproval_status_modal" id="">
@@ -147,7 +148,7 @@
                             </button>
                         </div>
                         
-                        @endif
+                        
                     </form>
 
                 </div>

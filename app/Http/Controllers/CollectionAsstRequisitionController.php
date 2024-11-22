@@ -520,6 +520,7 @@ class CollectionAsstRequisitionController extends Controller
         $validatedData = $request->validate([
             'bonds_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
             'uw_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
+            'collasst_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
         ]);
 
         $bondStatus = $request->bonds_status_modal;
@@ -531,6 +532,7 @@ class CollectionAsstRequisitionController extends Controller
         // Update the user's basic information
         $collasstrequisition->bonds_status = $validatedData['bonds_status_modal'];
         $collasstrequisition->uw_status = $validatedData['uw_status_modal'];
+        $collasstrequisition->collasst_status = $validatedData['collasst_status_modal'];
         $collasstrequisition->save(); // Save the changes
 
         RequisitionRemarks::create([

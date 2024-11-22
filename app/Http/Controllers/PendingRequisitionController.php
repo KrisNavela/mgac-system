@@ -551,6 +551,9 @@ class PendingRequisitionController extends Controller
             Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalUwMail($pendingrequisition));
         }
 
+
+        
+
         return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition created successfully');
     }
 
