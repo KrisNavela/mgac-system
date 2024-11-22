@@ -502,14 +502,17 @@ class COCApprovalController extends Controller
             'cocapproval_status' => 'required|string|max:255', // Password is optional, but must be confirmed
         ]);
         
+        
+
         // Find the user record in the database
         $cocapprovalrequisition = Requisition::findOrFail($id);
 
             // Update the user's basic information
             $cocapprovalrequisition->cocapproval_status = $validatedData['cocapproval_status'];
+            $cocapprovalrequisition->status = $validatedData['cocapproval_status'];
             $cocapprovalrequisition->cocapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
             $cocapprovalrequisition->save(); // Save the changes
-        
+
         RequisitionRemarks::create([
             'requisition_id' => $cocapprovalrequisition->id,
             'content' => $request->content,
