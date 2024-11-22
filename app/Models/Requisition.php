@@ -70,7 +70,7 @@ class Requisition extends Model
             $nextNumber = $lastRequisition ? intval(substr($lastRequisition->req_no, 3)) + 1 : 1;
             
             // Set the requisition number with prefix "REQ"
-            $model->req_no = 'REQ' . str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
+            $model->req_no = 'REQ' . str_pad($nextNumber, 10, '0', STR_PAD_LEFT);
         });
     }
 
