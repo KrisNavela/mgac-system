@@ -140,7 +140,7 @@
                     </form>
 
                     <div class="py-2">
-                        <a href="{{ route('pendingrequisitions.show', $requisition->id) }}" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Forward to Final Approval</a>
+                        <a href="{{ route('pendingrequisitions.update.forfinalapproval', $requisition->id) }}" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Forward to Final Approval</a>
                     </div> 
 
                     

@@ -552,4 +552,59 @@ class PendingRequisitionController extends Controller
         return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition created successfully');
     }
 
+    public function updateforfinalapproval(UpdateRequisitionRequest $request, Requisition $pendingrequisition, RequisitionRemarks $remarks, $id)
+    {
+        // Validate the incoming request data
+        $validatedData = $request->validate([
+            //'bonds_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
+            //'uw_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
+        ]);
+
+        //$bondStatus = $request->bonds_status_modal;
+        //$uwStatus = $request->uw_status_modal;
+
+        $typeOffice = $pendingrequisition->$user->branch->type_office;
+
+        // Find the user record in the database
+        $pendingrequisition = Requisition::findOrFail($id);
+
+        
+        // Update the user's basic information
+        //$pendingrequisition->bonds_status = $validatedData['bonds_status_modal'];
+        $pendingrequisition->finalapproval_status = "for approval";
+        $pendingrequisition->save(); // Save the changes
+
+        
+
+        RequisitionRemarks::create([
+            'requisition_id' => $pendingrequisition->id,
+            'content' => $request->content,
+            'user_id' => Auth::id(),
+        ]);
+
+        //if ($bondStatus === 'for approval'){
+        //    Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalBondsMail($pendingrequisition));
+        //} 
+        
+        //if ($uwStatus === 'for approval'){
+        //    Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalUwMail($pendingrequisition));
+        //}
+
+        if ($typeOffice === 'Branch'){
+            Mail::to('knavela@milestoneguaranty.com')->send(new RequisitionCreatedMail($requisition));
+        } else {
+            Mail::to('cj.soriano@milestoneguaranty.com')->send(new RequisitionCreatedMail($requisition));
+        }
+
+        //For Final Approval Email Notification
+        if ($typeOffice === 'Branch'){
+            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalRequisitionBranchMail($requisition));
+            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($requisition));
+        } else {
+            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($requisition));
+        }
+
+        return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition created successfully');
+    }
+
 }
