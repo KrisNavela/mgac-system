@@ -107,30 +107,30 @@
                             <x-input-error :messages="$errors->get('content')" class="mt-2" />
                         </div>
                         
-                        @if ($requisition->type_request != 'Replenishment')
-                        <div class="mt-4">
-                            <x-input-label for="bonds_status_modal" :value="__('For bonds approval?')" />
-                            <select name="bonds_status_modal" id="">
-                                <option value="no" {{ 'no' === $requisition->bonds_status ? 'selected' : '' }}>No</option>
-                                <option value="for approval" {{ 'for approval' === $requisition->bonds_status ? 'selected' : '' }}>For Approval</option>
-                                <option value="approved" {{ 'approved' === $requisition->bonds_status ? 'selected' : '' }}>Approved</option>
-                                <option value="return" {{ 'return' === $requisition->bonds_status ? 'selected' : '' }}>Return</option>
-                            </select>
-                            <x-input-error :messages="$errors->get('bonds_status_modal')" class="mt-2" />
-                        </div>
-
-                        <div class="mt-4">
-                            <x-input-label for="uw_status_modal" :value="__('For UW approval?')" />
-                            <select name="uw_status_modal" id="">
-                                <option value="no" {{ 'no' === $requisition->uw_status ? 'selected' : '' }}>No</option>
-                                <option value="for approval" {{ 'for approval' === $requisition->uw_status ? 'selected' : '' }}>For Approval</option>
-                                <option value="approved" {{ 'approved' === $requisition->uw_status ? 'selected' : '' }}>Approved</option>
-                                <option value="return" {{ 'return' === $requisition->uw_status ? 'selected' : '' }}>Return</option>
-                            </select>
-                            <x-input-error :messages="$errors->get('uw_status_modal')" class="mt-2" />
-                        </div>
-                        @endif
                         
+                            <div class="mt-4">
+                                <x-input-label for="bonds_status_modal" :value="__('For bonds approval?')" />
+                                <select name="bonds_status_modal" id="">
+                                    <option value="no" {{ 'no' === $requisition->bonds_status ? 'selected' : '' }}>No</option>
+                                    <option value="for approval" {{ 'for approval' === $requisition->bonds_status ? 'selected' : '' }}>For Approval</option>
+                                    <option value="approved" {{ 'approved' === $requisition->bonds_status ? 'selected' : '' }}>Approved</option>
+                                    <option value="return" {{ 'return' === $requisition->bonds_status ? 'selected' : '' }}>Return</option>
+                                </select>
+                                <x-input-error :messages="$errors->get('bonds_status_modal')" class="mt-2" />
+                            </div>
+
+                            <div class="mt-4">
+                                <x-input-label for="uw_status_modal" :value="__('For UW approval?')" />
+                                <select name="uw_status_modal" id="">
+                                    <option value="no" {{ 'no' === $requisition->uw_status ? 'selected' : '' }}>No</option>
+                                    <option value="for approval" {{ 'for approval' === $requisition->uw_status ? 'selected' : '' }}>For Approval</option>
+                                    <option value="approved" {{ 'approved' === $requisition->uw_status ? 'selected' : '' }}>Approved</option>
+                                    <option value="return" {{ 'return' === $requisition->uw_status ? 'selected' : '' }}>Return</option>
+                                </select>
+                                <x-input-error :messages="$errors->get('uw_status_modal')" class="mt-2" />
+                            </div>
+                        
+
                         <div class="mt-4">
                             <x-input-label for="finalapproval_status_modal" :value="__('For final approval?')" />
                             <select name="finalapproval_status_modal" id="">
