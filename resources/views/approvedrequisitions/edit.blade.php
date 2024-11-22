@@ -185,9 +185,9 @@
                         </div>
 
                         <div class="mt-4">
-                            <x-input-label for="user_id" :value="__('User ID')" />
-                            <x-text-input id="user_id" class="block mt-1 w-full" type="text" name="user_id" :value="old('user_id', $requisition->user_id)" autofocus autocomplete="user_id" />
-                            <x-input-error :messages="$errors->get('user_id')" class="mt-2" />
+                            <x-input-label for="full_name" :value="__('Request By')" />
+                            <x-text-input id="full_name" class="block mt-1 w-full" style="width: 300px;" type="text" name="full_name" value="{{ $requisition->user->first_name }} {{ $requisition->user->last_name }}" autofocus autocomplete="full_name" />
+                            <x-input-error :messages="$errors->get('full_name')" class="mt-2" />
                         </div>
 
                         <div class="mt-4">
