@@ -87,7 +87,7 @@ class TreasuryApprovalController extends Controller
             ->count();
 
             $requisitions = Requisition::withCount('items')
-            ->where('finalapproval_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->where('treasuryapproval_status', '=', 'for approval')
             ->orderBy('id', 'desc')
             ->paginate(5)
@@ -207,7 +207,7 @@ class TreasuryApprovalController extends Controller
                 $query->whereHas('branch', function ($query1) {
                     $query1->where('type_office', 'Branch');}
             );})
-            ->where('finalapproval_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->where('treasuryapproval_status', '=', 'for approval')
             ->orderBy('id', 'desc')
             ->paginate(10)
@@ -329,7 +329,7 @@ class TreasuryApprovalController extends Controller
                 $query->whereHas('branch', function ($query1) {
                     $query1->where('type_office', 'Agency');}
             );})
-            ->where('finalapproval_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->where('treasuryapproval_status', '=', 'for approval')
             ->orderBy('id', 'desc')
             ->paginate(10)
@@ -426,7 +426,7 @@ class TreasuryApprovalController extends Controller
             ->count();
 
         $requisitions = Requisition::withCount('items')
-            ->where('finalapproval_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
             ->where('treasuryapproval_status', '=', 'for approval')
             ->where('user_id', $userId)
             ->orderBy('id', 'desc')
