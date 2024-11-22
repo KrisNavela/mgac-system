@@ -32,7 +32,7 @@ class DashboardController extends Controller
 
             $pendingrequisitionCount = Requisition::withCount('items')
             ->where('status', '=', 'pending')
-            ->where('finalapproval_status', '=', NULL)
+            ->where('finalapproval_status', '=', 'no')
             ->orWhere('finalapproval_status', '=', 'return')
             ->count();
 
@@ -121,7 +121,7 @@ class DashboardController extends Controller
                     $query1->where('type_office', 'Branch');}
             );})
             ->where('status', '=', 'pending')
-            ->where('finalapproval_status', '=', NULL)
+            ->where('finalapproval_status', '=', 'no')
             ->orWhere('finalapproval_status', '=', 'return')
             ->count();
 
@@ -242,7 +242,7 @@ class DashboardController extends Controller
                     $query1->where('type_office', 'Agency');}
             );})
             ->where('status', '=', 'pending')
-            ->where('finalapproval_status', '=', NULL)
+            ->where('finalapproval_status', '=', 'no')
             ->orWhere('finalapproval_status', '=', 'return')
             ->count();
 
@@ -358,7 +358,7 @@ class DashboardController extends Controller
 
         $pendingrequisitionCount = Requisition::withCount('items')
             ->where('status', '=', 'pending')
-            ->where('finalapproval_status', '=', NULL)
+            ->where('finalapproval_status', '=', 'no')
             ->orWhere('finalapproval_status', '=', 'return')
             ->where('user_id', $userId)
             ->count();

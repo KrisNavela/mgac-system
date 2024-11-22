@@ -35,7 +35,7 @@ class PendingRequisitionController extends Controller
 
             $pendingrequisitionCount = Requisition::withCount('items')
             ->where('status', '=', 'pending')
-            ->where('finalapproval_status', '=', NULL)
+            ->where('finalapproval_status', '=', 'no')
             ->orWhere('finalapproval_status', '=', 'return')
             ->count();
 
@@ -87,7 +87,7 @@ class PendingRequisitionController extends Controller
 
             $requisitions = Requisition::withCount('items')
             ->where('status', '=', 'pending')
-            ->where('finalapproval_status', '=', NULL)
+            ->where('finalapproval_status', '=', 'no')
             ->orWhere('finalapproval_status', '=', 'return')
             ->orderBy('id', 'desc')
             ->paginate(10)
@@ -246,7 +246,7 @@ class PendingRequisitionController extends Controller
                     $query1->where('type_office', 'Agency');}
             );})
             ->where('status', '=', 'pending')
-            ->where('finalapproval_status', '=', NULL)
+            ->where('finalapproval_status', '=', 'no')
             ->orWhere('finalapproval_status', '=', 'return')
             ->count();
 
@@ -360,7 +360,7 @@ class PendingRequisitionController extends Controller
 
         $pendingrequisitionCount = Requisition::withCount('items')
             ->where('status', '=', 'pending')
-            ->where('finalapproval_status', '=', NULL)
+            ->where('finalapproval_status', '=', 'no')
             ->orWhere('finalapproval_status', '=', 'return')
             ->where('user_id', $userId)
             ->count();
