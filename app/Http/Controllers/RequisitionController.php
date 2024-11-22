@@ -480,7 +480,7 @@ class RequisitionController extends Controller
         $type_request = $request->type_request;
         $coc_request_status = $request->coc_request_status;
         
-        if ($coc_request_status === 'Yes'){ 
+        if ($coc_request_status === 'yes'){ 
             $cocapproval_status ='for approval';
             $treasuryapproval_status ='for approval';
         } else {
