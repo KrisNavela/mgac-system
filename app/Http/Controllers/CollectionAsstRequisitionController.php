@@ -533,7 +533,7 @@ class CollectionAsstRequisitionController extends Controller
             }
         }
         
-        return redirect()->route('collasstrequisitions.index')->with('success', 'Requisition created successfully');
+        //return redirect()->route('collasstrequisitions.index')->with('success', 'Requisition created successfully');
     }
 
     // Method to update additional user information (password, profile picture)

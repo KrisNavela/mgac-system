@@ -488,23 +488,36 @@ class CollectionMngRequisitionController extends Controller
     public function update(UpdateRequisitionRequest $request, Requisition $collmngrequisition)
     {
         $collmngrequisition->update([
-            'branch_code'=> $request->branch_code,
-            'req_no' => $request->req_no,
-            'req_date' => $request->req_date,
-            'status' => $request->status,
-            'bonds_status' => $request->bonds_status,
-            'uw_status' => $request->uw_status,
-            'collasst_status' => $request->collasst_status,
-            'collmanager_status' => $request->collmanager_status,
+            //'branch_code'=> $request->branch_code,
+            //'req_no' => $request->req_no,
+            //'req_date' => $request->req_date,
+            //'status' => $request->status,
+            //'bonds_status' => $request->bonds_status,
+            //'uw_status' => $request->uw_status,
+            //'collasst_status' => $request->collasst_status,
+            //'collmanager_status' => $request->collmanager_status,
         ]);
         
         $collmngrequisition->items()->detach();
 
         foreach($request->items as $item) {
-            $collmngrequisition->items()->attach($item['item_id'], ['quantity' => $item['quantity']]);
+
+            if ($item['quantity_unit'] === 'Pad'){
+                $collasstrequisition->items()->attach($item['item_id'], [
+                    'quantity' => $item['quantity'], 
+                    'quantity_unit' => $item['quantity_unit'],
+                    'in_pcs' => $item['quantity'] * 50
+                ]);
+            } else {
+                $collasstrequisition->items()->attach($item['item_id'], [
+                    'quantity' => $item['quantity'], 
+                    'quantity_unit' => $item['quantity_unit'],
+                    'in_pcs' => $item['quantity']
+                ]);
+            }
         }
         
-        return redirect()->route('collmngrequisitions.index')->with('success', 'Requisition created successfully');
+        //return redirect()->route('collmngrequisitions.index')->with('success', 'Requisition created successfully');
     }
 
     // Method to update additional user information (password, profile picture)
