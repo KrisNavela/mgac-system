@@ -32,7 +32,11 @@ class ForUWApprovalRequisitionController extends Controller
             ->orderBy('id', 'desc')
             ->count();
 
-            $pendingrequisitionCount = Requisition::where('status', '=', 'pending')->count();
+            $pendingrequisitionCount = Requisition::withCount('items')
+            ->where('status', '=', 'pending')
+            ->where('finalapproval_status', '=', NULL)
+            ->orWhere('finalapproval_status', '=', 'return')
+            ->count();
 
             $uwapprovalCount = Requisition::withCount('items')
             ->where('status', '=', 'pending')
@@ -118,6 +122,8 @@ class ForUWApprovalRequisitionController extends Controller
                     $query1->where('type_office', 'Branch');}
             );})
             ->where('status', '=', 'pending')
+            ->where('finalapproval_status', '=', NULL)
+            ->orWhere('finalapproval_status', '=', 'return')
             ->count();
 
             $uwapprovalCount = Requisition::whereHas('user', function ($query) {
@@ -234,6 +240,8 @@ class ForUWApprovalRequisitionController extends Controller
                     $query1->where('type_office', 'Agency');}
             );})
             ->where('status', '=', 'pending')
+            ->where('finalapproval_status', '=', NULL)
+            ->orWhere('finalapproval_status', '=', 'return')
             ->count();
 
             $uwapprovalCount = Requisition::whereHas('user', function ($query) {
@@ -345,6 +353,8 @@ class ForUWApprovalRequisitionController extends Controller
 
         $pendingrequisitionCount = Requisition::withCount('items')
             ->where('status', '=', 'pending')
+            ->where('finalapproval_status', '=', NULL)
+            ->orWhere('finalapproval_status', '=', 'return')
             ->where('user_id', $userId)
             ->count();
 
