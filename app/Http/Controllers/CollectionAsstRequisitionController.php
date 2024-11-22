@@ -498,14 +498,14 @@ class CollectionAsstRequisitionController extends Controller
     public function update(UpdateRequisitionRequest $request, Requisition $collasstrequisition)
     {
         $collasstrequisition->update([
-            'branch_code'=> $request->branch_code,
-            'req_no' => $request->req_no,
+            //'branch_code'=> $request->branch_code,
+            //'req_no' => $request->req_no,
             //'req_date' => $request->req_date,
-            'status' => $request->status,
-            'bonds_status' => $request->bonds_status,
-            'uw_status' => $request->uw_status,
-            'collasst_status' => $request->collasst_status,
-            'collasst_date' => Carbon::now('Asia/Manila')->format('Y-m-d H:i:s'),
+            //'status' => $request->status,
+            //'bonds_status' => $request->bonds_status,
+            //'uw_status' => $request->uw_status,
+            //'collasst_status' => $request->collasst_status,
+            //'collasst_date' => Carbon::now('Asia/Manila')->format('Y-m-d H:i:s'),
         ]);
 
         $collasstStatus = $request->collasst_status;
@@ -517,7 +517,20 @@ class CollectionAsstRequisitionController extends Controller
         $collasstrequisition->items()->detach();
 
         foreach($request->items as $item) {
-            $collasstrequisition->items()->attach($item['item_id'], ['quantity' => $item['quantity']]);
+
+            if ($item['quantity_unit'] === 'Pad'){
+                $pendingrequisition->items()->attach($item['item_id'], [
+                    'quantity' => $item['quantity'], 
+                    'quantity_unit' => $item['quantity_unit'],
+                    'in_pcs' => $item['quantity'] * 50
+                ]);
+            } else {
+                $pendingrequisition->items()->attach($item['item_id'], [
+                    'quantity' => $item['quantity'], 
+                    'quantity_unit' => $item['quantity_unit'],
+                    'in_pcs' => $item['quantity']
+                ]);
+            }
         }
         
         return redirect()->route('collasstrequisitions.index')->with('success', 'Requisition created successfully');
