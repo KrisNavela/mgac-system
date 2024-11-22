@@ -510,22 +510,22 @@ class CollectionAsstRequisitionController extends Controller
 
         $collasstStatus = $request->collasst_status;
 
-        if ($collasstStatus === 'approved'){
-            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCollMngMail($collasstrequisition));
-        }
+        //if ($collasstStatus === 'approved'){
+        //    Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCollMngMail($collasstrequisition));
+        //}
         
         $collasstrequisition->items()->detach();
 
         foreach($request->items as $item) {
 
             if ($item['quantity_unit'] === 'Pad'){
-                $pendingrequisition->items()->attach($item['item_id'], [
+                $collasstrequisition->items()->attach($item['item_id'], [
                     'quantity' => $item['quantity'], 
                     'quantity_unit' => $item['quantity_unit'],
                     'in_pcs' => $item['quantity'] * 50
                 ]);
             } else {
-                $pendingrequisition->items()->attach($item['item_id'], [
+                $collasstrequisition->items()->attach($item['item_id'], [
                     'quantity' => $item['quantity'], 
                     'quantity_unit' => $item['quantity_unit'],
                     'in_pcs' => $item['quantity']
