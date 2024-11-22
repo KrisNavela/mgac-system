@@ -33,7 +33,10 @@ class PendingRequisitionController extends Controller
             ->orderBy('id', 'desc')
             ->count();
 
-            $pendingrequisitionCount = Requisition::where('status', '=', 'pending')->count();
+            $pendingrequisitionCount = Requisition::withCount('items')
+            ->where('status', '=', 'pending')
+            ->where('finalapproval_status', '<>', 'for approval')
+            ->count();
 
             $uwapprovalCount = Requisition::withCount('items')
             ->where('status', '=', 'pending')
@@ -83,6 +86,7 @@ class PendingRequisitionController extends Controller
 
             $requisitions = Requisition::withCount('items')
             ->where('status', '=', 'pending')
+            ->where('finalapproval_status', '<>', 'for approval')
             ->orderBy('id', 'desc')
             ->paginate(10)
             ->withQueryString();
