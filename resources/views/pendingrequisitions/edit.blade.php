@@ -129,6 +129,7 @@
                                 <select name="bonds_status_modal" id="">
                                     <option value="no" {{ 'no' === $requisition->bonds_status ? 'selected' : '' }}>No</option>
                                     <option value="for approval" {{ 'for approval' === $requisition->bonds_status ? 'selected' : '' }}>For Approval</option>
+                                    <option value="approved" {{ 'approved' === $requisition->bonds_status ? 'selected' : '' }}>For Approval</option>
                                 </select>
                                 <x-input-error :messages="$errors->get('bonds_status_modal')" class="mt-2" />
                             </div>
@@ -138,6 +139,7 @@
                                 <select name="uw_status_modal" id="">
                                     <option value="no" {{ 'no' === $requisition->uw_status ? 'selected' : '' }}>No</option>
                                     <option value="for approval" {{ 'for approval' === $requisition->uw_status ? 'selected' : '' }}>For Approval</option>
+                                    <option value="approved" {{ 'approved' === $requisition->uw_status ? 'selected' : '' }}>For Approval</option>
                                 </select>
                                 <x-input-error :messages="$errors->get('uw_status_modal')" class="mt-2" />
                             </div>
