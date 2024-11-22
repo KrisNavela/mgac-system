@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900"  x-data="">
 
-        @if ($requisition->coc_request_status == 'Yes')
+        @if ($requisition->coc_request_status == 'yes')
             @if ($requisition->type_request == 'Replenishment')
                 <!-- All Status -->
                 <div class="flex justify-center space-x-4">
@@ -231,7 +231,7 @@
                     </div>
                 </div>
             @endif
-        @elseif ($requisition->coc_request_status == 'No')
+        @elseif ($requisition->coc_request_status == 'no')
             @if ($requisition->type_request == 'Replenishment')
                 <!-- All Status -->
                 <div class="flex justify-center space-x-4">
