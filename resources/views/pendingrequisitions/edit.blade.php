@@ -107,7 +107,7 @@
                             <x-input-error :messages="$errors->get('content')" class="mt-2" />
                         </div>
                         
-                        @if ($requisition->type_request != 'Replenishment')
+                        @if ($requisition->type_request == 'Replenishment')
                             <div class="mt-4">
                                 <x-input-label for="bonds_status_modal" :value="__('For bonds approval?')" />
                                 <select name="bonds_status_modal" id="">
