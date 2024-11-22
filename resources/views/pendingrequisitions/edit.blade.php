@@ -130,6 +130,17 @@
                             <x-input-error :messages="$errors->get('uw_status_modal')" class="mt-2" />
                         </div>
 
+                        <div class="mt-4">
+                            <x-input-label for="finalapproval_status_modal" :value="__('For final approval?')" />
+                            <select name="finalapproval_status_modal" id="">
+                                <option value="no" {{ 'no' === $requisition->finalapproval_status ? 'selected' : '' }}>No</option>
+                                <option value="for approval" {{ 'for approval' === $requisition->finalapproval_status ? 'selected' : '' }}>For Approval</option>
+                                <option value="approved" {{ 'approved' === $requisition->finalapproval_status ? 'selected' : '' }}>Approved</option>
+                                <option value="return" {{ 'return' === $requisition->finalapproval_status ? 'selected' : '' }}>Return</option>
+                            </select>
+                            <x-input-error :messages="$errors->get('finalapproval_status_modal')" class="mt-2" />
+                        </div>
+
                         <div class="py-2">
                             <button class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">
                                 Save
@@ -139,18 +150,6 @@
                         @endif
                     </form>
 
-                    <div class="py-2">
-                        <form method="POST" action="{{ route('pendingrequisitions.update.forfinalapproval', $requisition->id) }}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <button class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">
-                                Forward to Final Approval
-                            </button>
-
-                        </form>
-                    </div> 
-
-                    
                 </div>
                 </div>
                 </div>
@@ -317,8 +316,6 @@
                             <button class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">
                                 Update Requisition
                             </button>
-
-
                         </div>
                     </form>
                 </div>

@@ -552,35 +552,4 @@ class PendingRequisitionController extends Controller
         return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition created successfully');
     }
 
-    public function updateforfinalapproval(UpdateRequisitionRequest $request, Requisition $pendingrequisition, RequisitionRemarks $remarks, $id)
-    {
-        // Validate the incoming request data
-        $validatedData = $request->validate([
-            //'bonds_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
-            //'uw_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
-        ]);
-
-        //$bondStatus = $request->bonds_status_modal;
-        //$uwStatus = $request->uw_status_modal;
-
-        //$typeOffice = $pendingrequisition->user->branch->type_office;
-
-        // Find the user record in the database
-        $pendingrequisition = Requisition::findOrFail($id);
-
-        
-        // Update the user's basic information
-        //$pendingrequisition->bonds_status = $validatedData['bonds_status_modal'];
-        $pendingrequisition->finalapproval_status = "for approval";
-        $pendingrequisition->save(); // Save the changes
-
-        RequisitionRemarks::create([
-            'requisition_id' => $pendingrequisition->id,
-            'content' => $request->content,
-            'user_id' => Auth::id(),
-        ]);
-
-        return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition created successfully');
-    }
-
 }
