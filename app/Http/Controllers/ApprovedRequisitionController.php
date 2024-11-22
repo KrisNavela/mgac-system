@@ -507,7 +507,11 @@ class ApprovedRequisitionController extends Controller
             }
         }
         
-        return redirect()->route('approvedrequisitions.index')->with('success', 'Requisition created successfully');
+        session()->flash('success', 'Requisition Sucessfully Created!');
+        
+        return redirect()->back()->with('success', 'Action was successful!');
+
+        //return redirect()->route('approvedrequisitions.index')->with('success', 'Requisition created successfully');
     }
 
     // Method to update additional user information (password, profile picture)

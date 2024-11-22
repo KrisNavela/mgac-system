@@ -158,6 +158,15 @@
                 modal.classList.toggle('hidden');
             }
         </script>
+
+            <!-- Success Notification -->
+            @if (session('success'))
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                    <strong class="font-bold">Success!</strong>
+                    <span class="block sm:inline">{{ session('success') }}</span>
+                </div>
+            @endif
+
                 <form action="{{ route('collasstrequisitions.update', $requisition->id) }}" method="POST">
                         @csrf
                         @method('PUT')
@@ -278,6 +287,17 @@
                         </div>
                     </form>
 
+                    <!-- Optional Auto-Close JavaScript -->
+                    <script>
+                        setTimeout(function() {
+                            let alert = document.querySelector('[role="alert"]');
+                            if (alert) {
+                                alert.style.transition = "opacity 0.5s ease";
+                                alert.style.opacity = "0";
+                                setTimeout(() => alert.remove(), 500);
+                            }
+                        }, 3000); // Hide after 3 seconds
+                    </script>
 
                     </form>
                 </div>
