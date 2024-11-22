@@ -63,7 +63,7 @@
 
                     @if ($requisition->finalapproval_status == 'No' || $requisition->finalapproval_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
-                    @elseif ($requisition->finalapproval_status == 'For Approval')
+                    @elseif ($requisition->finalapproval_status == 'For Approval' || $requisition->finalapproval_status == 'for approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
                     @elseif ($requisition->finalapproval_status == 'approved')
                         <div class="items-center p-4 rounded-lg bg-green-500 text-white">
@@ -187,7 +187,7 @@
 
                     @if ($requisition->finalapproval_status == 'No' || $requisition->finalapproval_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
-                    @elseif ($requisition->finalapproval_status == 'For Approval')
+                    @elseif ($requisition->finalapproval_status == 'For Approval' || $requisition->finalapproval_status == 'for approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
                     @elseif ($requisition->finalapproval_status == 'approved')
                         <div class="items-center p-4 rounded-lg bg-green-500 text-white">
@@ -284,7 +284,7 @@
 
                     @if ($requisition->finalapproval_status == 'No' || $requisition->finalapproval_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
-                    @elseif ($requisition->finalapproval_status == 'For Approval')
+                    @elseif ($requisition->finalapproval_status == 'For Approval' || $requisition->finalapproval_status == 'for approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
                     @elseif ($requisition->finalapproval_status == 'approved')
                         <div class="items-center p-4 rounded-lg bg-green-500 text-white">
@@ -378,7 +378,7 @@
 
                     @if ($requisition->finalapproval_status == 'No' || $requisition->finalapproval_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
-                    @elseif ($requisition->finalapproval_status == 'For Approval')
+                    @elseif ($requisition->finalapproval_status == 'For Approval' || $requisition->finalapproval_status == 'for approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
                     @elseif ($requisition->finalapproval_status == 'approved')
                         <div class="items-center p-4 rounded-lg bg-green-500 text-white">
