@@ -195,8 +195,8 @@
                         <div class="mt-4">
                             <x-input-label for="coc_request_status" :value="__('COC Request')" />
                             <select name="coc_request_status" id="" style="width: 100px;">
-                                <option value="No" {{ 'No' === $requisition->coc_request_status ? 'selected' : '' }}>No</option>
-                                <option value="Yes" {{ 'Yes' === $requisition->coc_request_status ? 'selected' : '' }}>Yes</option>
+                                <option value="no" {{ 'no' === $requisition->coc_request_status ? 'selected' : '' }}>No</option>
+                                <option value="yes" {{ 'yes' === $requisition->coc_request_status ? 'selected' : '' }}>Yes</option>
                             </select>
                             <x-input-error :messages="$errors->get('coc_request_status')" class="mt-2" />
                         </div>
