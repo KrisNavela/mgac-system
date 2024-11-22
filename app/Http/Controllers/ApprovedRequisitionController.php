@@ -523,22 +523,35 @@ class ApprovedRequisitionController extends Controller
             'finalapproval_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
         ]);
 
+        $coc_request_status = $request->coc_request_status;
+
         // Find the user record in the database
         $approvedrequisition = Requisition::findOrFail($id);
 
-        if ($approvedrequisition->type_request === 'Replenishment' ){
-            // Update the user's basic information
-            $approvedrequisition->status = $validatedData['status_modal'];
-            $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
-            $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
-            $approvedrequisition->save(); // Save the changes
+        if ($coc_request_status == 'no'){
+            if ($approvedrequisition->type_request === 'Replenishment' ){
+                // Update the user's basic information
+                $approvedrequisition->status = $validatedData['status_modal'];
+                $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
+                $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
+                $approvedrequisition->save(); // Save the changes
+            } else {
+                // Update the user's basic information
+                $approvedrequisition->status = $validatedData['finalapproval_status_modal'];
+                $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
+                $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
+                $approvedrequisition->save(); // Save the changes
+            }
         } else {
-            // Update the user's basic information
-            $approvedrequisition->status = $validatedData['finalapproval_status_modal'];
-            $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
-            $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
-            $approvedrequisition->save(); // Save the changes
-        }
+                // Update the user's basic information
+                $approvedrequisition->status = $validatedData['status_modal'];
+                $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
+                $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
+                $approvedrequisition->save(); // Save the changes
+        } 
+        
+
+        
         
 
         RequisitionRemarks::create([
