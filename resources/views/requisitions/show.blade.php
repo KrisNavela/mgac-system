@@ -76,7 +76,7 @@
                         <p class="uppercase text-center text-sm">{{ $requisition->finalapproval_date }}</p>
                     </div>
 
-                    @if ($requisition->collasst_status == 'No')
+                    @if ($requisition->collasst_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                     @elseif ($requisition->collasst_status == 'for approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
@@ -91,7 +91,7 @@
                         <p class="uppercase text-center text-sm">{{ $requisition->collasst_date }}</p>
                     </div>
 
-                    @if ($requisition->collmanager_status == 'No')
+                    @if ($requisition->collmanager_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                     @elseif ($requisition->collmanager_status == 'for approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
@@ -106,7 +106,7 @@
                         <p class="uppercase text-center text-sm">{{ $requisition->collmanager_date }}</p>
                     </div>
 
-                    @if ($requisition->treasuryapproval_status == 'No')
+                    @if ($requisition->treasuryapproval_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                     @elseif ($requisition->treasuryapproval_status == 'for approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
@@ -121,7 +121,7 @@
                         <p class="uppercase text-center text-sm">{{ $requisition->treasuryapproval_date }}</p>
                     </div>
 
-                    @if ($requisition->cocapproval_status == 'No')
+                    @if ($requisition->cocapproval_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                     @elseif ($requisition->cocapproval_status == 'for approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
