@@ -159,10 +159,9 @@
                             <x-input-error :messages="$errors->get('req_no')" class="mt-2" />
                         </div>
 
-                        <div class="mt-4">
-                            <x-input-label for="req_date" :value="__('Date')" />
-                            <x-text-input id="req_date" class="block mt-1 w-full" type="date" name="req_date" :value="old('req_date', $requisition->req_date)" autofocus autocomplete="req_date" />
-                            <x-input-error :messages="$errors->get('req_date')" class="mt-2" />
+                        <div class="mt-4" style="width: 300px;">
+                            <x-input-label for="req_date" :value="__('Request Date')" />
+                            <x-text-input id="req_date" class="block mt-1 w-full" type="text" name="req_date" :value="$requisition->req_date" disable/>
                         </div>
 
                         <div class="mt-4">
@@ -183,6 +182,12 @@
                         </div>
 
                         <div class="mt-4">
+                            <x-input-label for="branch_name" :value="__('Branch Name')" />
+                            <x-text-input id="branch_name" class="block mt-1 w-full" style="width: 150px" type="text" name="branch_name" :value="old('branch_name', $requisition->user->branch->branch_name)" autofocus autocomplete="branch_name" />
+                            <x-input-error :messages="$errors->get('branch_name')" class="mt-2" />
+                        </div>
+
+                        <div class="mt-4">
                             <x-input-label for="type_request" :value="__('Type of Request')" />
                             <select name="type_request" id="">
                                 <option value="Initial" {{ 'Initial' === $requisition->type_request ? 'selected' : '' }}>Initial</option>
@@ -194,10 +199,7 @@
 
                         <div class="mt-4">
                             <x-input-label for="coc_request_status" :value="__('COC Request')" />
-                            <select name="coc_request_status" id="" style="width: 100px;">
-                                <option value="no" {{ 'no' === $requisition->coc_request_status ? 'selected' : '' }}>No</option>
-                                <option value="yes" {{ 'yes' === $requisition->coc_request_status ? 'selected' : '' }}>Yes</option>
-                            </select>
+                            <x-text-input id="coc_request_status" class="block mt-1 w-full uppercase" style="width: 300px;" type="text" name="coc_request_status" value="{{ $requisition->coc_request_status }}" autofocus autocomplete="coc_request_status" />
                             <x-input-error :messages="$errors->get('coc_request_status')" class="mt-2" />
                         </div>
 
