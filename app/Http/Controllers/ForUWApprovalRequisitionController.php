@@ -490,7 +490,20 @@ class ForUWApprovalRequisitionController extends Controller
         $foruwapprovalrequisition->items()->detach();
 
         foreach($request->items as $item) {
-            $foruwapprovalrequisition->items()->attach($item['item_id'], ['quantity' => $item['quantity']]);
+
+            if ($item['quantity_unit'] === 'Pad'){
+                $foruwapprovalrequisition->items()->attach($item['item_id'], [
+                    'quantity' => $item['quantity'], 
+                    'quantity_unit' => $item['quantity_unit'],
+                    'in_pcs' => $item['quantity'] * 50
+                ]);
+            } else {
+                $foruwapprovalrequisition->items()->attach($item['item_id'], [
+                    'quantity' => $item['quantity'], 
+                    'quantity_unit' => $item['quantity_unit'],
+                    'in_pcs' => $item['quantity']
+                ]);
+            }
         }
         
         return redirect()->route('foruwapprovalrequisitions.index')->with('success', 'Requisition created successfully');

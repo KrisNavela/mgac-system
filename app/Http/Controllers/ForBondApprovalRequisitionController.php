@@ -492,7 +492,20 @@ class ForBondApprovalRequisitionController extends Controller
         $forbondapprovalrequisition->items()->detach();
 
         foreach($request->items as $item) {
-            $forbondapprovalrequisition->items()->attach($item['item_id'], ['quantity' => $item['quantity']]);
+
+            if ($item['quantity_unit'] === 'Pad'){
+                $forbondapprovalrequisition->items()->attach($item['item_id'], [
+                    'quantity' => $item['quantity'], 
+                    'quantity_unit' => $item['quantity_unit'],
+                    'in_pcs' => $item['quantity'] * 50
+                ]);
+            } else {
+                $forbondapprovalrequisition->items()->attach($item['item_id'], [
+                    'quantity' => $item['quantity'], 
+                    'quantity_unit' => $item['quantity_unit'],
+                    'in_pcs' => $item['quantity']
+                ]);
+            }
         }
         
         return redirect()->route('forbondapprovalrequisitions.index')->with('success', 'Requisition created successfully');

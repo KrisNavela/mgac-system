@@ -14,6 +14,7 @@
                                 this.requisitionItems.push({
                                     id: null,
                                     quantity: 1,
+                                    unit: 'Pad',
                                 });
                             },
                             removeItem(index) {
@@ -230,6 +231,13 @@
                                         </td>
                                         <td class="px-2 py-2">
                                             <input type="number" x-model="item.quantity" :name="'items['+index+'][quantity]'"> 
+                                        </td>
+                                        <td class="px-2 py-2">
+                                            <select class="" x-model="item.quantity_unit" :name="'items['+index+'][quantity_unit]'">
+                                                <option value="Pad" {{ 'pad' === $requisition->quantity_unit ? 'selected' : '' }}>Pad</option>
+                                                <option value="Pcs" {{ 'pcs' === $requisition->quantity_unit ? 'selected' : '' }}>Pcs</option>
+                                                <option value="Set" {{ 'set' === $requisition->quantity_unit ? 'selected' : '' }}>Set</option>
+                                            </select>
                                         </td>
                                         <td class="px-2 py-2">
                                             <button type="button" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md" @click="removeItem(index)">Remove</button>
