@@ -89,30 +89,16 @@ class TreasuryApprovalController extends Controller
             ->where('cocapproval_status', '=', 'for approval')
             ->count();
 
-            if ($coc_request_status === 'yes') {
-                if ($type_request === 'Replenishment') {
-                    $requisitions = Requisition::withCount('items')
-                    ->where('collmanager_status', '=', 'approved')
-                    ->where('treasuryapproval_status', '=', 'for approval')
-                    ->orderBy('id', 'desc')
-                    ->paginate(5)
-                    ->withQueryString();
-                } else {
-                    $requisitions = Requisition::withCount('items')
-                    ->where('collmanager_status', '=', 'approved')
-                    ->where('treasuryapproval_status', '=', 'for approval')
-                    ->orderBy('id', 'desc')
-                    ->paginate(5)
-                    ->withQueryString();
-                }
-            } else {
-                $requisitions = Requisition::withCount('items')
-                ->where('collmanager_status', '=', 'approved')
-                ->where('treasuryapproval_status', '=', 'for approval')
-                ->orderBy('id', 'desc')
-                ->paginate(5)
-                ->withQueryString();    
-            }
+           
+            $requisitions = Requisition::withCount('items')
+            ->where('collmanager_status', '=', 'approved')
+            ->orwhere('finalapproval_status', '=', 'approved')
+            ->where('treasuryapproval_status', '=', 'for approval')
+            ->orderBy('id', 'desc')
+            ->paginate(5)
+            ->withQueryString();    
+              
+
 
             return view('treasuryapprovalrequisitions.index', [
                 'requisitions' => $requisitions,
