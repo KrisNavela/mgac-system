@@ -269,7 +269,7 @@
 
                     @if ($requisition->uw_status == 'No' || $requisition->uw_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
-                    @elseif ($requisition->uw_status == 'for approval')
+                    @elseif ($requisition->uw_status == 'for approval' || $requisition->uw_status == 'For Approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
                     @elseif ($requisition->uw_status == 'approved')
                         <div class="items-center p-4 rounded-lg bg-green-500 text-white">
