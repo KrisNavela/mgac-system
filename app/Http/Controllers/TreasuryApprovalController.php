@@ -99,7 +99,7 @@ class TreasuryApprovalController extends Controller
                     ->withQueryString();
                 } else {
                     $requisitions = Requisition::withCount('items')
-                    ->where('finalapproval_status', '=', 'approved')
+                    ->where('collmanager_status', '=', 'approved')
                     ->where('treasuryapproval_status', '=', 'for approval')
                     ->orderBy('id', 'desc')
                     ->paginate(5)
@@ -107,7 +107,7 @@ class TreasuryApprovalController extends Controller
                 }
             } else {
                 $requisitions = Requisition::withCount('items')
-                ->where('finalapproval_status', '=', 'approved')
+                ->where('collmanager_status', '=', 'approved')
                 ->where('treasuryapproval_status', '=', 'for approval')
                 ->orderBy('id', 'desc')
                 ->paginate(5)
