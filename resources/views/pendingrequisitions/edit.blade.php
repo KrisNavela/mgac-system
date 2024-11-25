@@ -109,7 +109,7 @@
                         
                         @if ($requisition->type_request == 'Replenishment')
 
-                            @if ($requisition->coc_request_status == 'yes')
+                            @if ($requisition->coc_request_status == 'no')
 
                                 <div class="mt-4">
                                     <x-input-label for="bonds_status_modal" :value="__('For bonds approval?')" />
