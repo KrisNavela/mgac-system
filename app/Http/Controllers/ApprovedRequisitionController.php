@@ -527,6 +527,7 @@ class ApprovedRequisitionController extends Controller
 
         // Find the user record in the database
         $approvedrequisition = Requisition::findOrFail($id);
+
         $coc_request_status = $approvedrequisition->coc_request_status;
 
         if ($coc_request_status == 'no'){
@@ -538,7 +539,7 @@ class ApprovedRequisitionController extends Controller
                 $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
                 $approvedrequisition->save(); // Save the changes
 
-            } elseif ($approvedrequisition->type_request === 'Initial' ) {
+            } else {
                 // Update the user's basic information
                 $approvedrequisition->status = $validatedData['finalapproval_status_modal'];
                 $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
