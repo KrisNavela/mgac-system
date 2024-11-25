@@ -299,7 +299,7 @@
 
                     @if ($requisition->collasst_status == 'No')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
-                    @elseif ($requisition->collasst_status == 'for approval')
+                    @elseif ($requisition->collasst_status == 'for approval' || $requisition->collasst_status == 'For Approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
                     @elseif ($requisition->collasst_status == 'approved')
                         <div class="items-center p-4 rounded-lg bg-green-500 text-white">
