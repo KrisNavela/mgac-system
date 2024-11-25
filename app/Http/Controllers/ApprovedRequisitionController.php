@@ -529,25 +529,30 @@ class ApprovedRequisitionController extends Controller
         $approvedrequisition = Requisition::findOrFail($id);
 
         if ($coc_request_status == 'no'){
-            if ($approvedrequisition->type_request === 'Replenishment' ){
+
+            if ($approvedrequisition->type_request === 'Replenishment' ) {
                 // Update the user's basic information
                 $approvedrequisition->status = $validatedData['status_modal'];
                 $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
                 $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
                 $approvedrequisition->save(); // Save the changes
-            } else {
+
+            } elseif ($approvedrequisition->type_request === 'Initial' ) {
                 // Update the user's basic information
                 $approvedrequisition->status = $validatedData['finalapproval_status_modal'];
                 $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
                 $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
                 $approvedrequisition->save(); // Save the changes
+
             }
+
         } else {
                 // Update the user's basic information
-                $approvedrequisition->status = $validatedData['status_modal'];
+                //$approvedrequisition->status = $validatedData['status_modal'];
                 $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
                 $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
                 $approvedrequisition->save(); // Save the changes
+
         } 
         
 
