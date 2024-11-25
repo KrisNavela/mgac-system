@@ -297,7 +297,7 @@
                         <p class="uppercase text-center text-sm">{{ $requisition->finalapproval_date }}</p>
                     </div>
 
-                    @if ($requisition->collasst_status == 'No')
+                    @if ($requisition->collasst_status == 'No' || $requisition->collasst_status == 'no')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
                     @elseif ($requisition->collasst_status == 'for approval' || $requisition->collasst_status == 'For Approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
