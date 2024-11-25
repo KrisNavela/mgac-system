@@ -78,10 +78,19 @@ class CollectionAsstRequisitionController extends Controller
             ->where('status', '=', 'approved')
             ->count();
 
-            $treasuryapprovalCount = Requisition::withCount('items')
-            ->where('finalapproval_status', '=', 'approved')
-            ->where('treasuryapproval_status', '=', 'for approval')
-            ->count();
+            if ($coc_request_status === 'yes') {
+                if ($type_request === 'Replenishment') {
+                    $treasuryapprovalCount = Requisition::withCount('items')
+                    ->where('collmanager_status', '=', 'approved')
+                    ->where('treasuryapproval_status', '=', 'for approval')
+                    ->count();
+                } else {
+                    $treasuryapprovalCount = Requisition::withCount('items')
+                    ->where('finalapproval_status', '=', 'approved')
+                    ->where('treasuryapproval_status', '=', 'for approval')
+                    ->count();
+                }
+            }
 
             $cocapprovalCount = Requisition::withCount('items')
             ->where('finalapproval_status', '=', 'approved')
