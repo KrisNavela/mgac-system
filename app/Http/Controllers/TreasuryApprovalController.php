@@ -80,7 +80,6 @@ class TreasuryApprovalController extends Controller
             ->count();
 
             $treasuryapprovalCount = Requisition::withCount('items')
-            ->where('collmanager_status', '=', 'approved')
             ->orwhere('finalapproval_status', '=', 'approved')
             ->where('treasuryapproval_status', '=', 'for approval')
             ->count();
