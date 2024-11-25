@@ -22,6 +22,8 @@ class CollectionMngRequisitionController extends Controller
         $user = auth()->user(); // Get the authenticated user
         $userId = $user->id;
         $roleId = $user->role_id;
+
+        $coc_request_status = $requisitions->coc_request_status;
         
         //Admin, Final Approver Agencies and Branches, Coll Assistant and Collection Manager Access
         if ($roleId === 1 || $roleId === 5 || $roleId === 7 || $roleId === 8 || $roleId === 9 || $roleId === 10 || $roleId === 11 || $roleId === 12 || $roleId === 13) {
@@ -74,10 +76,18 @@ class CollectionMngRequisitionController extends Controller
             ->where('status', '=', 'approved')
             ->count();
 
-            $treasuryapprovalCount = Requisition::withCount('items')
-            ->where('finalapproval_status', '=', 'approved')
-            ->where('treasuryapproval_status', '=', 'for approval')
-            ->count();
+            if ($coc_request_status === 'yes') {
+                $treasuryapprovalCount = Requisition::withCount('items')
+                ->where('status', '=', 'approved')
+                ->where('treasuryapproval_status', '=', 'for approval')
+                ->count();
+            } else {
+                $treasuryapprovalCount = Requisition::withCount('items')
+                ->where('finalapproval_status', '=', 'approved')
+                ->where('treasuryapproval_status', '=', 'for approval')
+                ->count();
+            }
+            
 
             $cocapprovalCount = Requisition::withCount('items')
             ->where('finalapproval_status', '=', 'approved')
