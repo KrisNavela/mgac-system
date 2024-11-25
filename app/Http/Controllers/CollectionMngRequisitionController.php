@@ -89,14 +89,13 @@ class CollectionMngRequisitionController extends Controller
                     ->where('treasuryapproval_status', '=', 'for approval')
                     ->count();
                 }
-            } 
-                $treasuryapprovalCount = Requisition::withCount('items')
-                ->where('status', '=', 'approved')
-                ->where('treasuryapproval_status', '=', 'for approval')
-                ->count();
+            }
             
+            $treasuryapprovalCount = Requisition::withCount('items')
+            ->where('status', '=', 'approved')
+            ->where('treasuryapproval_status', '=', 'for approval')
+            ->count();
             
-
             $cocapprovalCount = Requisition::withCount('items')
             ->where('finalapproval_status', '=', 'approved')
             ->where('cocapproval_status', '=', 'for approval')
