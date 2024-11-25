@@ -90,7 +90,7 @@ class CollectionMngRequisitionController extends Controller
                     ->count();
                 }
             }
-            
+
             $treasuryapprovalCount = Requisition::withCount('items')
             ->where('status', '=', 'approved')
             ->where('treasuryapproval_status', '=', 'for approval')
@@ -550,10 +550,18 @@ class CollectionMngRequisitionController extends Controller
         // Find the user record in the database
         $collmngrequisition = Requisition::findOrFail($id);
 
+        
         // Update the user's basic information
         $collmngrequisition->collmanager_status = $validatedData['collmanager_status_modal'];
         $collmngrequisition->collmanager_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
-        $collmngrequisition->status = $validatedData['collmanager_status_modal'];
+        
+        $coc_request_status_new = $coc_request_status->coc_request_status;
+
+        if ($coc_request_status_new === 'no') {
+            $collmngrequisition->status = $validatedData['collmanager_status_modal'];
+        }
+        
+
         $collmngrequisition->save(); // Save the changes
 
         RequisitionRemarks::create([
