@@ -24,6 +24,9 @@ class TreasuryApprovalController extends Controller
         $user = auth()->user(); // Get the authenticated user
         $userId = $user->id;
         $roleId = $user->role_id;
+
+        $coc_request_status = $request->coc_request_status;
+        $type_request = $request->type_request;
         
         //Admin, Final Approver Agencies and Branches, Coll Assistant and Collection Manager Access
         if ($roleId === 1 || $roleId === 5 || $roleId === 7 || $roleId === 8 || $roleId === 9 || $roleId === 10 || $roleId === 11 || $roleId === 12 || $roleId === 13) {
@@ -86,12 +89,31 @@ class TreasuryApprovalController extends Controller
             ->where('cocapproval_status', '=', 'for approval')
             ->count();
 
+            if ($coc_request_status === 'yes') {
+                if ($type_request === 'Replenishment') {
+                    $requisitions = Requisition::withCount('items')
+                    ->where('collmanager_status', '=', 'approved')
+                    ->where('treasuryapproval_status', '=', 'for approval')
+                    ->orderBy('id', 'desc')
+                    ->paginate(5)
+                    ->withQueryString();
+                } else {
+                    $requisitions = Requisition::withCount('items')
+                    ->where('finalapproval_status', '=', 'approved')
+                    ->where('treasuryapproval_status', '=', 'for approval')
+                    ->orderBy('id', 'desc')
+                    ->paginate(5)
+                    ->withQueryString();
+                }
+            }
+            
             $requisitions = Requisition::withCount('items')
             ->where('finalapproval_status', '=', 'approved')
             ->where('treasuryapproval_status', '=', 'for approval')
             ->orderBy('id', 'desc')
             ->paginate(5)
             ->withQueryString();
+
 
             return view('treasuryapprovalrequisitions.index', [
                 'requisitions' => $requisitions,
@@ -202,7 +224,7 @@ class TreasuryApprovalController extends Controller
             ->where('cocapproval_status', '=', 'for approval')
             ->where('finalapproval_status', '=', 'approved')
             ->count();
-
+            
             $requisitions = Requisition::whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
                     $query1->where('type_office', 'Branch');}
