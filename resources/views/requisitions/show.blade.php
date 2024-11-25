@@ -314,7 +314,7 @@
 
                     @if ($requisition->collmanager_status == 'No')
                         <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
-                    @elseif ($requisition->collmanager_status == 'for approval' || ($requisition->collmanager_status == 'For Approval')
+                    @elseif ($requisition->collmanager_status == 'for approval' || $requisition->collmanager_status == 'For Approval')
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
                     @elseif ($requisition->collmanager_status == 'approved')
                         <div class="items-center p-4 rounded-lg bg-green-500 text-white">
