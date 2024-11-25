@@ -23,7 +23,7 @@ class CollectionMngRequisitionController extends Controller
         $userId = $user->id;
         $roleId = $user->role_id;
 
-        $coc_request_status = $requisitions->coc_request_status;
+        $coc_request_status = $requisition->coc_request_status;
         
         //Admin, Final Approver Agencies and Branches, Coll Assistant and Collection Manager Access
         if ($roleId === 1 || $roleId === 5 || $roleId === 7 || $roleId === 8 || $roleId === 9 || $roleId === 10 || $roleId === 11 || $roleId === 12 || $roleId === 13) {
