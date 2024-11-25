@@ -129,10 +129,10 @@
                     <div class="mt-4">
                         <x-input-label for="collasst_status_modal" :value="__('Coll Asst Status?')" />
                         <select name="collasst_status_modal" id="">
-                            <option value="no" {{ 'no' === $requisition->uw_status ? 'selected' : '' }}>No</option>
-                            <option value="for approval" {{ 'for approval' === $requisition->uw_status ? 'selected' : '' }}>For Approval</option>
-                            <option value="approved" {{ 'approved' === $requisition->uw_status ? 'selected' : '' }}>Approved</option>
-                            <option value="return" {{ 'return' === $requisition->uw_status ? 'selected' : '' }}>Return</option>
+                            <option value="no" {{ 'no' === $requisition->collasst_status ? 'selected' : '' }}>No</option>
+                            <option value="for approval" {{ 'for approval' === $requisition->collasst_status ? 'selected' : '' }}>For Approval</option>
+                            <option value="approved" {{ 'approved' === $requisition->collasst_status ? 'selected' : '' }}>Approved</option>
+                            <option value="return" {{ 'return' === $requisition->collasst_status ? 'selected' : '' }}>Return</option>
                         </select>
                         <x-input-error :messages="$errors->get('collasst_status_modal')" class="mt-2" />
                     </div>
