@@ -80,26 +80,20 @@ class TreasuryApprovalController extends Controller
             ->count();
 
             $treasuryapprovalCount = Requisition::withCount('items')
-            ->where('treasuryapproval_status', '=', 'for approval')
             ->where('collmanager_status', '=', 'approved')
             ->orwhere('finalapproval_status', '=', 'approved')
-            
             ->count();
 
             $cocapprovalCount = Requisition::withCount('items')
             ->where('treasuryapproval_status', '=', 'approved')
-            ->where('collmanager_status', '=', 'approved')
-            ->orwhere('finalapproval_status', '=', 'approved')
-            
+            ->where('finalapproval_status', '=', 'approved')
             ->where('cocapproval_status', '=', 'for approval')
             ->count();
 
            
             $requisitions = Requisition::withCount('items')
             ->where('treasuryapproval_status', '=', 'for approval')
-            ->where('collmanager_status', '=', 'approved')
-            ->orwhere('finalapproval_status', '=', 'approved')
-            
+            ->where('finalapproval_status', '=', 'approved')
             ->orderBy('id', 'desc')
             ->paginate(5)
             ->withQueryString();    
