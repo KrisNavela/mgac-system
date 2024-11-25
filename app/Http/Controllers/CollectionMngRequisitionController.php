@@ -83,7 +83,7 @@ class CollectionMngRequisitionController extends Controller
                 ->count();
             } else {
                 $treasuryapprovalCount = Requisition::withCount('items')
-                ->where('finalapproval_status', '=', 'approved')
+                ->where('collmanager_status', '=', 'approved')
                 ->where('treasuryapproval_status', '=', 'for approval')
                 ->count();
             }
