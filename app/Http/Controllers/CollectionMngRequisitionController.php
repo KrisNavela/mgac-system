@@ -555,7 +555,7 @@ class CollectionMngRequisitionController extends Controller
         $collmngrequisition->collmanager_status = $validatedData['collmanager_status_modal'];
         $collmngrequisition->collmanager_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
         
-        $coc_request_status_new = $coc_request_status->coc_request_status;
+        $coc_request_status_new = $collmngrequisition->coc_request_status;
 
         if ($coc_request_status_new === 'no') {
             $collmngrequisition->status = $validatedData['collmanager_status_modal'];
