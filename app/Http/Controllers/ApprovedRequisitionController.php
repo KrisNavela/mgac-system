@@ -523,10 +523,11 @@ class ApprovedRequisitionController extends Controller
             'finalapproval_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
         ]);
 
-        $coc_request_status = $request->coc_request_status;
+        
 
         // Find the user record in the database
         $approvedrequisition = Requisition::findOrFail($id);
+        $coc_request_status = $approvedrequisition->coc_request_status;
 
         if ($coc_request_status == 'no'){
 
