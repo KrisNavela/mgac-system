@@ -33,9 +33,6 @@ class TreasuryApprovalController extends Controller
             $branches = branch::all();
             $users = User::all();
 
-            $coc_request_status = $request->coc_request_status;
-            $type_request = $request->type_request;
-
             $requisitionsCount = Requisition::withCount('items')
             ->orderBy('id', 'desc')
             ->count();
