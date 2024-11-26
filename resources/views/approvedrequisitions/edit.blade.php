@@ -8,6 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900"  x-data="">
 
         @if ($requisition->coc_request_status == 'yes')
             @if ($requisition->type_request == 'Replenishment')
@@ -547,17 +548,6 @@
                         </div>
 
                         <div class="mt-4">
-                            <x-input-label for="status" :value="__('Request status')" />
-                            <select name="status" id="">
-                                <option value="pending" {{ 'pending' === $requisition->status ? 'selected' : '' }}>Pending</option>
-                                <option value="approved" {{ 'approved' === $requisition->status ? 'selected' : '' }}>Approved</option>
-                                <option value="return" {{ 'return' === $requisition->status ? 'selected' : '' }}>Return</option>
-                                <option value="cancelled" {{ 'cancelled' === $requisition->status ? 'selected' : '' }}>Cancelled</option>
-                            </select>
-                            <x-input-error :messages="$errors->get('status')" class="mt-2" />
-                        </div>
-
-                        <div class="mt-4">
                             <x-input-label for="full_name" :value="__('Request By')" />
                             <x-text-input id="full_name" class="block mt-1 w-full" style="width: 300px;" type="text" name="full_name" value="{{ $requisition->user->first_name }} {{ $requisition->user->last_name }}" autofocus autocomplete="full_name" />
                             <x-input-error :messages="$errors->get('full_name')" class="mt-2" />
@@ -569,20 +559,25 @@
                             <x-input-error :messages="$errors->get('branch_name')" class="mt-2" />
                         </div>
 
-                        <div class="mt-4">
+                        <div class="mt-4" style="width: 300px;">
                             <x-input-label for="type_request" :value="__('Type of Request')" />
-                            <select name="type_request" id="">
-                                <option value="Initial" {{ 'Initial' === $requisition->type_request ? 'selected' : '' }}>Initial</option>
-                                <option value="Additional" {{ 'Additional' === $requisition->type_request ? 'selected' : '' }}>Additional</option>
-                                <option value="Replenishment" {{ 'Replenishment' === $requisition->type_request ? 'selected' : '' }}>Replenishment</option>
-                            </select>
-                            <x-input-error :messages="$errors->get('type_request')" class="mt-2" />
+                            <x-text-input id="type_request" class="block mt-1 w-full text-gray-500 uppercase" type="text" name="type_request" :value="$requisition->type_request" disable/>
                         </div>
 
                         <div class="mt-4">
                             <x-input-label for="coc_request_status" :value="__('COC Request')" />
                             <x-text-input id="coc_request_status" class="block mt-1 w-full uppercase" style="width: 300px;" type="text" name="coc_request_status" value="{{ $requisition->coc_request_status }}" autofocus autocomplete="coc_request_status" />
                             <x-input-error :messages="$errors->get('coc_request_status')" class="mt-2" />
+                        </div>
+
+                        <div class="mt-4">
+                            <x-input-label for="replenishment_month" :value="__('Month')" />
+                            <x-text-input id="replenishment_month" class="block mt-1 w-full" style="width: 100px;" type="text" name="replenishment_month" :value="$requisition->replenishment_month" disable/>
+                        </div>
+
+                        <div class="mt-4">
+                            <x-input-label for="replenishment_year" :value="__('Year')" />
+                            <x-text-input id="replenishment_year" class="block mt-1 w-full" style="width: 100px;" type="text" name="replenishment_year" :value="$requisition->replenishment_year" disable/>
                         </div>
 
                         <table class="min-w-full divide-y divide-gray-200 mt-2">

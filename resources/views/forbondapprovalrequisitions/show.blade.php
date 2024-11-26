@@ -515,7 +515,7 @@
 
                         <div class="mt-4">
                             <x-input-label for="req_no" :value="__('Requisition Number')" />
-                            <x-text-input id="req_no" class="block mt-1 w-full" type="text" style="width: 500px;" name="req_no" :value="old('req_no', $requisition->req_no)" autofocus autocomplete="req_no" />
+                            <x-text-input id="req_no" class="block mt-1 w-full" type="text" style="width: 300px;" name="req_no" :value="old('req_no', $requisition->req_no)" autofocus autocomplete="req_no" />
                             <x-input-error :messages="$errors->get('req_no')" class="mt-2" />
                         </div>
 
