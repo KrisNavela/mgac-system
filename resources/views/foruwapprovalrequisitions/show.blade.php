@@ -401,6 +401,7 @@
                                 this.requisitionItems.push({
                                     id: null,
                                     quantity: 1,
+                                    unit: 'Pad',
                                 });
                             },
                             removeItem(index) {
