@@ -8,18 +8,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 text-gray-900"  x-data="{
-                            requisitionItems: {{ $requisitionItems }},
-                            addItem() {
-                                this.requisitionItems.push({
-                                    id: null,
-                                    quantity: 1,
-                                    unit: 'Pad',
-                                });
-                            },
-                            removeItem(index) {
-                                this.requisitionItems.splice(index, 1);
-                            }}">
+                <div class="p-6 text-gray-900"  x-data="">
+
         @if ($requisition->coc_request_status == 'yes')
             @if ($requisition->type_request == 'Replenishment')
                 <!-- All Status -->
@@ -404,7 +394,18 @@
             @endif
         @endif
 
-                
+                <div class="p-6 text-gray-900"  x-data="{
+                            requisitionItems: {{ $requisitionItems }},
+                            addItem() {
+                                this.requisitionItems.push({
+                                    id: null,
+                                    quantity: 1,
+                                    unit: 'Pad',
+                                });
+                            },
+                            removeItem(index) {
+                                this.requisitionItems.splice(index, 1);
+                            }}">
 
                             <div class="flex justify-end space-x-4">
                             <div class="flex justify-end">      
