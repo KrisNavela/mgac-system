@@ -103,17 +103,6 @@
                                                     <x-text-input id="content" class="block mt-1 w-full" type="text" name="content" :value="old('content', $requisition->content)" autofocus autocomplete="content" />
                                                     <x-input-error :messages="$errors->get('content')" class="mt-2" />
                                                 </div>
-                        
-                                                <div class="mt-4">
-                                                    <x-input-label for="status_modal" :value="__('Status')" />
-                                                    <select name="status_modal" id="">
-                                                        <option value="pending" {{ 'pending' === $requisition->status ? 'selected' : '' }}>Pending</option>
-                                                        <option value="approved" {{ 'approved' === $requisition->status ? 'selected' : '' }}>Approved</option>
-                                                        <option value="return" {{ 'return' === $requisition->status ? 'selected' : '' }}>Return</option>
-                                                        <option value="cancelled" {{ 'cancelled' === $requisition->status ? 'selected' : '' }}>Cancelled</option>
-                                                    </select>
-                                                    <x-input-error :messages="$errors->get('status_modal')" class="mt-2" />
-                                                </div>
 
                                                 <div class="mt-4">
                                                     <x-input-label for="finalapproval_status_modal" :value="__('For Final Approval?')" />
