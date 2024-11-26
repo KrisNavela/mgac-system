@@ -154,8 +154,8 @@
                     <p class="text-sm text-gray-600">Requestion Number: {{ $requisition->req_no }}</p>
                     <p class="text-sm text-gray-600">Date: {{ $requisition->req_date }}</p>
 
-                    @if ({{ $requisition->status }} == 'pending')
-                    <p class="text-sm text-gray-600">Status: <a href="" class="bg-gray-500 text-white hover:bg-gray-700 text-sm px-2 py-1 rounded-md uppercase">{{ $requisition->status }}</a></p>
+                    @if ($requisition->status == 'pending')
+                        <p class="text-sm text-gray-600">Status: <a href="" class="bg-gray-500 text-white hover:bg-gray-700 text-sm px-2 py-1 rounded-md uppercase">{{ $requisition->status }}</a></p>
                     @endif
 
                     <p class="text-sm text-gray-600">Request By: {{ $requisition->user->first_name }} {{ $requisition->user->last_name }}</p>
