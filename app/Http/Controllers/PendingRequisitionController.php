@@ -232,7 +232,7 @@ class PendingRequisitionController extends Controller
             ]);
 
         //Initial Approver Agencies Access
-        } elseif ($roleId === 3 || $roleId === 4){
+        } elseif ($roleId === 3){
             $branches = branch::all();
             $users = User::all();
 
