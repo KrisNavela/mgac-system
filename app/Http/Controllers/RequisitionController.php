@@ -84,12 +84,12 @@ class RequisitionController extends Controller
             ->count();
 
             $treasuryapprovalCount = Requisition::withCount('items')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->where('treasuryapproval_status', '=', 'for approval')
             ->count();
 
             $cocapprovalCount = Requisition::withCount('items')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->where('cocapproval_status', '=', 'for approval')
             ->count();
 
@@ -198,7 +198,7 @@ class RequisitionController extends Controller
                     $query1->where('type_office', 'Branch');}
             );})
             ->where('treasuryapproval_status', '=', 'for approval')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $cocapprovalCount = Requisition::whereHas('user', function ($query) {
@@ -206,7 +206,7 @@ class RequisitionController extends Controller
                     $query1->where('type_office', 'Branch');}
             );})
             ->where('cocapproval_status', '=', 'for approval')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $requisitions = Requisition::withCount('items')
@@ -319,7 +319,7 @@ class RequisitionController extends Controller
                     $query1->where('type_office', 'Agency');}
             );})
             ->where('treasuryapproval_status', '=', 'for approval')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $cocapprovalCount = Requisition::whereHas('user', function ($query) {
@@ -327,7 +327,7 @@ class RequisitionController extends Controller
                     $query1->where('type_office', 'Agency');}
             );})
             ->where('cocapproval_status', '=', 'for approval')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $requisitions =  Requisition::withCount('items')

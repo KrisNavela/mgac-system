@@ -199,7 +199,7 @@ class CollectionAsstRequisitionController extends Controller
                     $query1->where('type_office', 'Branch');}
             );})
             ->where('treasuryapproval_status', '=', 'for approval')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $cocapprovalCount = Requisition::whereHas('user', function ($query) {
@@ -207,7 +207,7 @@ class CollectionAsstRequisitionController extends Controller
                     $query1->where('type_office', 'Branch');}
             );})
             ->where('cocapproval_status', '=', 'for approval')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $requisitions = Requisition::whereHas('user', function ($query) {
@@ -321,7 +321,7 @@ class CollectionAsstRequisitionController extends Controller
                     $query1->where('type_office', 'Agency');}
             );})
             ->where('treasuryapproval_status', '=', 'for approval')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $cocapprovalCount = Requisition::whereHas('user', function ($query) {
@@ -329,7 +329,7 @@ class CollectionAsstRequisitionController extends Controller
                     $query1->where('type_office', 'Agency');}
             );})
             ->where('cocapproval_status', '=', 'for approval')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $requisitions = Requisition::whereHas('user', function ($query) {
