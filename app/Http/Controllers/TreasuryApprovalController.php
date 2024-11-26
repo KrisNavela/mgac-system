@@ -80,20 +80,19 @@ class TreasuryApprovalController extends Controller
             ->count();
 
             $treasuryapprovalCount = Requisition::withCount('items')
-            ->orwhere('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->where('treasuryapproval_status', '=', 'for approval')
             ->count();
 
             $cocapprovalCount = Requisition::withCount('items')
-            ->where('treasuryapproval_status', '=', 'approved')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->where('cocapproval_status', '=', 'for approval')
             ->count();
 
            
             $requisitions = Requisition::withCount('items')
             ->where('treasuryapproval_status', '=', 'for approval')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->orderBy('id', 'desc')
             ->paginate(5)
             ->withQueryString();    
@@ -507,6 +506,10 @@ class TreasuryApprovalController extends Controller
         // Find the user record in the database
         $treasuryapprovalrequisition = Requisition::findOrFail($id);
 
+            if ($validatedData['treasuryapproval_status'] = 'approved') {
+                $treasuryapprovalrequisition->cocapproval_status = 'for approval';
+            }
+        
             // Update the user's basic information
             $treasuryapprovalrequisition->treasuryapproval_status = $validatedData['treasuryapproval_status'];
             $treasuryapprovalrequisition->treasuryapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');

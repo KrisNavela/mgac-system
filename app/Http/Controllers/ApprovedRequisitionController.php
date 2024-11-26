@@ -74,12 +74,12 @@ class ApprovedRequisitionController extends Controller
             ->count();
 
             $treasuryapprovalCount = Requisition::withCount('items')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->where('treasuryapproval_status', '=', 'for approval')
             ->count();
 
             $cocapprovalCount = Requisition::withCount('items')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->where('cocapproval_status', '=', 'for approval')
             ->count();
 
@@ -534,32 +534,34 @@ class ApprovedRequisitionController extends Controller
 
             if ($approvedrequisition->type_request === 'Replenishment' ) {
                 // Update the user's basic information
-                $approvedrequisition->status = $validatedData['status_modal'];
+                //$approvedrequisition->status = $validatedData['status_modal'];
                 $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
                 $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
                 $approvedrequisition->save(); // Save the changes
-
             } else {
                 // Update the user's basic information
                 $approvedrequisition->status = $validatedData['finalapproval_status_modal'];
                 $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
                 $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
                 $approvedrequisition->save(); // Save the changes
-
             }
 
         } else {
+
+            if ($approvedrequisition->type_request === 'Replenishment' ) {
                 // Update the user's basic information
                 //$approvedrequisition->status = $validatedData['status_modal'];
                 $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
                 $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
                 $approvedrequisition->save(); // Save the changes
+            } else {
+                $approvedrequisition->treasuryapproval_status = 'for approval';
+                $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
+                $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
+                $approvedrequisition->save(); // Save the changes
+            }    
 
         } 
-        
-
-        
-        
 
         RequisitionRemarks::create([
             'requisition_id' => $approvedrequisition->id,

@@ -417,13 +417,13 @@ class RequisitionController extends Controller
 
         $treasuryapprovalCount = Requisition::withCount('items')
             ->where('treasuryapproval_status', '=', 'for approval')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->where('user_id', $userId)
             ->count();
 
         $cocapprovalCount = Requisition::withCount('items')
             ->where('cocapproval_status', '=', 'for approval')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->where('user_id', $userId)
             ->count();
 
@@ -480,13 +480,6 @@ class RequisitionController extends Controller
         $type_request = $request->type_request;
         $coc_request_status = $request->coc_request_status;
         
-        if ($coc_request_status === 'yes'){ 
-            $cocapproval_status ='for approval';
-            $treasuryapproval_status ='for approval';
-        } else {
-            $cocapproval_status ='no';
-            $treasuryapproval_status ='no';
-        }
 
         
         if ($type_request === 'Replenishment'){
@@ -498,8 +491,8 @@ class RequisitionController extends Controller
                 'collmanager_status' => 'for approval',
                 'replenishment_month' => $request->replenishment_month,
                 'replenishment_year' => $request->replenishment_year,
-                'cocapproval_status' =>  $cocapproval_status,
-                'treasuryapproval_status' => $treasuryapproval_status,
+                'cocapproval_status' =>  'no',
+                'treasuryapproval_status' => 'no',
                 'user_id' => Auth::id(),
             ]);
         } else {
@@ -511,8 +504,8 @@ class RequisitionController extends Controller
                 'collmanager_status' => 'no',
                 'replenishment_month' => $request->replenishment_month,
                 'replenishment_year' => $request->replenishment_year,
-                'cocapproval_status' =>  $cocapproval_status,
-                'treasuryapproval_status' => $treasuryapproval_status,
+                'cocapproval_status' =>  'no',
+                'treasuryapproval_status' => 'no',
                 'user_id' => Auth::id(),
             ]);
         }

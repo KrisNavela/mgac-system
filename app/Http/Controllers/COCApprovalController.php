@@ -84,17 +84,17 @@ class COCApprovalController extends Controller
             ->count();
 
             $treasuryapprovalCount = Requisition::withCount('items')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->where('treasuryapproval_status', '=', 'for approval')
             ->count();
 
             $cocapprovalCount = Requisition::withCount('items')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->where('cocapproval_status', '=', 'for approval')
             ->count();
 
             $requisitions = Requisition::withCount('items')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->where('cocapproval_status', '=', 'for approval')
             ->orderBy('id', 'desc')
             ->paginate(5)

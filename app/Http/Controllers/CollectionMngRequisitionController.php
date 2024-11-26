@@ -77,27 +77,13 @@ class CollectionMngRequisitionController extends Controller
             ->where('status', '=', 'approved')
             ->count();
 
-            if ($coc_request_status === 'yes') {
-                if ($type_request === 'Replenishment') {
-                    $treasuryapprovalCount = Requisition::withCount('items')
-                    ->where('collmanager_status', '=', 'approved')
-                    ->where('treasuryapproval_status', '=', 'for approval')
-                    ->count();
-                } else {
-                    $treasuryapprovalCount = Requisition::withCount('items')
-                    ->where('finalapproval_status', '=', 'approved')
-                    ->where('treasuryapproval_status', '=', 'for approval')
-                    ->count();
-                }
-            }
-
             $treasuryapprovalCount = Requisition::withCount('items')
-            ->where('status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->where('treasuryapproval_status', '=', 'for approval')
             ->count();
 
             $cocapprovalCount = Requisition::withCount('items')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->where('cocapproval_status', '=', 'for approval')
             ->count();
 
@@ -549,19 +535,20 @@ class CollectionMngRequisitionController extends Controller
 
         // Find the user record in the database
         $collmngrequisition = Requisition::findOrFail($id);
+        $coc_request_status = $collmngrequisition->coc_request_status;
 
-        
         // Update the user's basic information
         $collmngrequisition->collmanager_status = $validatedData['collmanager_status_modal'];
         $collmngrequisition->collmanager_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
         
-        $coc_request_status_new = $collmngrequisition->coc_request_status;
+        //$coc_request_status_new = $collmngrequisition->coc_request_status;
 
-        if ($coc_request_status_new === 'no') {
-            $collmngrequisition->status = $validatedData['collmanager_status_modal'];
+        if ($coc_request_status == 'yes'){
+            $collmngrequisition->treasuryapproval_status = 'for approval';
         }
-        
-
+        $collmngrequisition->status = $validatedData['collmanager_status_modal'];
+        $collmngrequisition->collmanager_status = $validatedData['collmanager_status_modal'];
+        $collmngrequisition->collmanager_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
         $collmngrequisition->save(); // Save the changes
 
         RequisitionRemarks::create([
