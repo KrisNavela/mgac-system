@@ -557,7 +557,7 @@
 
                         <div class="mt-4">
                             <x-input-label for="branch_name" :value="__('Branch Name')" />
-                            <x-text-input id="branch_name" class="block mt-1 w-full" style="width: 150px" type="text" name="branch_name" :value="old('branch_name', $requisition->user->branch->branch_name)" autofocus autocomplete="branch_name" />
+                            <x-text-input id="branch_name" class="block mt-1 w-full" style="width: 400px" type="text" name="branch_name" :value="old('branch_name', $requisition->user->branch->branch_name)" autofocus autocomplete="branch_name" />
                             <x-input-error :messages="$errors->get('branch_name')" class="mt-2" />
                         </div>
 
