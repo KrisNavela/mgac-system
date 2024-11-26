@@ -497,7 +497,7 @@
                         @method('PUT')
                         <div class="mt-4" style="width: 300px;">
                             <x-input-label for="req_no" :value="__('Requistion Number')" />
-                            <x-text-input id="req_no" class="block mt-1 w-full" type="text" name="req_no" :value="$requisition->req_no" disable/>
+                            <x-text-input id="req_no" class="block mt-1 w-full" style="width: 300px;" type="text" name="req_no" :value="$requisition->req_no" disable/>
                         </div>
 
                         <div class="mt-4" style="width: 300px;">
