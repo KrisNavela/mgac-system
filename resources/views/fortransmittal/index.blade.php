@@ -127,7 +127,15 @@
                     <h2 class="text-lg font-semibold text-gray-900">{{ $requisition->id }}</h2>
                     <p class="text-sm text-gray-600">Requestion Number: {{ $requisition->req_no }}</p>
                     <p class="text-sm text-gray-600">Date: {{ $requisition->req_date }}</p>
-                    <p class="text-sm text-gray-600">Status: {{ $requisition->status }}</p>
+
+                    @if ($requisition->status == 'pending')
+                        <p class="text-sm text-gray-600">Status: <a href="" class="bg-gray-500 text-white hover:bg-gray-700 text-sm px-2 py-1 rounded-md uppercase">{{ $requisition->status }}</a></p>
+                    @elseif ($requisition->status == 'approved')
+                        <p class="text-sm text-gray-600">Status: <a href="" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md uppercase">{{ $requisition->status }}</a></p>
+                    @elseif ($requisition->status == 'done')
+                        <p class="text-sm text-gray-600">Status: <a href="" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md uppercase">{{ $requisition->status }}</a></p>
+                    @endif
+
                     <p class="text-sm text-gray-600">Request By: {{ $requisition->user->first_name }} {{ $requisition->user->last_name }}</p>
                     <p class="text-sm text-gray-600"># Items: {{ $requisition->items_count }}</p>
                     <p class="text-sm text-gray-600">Branch: {{ $requisition->user->branch->branch_name }}</p>

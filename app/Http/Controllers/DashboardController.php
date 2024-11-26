@@ -198,7 +198,8 @@ class DashboardController extends Controller
             //->where('finalapproval_status', '=', 'approved')
             ->count();
 
-            $requisitions = Requisition::whereHas('user', function ($query) {
+            $requisitions = Requisition::withCount('items')
+            ->whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
                     $query1->where('type_office', 'Branch');}
             );})
@@ -319,7 +320,8 @@ class DashboardController extends Controller
             //->where('finalapproval_status', '=', 'approved')
             ->count();
 
-            $requisitions = Requisition::whereHas('user', function ($query) {
+            $requisitions = Requisition::withCount('items')
+            ->whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
                     $query1->where('type_office', 'Agency');}
             );})

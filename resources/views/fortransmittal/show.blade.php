@@ -8,6 +8,391 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+
+        @if ($requisition->coc_request_status == 'yes')
+            @if ($requisition->type_request == 'Replenishment')
+                <!-- All Status -->
+                <div class="flex justify-center space-x-4">
+                    @if ($requisition->status == 'pending')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->status == 'done')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">Status</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->status }}</p>
+
+                        @if ($requisition->status == 'done')
+                            <p class="uppercase text-center text-sm">{{ $requisition->updated_at }}</p>
+                        @endif
+
+                    </div>
+
+                    @if ($requisition->bonds_status == 'No' || $requisition->bonds_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->bonds_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->bonds_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->bonds_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">Bonds Approval</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->bonds_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->bonds_date }}</p>
+                    </div>
+
+                    @if ($requisition->uw_status == 'No' || $requisition->uw_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->uw_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->uw_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->uw_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">UW Approval</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->uw_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->uw_date }}</p>
+                    </div>
+
+                    @if ($requisition->finalapproval_status == 'No' || $requisition->finalapproval_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->finalapproval_status == 'For Approval' || $requisition->finalapproval_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->finalapproval_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->finalapproval_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">Final Approval</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->finalapproval_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->finalapproval_date }}</p>
+                    </div>
+
+                    @if ($requisition->collasst_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->collasst_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->collasst_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->collasst_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">Coll Asst</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->collasst_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->collasst_date }}</p>
+                    </div>
+
+                    @if ($requisition->collmanager_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->collmanager_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->collmanager_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->collmanager_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">Coll Manager</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->collmanager_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->collmanager_date }}</p>
+                    </div>
+
+                    @if ($requisition->treasuryapproval_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->treasuryapproval_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->treasuryapproval_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->treasuryapproval_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">Treasury Approval</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->treasuryapproval_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->treasuryapproval_date }}</p>
+                    </div>
+
+                    @if ($requisition->cocapproval_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->cocapproval_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->cocapproval_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->cocapproval_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">COC Approval</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->cocapproval_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->cocapproval_date }}</p>
+                    </div>
+                </div>
+            @else
+                <div class="flex justify-center space-x-4">
+                    @if ($requisition->status == 'pending')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->status == 'done')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">Status</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->status }}</p>
+
+                        @if ($requisition->status == 'done')
+                            <p class="uppercase text-center text-sm">{{ $requisition->updated_at }}</p>
+                        @endif
+
+                    </div>
+
+                    @if ($requisition->bonds_status == 'No' || $requisition->bonds_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->bonds_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->bonds_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->bonds_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">Bonds Approval</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->bonds_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->bonds_date }}</p>
+                    </div>
+
+                    @if ($requisition->uw_status == 'No' || $requisition->uw_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->uw_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->uw_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->uw_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">UW Approval</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->uw_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->uw_date }}</p>
+                    </div>
+
+                    @if ($requisition->finalapproval_status == 'No' || $requisition->finalapproval_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->finalapproval_status == 'For Approval' || $requisition->finalapproval_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->finalapproval_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->finalapproval_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">Final Approval</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->finalapproval_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->finalapproval_date }}</p>
+                    </div>
+
+                    @if ($requisition->treasuryapproval_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->treasuryapproval_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->treasuryapproval_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->treasuryapproval_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">Treasury Approval</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->treasuryapproval_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->treasuryapproval_date }}</p>
+                    </div>
+
+                    @if ($requisition->cocapproval_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->cocapproval_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->cocapproval_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->cocapproval_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">COC Approval</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->cocapproval_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->cocapproval_date }}</p>
+                    </div>
+                </div>
+            @endif
+        @elseif ($requisition->coc_request_status == 'no')
+            @if ($requisition->type_request == 'Replenishment')
+                <!-- All Status -->
+                <div class="flex justify-center space-x-4">
+                    @if ($requisition->status == 'pending')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->status == 'done')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">Status</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->status }}</p>
+                        
+                        @if ($requisition->status == 'done')
+                            <p class="uppercase text-center text-sm">{{ $requisition->updated_at }}</p>
+                        @endif
+                        
+                    </div>
+
+                    @if ($requisition->bonds_status == 'No' || $requisition->bonds_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->bonds_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->bonds_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->bonds_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+                    
+                        <p class="text-center font-bold">Bonds Approval</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->bonds_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->bonds_date }}</p>
+                    </div>
+
+                    @if ($requisition->uw_status == 'No' || $requisition->uw_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->uw_status == 'for approval' || $requisition->uw_status == 'For Approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->uw_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->uw_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">UW Approval</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->uw_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->uw_date }}</p>
+                    </div>
+
+                    @if ($requisition->finalapproval_status == 'No' || $requisition->finalapproval_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->finalapproval_status == 'For Approval' || $requisition->finalapproval_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->finalapproval_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->finalapproval_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">Final Approval</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->finalapproval_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->finalapproval_date }}</p>
+                    </div>
+
+                    @if ($requisition->collasst_status == 'No' || $requisition->collasst_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->collasst_status == 'for approval' || $requisition->collasst_status == 'For Approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->collasst_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->collasst_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">Coll Asst</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->collasst_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->collasst_date }}</p>
+                    </div>
+
+                    @if ($requisition->collmanager_status == 'No')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->collmanager_status == 'for approval' || $requisition->collmanager_status == 'For Approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->collmanager_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->collmanager_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">Coll Manager</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->collmanager_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->collmanager_date }}</p>
+                    </div>
+                </div>
+            @else
+            <div class="flex justify-center space-x-4">
+                    @if ($requisition->status == 'pending')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->status == 'done')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">Status</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->status }}</p>
+                        
+                        @if ($requisition->status == 'done')
+                            <p class="uppercase text-center text-sm">{{ $requisition->updated_at }}</p>
+                        @endif
+                        
+                    </div>
+
+                    @if ($requisition->bonds_status == 'No' || $requisition->bonds_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->bonds_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->bonds_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->bonds_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">Bonds Approval</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->bonds_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->bonds_date }}</p>
+                    </div>
+
+                    @if ($requisition->uw_status == 'No' || $requisition->uw_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->uw_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->uw_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->uw_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">UW Approval</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->uw_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->uw_date }}</p>
+                    </div>
+
+                    @if ($requisition->finalapproval_status == 'No' || $requisition->finalapproval_status == 'no')
+                        <div class="items-center p-4 rounded-lg bg-gray-500 text-white">
+                    @elseif ($requisition->finalapproval_status == 'For Approval' || $requisition->finalapproval_status == 'for approval')
+                        <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
+                    @elseif ($requisition->finalapproval_status == 'approved')
+                        <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->finalapproval_status == 'return')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
+                    @endif
+
+                        <p class="text-center font-bold">Final Approval</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->finalapproval_status }}</p>
+                        <p class="uppercase text-center text-sm">{{ $requisition->finalapproval_date }}</p>
+                    </div>
+                </div>
+            @endif
+        @endif
+
                 <div class="p-6 text-gray-900" x-data="{requisitionItems: {{ $requisitionItems }}}">
 
                 <div class="flex justify-end space-x-4">
