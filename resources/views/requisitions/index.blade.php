@@ -154,7 +154,7 @@
                     <p class="text-sm text-gray-600">Requestion Number: {{ $requisition->req_no }}</p>
                     <p class="text-sm text-gray-600">Date: {{ $requisition->req_date }}</p>
 
-                    <p class="text-sm text-gray-600">Status: <a href="" class="bg-gray-300 text-white hover:bg-gray-700 text-sm px-2 py-1 rounded-md uppercase">{{ $requisition->status }}</a></p>
+                    <p class="text-sm text-gray-600">Status: <a href="" class="bg-gray-600 text-white hover:bg-gray-700 text-sm px-2 py-1 rounded-md uppercase">{{ $requisition->status }}</a></p>
                     
                     <p class="text-sm text-gray-600">Request By: {{ $requisition->user->first_name }} {{ $requisition->user->last_name }}</p>
                     <p class="text-sm text-gray-600"># Items: {{ $requisition->items_count }}</p>
