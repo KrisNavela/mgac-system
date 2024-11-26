@@ -158,7 +158,7 @@
                         <p class="text-sm text-gray-600">Status: <a href="" class="bg-gray-500 text-white hover:bg-gray-700 text-sm px-2 py-1 rounded-md uppercase">{{ $requisition->status }}</a></p>
                     @elseif ($requisition->status == 'approved')
                         <p class="text-sm text-gray-600">Status: <a href="" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md uppercase">{{ $requisition->status }}</a></p>
-                    @elseif ($requisition->status == 'approved')
+                    @elseif ($requisition->status == 'done')
                         <p class="text-sm text-gray-600">Status: <a href="" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md uppercase">{{ $requisition->status }}</a></p>
                     @endif
 
