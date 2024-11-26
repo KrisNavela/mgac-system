@@ -685,7 +685,7 @@
 
                         <div class="mt-4">
                             <x-input-label for="branch_name" :value="__('Branch Name')" />
-                            <x-text-input id="branch_name" class="block mt-1 w-full" style="width: 150px" type="text" name="branch_name" :value="old('branch_name', $requisition->user->branch->branch_name)" autofocus autocomplete="branch_name" />
+                            <x-text-input id="branch_name" class="block mt-1 w-full" style="width: 400px" type="text" name="branch_name" :value="old('branch_name', $requisition->user->branch->branch_name)" autofocus autocomplete="branch_name" />
                             <x-input-error :messages="$errors->get('branch_name')" class="mt-2" />
                         </div>
 
@@ -707,12 +707,12 @@
 
                         <div class="mt-4">
                             <x-input-label for="replenishment_month" :value="__('Month')" />
-                            <x-text-input id="replenishment_month" class="block mt-1 w-full" type="text" name="replenishment_month" :value="$requisition->replenishment_month" disable/>
+                            <x-text-input id="replenishment_month" class="block mt-1 w-full" style="width: 100px;" type="text" name="replenishment_month" :value="$requisition->replenishment_month" disable/>
                         </div>
 
                         <div class="mt-4">
                             <x-input-label for="replenishment_year" :value="__('Year')" />
-                            <x-text-input id="replenishment_year" class="block mt-1 w-full" type="text" name="replenishment_year" :value="$requisition->replenishment_year" disable/>
+                            <x-text-input id="replenishment_year" class="block mt-1 w-full" style="width: 100px;" type="text" name="replenishment_year" :value="$requisition->replenishment_year" disable/>
                         </div>
 
                         <table class="min-w-full divide-y divide-gray-200 mt-2">
