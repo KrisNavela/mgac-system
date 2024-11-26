@@ -519,7 +519,7 @@ class ApprovedRequisitionController extends Controller
     {
         // Validate the incoming request data
         $validatedData = $request->validate([
-            'status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
+            //'status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
             'finalapproval_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
         ]);
 
