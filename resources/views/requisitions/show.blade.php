@@ -526,11 +526,6 @@
                         </div>
 
                         <div class="mt-4" style="width: 300px;">
-                            <x-input-label for="status" :value="__('Status')" />
-                            <x-text-input id="status" class="block mt-1 w-full text-gray-500 uppercase" type="text" name="status" :value="$requisition->status" disable/>
-                        </div>
-
-                        <div class="mt-4" style="width: 300px;">
                             <x-input-label for="full_name" :value="__('Request By')" />
                             <x-text-input id="full_name" class="block mt-1 w-full text-gray-500 uppercase" style="width: 300px;" type="text" name="full_name" value="{{ $requisition->user->first_name }} {{ $requisition->user->last_name }}" autofocus autocomplete="full_name" />
                             <x-input-error :messages="$errors->get('full_name')" class="mt-2" />

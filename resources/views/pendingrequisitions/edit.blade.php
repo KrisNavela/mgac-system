@@ -618,30 +618,6 @@
                             <x-text-input id="req_date" class="block mt-1 w-full" type="text" name="req_date" :value="$requisition->req_date" disable/>
                         </div>
 
-                        @if ($requisition->type_request == 'Addition' || $requisition->type_request == 'Initial')
-                        <div class="mt-4">
-                            <x-input-label for="status" :value="__('Request status')" />
-                            <select name="status" id="">
-                                <option value="pending" {{ 'pending' === $requisition->status ? 'selected' : '' }}>Pending</option>
-                                <option value="approved" {{ 'approved' === $requisition->status ? 'selected' : '' }}>Approved</option>
-                                <option value="return" {{ 'return' === $requisition->status ? 'selected' : '' }}>Return</option>
-                                <option value="cancelled" {{ 'cancelled' === $requisition->status ? 'selected' : '' }}>Cancelled</option>
-                            </select>
-                            <x-input-error :messages="$errors->get('status')" class="mt-2" />
-                        </div>
-                        @endif
-
-                        @if ($requisition->type_request == 'Replenishment')
-                        <div class="mt-4">
-                            <x-input-label for="status" :value="__('Request status')" />
-                            <select name="status" id="">
-                                <option value="pending" {{ 'pending' === $requisition->status ? 'selected' : '' }}>Pending</option>
-                            </select>
-                            <x-input-error :messages="$errors->get('status')" class="mt-2" />
-                        </div>
-                        @endif
-
-
                         <div class="mt-4">
                             <x-input-label for="full_name" :value="__('Request By')" />
                             <x-text-input id="full_name" class="block mt-1 w-full" style="width: 300px;" type="text" name="full_name" value="{{ $requisition->user->first_name }} {{ $requisition->user->last_name }}" autofocus autocomplete="full_name" />
