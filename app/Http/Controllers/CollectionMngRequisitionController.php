@@ -545,8 +545,11 @@ class CollectionMngRequisitionController extends Controller
 
         if ($coc_request_status == 'yes'){
             $collmngrequisition->treasuryapproval_status = 'for approval';
+            
+        } else {
+            $collmngrequisition->status = $validatedData['collmanager_status_modal'];
         }
-        $collmngrequisition->status = $validatedData['collmanager_status_modal'];
+
         $collmngrequisition->collmanager_status = $validatedData['collmanager_status_modal'];
         $collmngrequisition->collmanager_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
         $collmngrequisition->save(); // Save the changes
