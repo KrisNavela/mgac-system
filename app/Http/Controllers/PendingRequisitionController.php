@@ -542,6 +542,7 @@ class PendingRequisitionController extends Controller
 
         $bondStatus = $request->bonds_status_modal;
         $uwStatus = $request->uw_status_modal;
+        $finalapproval_status = $request->finalapproval_status_modal;
 
         
 
@@ -572,12 +573,15 @@ class PendingRequisitionController extends Controller
         }
 
         //For Final Approval Email Notification
-        if ($type_office === 'Branch'){
-            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalRequisitionBranchMail($pendingrequisition));
-            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($pendingrequisition));
-        } else {
-            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($pendingrequisition));
+        if ($finalapproval_status === 'for approval') {
+            if ($type_office === 'Branch'){
+                Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalRequisitionBranchMail($pendingrequisition));
+                Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($pendingrequisition));
+            } else {
+                Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($pendingrequisition));
+            }
         }
+        
         
 
         return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition created successfully');
