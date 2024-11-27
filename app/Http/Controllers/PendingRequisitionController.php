@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\ForApprovalBondsMail;
 use App\Mail\ForApprovalUwMail;
+use App\Mail\ForApprovalRequisitionAgencyMail;
+use App\Mail\ForApprovalRequisitionBranchMail;
 use Illuminate\Support\Facades\Mail;
 
 class PendingRequisitionController extends Controller
