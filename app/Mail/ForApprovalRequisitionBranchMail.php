@@ -28,7 +28,7 @@ class ForApprovalRequisitionBranchMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'For Approval Requisition Branch Mail',
+            subject: 'For Final Approval Branch Requisition',
         );
     }
 

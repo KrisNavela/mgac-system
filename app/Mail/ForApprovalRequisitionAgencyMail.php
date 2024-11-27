@@ -28,7 +28,7 @@ class ForApprovalRequisitionAgencyMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'For Approval Requisition Agency Mail',
+            subject: 'For Final Approval Requisition',
         );
     }
 
