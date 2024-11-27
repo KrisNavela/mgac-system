@@ -42,7 +42,7 @@
 
                 @if ($roleId == 1 || $roleId == 3 || $roleId == 4)
                     <x-nav-link :href="route('pendingrequisitions.index')" :active="request()->routeIs('pendingrequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
-                        {{ __('Pending') }} 
+                        {{ __('Review') }} 
                         <div class="text-red-500 font-bold px-1 py-1 rounded relative" role="alert">
                             <span class="block sm:inline">{{ $pendingrequisitionCount }}</span>
                         </div>
