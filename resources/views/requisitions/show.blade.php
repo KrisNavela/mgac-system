@@ -438,7 +438,7 @@
     
                         <div class="flex justify-end">    
                         <!-- Button to open the modal -->
-                            <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modal-id')">Action</button>
+                            <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modal-id')">Remarks</button>
                         </div>
 
                             <div id="modal-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-center">
