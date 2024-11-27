@@ -28,7 +28,7 @@ class ForApprovalUwMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'For Approval Uw Mail',
+            subject: 'For Underwriting Approval',
         );
     }
 
