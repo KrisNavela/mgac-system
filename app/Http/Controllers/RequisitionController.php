@@ -530,6 +530,7 @@ class RequisitionController extends Controller
             }
         }
 
+        //For Reviewer Email Notification
         if ($typeOffice === 'Branch'){
             Mail::to('knavela@milestoneguaranty.com')->send(new RequisitionCreatedMail($requisition));
         } else {
@@ -537,16 +538,16 @@ class RequisitionController extends Controller
         }
 
         //For Final Approval Email Notification
-        if ($typeOffice === 'Branch'){
-            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalRequisitionBranchMail($requisition));
-            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($requisition));
-        } else {
-            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($requisition));
-        }
+        //if ($typeOffice === 'Branch'){
+        //    Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalRequisitionBranchMail($requisition));
+        //    Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($requisition));
+        //} else {
+        //    Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($requisition));
+        //}
 
-        if ($type_request === 'Replenishment'){
-            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCollAsstMail($requisition));
-        }
+        //if ($type_request === 'Replenishment'){
+        //    Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCollAsstMail($requisition));
+        //}
 
 
         

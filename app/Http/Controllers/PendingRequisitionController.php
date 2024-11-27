@@ -545,7 +545,7 @@ class PendingRequisitionController extends Controller
 
         // Find the user record in the database
         $pendingrequisition = Requisition::findOrFail($id);
-
+        $type_office = $pendingrequisition->user->branch->type_office;
         
         // Update the user's basic information
         $pendingrequisition->bonds_status = $validatedData['bonds_status_modal'];
@@ -569,7 +569,13 @@ class PendingRequisitionController extends Controller
             Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalUwMail($pendingrequisition));
         }
 
-
+        //For Final Approval Email Notification
+        if ($type_office === 'Branch'){
+            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalRequisitionBranchMail($requisition));
+            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($requisition));
+        } else {
+            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($requisition));
+        }
         
 
         return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition created successfully');
