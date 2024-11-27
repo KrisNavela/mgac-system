@@ -394,17 +394,8 @@
             @endif
         @endif
 
-                <div class="p-6 text-gray-900" x-data="{
-                            requisitionItems: {{ $requisitionItems }},
-                            addItem() {
-                                this.requisitionItems.push({
-                                    id: null,
-                                    quantity: 1,
-                                });
-                            },
-                            removeItem(index) {
-                                this.requisitionItems.splice(index, 1);
-                            }}">
+                <div class="p-6 text-gray-900" x-data="{requisitionItems: {{ $requisitionItems }}}">
+
                         <div class="flex justify-end space-x-4">
                             <div class="flex justify-end">    
                                 <!-- Button to open the modal -->
