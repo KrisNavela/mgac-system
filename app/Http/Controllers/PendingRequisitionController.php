@@ -571,10 +571,10 @@ class PendingRequisitionController extends Controller
 
         //For Final Approval Email Notification
         if ($type_office === 'Branch'){
-            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalRequisitionBranchMail($requisition));
-            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($requisition));
+            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalRequisitionBranchMail($pendingrequisition));
+            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($pendingrequisition));
         } else {
-            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($requisition));
+            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($pendingrequisition));
         }
         
 
