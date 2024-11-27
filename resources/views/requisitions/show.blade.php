@@ -610,12 +610,12 @@
                     </table>
 
 
-
+                        <!--
                         <div class="flex items-center justify-end mt-4">
                             <a href="{{ route('requisitions.edit', $requisition->id)}}" class="bg-green-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">
                                 Edit Item
                             </a>
-                        </div>
+                        </div> -->
                 </div>
 
             </div>
