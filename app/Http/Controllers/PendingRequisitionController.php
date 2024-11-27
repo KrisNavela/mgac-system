@@ -126,7 +126,7 @@ class PendingRequisitionController extends Controller
                     $query1->where('type_office', 'Branch');}
             );})
             ->where('status', '=', 'pending')
-            ->where('finalapproval_status', '=', NULL)
+            ->where('finalapproval_status', '=', 'no')
             ->orWhere('finalapproval_status', '=', 'return')
             ->count();
 
