@@ -575,6 +575,10 @@
                                         </td>
 
                                         <td class="px-2 py-2">
+                                            <input type="text" style="width: 150px" x-model="item.ho_ctrl_end "/>
+                                        </td>
+
+                                        <td class="px-2 py-2">
                                             <input type="text" style="width: 150px" x-model="item.series_start "/>
                                         </td>
 
