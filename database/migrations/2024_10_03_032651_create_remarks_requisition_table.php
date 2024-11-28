@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('content');
             $table->foreignID('user_id')->constrained();
             $table->text('role_name')->nullable(); 
-            $table->text('approval_status')->nullable(); 
+            $table->text('approval_status')->nullable();
             $table->timestamps();
         });
     }
