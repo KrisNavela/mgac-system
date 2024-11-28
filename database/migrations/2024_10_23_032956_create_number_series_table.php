@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('branch_name')->nullable();
             $table->foreignID('item_id')->constrained();
             $table->string('item_code')->nullable();
+            $table->string('coc_prefix')->nullable();
             $table->integer('number'); // This will hold the sequential number
             $table->string('number_status')->nullable();
             $table->timestamps();
