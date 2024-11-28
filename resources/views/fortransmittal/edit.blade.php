@@ -616,6 +616,7 @@
                                 <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Unit</th>
                                 <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">HO Ctrl Start</th>
                                 <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">HO Ctrl End</th>
+                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">COC Prefix</th>
                                 <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Series Start</th>
                                 <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Series End</th>
                                 <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;"></th>
@@ -644,23 +645,23 @@
                                         </td>
 
                                         <td class="px-1 py-1">
-                                            <input type="number" style="width: 150px" x-model="item.ho_ctrl_start" :name="'items['+index+'][ho_ctrl_start]'"> 
+                                            <input type="number" style="width: 100px" x-model="item.ho_ctrl_start" :name="'items['+index+'][ho_ctrl_start]'"> 
                                         </td>
 
                                         <td class="px-1 py-1">
-                                            <input type="number" style="width: 150px" x-model="item.ho_ctrl_end" :name="'items['+index+'][ho_ctrl_end]'"> 
+                                            <input type="number" style="width: 100px" x-model="item.ho_ctrl_end" :name="'items['+index+'][ho_ctrl_end]'"> 
                                         </td>
 
                                         <td class="px-1 py-1">
-                                            <input type="text" style="width: 150px" x-model="item.coc_prefix" :name="'items['+index+'][coc_prefix]'"> 
+                                            <input type="text" style="width: 100px" x-model="item.coc_prefix" :name="'items['+index+'][coc_prefix]'"> 
                                         </td>
 
                                         <td class="px-1 py-1">
-                                            <input type="number" style="width: 150px" x-model="item.series_start" :name="'items['+index+'][series_start]'"> 
+                                            <input type="number" style="width: 100px" x-model="item.series_start" :name="'items['+index+'][series_start]'"> 
                                         </td>
 
                                         <td class="px-1 py-1">
-                                            <input type="number" style="width: 150px" x-model="item.series_end" :name="'items['+index+'][series_end]'"> 
+                                            <input type="number" style="width: 100px" x-model="item.series_end" :name="'items['+index+'][series_end]'"> 
                                         </td>
 
                                     </tr>
