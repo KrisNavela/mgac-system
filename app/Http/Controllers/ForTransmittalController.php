@@ -530,7 +530,7 @@ class ForTransmittalController extends Controller
                     'item_id' => $item['item_id'],
                     'item_code' => $lineitem->item_code,
                     'number_status' => "Unused",
-                    'coc_prefix' => $request->coc_prefix,
+                    'coc_prefix' => $item['coc_prefix'],
                 ]);
             }
         }
