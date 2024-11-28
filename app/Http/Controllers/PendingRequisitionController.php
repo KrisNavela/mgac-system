@@ -558,7 +558,7 @@ class PendingRequisitionController extends Controller
 
         $user = auth()->user(); // Get the authenticated user
         $userId = $user->id;
-        $rolename = $user->roles->name;
+        $rolename = $user->role->name;
 
         RequisitionRemarks::create([
             'requisition_id' => $pendingrequisition->id,
