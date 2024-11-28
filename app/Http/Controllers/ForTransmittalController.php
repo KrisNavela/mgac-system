@@ -494,6 +494,7 @@ class ForTransmittalController extends Controller
                     'in_pcs' => $item['quantity'] * 50,
                     'ho_ctrl_start' => $item['ho_ctrl_start'],
                     'ho_ctrl_end' => $item['ho_ctrl_end'],
+                    'coc_prefix' => $item['coc_prefix'],
                     'series_start' => $item['series_start'],
                     'series_end' => $item['series_end']
                 ]);
@@ -504,6 +505,7 @@ class ForTransmittalController extends Controller
                     'in_pcs' => $item['quantity'],
                     'ho_ctrl_start' => $item['ho_ctrl_start'],
                     'ho_ctrl_end' => $item['ho_ctrl_end'],
+                    'coc_prefix' => $item['coc_prefix'],
                     'series_start' => $item['series_start'],
                     'series_end' => $item['series_end']
                 ]);
@@ -528,6 +530,7 @@ class ForTransmittalController extends Controller
                     'item_id' => $item['item_id'],
                     'item_code' => $lineitem->item_code,
                     'number_status' => "Unused",
+                    'coc_prefix' => $request->coc_prefix,
                 ]);
             }
         }

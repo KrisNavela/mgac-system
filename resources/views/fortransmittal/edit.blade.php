@@ -402,6 +402,7 @@
                                     unit: 'Pad',
                                     ho_ctrl_start: 0,
                                     ho_ctrl_end: 0,
+                                    coc_prefix: '-',
                                     series_start: 0,
                                     series_end: 0,
                                 });
@@ -648,6 +649,10 @@
 
                                         <td class="px-1 py-1">
                                             <input type="number" style="width: 150px" x-model="item.ho_ctrl_end" :name="'items['+index+'][ho_ctrl_end]'"> 
+                                        </td>
+
+                                        <td class="px-1 py-1">
+                                            <input type="text" style="width: 150px" x-model="item.coc_prefix" :name="'items['+index+'][coc_prefix]'"> 
                                         </td>
 
                                         <td class="px-1 py-1">
