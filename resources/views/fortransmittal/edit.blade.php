@@ -402,7 +402,7 @@
                                     unit: 'Pad',
                                     ho_ctrl_start: 0,
                                     ho_ctrl_end: 0,
-                                    coc_prefix: '-',
+                                    coc_prefix: 'A',
                                     series_start: 0,
                                     series_end: 0,
                                 });
