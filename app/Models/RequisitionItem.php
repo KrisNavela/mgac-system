@@ -19,6 +19,8 @@ class RequisitionItem extends Model
         'in_pcs',
         'ho_ctrl_start',
         'ho_ctrl_end',
+        'ho_ctrl_end',
+        'coc_prefix',
         'series_start',
         'series_end',
     ];

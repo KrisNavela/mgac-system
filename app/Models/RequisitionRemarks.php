@@ -15,6 +15,8 @@ class RequisitionRemarks extends Model
         'requisition_id',
         'content',
         'user_id',
+        'role_name',
+        'approval_status',
     ];
     
     public function requisition()

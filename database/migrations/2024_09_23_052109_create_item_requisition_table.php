@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('in_pcs')->default(0);
             $table->integer('ho_ctrl_start')->nullable();
             $table->integer('ho_ctrl_end')->nullable();
-            $table->integer('coc_prefix')->nullable();
+            $table->text('coc_prefix')->nullable();
             $table->integer('series_start')->nullable();
             $table->integer('series_end')->nullable();
             $table->timestamps();

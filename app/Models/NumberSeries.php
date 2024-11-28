@@ -18,6 +18,7 @@ class NumberSeries extends Model
         'item_code',
         'number',
         'number_status',
+        'coc_prefix',
         
     ];
 
