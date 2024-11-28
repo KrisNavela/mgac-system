@@ -543,6 +543,7 @@
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Unit</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">HO Ctrl Start</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">HO Ctrl End</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">COC Prefix</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Series Start</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Series End</th>
                         </thead>
@@ -575,7 +576,7 @@
                                         </td>
 
                                         <td class="px-2 py-2">
-                                            <input type="text" style="width: 150px" x-model="item.ho_ctrl_end "/>
+                                            <input type="text" style="width: 150px" x-model="item.coc_prefix "/>
                                         </td>
 
                                         <td class="px-2 py-2">
