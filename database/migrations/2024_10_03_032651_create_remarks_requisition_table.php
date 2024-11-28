@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignID('requisition_id')->constrained();
             $table->text('content');
             $table->foreignID('user_id')->constrained();
-            $table->text('role_name');
+            $table->text('role_name')->nullable(); 
             $table->text('approval_status');
             $table->timestamps();
         });
