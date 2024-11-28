@@ -563,10 +563,15 @@ class ApprovedRequisitionController extends Controller
 
         } 
 
+        $user = auth()->user(); // Get the authenticated user
+        $userId = $user->id;
+        $rolename = $user->role->name;
+
         RequisitionRemarks::create([
             'requisition_id' => $approvedrequisition->id,
             'content' => $request->content,
             'user_id' => Auth::id(),
+            'role_name' => $rolename,
         ]);
 
          return redirect()->route('approvedrequisitions.index')->with('success', 'Requisition created successfully');

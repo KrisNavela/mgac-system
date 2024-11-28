@@ -566,10 +566,15 @@ class CollectionAsstRequisitionController extends Controller
         $collasstrequisition->collasst_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
         $collasstrequisition->save(); // Save the changes
 
+        $user = auth()->user(); // Get the authenticated user
+        $userId = $user->id;
+        $rolename = $user->role->name;
+
         RequisitionRemarks::create([
             'requisition_id' => $collasstrequisition->id,
             'content' => $request->content,
             'user_id' => Auth::id(),
+            'role_name' => $rolename,
         ]);
 
         if ($bondStatus === 'for approval'){

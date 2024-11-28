@@ -527,10 +527,15 @@ class ForUWApprovalRequisitionController extends Controller
         $foruwapprovalrequisition->uw_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
         $foruwapprovalrequisition->save(); // Save the changes
 
+        $user = auth()->user(); // Get the authenticated user
+        $userId = $user->id;
+        $rolename = $user->role->name;
+
         RequisitionRemarks::create([
             'requisition_id' => $foruwapprovalrequisition->id,
             'content' => $request->content,
             'user_id' => Auth::id(),
+            'role_name' => $rolename,
         ]);
 
          return redirect()->route('foruwapprovalrequisitions.index')->with('success', 'Requisition created successfully');

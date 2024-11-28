@@ -513,10 +513,15 @@ class COCApprovalController extends Controller
             $cocapprovalrequisition->cocapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
             $cocapprovalrequisition->save(); // Save the changes
 
+        $user = auth()->user(); // Get the authenticated user
+        $userId = $user->id;
+        $rolename = $user->role->name;
+
         RequisitionRemarks::create([
             'requisition_id' => $cocapprovalrequisition->id,
             'content' => $request->content,
             'user_id' => Auth::id(),
+            'role_name' => $rolename,
         ]);
 
          return redirect()->route('cocapprovalrequisitions.index')->with('success', 'Requisition created successfully');

@@ -529,10 +529,16 @@ class ForBondApprovalRequisitionController extends Controller
         //$forbondapprovalrequisition->uw_status = $validatedData['uw_status_modal'];
         $forbondapprovalrequisition->save(); // Save the changes
 
+
+        $user = auth()->user(); // Get the authenticated user
+        $userId = $user->id;
+        $rolename = $user->role->name;
+
         RequisitionRemarks::create([
             'requisition_id' => $forbondapprovalrequisition->id,
             'content' => $request->content,
             'user_id' => Auth::id(),
+            'role_name' => $rolename,
         ]);
 
          return redirect()->route('forbondapprovalrequisitions.index')->with('success', 'Requisition created successfully');
