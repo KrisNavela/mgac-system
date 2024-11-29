@@ -596,6 +596,13 @@ class PendingRequisitionController extends Controller
         $pendingrequisition->status = 'Cancelled';
         $pendingrequisition->save(); // Save the changes
 
+        RequisitionRemarks::create([
+            'requisition_id' => $pendingrequisition->id,
+            'content' => $request->content,
+            'user_id' => Auth::id(),
+            'role_name' => $rolename,
+        ]);
+        
         return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition cancelled successfully');
     }
 
