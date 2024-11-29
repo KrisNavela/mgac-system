@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ForTransmittalMail extends Mailable
+class ForApprovalTreasuryMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -27,7 +27,7 @@ class ForTransmittalMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'For Transmittal Mail',
+            subject: 'For Approval Treasury Mail',
         );
     }
 
@@ -54,8 +54,8 @@ class ForTransmittalMail extends Mailable
     public function build()
     {
         return $this->from('noreply@milestoneguaranty.com')
-                    ->subject('For Transmittal')
-                    ->view('emails.fortransmittal')
+                    ->subject('For Approval Requisition')
+                    ->view('emails.forapprovaltreasury')
                     ->with(['requisition' => $this->requisition]);
     }
 }

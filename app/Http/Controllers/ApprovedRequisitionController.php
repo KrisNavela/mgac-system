@@ -560,7 +560,9 @@ class ApprovedRequisitionController extends Controller
                 $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
                 $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
                 $approvedrequisition->save(); // Save the changes
+
                 Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCollAsstMail($approvedrequisition));
+            
             } else {
                 $approvedrequisition->treasuryapproval_status = 'for approval';
                 $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
