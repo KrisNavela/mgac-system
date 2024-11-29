@@ -544,8 +544,13 @@ class ApprovedRequisitionController extends Controller
                 Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCollAsstMail($approvedrequisition));
             
             } else {
-                // Update the user's basic information
-                $approvedrequisition->status = $validatedData['finalapproval_status_modal'];
+
+                if ($validatedData['finalapproval_status_modal'] == 'return') {
+                    $approvedrequisition->status = 'pending';
+                } else {
+                    $approvedrequisition->status = $validatedData['finalapproval_status_modal'];
+                }
+                
                 $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
                 $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
                 $approvedrequisition->save(); // Save the changes
