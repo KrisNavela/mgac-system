@@ -590,7 +590,7 @@ class PendingRequisitionController extends Controller
         return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition created successfully');
     }
 
-    public function updateforcancel(UpdateRequisitionRequest $request, Requisition $pendingrequisition,)
+    public function updateforcancel(Requisition $pendingrequisition,)
     {
         
         $pendingrequisition->status = 'Cancelled';
