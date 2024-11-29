@@ -585,7 +585,7 @@
                     </form>
                     <a href="{{ route('pendingrequisitions.update.forcancel', $requisition->id) }}" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md"
                     onclick="return confirm('Are you sure you want to cancel this requisition?');">Cancel Requisitioin</a>
-
+                    
                 </div>
                 </div>
                 </div>
