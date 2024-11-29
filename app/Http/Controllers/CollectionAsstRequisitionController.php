@@ -40,9 +40,13 @@ class CollectionAsstRequisitionController extends Controller
             ->count();
 
             $pendingrequisitionCount = Requisition::withCount('items')
-            ->where('status', '=', 'pending')
-            ->where('finalapproval_status', '=', 'no')
-            ->orWhere('finalapproval_status', '=', 'return')
+            ->where(function ($query) {
+                $query->where('status', '=', 'pending')
+                    ->where('finalapproval_status', '=', 'no');
+            })->orWhere(function ($query) {
+                $query->where('status', '=', 'pending')
+                ->where('finalapproval_status', '=', 'return');
+            })
             ->count();
 
             $uwapprovalCount = Requisition::withCount('items')
