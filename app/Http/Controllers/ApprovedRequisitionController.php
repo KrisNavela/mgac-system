@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\ForApprovalCollAsstMail;
 use App\Mail\ForTransmittalMail;
+use App\Mail\ForApprovalTreasuryMail;
 use Carbon\Carbon;
 
 class ApprovedRequisitionController extends Controller
@@ -569,8 +570,8 @@ class ApprovedRequisitionController extends Controller
                 $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
                 $approvedrequisition->save(); // Save the changes
                 
-                Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCollAsstMail($approvedrequisition));
-                
+                Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalTreasuryMail($approvedrequisition));
+
             }    
 
         } 
