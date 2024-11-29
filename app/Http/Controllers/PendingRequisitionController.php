@@ -89,9 +89,18 @@ class PendingRequisitionController extends Controller
             ->count();
 
             $requisitions = Requisition::withCount('items')
-            ->where('status', '=', 'pending')
-            ->where('finalapproval_status', '=', 'no')
-            ->Where('finalapproval_status', '=', 'return')
+            //->where('status', '=', 'pending')
+            //->where('finalapproval_status', '=', 'no');
+            ->where(function ($query) {
+                $query->where('status', '=', 'pending')
+                    ->where('finalapproval_status', '=', 'no');
+            })->orWhere(function ($query) {
+                $query->where('status', '=', 'pending')
+                ->where('finalapproval_status', '=', 'return');
+            })
+            
+            //->orWhere('finalapproval_status', '=', 'return')
+
             ->orderBy('id', 'desc')
             ->paginate(10)
             ->withQueryString();
