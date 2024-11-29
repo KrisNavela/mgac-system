@@ -521,6 +521,7 @@
                                         <option value="no" {{ 'no' === $requisition->bonds_status ? 'selected' : '' }}>No</option>
                                         <option value="for approval" {{ 'for approval' === $requisition->bonds_status ? 'selected' : '' }}>For Approval</option>
                                         <option value="approved" {{ 'approved' === $requisition->bonds_status ? 'selected' : '' }}>Approved</option>
+                                        <option value="return" {{ 'return' === $requisition->bonds_status ? 'selected' : '' }}>Return</option>
                                     </select>
                                     <x-input-error :messages="$errors->get('bonds_status_modal')" class="mt-2" />
                                 </div>
@@ -531,6 +532,7 @@
                                         <option value="no" {{ 'no' === $requisition->uw_status ? 'selected' : '' }}>No</option>
                                         <option value="for approval" {{ 'for approval' === $requisition->uw_status ? 'selected' : '' }}>For Approval</option>
                                         <option value="approved" {{ 'approved' === $requisition->uw_status ? 'selected' : '' }}>Approved</option>
+                                        <option value="return" {{ 'return' === $requisition->uw_status ? 'selected' : '' }}>Return</option>
                                     </select>
                                     <x-input-error :messages="$errors->get('uw_status_modal')" class="mt-2" />
                                 </div>
@@ -545,6 +547,7 @@
                                     <option value="no" {{ 'no' === $requisition->bonds_status ? 'selected' : '' }}>No</option>
                                     <option value="for approval" {{ 'for approval' === $requisition->bonds_status ? 'selected' : '' }}>For Approval</option>
                                     <option value="approved" {{ 'approved' === $requisition->bonds_status ? 'selected' : '' }}>Approved</option>
+                                    <option value="return" {{ 'return' === $requisition->bonds_status ? 'selected' : '' }}>Return</option>
                                 </select>
                                 <x-input-error :messages="$errors->get('bonds_status_modal')" class="mt-2" />
                             </div>
@@ -555,6 +558,7 @@
                                     <option value="no" {{ 'no' === $requisition->uw_status ? 'selected' : '' }}>No</option>
                                     <option value="for approval" {{ 'for approval' === $requisition->uw_status ? 'selected' : '' }}>For Approval</option>
                                     <option value="approved" {{ 'approved' === $requisition->uw_status ? 'selected' : '' }}>Approved</option>
+                                    <option value="return" {{ 'return' === $requisition->uw_status ? 'selected' : '' }}>Return</option>
                                 </select>
                                 <x-input-error :messages="$errors->get('uw_status_modal')" class="mt-2" />
                             </div>
