@@ -12,6 +12,8 @@ use App\Models\User;
 use App\Models\RequisitionAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\ForApprovalCollAsstMail;
+use App\Mail\ForTransmittalMail;
 use Carbon\Carbon;
 
 class ApprovedRequisitionController extends Controller
@@ -523,8 +525,6 @@ class ApprovedRequisitionController extends Controller
             'finalapproval_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
         ]);
 
-        
-
         // Find the user record in the database
         $approvedrequisition = Requisition::findOrFail($id);
 
@@ -538,12 +538,18 @@ class ApprovedRequisitionController extends Controller
                 $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
                 $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
                 $approvedrequisition->save(); // Save the changes
+                
+                Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCollAsstMail($approvedrequisition));
+            
             } else {
                 // Update the user's basic information
                 $approvedrequisition->status = $validatedData['finalapproval_status_modal'];
                 $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
                 $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
                 $approvedrequisition->save(); // Save the changes
+
+                Mail::to('knavela@milestoneguaranty.com')->send(new ForTransmittalMail($approvedrequisition));
+
             }
 
         } else {
@@ -554,11 +560,13 @@ class ApprovedRequisitionController extends Controller
                 $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
                 $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
                 $approvedrequisition->save(); // Save the changes
+                Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCollAsstMail($approvedrequisition));
             } else {
                 $approvedrequisition->treasuryapproval_status = 'for approval';
                 $approvedrequisition->finalapproval_status = $validatedData['finalapproval_status_modal'];
                 $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
                 $approvedrequisition->save(); // Save the changes
+            
             }    
 
         } 
