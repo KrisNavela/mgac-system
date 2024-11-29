@@ -16,6 +16,7 @@ use App\Mail\ForApprovalBondsMail;
 use App\Mail\ForApprovalUwMail;
 use App\Mail\ForApprovalRequisitionAgencyMail;
 use App\Mail\ForApprovalRequisitionBranchMail;
+use App\Mail\CancelRequisitionMail;
 use Illuminate\Support\Facades\Mail;
 
 class PendingRequisitionController extends Controller
@@ -596,6 +597,9 @@ class PendingRequisitionController extends Controller
         $pendingrequisition->status = 'cancelled';
         $pendingrequisition->save(); // Save the changes
         
+        $emailto = $fortransmittal->user->email;
+        Mail::to($emailto )->send(new CancelRequisitionMail($pendingrequisition));
+
         return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition cancelled successfully');
     }
 
