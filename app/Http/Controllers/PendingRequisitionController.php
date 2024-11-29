@@ -91,7 +91,7 @@ class PendingRequisitionController extends Controller
             $requisitions = Requisition::withCount('items')
             ->where('status', '=', 'pending')
             ->where('finalapproval_status', '=', 'no')
-            ->orWhere('finalapproval_status', '=', 'return')
+            ->Where('finalapproval_status', '=', 'return')
             ->orderBy('id', 'desc')
             ->paginate(10)
             ->withQueryString();
