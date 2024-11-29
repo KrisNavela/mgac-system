@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Mail\ForApprovalCollAsstMail;
 use App\Mail\ForTransmittalMail;
 use App\Mail\ForApprovalTreasuryMail;
+use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 
 class ApprovedRequisitionController extends Controller
