@@ -597,7 +597,7 @@ class PendingRequisitionController extends Controller
         $pendingrequisition->status = 'cancelled';
         $pendingrequisition->save(); // Save the changes
         
-        $emailto = $fortransmittal->user->email;
+        $emailto = $pendingrequisition->user->email;
         Mail::to($emailto )->send(new CancelRequisitionMail($pendingrequisition));
 
         return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition cancelled successfully');
