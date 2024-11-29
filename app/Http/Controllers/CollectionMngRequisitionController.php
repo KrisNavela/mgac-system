@@ -12,6 +12,9 @@ use App\Models\User;
 use App\Models\RequisitionAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\ForApprovalTreasuryMail;
+use App\Mail\ForTransmittalMail;
+use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 
 class CollectionMngRequisitionController extends Controller
@@ -544,15 +547,26 @@ class CollectionMngRequisitionController extends Controller
         //$coc_request_status_new = $collmngrequisition->coc_request_status;
 
         if ($coc_request_status == 'yes'){
+
             $collmngrequisition->treasuryapproval_status = 'for approval';
-            
+            $collmngrequisition->collmanager_status = $validatedData['collmanager_status_modal'];
+            $collmngrequisition->collmanager_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
+            $collmngrequisition->save(); // Save the changes
+
+            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalTreasuryMail($collmngrequisition));
+
         } else {
+
             $collmngrequisition->status = $validatedData['collmanager_status_modal'];
+            $collmngrequisition->collmanager_status = $validatedData['collmanager_status_modal'];
+            $collmngrequisition->collmanager_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
+            $collmngrequisition->save(); // Save the changes
+
+            Mail::to('knavela@milestoneguaranty.com')->send(new ForTransmittalMail($collmngrequisition));
+
         }
 
-        $collmngrequisition->collmanager_status = $validatedData['collmanager_status_modal'];
-        $collmngrequisition->collmanager_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
-        $collmngrequisition->save(); // Save the changes
+        
 
         $user = auth()->user(); // Get the authenticated user
         $userId = $user->id;
@@ -564,6 +578,8 @@ class CollectionMngRequisitionController extends Controller
             'user_id' => Auth::id(),
             'role_name' => $rolename,
         ]);
+
+
 
          return redirect()->route('collmngrequisitions.index')->with('success', 'Requisition created successfully');
     }

@@ -55,8 +55,8 @@ class ForApprovalCOC extends Mailable
     public function build()
     {
         return $this->from('noreply@milestoneguaranty.com')
-                    ->subject('For Transmittal')
-                    ->view('emails.fortransmittal')
+                    ->subject('For COC/CTPL')
+                    ->view('emails.forapprovalcoc')
                     ->with(['requisition' => $this->requisition]);
     }
 }

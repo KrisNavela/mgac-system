@@ -12,6 +12,8 @@ use App\Models\RequisitionRemarks;
 use App\Models\RequisitionAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\ForTransmittalMail;
+use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 
 class COCApprovalController extends Controller
@@ -523,6 +525,8 @@ class COCApprovalController extends Controller
             'user_id' => Auth::id(),
             'role_name' => $rolename,
         ]);
+
+        Mail::to('knavela@milestoneguaranty.com')->send(new ForTransmittalMail($cocapprovalrequisition));
 
          return redirect()->route('cocapprovalrequisitions.index')->with('success', 'Requisition created successfully');
     }

@@ -12,6 +12,8 @@ use App\Models\RequisitionRemarks;
 use App\Models\RequisitionAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\ForApprovalCOC;
+use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 
 class TreasuryApprovalController extends Controller
@@ -520,6 +522,8 @@ class TreasuryApprovalController extends Controller
             'content' => $request->content,
             'user_id' => Auth::id(),
         ]);
+
+        Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCOC($treasuryapprovalrequisition));
 
          return redirect()->route('treasuryapprovalrequisitions.index')->with('success', 'Requisition created successfully');
     }
