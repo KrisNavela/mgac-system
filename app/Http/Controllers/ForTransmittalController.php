@@ -555,7 +555,7 @@ class ForTransmittalController extends Controller
         ]);
         
 
-        $emailto = $fortransmittal->user->email;
+        $emailto = $fortransmittal->users->email;
 
         Mail::to($emailto)->send(new DoneRequisitionMail($fortransmittal));
 
