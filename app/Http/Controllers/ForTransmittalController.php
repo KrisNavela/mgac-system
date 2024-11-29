@@ -15,6 +15,8 @@ use App\Models\NumberSeries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\DoneRequisitionMail;
+use App\Mail\ForApprovalTreasuryMail;
+
 use Illuminate\Support\Facades\Mail;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -557,8 +559,8 @@ class ForTransmittalController extends Controller
 
         //$emailto = 'knavela@milestoneguaranty.com';
 
-        Mail::to('knavela@milestoneguaranty.com')->send(new DoneRequisitionMail($fortransmittal));
-
+        ///Mail::to('knavela@milestoneguaranty.com')->send(new DoneRequisitionMail($fortransmittal));
+        Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalTreasuryMail($fortransmittal));
         //return redirect()->route('fortransmittal.index')->with('success', 'Requisition created successfully');
     }
 
