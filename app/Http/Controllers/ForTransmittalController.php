@@ -14,7 +14,7 @@ use App\Models\RequisitionItem;
 use App\Models\NumberSeries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Mail\RequisitionCreatedMail;
+use App\Mail\DoneRequisitionMail;
 use Illuminate\Support\Facades\Mail;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -554,6 +554,11 @@ class ForTransmittalController extends Controller
             'attachments' => $attachments,
         ]);
         
+
+        $emailto = $fortransmittal->user->email;
+
+        Mail::to($emailto)->send(new DoneRequisitionMail($fortransmittal));
+
         //return redirect()->route('fortransmittal.index')->with('success', 'Requisition created successfully');
     }
 
