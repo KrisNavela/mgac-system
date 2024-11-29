@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900"  x-data="">
 
-        @if ($requisition->coc_request_status == 'yes')
+                @if ($requisition->coc_request_status == 'yes')
             @if ($requisition->type_request == 'Replenishment')
                 <!-- All Status -->
                 <div class="flex justify-center space-x-4">
@@ -20,6 +20,8 @@
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
                     @elseif ($requisition->status == 'done')
                         <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->status == 'cancelled')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
                     @endif
 
                         <p class="text-center font-bold">Status</p>
@@ -144,6 +146,8 @@
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
                     @elseif ($requisition->status == 'done')
                         <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->status == 'cancelled')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
                     @endif
 
                         <p class="text-center font-bold">Status</p>
@@ -241,6 +245,8 @@
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
                     @elseif ($requisition->status == 'done')
                         <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->status == 'cancelled')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
                     @endif
 
                         <p class="text-center font-bold">Status</p>
@@ -335,6 +341,8 @@
                         <div class="items-center p-4 rounded-lg bg-blue-500 text-white">
                     @elseif ($requisition->status == 'done')
                         <div class="items-center p-4 rounded-lg bg-green-500 text-white">
+                    @elseif ($requisition->status == 'cancelled')
+                        <div class="items-center p-4 rounded-lg bg-red-500 text-white">
                     @endif
 
                         <p class="text-center font-bold">Status</p>
