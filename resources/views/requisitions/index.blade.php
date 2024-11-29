@@ -166,7 +166,7 @@
                     <p class="text-sm text-gray-600"># Items: {{ $requisition->items_count }}</p>
                     <p class="text-sm text-gray-600">Branch: {{ $requisition->user->branch->branch_name }}</p>
                     <p class="text-sm text-gray-600">Type: {{ $requisition->user->branch->type_office }}</p>
-                    <p class="text-sm text-gray-600">COC Request: {{ $requisition->coc_request_status }}</p>
+                    <p class="text-sm text-gray-600 uppercase">COC Request: {{ $requisition->coc_request_status }}</p>
                     <div class="mt-4">
                     <a href="{{ route('requisitions.show', $requisition->id) }}" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Show</a>
                         @can('view', $requisition)
