@@ -555,7 +555,7 @@ class ForTransmittalController extends Controller
         ]);
         
 
-        $emailto = 'knavela@milestoneguaranty.com';
+        //$emailto = 'knavela@milestoneguaranty.com';
 
         Mail::to('knavela@milestoneguaranty.com')->send(new DoneRequisitionMail($fortransmittal));
 
