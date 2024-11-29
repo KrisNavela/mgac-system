@@ -562,7 +562,7 @@ class RequisitionController extends Controller
     {
         // Validate the request data, including the file
         $validated = $request->validate([
-            'file_path' => 'required|mimes:jpg,jpeg,png,pdf|max:2048',  // Validate file type and size
+            'file_path' => 'required|mimes:xlsx,xls,csv,pdf|max:2048',  // Validate file type and size
         ]);
 
         // Handle the file upload
