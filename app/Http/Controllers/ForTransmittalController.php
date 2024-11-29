@@ -545,7 +545,6 @@ class ForTransmittalController extends Controller
         $requisitionItems = $fortransmittal->items->pluck('pivot');
 
         $emailto = $fortransmittal->user->email;
-
         Mail::to($emailto)->send(new DoneRequisitionMail($fortransmittal));
 
         return view('fortransmittal.edit', [
@@ -558,9 +557,6 @@ class ForTransmittalController extends Controller
             'attachments' => $attachments,
         ]);
         
-
-        
-
         //return redirect()->route('fortransmittal.index')->with('success', 'Requisition created successfully');
     }
 
