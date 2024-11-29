@@ -557,7 +557,7 @@ class ForTransmittalController extends Controller
 
         $emailto = 'knavela@milestoneguaranty.com';
 
-        Mail::to('$emailto')->send(new DoneRequisitionMail($fortransmittal));
+        Mail::to('knavela@milestoneguaranty.com')->send(new DoneRequisitionMail($fortransmittal));
 
         //return redirect()->route('fortransmittal.index')->with('success', 'Requisition created successfully');
     }
