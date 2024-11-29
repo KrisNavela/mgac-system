@@ -4,7 +4,7 @@
     <title>Cancel Requisition</title>
 </head>
 <body>
-    <h1>Done</h1>
+    <h1>Cancel</h1>
     <p>Done Requisition:</p>
     <ul>
         <li>ID: {{ $requisition->id }}</li>
