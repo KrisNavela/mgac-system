@@ -476,7 +476,7 @@ class ForTransmittalController extends Controller
     public function update(UpdateRequisitionRequest $request, Requisition $fortransmittal)
     {
         $fortransmittal->update([
-            //'branch_code'=> $request->branch_code,
+            'branch_code'=> $request->branch_code,
             //'req_no' => $request->req_no,
             //'req_date' => $request->req_date,
             'status' => 'done',

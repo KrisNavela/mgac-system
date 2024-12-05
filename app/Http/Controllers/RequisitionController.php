@@ -675,6 +675,9 @@ class RequisitionController extends Controller
     {
         $itemId = $request->input('item_id');
 
+        $user = auth()->user(); // Get the authenticated user
+        $branchcode = $user->branch->branch_code; // Get the user's branch code
+
         if (!$itemId) {
             return response()->json(['count' => 0]);
         }
