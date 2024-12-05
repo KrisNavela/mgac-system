@@ -672,18 +672,19 @@ class RequisitionController extends Controller
     }
 
     public function getUnreportedCount(Request $request)
-    {
-        $itemId = $request->input('item_id');
+{
+    $itemId = $request->input('item_id');
 
-        // Get the count of unreported series numbers for the selected item
-        $count = NumberSeries::where('item_id', $itemId)
-            ->where('number_status', '=', 'Unused')
-            ->count();
-
-        return response()->json([
-            'count' => $count,
-        ]);
+    if (!$itemId) {
+        return response()->json(['count' => 0]);
     }
+
+    $count = NumberSeries::where('item_id', $itemId)
+        ->where('reported', false)
+        ->count();
+
+    return response()->json(['count' => $count]);
+}
 
     /**
      * Remove the specified resource from storage.

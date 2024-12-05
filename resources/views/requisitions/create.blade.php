@@ -77,19 +77,28 @@
                             <tbody class="bg-white divide-y divide-gray-200">
                                 
                                 <template x-for="(item, index) in items" :key="index">
-                                    <tr class="hover:bg-gray-200">
-                                        <td class="px-2 py-2">
-                                            <select class="form-select"  id="dropdown" x-model="item.id" :name="'items['+index+'][id]'">
-                                                <option value="">Please Select Item</option>
-                                                @foreach($items as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
-                                                @endforeach
-                                            </select>
-                                        </td>
+                                <tr class="hover:bg-gray-200">
+        <td class="px-2 py-2">
+            <select 
+                class="form-select"  
+                id="dropdown"
+                x-model="item.id"
+                :name="'items['+index+'][id]'"
+                @change="fetchUnreportedCount($event, index)"
+            >
+                <option value="">Please Select Item</option>
+                @foreach($items as $item)
+                    <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
+                @endforeach
+            </select>
+        </td>
 
-                                        <td class="px-2 py-2">
-                                            <p>Unreported Count: <span id="unreported-count">0</span></p>
-                                        </td>
+        <td class="px-2 py-2">
+            <p>
+                Unreported Count: 
+                <span :id="'unreported-count-' + index" x-text="item.unreportedCount || 0"></span>
+            </p>
+        </td>
 
                                         <td class="px-2 py-2">
                                             <input type="number" style="width: 100px;" x-model="item.quantity" :name="'items['+index+'][quantity]'">
@@ -124,6 +133,38 @@
                     </form>
 
                     <script>
+    function app() {
+        return {
+            items: [
+                // Example structure. You can replace this with your actual Alpine data or fetched items.
+                { id: null, unreportedCount: 0 },
+                { id: null, unreportedCount: 0 },
+            ],
+
+            // Function to fetch unreported count
+            fetchUnreportedCount(event, index) {
+                const itemId = event.target.value;
+
+                if (itemId) {
+                    fetch(`/get-unreported-count?item_id=${itemId}`)
+                        .then((response) => response.json())
+                        .then((data) => {
+                            // Update the unreported count for the specific item
+                            this.items[index].unreportedCount = data.count;
+                        })
+                        .catch((error) => {
+                            console.error('Error fetching unreported count:', error);
+                        });
+                } else {
+                    // Reset the unreported count if no item is selected
+                    this.items[index].unreportedCount = 0;
+                }
+            },
+        };
+    }
+</script>
+
+                    <script>
                         function disableSubmitButton(form) {
                             // Find the submit button inside the form
                             const submitButton = form.querySelector('#submitButton');
@@ -134,37 +175,7 @@
                             
                             return true; // Allow form submission to continue
                         }
-                    </script> 
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    // Dynamically render the template
-    const templateContent = document.querySelector('#dropdown-template').content.cloneNode(true);
-    document.querySelector('#template-container').appendChild(templateContent);
-
-    // Use event delegation for dynamically added dropdown
-    $(document).on('change', '#dropdown', function () {
-        const itemId = $(this).val();
-
-        if (itemId) {
-            $.ajax({
-                url: '/get-unreported-count',
-                type: 'GET',
-                data: { item_id: itemId },
-                success: function (response) {
-                    console.log(response); // Debugging: log the response
-                    $('#unreported-count').text(response.count);
-                },
-                error: function (xhr, status, error) {
-                    console.error('Error:', error); // Debugging: log errors
-                    alert('Failed to fetch unreported count. Please try again.');
-                }
-            });
-        } else {
-            $('#unreported-count').text(0);
-        }
-    });
-</script>
+                    </script>
 
                 </div>
             </div>
