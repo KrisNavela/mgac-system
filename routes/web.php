@@ -68,7 +68,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/fortransmittal/{id}/print', [ForTransmittalController::class, 'printPDF'])->name('fortransmittal.printPDF');
     //Route::get('/requisitions/get-unreported-count', [RequisitionController::class, 'getUnreportedCount']);
-    Route::get('/get-unreported-count', [RequisitionController::class, 'getUnreportedCount']);
+    Route::get('/requisitions/get-unreported-count', [RequisitionController::class, 'getUnreportedCount']);
 });
 
 require __DIR__.'/auth.php';
