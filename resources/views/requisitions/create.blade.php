@@ -11,6 +11,7 @@
                 <div class="p-6 text-gray-900" x-data="{
                 items: [{
                     id: null,
+
                     quantity: 1,
                     unit: 'Pad',
                     }],
@@ -75,8 +76,7 @@
                                 <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                            
-                            <div x-data="app()">
+
                                 <template x-for="(item, index) in items" :key="index">
                                     <tr class="hover:bg-gray-200">
                                         <td class="px-2 py-2">
@@ -118,38 +118,7 @@
                                 </template>
                             </div>
 
-                                <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
-                                    <script>
-                                        function app() {
-                                            return {
-                                                items: [
-                                                    // Example structure. You can replace this with your actual Alpine data or fetched items.
-                                                    { id: null, unreportedCount: 0 },
-                                                    { id: null, unreportedCount: 0 },
-                                                ],
-
-                                                // Function to fetch unreported count
-                                                fetchUnreportedCount(event, index) {
-                                                    const itemId = event.target.value;
-
-                                                    if (itemId) {
-                                                        fetch(`/get-unreported-count?item_id=${itemId}`)
-                                                            .then((response) => response.json())
-                                                            .then((data) => {
-                                                                // Update the unreported count for the specific item
-                                                                this.items[index].unreportedCount = data.count;
-                                                            })
-                                                            .catch((error) => {
-                                                                console.error('Error fetching unreported count:', error);
-                                                            });
-                                                    } else {
-                                                        // Reset the unreported count if no item is selected
-                                                        this.items[index].unreportedCount = 0;
-                                                    }
-                                                },
-                                            };
-                                        }
-                                    </script>
+                                
 
                             </tbody>
                         </table>
@@ -169,7 +138,38 @@
                     </form>
 
                     
+                    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
+                    <script>
+                        function app() {
+                            return {
+                                items: [
+                                    // Example structure. You can replace this with your actual Alpine data or fetched items.
+                                    { id: null, unreportedCount: 0 },
+                                    { id: null, unreportedCount: 0 },
+                                ],
 
+                                // Function to fetch unreported count
+                                fetchUnreportedCount(event, index) {
+                                    const itemId = event.target.value;
+
+                                    if (itemId) {
+                                        fetch(`/get-unreported-count?item_id=${itemId}`)
+                                            .then((response) => response.json())
+                                            .then((data) => {
+                                                // Update the unreported count for the specific item
+                                                this.items[index].unreportedCount = data.count;
+                                            })
+                                            .catch((error) => {
+                                                console.error('Error fetching unreported count:', error);
+                                            });
+                                    } else {
+                                        // Reset the unreported count if no item is selected
+                                        this.items[index].unreportedCount = 0;
+                                    }
+                                },
+                            };
+                        }
+                    </script>
                     <script>
                         function disableSubmitButton(form) {
                             // Find the submit button inside the form
@@ -183,7 +183,7 @@
                         }
                     </script>
 
-                </div>
+                
             </div>
         </div>
     </div>
