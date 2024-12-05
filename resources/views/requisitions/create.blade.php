@@ -114,6 +114,39 @@
                                             <button type="button" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md" @click="removeItem(index)">Remove</button>
                                         </td>
                                     </tr>
+
+                                    <script>
+                                        function app() {
+                                            return {
+                                                items: [
+                                                    // Example structure. You can replace this with your actual Alpine data or fetched items.
+                                                    { id: null, unreportedCount: 0 },
+                                                    { id: null, unreportedCount: 0 },
+                                                ],
+
+                                                // Function to fetch unreported count
+                                                fetchUnreportedCount(event, index) {
+                                                    const itemId = event.target.value;
+
+                                                    if (itemId) {
+                                                        fetch(`/get-unreported-count?item_id=${itemId}`)
+                                                            .then((response) => response.json())
+                                                            .then((data) => {
+                                                                // Update the unreported count for the specific item
+                                                                this.items[index].unreportedCount = data.count;
+                                                            })
+                                                            .catch((error) => {
+                                                                console.error('Error fetching unreported count:', error);
+                                                            });
+                                                    } else {
+                                                        // Reset the unreported count if no item is selected
+                                                        this.items[index].unreportedCount = 0;
+                                                    }
+                                                },
+                                            };
+                                        }
+                                    </script>
+
                                 </template>
                             </tbody>
                         </table>
@@ -132,37 +165,7 @@
                         </div>
                     </form>
 
-                    <script>
-                        function app() {
-                            return {
-                                items: [
-                                    // Example structure. You can replace this with your actual Alpine data or fetched items.
-                                    { id: null, unreportedCount: 0 },
-                                    { id: null, unreportedCount: 0 },
-                                ],
-
-                                // Function to fetch unreported count
-                                fetchUnreportedCount(event, index) {
-                                    const itemId = event.target.value;
-
-                                    if (itemId) {
-                                        fetch(`/requisitions/get-unreported-count?item_id=${itemId}`)
-                                            .then((response) => response.json())
-                                            .then((data) => {
-                                                // Update the unreported count for the specific item
-                                                this.items[index].unreportedCount = data.count;
-                                            })
-                                            .catch((error) => {
-                                                console.error('Error fetching unreported count:', error);
-                                            });
-                                    } else {
-                                        // Reset the unreported count if no item is selected
-                                        this.items[index].unreportedCount = 0;
-                                    }
-                                },
-                            };
-                        }
-                    </script>
+                    
 
                     <script>
                         function disableSubmitButton(form) {
