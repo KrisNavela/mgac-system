@@ -91,8 +91,6 @@
                                             <p>Unreported Count: <span id="unreported-count">0</span></p>
                                         </td>
 
-                                        
-
                                         <td class="px-2 py-2">
                                             <input type="number" style="width: 100px;" x-model="item.quantity" :name="'items['+index+'][quantity]'">
                                         </td>
@@ -138,28 +136,35 @@
                         }
                     </script> 
 
-                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                    <script>
-                        $('#dropdown').on('change', function () {
-                            const itemId = $(this).val();
-                            if (itemId) {
-                                $.ajax({
-                                    url: '/get-unreported-count', // Define your route
-                                    type: 'GET',
-                                    data: { item_id: itemId },
-                                    success: function (response) {
-                                        // Update the count in the DOM
-                                        $('#unreported-count').text(response.count);
-                                    },
-                                    error: function () {
-                                        alert('An error occurred. Please try again.');
-                                    }
-                                });
-                            } else {
-                                $('#unreported-count').text(0);
-                            }
-                        });
-                    </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Dynamically render the template
+    const templateContent = document.querySelector('#dropdown-template').content.cloneNode(true);
+    document.querySelector('#template-container').appendChild(templateContent);
+
+    // Use event delegation for dynamically added dropdown
+    $(document).on('change', '#dropdown', function () {
+        const itemId = $(this).val();
+
+        if (itemId) {
+            $.ajax({
+                url: '/get-unreported-count',
+                type: 'GET',
+                data: { item_id: itemId },
+                success: function (response) {
+                    console.log(response); // Debugging: log the response
+                    $('#unreported-count').text(response.count);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error:', error); // Debugging: log errors
+                    alert('Failed to fetch unreported count. Please try again.');
+                }
+            });
+        } else {
+            $('#unreported-count').text(0);
+        }
+    });
+</script>
 
                 </div>
             </div>
