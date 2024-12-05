@@ -75,6 +75,7 @@
                                 <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
+                            
                             <div x-data="app()">
                                 <template x-for="(item, index) in items" :key="index">
                                     <tr class="hover:bg-gray-200">
@@ -114,10 +115,9 @@
                                             <button type="button" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md" @click="removeItem(index)">Remove</button>
                                         </td>
                                     </tr>
-                                    
-
                                 </template>
                             </div>
+
                                 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
                                     <script>
                                         function app() {
