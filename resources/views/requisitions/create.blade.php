@@ -8,7 +8,45 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                
+            <div class="p-6 text-gray-900" x-data="{
+        items: [{
+            id: null,
+            quantity: 1,
+            unit: 'Pad',
+            unreportedCount: 0
+        }],
+        
+        addItem() {
+            this.items.push({
+                id: null,
+                quantity: 1,
+                unit: 'Pad',
+                unreportedCount: 0
+            });
+        },
+        
+        removeItem(index) {
+            this.items.splice(index, 1);
+        },
+        
+        // Function to fetch unreported count
+        fetchUnreportedCount(event, index) {
+            const itemId = event.target.value;
+
+            if (itemId) {
+                fetch(`/get-unreported-count?item_id=${itemId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        this.items[index].unreportedCount = data.count;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching unreported count:', error);
+                    });
+            } else {
+                this.items[index].unreportedCount = 0;
+            }
+        }
+    }">
                
                 
                     <form action="{{ route('requisitions.store') }}" method="POST" onsubmit="disableSubmitButton(this)">
@@ -60,7 +98,7 @@
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
                             
-                            <div x-data="app()">
+                            
                                 <template x-for="(item, index) in items" :key="index">
                                     <tr class="hover:bg-gray-200">
                                         <td class="px-2 py-2">
@@ -100,8 +138,8 @@
                                         </td>
                                     </tr>
                                 </template>
-                            </div>
                             
+
                             </tbody>
                         </table>
 
@@ -120,38 +158,7 @@
                     </form>
 
                     
-                    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
-                    <script>
-                        function app() {
-                            return {
-                                items: [
-                                    // Example structure. You can replace this with your actual Alpine data or fetched items.
-                                    { id: null, unreportedCount: 0 },
-                                    { id: null, unreportedCount: 0 },
-                                ],
-
-                                // Function to fetch unreported count
-                                fetchUnreportedCount(event, index) {
-                                    const itemId = event.target.value;
-
-                                    if (itemId) {
-                                        fetch(`/get-unreported-count?item_id=${itemId}`)
-                                            .then((response) => response.json())
-                                            .then((data) => {
-                                                // Update the unreported count for the specific item
-                                                this.items[index].unreportedCount = data.count;
-                                            })
-                                            .catch((error) => {
-                                                console.error('Error fetching unreported count:', error);
-                                            });
-                                    } else {
-                                        // Reset the unreported count if no item is selected
-                                        this.items[index].unreportedCount = 0;
-                                    }
-                                },
-                            };
-                        }
-                    </script>
+                    
                     <script>
                         function disableSubmitButton(form) {
                             // Find the submit button inside the form
@@ -164,6 +171,7 @@
                             return true; // Allow form submission to continue
                         }
                     </script>
+                </div>
             </div>
         </div>
     </div>
