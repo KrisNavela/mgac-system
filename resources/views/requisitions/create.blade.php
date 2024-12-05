@@ -96,7 +96,7 @@
                                         <td class="px-2 py-2">
                                             <p>
                                                 Unreported Count: 
-                                                <span :id="'unreported-count-' + index" x-text="item.unreportedCount || 2"></span>
+                                                <span :id="'unreported-count-' + index" x-text="item.unreportedCount || 0"></span>
                                             </p>
                                         </td>
 
@@ -114,7 +114,11 @@
                                             <button type="button" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md" @click="removeItem(index)">Remove</button>
                                         </td>
                                     </tr>
+                                    
 
+                                </template>
+
+                                <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
                                     <script>
                                         function app() {
                                             return {
@@ -146,8 +150,7 @@
                                             };
                                         }
                                     </script>
-
-                                </template>
+                                    
                             </tbody>
                         </table>
 
