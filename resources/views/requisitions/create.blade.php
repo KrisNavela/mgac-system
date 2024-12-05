@@ -124,6 +124,7 @@
                                                 x-model="item.unreportedCount"
                                                 :name="'items[' + index + '][unreportedCount]'"
                                                 min="0"
+                                                style="width: 50px;"
                                                 readonly
                                             >
                                         </td>
