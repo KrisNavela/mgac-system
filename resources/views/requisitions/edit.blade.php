@@ -586,7 +586,7 @@
                                         </td>
 
                                         <td class="px-2 py-2">
-                                            <input type="number" x-model="item.unreportedCount" :name="'items['+index+'][unreportedCount]'">
+                                            <input type="number" x-model="item.unreported" :name="'items['+index+'][unreported]'">
                                         </td>
 
                                         <td class="px-2 py-2">
