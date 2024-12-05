@@ -23,6 +23,7 @@ class RequisitionItem extends Model
         'coc_prefix',
         'series_start',
         'series_end',
+        'unreported',
     ];
 
     public function requisition()
