@@ -10,6 +10,7 @@ use App\Models\branch;
 use App\Models\RequisitionRemarks;
 use App\Models\User;
 use App\Models\RequisitionAttachment;
+use App\Models\NumberSeries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\ForApprovalBondsMail;
@@ -519,13 +520,15 @@ class PendingRequisitionController extends Controller
                 $pendingrequisition->items()->attach($item['item_id'], [
                     'quantity' => $item['quantity'], 
                     'quantity_unit' => $item['quantity_unit'],
-                    'in_pcs' => $item['quantity'] * 50
+                    'in_pcs' => $item['quantity'] * 50,
+                    'unreported'  => $item['unreportedCount']
                 ]);
             } else {
                 $pendingrequisition->items()->attach($item['item_id'], [
                     'quantity' => $item['quantity'], 
                     'quantity_unit' => $item['quantity_unit'],
-                    'in_pcs' => $item['quantity']
+                    'in_pcs' => $item['quantity'],
+                    'unreported'  => $item['unreportedCount']
                 ]);
             }
         }
@@ -609,6 +612,25 @@ class PendingRequisitionController extends Controller
         Mail::to($emailto )->send(new CancelRequisitionMail($pendingrequisition));
 
         return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition cancelled successfully');
+    }
+
+    public function getUnreportedCountReviewer(Request $request)
+    {
+        $itemId = $request->input('item_id');
+
+        $user = auth()->user(); // Get the authenticated user
+        $branchcode = $user->branch->branch_code; // Get the user's branch code
+
+        if (!$itemId) {
+            return response()->json(['count' => 0]);
+        }
+
+        $count = NumberSeries::where('item_id', $itemId)
+            ->where('branch_code', $branchcode)
+            ->where('number_status', '=', 'Unused')
+            ->count();
+
+        return response()->json(['count' => $count]);
     }
 
 }
