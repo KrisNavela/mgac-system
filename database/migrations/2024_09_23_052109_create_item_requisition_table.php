@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('coc_prefix')->nullable();
             $table->integer('series_start')->nullable();
             $table->integer('series_end')->nullable();
+            $table->integer('unreported')->default(0);
             $table->timestamps();
         });
     }

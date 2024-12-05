@@ -523,14 +523,16 @@ class RequisitionController extends Controller
                 $requisition->items()->attach($item['id'], [
                     'quantity' => $item['quantity'],
                     'quantity_unit'  => $item['quantity_unit'],
-                    'in_pcs' => $item['quantity'] * 50
+                    'in_pcs' => $item['quantity'] * 50,
+                    'unreported'  => $item['unreportedCount']
                 ]);
             } else {
 
                 $requisition->items()->attach($item['id'], [
                     'quantity' => $item['quantity'],
                     'quantity_unit'  => $item['quantity_unit'],
-                    'in_pcs' => $item['quantity']
+                    'in_pcs' => $item['quantity'],
+                    'unreported'  => $item['unreportedCount']
                 ]);
             }
         }
@@ -655,13 +657,15 @@ class RequisitionController extends Controller
                 $requisition->items()->attach($item['item_id'], [
                     'quantity' => $item['quantity'], 
                     'quantity_unit' => $item['quantity_unit'],
-                    'in_pcs' => $item['quantity'] * 50
+                    'in_pcs' => $item['quantity'] * 50,
+                    'unreported'  => $item['unreportedCount']
                 ]);
             } else {
                 $requisition->items()->attach($item['item_id'], [
                     'quantity' => $item['quantity'], 
                     'quantity_unit' => $item['quantity_unit'],
-                    'in_pcs' => $item['quantity']
+                    'in_pcs' => $item['quantity'],
+                    'unreported'  => $item['unreportedCount']
                 ]);
             }
         }
