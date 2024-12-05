@@ -399,6 +399,7 @@
                             addItem() {
                                 this.requisitionItems.push({
                                     id: null,
+                                    unreported: 0,
                                     quantity: 1,
                                     unit: 'Pad',
                                 });
@@ -614,7 +615,9 @@
                         <table class="min-w-full divide-y divide-gray-200 mt-2">
                             <thead class="bg-gray-50">
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Item Name</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unreported</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Quantity</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unit</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
@@ -627,6 +630,9 @@
                                                     <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
                                                 @endforeach
                                             </select>
+                                        </td>
+                                        <td class="px-2 py-2">
+                                            <input type="number" x-model="item.unreported" :name="'items['+index+'][unreported]'">
                                         </td>
                                         <td class="px-2 py-2">
                                             <input type="number" x-model="item.quantity" :name="'items['+index+'][quantity]'"> 
