@@ -676,7 +676,7 @@ class RequisitionController extends Controller
     $itemId = $request->input('item_id');
 
     if (!$itemId) {
-        return response()->json(['count' => 0]);
+        return response()->json(['count' => 2]);
     }
 
     $count = NumberSeries::where('item_id', $itemId)
