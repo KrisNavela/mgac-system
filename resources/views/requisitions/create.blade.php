@@ -120,8 +120,8 @@
                                             return {
                                                 items: [
                                                     // Example structure. You can replace this with your actual Alpine data or fetched items.
-                                                    { id: null, unreportedCount: 0 },
-                                                    { id: null, unreportedCount: 0 },
+                                                    { id: null, unreportedCount: 1 },
+                                                    { id: null, unreportedCount: 2 },
                                                 ],
 
                                                 // Function to fetch unreported count
