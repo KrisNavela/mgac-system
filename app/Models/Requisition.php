@@ -40,7 +40,7 @@ class Requisition extends Model
 
     public function items()
     {
-        return $this->belongsToMany(Item::class)->withPivot('quantity', 'quantity_unit', 'ho_ctrl_start', 'ho_ctrl_end', 'series_start', 'series_end', 'coc_prefix');
+        return $this->belongsToMany(Item::class)->withPivot('quantity', 'quantity_unit', 'ho_ctrl_start', 'ho_ctrl_end', 'series_start', 'series_end', 'coc_prefix', 'unreported');
     }
 
     public function requisitionItems(): HasMany
