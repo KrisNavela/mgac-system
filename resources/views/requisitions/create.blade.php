@@ -77,28 +77,28 @@
                             <tbody class="bg-white divide-y divide-gray-200">
                                 
                                 <template x-for="(item, index) in items" :key="index">
-                                <tr class="hover:bg-gray-200">
-        <td class="px-2 py-2">
-            <select 
-                class="form-select"  
-                id="dropdown"
-                x-model="item.id"
-                :name="'items['+index+'][id]'"
-                @change="fetchUnreportedCount($event, index)"
-            >
-                <option value="">Please Select Item</option>
-                @foreach($items as $item)
-                    <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
-                @endforeach
-            </select>
-        </td>
+                                    <tr class="hover:bg-gray-200">
+                                        <td class="px-2 py-2">
+                                            <select 
+                                                class="form-select"  
+                                                id="dropdown"
+                                                x-model="item.id"
+                                                :name="'items['+index+'][id]'"
+                                                @change="fetchUnreportedCount($event, index)"
+                                            >
+                                                <option value="">Please Select Item</option>
+                                                    @foreach($items as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
+                                                    @endforeach
+                                            </select>
+                                        </td>
 
-        <td class="px-2 py-2">
-            <p>
-                Unreported Count: 
-                <span :id="'unreported-count-' + index" x-text="item.unreportedCount || 0"></span>
-            </p>
-        </td>
+                                        <td class="px-2 py-2">
+                                            <p>
+                                                Unreported Count: 
+                                                <span :id="'unreported-count-' + index" x-text="item.unreportedCount || 0"></span>
+                                            </p>
+                                        </td>
 
                                         <td class="px-2 py-2">
                                             <input type="number" style="width: 100px;" x-model="item.quantity" :name="'items['+index+'][quantity]'">
@@ -133,36 +133,36 @@
                     </form>
 
                     <script>
-    function app() {
-        return {
-            items: [
-                // Example structure. You can replace this with your actual Alpine data or fetched items.
-                { id: null, unreportedCount: 0 },
-                { id: null, unreportedCount: 0 },
-            ],
+                        function app() {
+                            return {
+                                items: [
+                                    // Example structure. You can replace this with your actual Alpine data or fetched items.
+                                    { id: null, unreportedCount: 0 },
+                                    { id: null, unreportedCount: 0 },
+                                ],
 
-            // Function to fetch unreported count
-            fetchUnreportedCount(event, index) {
-                const itemId = event.target.value;
+                                // Function to fetch unreported count
+                                fetchUnreportedCount(event, index) {
+                                    const itemId = event.target.value;
 
-                if (itemId) {
-                    fetch(`/get-unreported-count?item_id=${itemId}`)
-                        .then((response) => response.json())
-                        .then((data) => {
-                            // Update the unreported count for the specific item
-                            this.items[index].unreportedCount = data.count;
-                        })
-                        .catch((error) => {
-                            console.error('Error fetching unreported count:', error);
-                        });
-                } else {
-                    // Reset the unreported count if no item is selected
-                    this.items[index].unreportedCount = 0;
-                }
-            },
-        };
-    }
-</script>
+                                    if (itemId) {
+                                        fetch(`/requisitions/get-unreported-count?item_id=${itemId}`)
+                                            .then((response) => response.json())
+                                            .then((data) => {
+                                                // Update the unreported count for the specific item
+                                                this.items[index].unreportedCount = data.count;
+                                            })
+                                            .catch((error) => {
+                                                console.error('Error fetching unreported count:', error);
+                                            });
+                                    } else {
+                                        // Reset the unreported count if no item is selected
+                                        this.items[index].unreportedCount = 0;
+                                    }
+                                },
+                            };
+                        }
+                    </script>
 
                     <script>
                         function disableSubmitButton(form) {
