@@ -676,8 +676,8 @@ class RequisitionController extends Controller
         $itemId = $request->input('item_id');
 
         // Get the count of unreported series numbers for the selected item
-        $count = Requisition::where('item_id', $itemId)
-            ->where('reported', false)
+        $count = NumberSeries::where('item_id', $itemId)
+            ->where('number_status', '=', 'Unused')
             ->count();
 
         return response()->json([
