@@ -398,6 +398,7 @@
                             addItem() {
                                 this.requisitionItems.push({
                                     id: null,
+                                    unreported: 1,
                                     quantity: 1,
                                     unit: 'Pad',
                                 });
