@@ -613,7 +613,7 @@
                                             </select>
                                         </td>
                                         <td class="px-2 py-2">
-                                            <input type="number" x-model="item.unreported" :name="'items['+index+'][unreported]'">
+                                            <input type="number" x-model="item.unreported" :name="'items['+index+'][unreported]'" style="width: 100px;">
                                         </td>
                                         <td class="px-1 py-1">
                                             <input type="number" style="width: 100px" x-model="item.quantity" :name="'items['+index+'][quantity]'"> 
