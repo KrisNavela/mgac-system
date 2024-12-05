@@ -59,7 +59,8 @@
                                 <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-
+                            
+                            <div x-data="app()">
                                 <template x-for="(item, index) in items" :key="index">
                                     <tr class="hover:bg-gray-200">
                                         <td class="px-2 py-2">
@@ -99,10 +100,8 @@
                                         </td>
                                     </tr>
                                 </template>
+                            </div>
                             
-
-                                
-
                             </tbody>
                         </table>
 
