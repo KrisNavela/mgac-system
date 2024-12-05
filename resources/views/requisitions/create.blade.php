@@ -96,7 +96,7 @@
                                         <td class="px-2 py-2">
                                             <p>
                                                 Unreported Count: 
-                                                <span :id="'unreported-count-' + index" x-text="item.unreportedCount || 0"></span>
+                                                <span :id="'unreported-count-' + index" x-text="item.unreportedCount || 2"></span>
                                             </p>
                                         </td>
 
@@ -120,8 +120,8 @@
                                             return {
                                                 items: [
                                                     // Example structure. You can replace this with your actual Alpine data or fetched items.
-                                                    { id: null, unreportedCount: 1 },
-                                                    { id: null, unreportedCount: 2 },
+                                                    { id: null, unreportedCount: 0 },
+                                                    { id: null, unreportedCount: 0 },
                                                 ],
 
                                                 // Function to fetch unreported count
