@@ -8,24 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900" x-data="{
-                items: [{
-                    id: null,
-
-                    quantity: 1,
-                    unit: 'Pad',
-                    }],
-                addItem() {
-                    this.items.push({
-                    id: null,
-                    quantity: 1,
-                    unit: 'Pad',
-                    });
-                },
-                removeItem(index) {
-                    this.items.splice(index, 1);
-                }
-                }">
+                
                
                 
                     <form action="{{ route('requisitions.store') }}" method="POST" onsubmit="disableSubmitButton(this)">
@@ -116,7 +99,7 @@
                                         </td>
                                     </tr>
                                 </template>
-                            </div>
+                            
 
                                 
 
@@ -182,8 +165,6 @@
                             return true; // Allow form submission to continue
                         }
                     </script>
-
-                
             </div>
         </div>
     </div>
