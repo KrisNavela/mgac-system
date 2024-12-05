@@ -10,6 +10,7 @@ use App\Models\branch;
 use App\Models\User;
 use App\Models\RequisitionRemarks;
 use App\Models\RequisitionAttachment;
+use App\Models\NumberSeries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\RequisitionCreatedMail;
@@ -668,6 +669,20 @@ class RequisitionController extends Controller
         session()->flash('success', 'Requisition Sucessfully Created!');
         
         return redirect()->route('requisitions.index');
+    }
+
+    public function getUnreportedCount(Request $request)
+    {
+        $itemId = $request->input('item_id');
+
+        // Get the count of unreported series numbers for the selected item
+        $count = Requisition::where('item_id', $itemId)
+            ->where('reported', false)
+            ->count();
+
+        return response()->json([
+            'count' => $count,
+        ]);
     }
 
     /**
