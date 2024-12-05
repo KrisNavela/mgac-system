@@ -680,7 +680,7 @@ class RequisitionController extends Controller
     }
 
     $count = NumberSeries::where('item_id', $itemId)
-        ->where('reported', false)
+        ->where('number_status', '=', 'Unused')
         ->count();
 
     return response()->json(['count' => $count]);
