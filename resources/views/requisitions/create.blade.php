@@ -92,6 +92,7 @@
                         <table class="min-w-full divide-y divide-gray-200 mt-2">
                             <thead class="bg-gray-50">
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Item Name</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unreported</th>
                                 <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase">Quantity</th>
                                 <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unit</th>
                                 <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
@@ -117,10 +118,14 @@
                                         </td>
 
                                         <td class="px-2 py-2">
-                                            <p>
-                                                Unreported Count: 
-                                                <span :id="'unreported-count-' + index" x-text="item.unreportedCount || 0"></span>
-                                            </p>
+                                            <input 
+                                                type="number" 
+                                                class="form-input"
+                                                x-model="item.unreportedCount"
+                                                :name="'items[' + index + '][unreportedCount]'"
+                                                min="0"
+                                                readonly
+                                            >
                                         </td>
 
                                         <td class="px-2 py-2">
@@ -139,11 +144,9 @@
                                     </tr>
                                 </template>
                             
-
                             </tbody>
                         </table>
 
-                   
                         <div>
                             <button type="button" @click="addItem" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">
                                 Add Item
