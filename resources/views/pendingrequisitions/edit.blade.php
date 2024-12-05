@@ -697,7 +697,8 @@
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                                <template x-for="(item, index) in requisitionItems" :key="index">
+                                
+                            <template x-for="(item, index) in requisitionItems" :key="index">
                                     <tr class="hover:bg-gray-200">
                                         <td class="px-2 py-2">
                                             <select 
@@ -724,9 +725,6 @@
                                                 style="width: 100px;"
                                                 readonly
                                             >
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <input type="number" x-model="item.unreported" :name="'items['+index+'][unreported]'">
                                         </td>
                                         <td class="px-2 py-2">
                                             <input type="number" x-model="item.quantity" :name="'items['+index+'][quantity]'"> 
