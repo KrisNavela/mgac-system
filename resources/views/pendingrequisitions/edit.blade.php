@@ -698,7 +698,7 @@
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
                                 
-                            <template x-for="(item, index) in requisitionItems" :key="index">
+                                <template x-for="(item, index) in items" :key="index">
                                     <tr class="hover:bg-gray-200">
                                         <td class="px-2 py-2">
                                             <select 
@@ -726,6 +726,7 @@
                                                 readonly
                                             >
                                         </td>
+
                                         <td class="px-2 py-2">
                                             <input type="number" x-model="item.quantity" :name="'items['+index+'][quantity]'"> 
                                         </td>
