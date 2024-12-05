@@ -79,7 +79,7 @@
                                 <template x-for="(item, index) in items" :key="index">
                                     <tr class="hover:bg-gray-200">
                                         <td class="px-2 py-2">
-                                            <select class="" id="dropdown" x-model="item.id" :name="'items['+index+'][id]'" >
+                                            <select class="form-select"  id="dropdown" x-model="item.id" :name="'items['+index+'][id]'">
                                                 <option value="">Please Select Item</option>
                                                 @foreach($items as $item)
                                                     <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
@@ -90,28 +90,30 @@
                                         <td class="px-2 py-2">
                                             <p>Unreported Count: <span id="unreported-count">0</span></p>
                                         </td>
+
                                         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $('#dropdown').on('change', function () {
-        const itemId = $(this).val();
-        if (itemId) {
-            $.ajax({
-                url: '/get-unreported-count', // Define your route
-                type: 'GET',
-                data: { item_id: itemId },
-                success: function (response) {
-                    // Update the count in the DOM
-                    $('#unreported-count').text(response.count);
-                },
-                error: function () {
-                    alert('An error occurred. Please try again.');
-                }
-            });
-        } else {
-            $('#unreported-count').text(0);
-        }
-    });
-</script>
+                                        <script>
+                                            $('#dropdown').on('change', function () {
+                                                const itemId = $(this).val();
+                                                if (itemId) {
+                                                    $.ajax({
+                                                        url: '/get-unreported-count', // Define your route
+                                                        type: 'GET',
+                                                        data: { item_id: itemId },
+                                                        success: function (response) {
+                                                            // Update the count in the DOM
+                                                            $('#unreported-count').text(response.count);
+                                                        },
+                                                        error: function () {
+                                                            alert('An error occurred. Please try again.');
+                                                        }
+                                                    });
+                                                } else {
+                                                    $('#unreported-count').text(0);
+                                                }
+                                            });
+                                        </script>
+
                                         <td class="px-2 py-2">
                                             <input type="number" style="width: 100px;" x-model="item.quantity" :name="'items['+index+'][quantity]'">
                                         </td>
