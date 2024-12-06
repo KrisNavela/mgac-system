@@ -26,7 +26,7 @@
 
                     <label for="branch_code">Filter by Branch/Agency:</label>
                     <select class="" id="branch_code" name="branch_code">
-                        <option value="">Select Branh</option> <!-- Default option -->
+                        <option value="">Select Branch</option> <!-- Default option -->
                             @foreach ($branches as $branch)
                                 <option 
                                     value="{{ $branch->branch_code }}" 
