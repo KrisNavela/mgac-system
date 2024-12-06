@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\branch;
 use App\Models\User;
 use App\Models\NumberSeries;
+use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 
 class NumberSeriesController extends Controller
@@ -20,6 +21,7 @@ class NumberSeriesController extends Controller
         $branches = branch::all();
         $users = User::all();
         $requisitions = Requisition::all();
+        $items = Item::all();
         
 
         $numberseries = NumberSeries::paginate(20);
@@ -32,6 +34,7 @@ class NumberSeriesController extends Controller
             'requisitions' => $requisitions,
             'branches' => $branches,
             'users' => $users,
+            'items' => $items,
 
         ]);
 
