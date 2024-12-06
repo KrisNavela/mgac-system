@@ -12,19 +12,19 @@
 
                 <!-- resources/views/numberseries/index.blade.php -->
                 <form method="GET" action="{{ route('numberseries.index') }}">
-                    <label for="item_id">Filter by Line:</label>
-                    <select class="" id="item_id" name="item_id">
-                        <option value="">Select an Item</option> <!-- Default option -->
-                            @foreach ($items as $item)
-                                <option 
-                                    value="{{ $item->id }}" 
-                                    {{ request('item_id') == $item->id ? 'selected' : '' }}>
-                                    {{ $item->item_desc }}
-                                </option>
-                            @endforeach
-                    </select>
-
-                    <label for="branch_code">Filter by Branch/Agency:</label>
+                    <div class="mt-4">
+                        <x-input-label for="item_id" :value="__('Line')" />
+                        <select class="" id="item_id" name="item_id">
+                            <option value="">Select an Item</option> <!-- Default option -->
+                                @foreach ($items as $item)
+                                    <option 
+                                        value="{{ $item->id }}" 
+                                        {{ request('item_id') == $item->id ? 'selected' : '' }}>
+                                        {{ $item->item_desc }}
+                                    </option>
+                                @endforeach
+                        </select>
+                    </div>
 
                     @if (auth()->user()->role_id == '2')
                         <div class="mt-4">
