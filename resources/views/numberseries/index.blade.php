@@ -33,7 +33,7 @@
                                     <td>
                                     
 
-                                    <form action="{{ route('numberseries.update.forreported', $numberseries->id) }}" method="POST">
+                                    <form action="{{ route('numberseries.update.forreported', $series->id) }}" method="POST">
                                         @csrf
                                         @method('PUT') <!-- Specify PUT for update -->
                                         <button type="submit">Update</button>
