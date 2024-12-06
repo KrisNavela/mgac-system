@@ -27,10 +27,15 @@
                     <label for="branch_code">Filter by Branch/Agency:</label>
 
                     @if (auth()->user()->role_id == '2')
+                        <div class="mt-4">
+                            <x-input-label for="branch_code" :value="__('Branch Code')" />
+                            <x-text-input id="branch_code" class="block mt-1 w-full" style="width: 100px;" type="text" name="branch_code" :value="auth()->user()->branch?->branch_code" disable/>
+                        </div>
 
-                            <label for="branch_code" :value="__('Branch Code')" />
-                            <input id="branch_code" class="block mt-1 w-full" style="width: 100px;" type="text" name="branch_code" :value="auth()->user()->branch?->branch_code" disable/>
-
+                        <div class="mt-4">
+                            <x-input-label for="branch_name" :value="__('Branch Name')" />
+                            <x-text-input id="branch_name" class="block mt-1 w-full" style="width: 300px;" type="text" name="branch_name" :value="auth()->user()->branch?->branch_name" disable/>
+                        </div>
                     @else 
                         <select class="" id="branch_code" name="branch_code">
                             <option value="">Select Branch</option> <!-- Default option -->
@@ -43,7 +48,7 @@
                                 @endforeach
                         </select>
                     @endif
-
+                    
                     <button type="submit" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Filter</button>
                     <a href="{{ route('numberseries.index') }}" class="bg-gray-500 text-white hover:bg-gray-700 text-sm px-2 py-1 rounded-md">Reset</a> <!-- Reset filter -->
                 </form>
