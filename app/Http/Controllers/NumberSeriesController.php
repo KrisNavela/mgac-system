@@ -24,7 +24,7 @@ class NumberSeriesController extends Controller
         $items = Item::all();
         
 
-        $numberseries = NumberSeries::All();
+        $numberseries = NumberSeries::paginate(10);
         //->orderBy('id', 'desc')
         //->paginate(20)
         //->withQueryString();
