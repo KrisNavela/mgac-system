@@ -715,7 +715,7 @@
                                             <input 
                                                 type="number" 
                                                 class="form-input"
-                                                x-model="item.unreported"
+                                                x-model="item.unreportedCount"
                                                 :name="'items[' + index + '][unreportedCount]'"
                                                 min="0"
                                                 style="width: 100px;"
