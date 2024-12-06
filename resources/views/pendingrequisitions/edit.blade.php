@@ -398,7 +398,7 @@
         requisitionItems: {{ $requisitionItems }},
         
         addItem() {
-            this.items.push({
+            this.requisitionItems.push({
                 id: null,
                 quantity: 1,
                 unit: 'Pad',
@@ -407,7 +407,7 @@
         },
         
         removeItem(index) {
-            this.items.splice(index, 1);
+            this.requisitionItems.splice(index, 1);
         },
         
         // Function to fetch unreported count
@@ -418,13 +418,13 @@
                 fetch(`/get-unreported-count-reviewer?item_id=${itemId}`)
                     .then(response => response.json())
                     .then(data => {
-                        this.items[index].unreportedCount = data.count;
+                        this.requisitionItems[index].unreportedCount = data.count;
                     })
                     .catch(error => {
                         console.error('Error fetching unreported count:', error);
                     });
             } else {
-                this.items[index].unreportedCount = 0;
+                this.requisitionItems[index].unreportedCount = 0;
             }
         }
     }">
@@ -695,15 +695,7 @@
                                 
                             <template x-for="(item, index) in requisitionItems" :key="index">
                                     <tr class="hover:bg-gray-200">
-                                        <td class="px-2 py-2">
-                                            <select class="" x-model="item.item_id" :name="'items['+index+'][item_id]'" >
-                                                <option value="">Please Select Item</option>
-                                                @foreach($items as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
-                                                @endforeach
-                                            </select>
-                                        </td>
-
+                                        
                                         <td class="px-2 py-2">
                                             <select 
                                                 class="form-select"  
