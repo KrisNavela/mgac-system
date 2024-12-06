@@ -626,7 +626,7 @@ class PendingRequisitionController extends Controller
         }
 
         $count = NumberSeries::where('item_id', $itemId)
-            ->where('branch_code', $branchcode)
+            //->where('branch_code', $branchcode)
             ->where('number_status', '=', 'Unused')
             ->count();
 
