@@ -23,32 +23,30 @@
                         </thead>                
                         <tbody class="bg-white divide-y divide-gray-200">
                             @foreach ($numberseries as $newnumberseries)
-                            <tr class="px-6 py-4 whitespace-nowrap">
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->id }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->requisition->req_no }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->requisition->req_date }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->item->item_desc }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->number }}</td>
-                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->number_status }}</td>
-                                <td>
-                                
+                                <tr class="px-6 py-4 whitespace-nowrap">
+                                    <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->id }}</td>
+                                    <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->requisition->req_no }}</td>
+                                    <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->requisition->req_date }}</td>
+                                    <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->item->item_desc }}</td>
+                                    <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->number }}</td>
+                                    <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->number_status }}</td>
+                                    <td>
+                                    
 
-                                <form action="{{ route('numberseries.update.forreported', $numberseries->id) }}" method="POST">
-                                    @csrf
-                                    @method('PUT') <!-- Specify PUT for update -->
-                                    <button type="submit">Update</button>
-                                </form>
+                                    <form action="{{ route('numberseries.update.forreported', $numberseries->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT') <!-- Specify PUT for update -->
+                                        <button type="submit">Update</button>
+                                    </form>
 
-                            </tr>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
 
                 </div>
             </div>
-            <div>
-                {{ $numberseries->links() }}
-            </div>
+
         </div>
     </div>
 
