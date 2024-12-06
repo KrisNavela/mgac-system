@@ -32,7 +32,7 @@ class NumberSeriesController extends Controller
             $query->where('item_id', $request->input('item_id'));
         }
 
-        if ($roleId == "2"){
+        if ($roleId == 2){
             // Apply branch code filter if provided
             if ($request->filled('branch_code')) {
                 $query->where('branch_code', $branch_code);
