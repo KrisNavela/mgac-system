@@ -36,7 +36,8 @@
                                     <form action="{{ route('numberseries.update.forreported', $newnumberseries->id) }}" method="POST">
                                         @csrf
                                         @method('PUT') <!-- Specify PUT for update -->
-                                        <button type="submit">Update</button>
+                                        <button type="submit" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md"
+                                        onclick="return confirm('Are you sure you want to proceed this?');">Update</button>
                                     </form>
 
                                 </tr>
