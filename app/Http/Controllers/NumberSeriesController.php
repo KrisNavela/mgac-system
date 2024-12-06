@@ -39,4 +39,14 @@ class NumberSeriesController extends Controller
         ]);
 
     }
+
+    public function updateforreported($id)
+    {
+        $numberseries = NumberSeries::findOrFail($id);
+        $numberseries->number_status = 'Used';
+        $numberseries->save(); // Save the changes
+        
+
+        return redirect()->route('numberseries.index')->with('success', 'Reported successfully');
+    }
 }
