@@ -28,9 +28,9 @@ class NumberSeriesController extends Controller
         $items = Item::all();
 
         // Apply item id filter if provided
-        if ($request->filled('item_id')) {
-            $query->where('item_id', $request->input('item_id'));
-        }
+        //if ($request->filled('item_id')) {
+        //    $query->where('item_id', $request->input('item_id'));
+        //}
 
         //if ($roleId == 2){
             // Apply branch code filter if provided
