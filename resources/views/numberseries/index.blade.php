@@ -23,6 +23,19 @@
                                 </option>
                             @endforeach
                     </select>
+
+                    <label for="branch_code">Filter by Branch/Agency:</label>
+                    <select class="" id="branch_code" name="branch_code">
+                        <option value="">Select Branh</option> <!-- Default option -->
+                            @foreach ($branches as $branch)
+                                <option 
+                                    value="{{ $branch->branch_code }}" 
+                                    {{ request('branch_code') == $item->branch_code ? 'selected' : '' }}>
+                                    {{ $branch->branch_name }}
+                                </option>
+                            @endforeach
+                    </select>
+
                     <button type="submit" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Filter</button>
                     <a href="{{ route('numberseries.index') }}" class="bg-gray-500 text-white hover:bg-gray-700 text-sm px-2 py-1 rounded-md">Reset</a> <!-- Reset filter -->
                 </form>
