@@ -402,7 +402,7 @@
                 id: null,
                 quantity: 1,
                 unit: 'Pad',
-                unreportedCount: 0
+                unreported: 0
             });
         },
         
