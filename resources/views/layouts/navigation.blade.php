@@ -42,6 +42,10 @@
                     <x-nav-link :href="route('spoiledforms.index')" :active="request()->routeIs('spoiledseries.index')">
                         {{ __('Spoiled') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('numberseries.index')" :active="request()->routeIs('numberseries.index')">
+                        {{ __('Series') }}
+                    </x-nav-link>
                     @endcan
                 </div>
 

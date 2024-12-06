@@ -18,6 +18,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SpoiledFormController;
 use App\Http\Controllers\COCApprovalController;
 use App\Http\Controllers\TreasuryApprovalController;
+use App\Http\Controllers\NumberSeriesController;
 
 
 Route::get('/', function () {
@@ -48,6 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('collmngrequisitions', CollectionMngRequisitionController::class);
     Route::resource('cocapprovalrequisitions', COCApprovalController::class);
     Route::resource('treasuryapprovalrequisitions', TreasuryApprovalController::class);
+    Route::resource('numberseries', NumberSeriesController::class);
 
 
     Route::put('/pendingrequisitions/{id}/update-forapproval', [PendingRequisitionController::class, 'updateforapproval'])->name('pendingrequisitions.update.forapproval');
