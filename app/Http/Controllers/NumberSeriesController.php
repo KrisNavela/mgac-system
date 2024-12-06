@@ -39,8 +39,11 @@ class NumberSeriesController extends Controller
             }
         } else {
             // Apply branch code filter if provided
+            //if ($request->filled('branch_code')) {
+            //    $query->where('branch_code', $request->input('branch_code'));
+            //}
             if ($request->filled('branch_code')) {
-                $query->where('branch_code', $request->input('branch_code'));
+                $query->where('branch_code', '=','MKT');
             }
         }
         
