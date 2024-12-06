@@ -35,7 +35,7 @@ class NumberSeriesController extends Controller
         if ($roleId == 2){
             // Apply branch code filter if provided
             if ($request->filled('branch_code')) {
-                $query->where('branch_code', $branch_code);
+                $query->where('branch_code', '=','MKT');
             }
         } else {
             // Apply branch code filter if provided
