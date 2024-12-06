@@ -26,7 +26,7 @@
 
                     <label for="branch_code">Filter by Branch/Agency:</label>
 
-                    @if ({{ auth()->user()->role_id }} == '2')
+                    @if (auth()->user()->role_id == '2')
                     <div class="mt-4">
                         <x-input-label for="branch_code" :value="__('Branch Code')" />
                         <x-text-input id="branch_code" class="block mt-1 w-full" style="width: 100px;" type="text" name="branch_code" :value="{{ auth()->user()->branch()->branch_code }}" disable/>
