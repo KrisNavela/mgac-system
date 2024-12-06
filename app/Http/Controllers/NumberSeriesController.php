@@ -18,10 +18,10 @@ class NumberSeriesController extends Controller
         //$userId = $user->id;
         //$roleId = $user->role_id;
 
-        $numberseries = NumberSeries::All()
+        $numberseries = NumberSeries::paginate(20);
         //->orderBy('id', 'desc')
-        ->paginate(20)
-        ->withQueryString();
+        //->paginate(20)
+        //->withQueryString();
 
         return view('numberseries.index', [
             'numberseries' => $numberseries,
