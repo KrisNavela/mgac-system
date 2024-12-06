@@ -58,10 +58,8 @@
 
 
                 <!-- Results Section -->
-                @if($numberSeries->isEmpty() && !request()->hasAny(['item_id']))
+                @if(!request()->hasAny(['item_id']))
                     <p>No records to display. Please apply filters.</p>
-                @elseif($numberSeries->isEmpty())
-                    <p>No results found for the applied filters.</p>
                 @else
                 <table class="min-w-full divide-y divide-gray-200 mt-2">
                         <thead class="bg-gray-50">
