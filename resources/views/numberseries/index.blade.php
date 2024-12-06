@@ -12,7 +12,7 @@
 
                 <!-- resources/views/number_series/index.blade.php -->
                 <form method="GET" action="">
-                    <label for="name">Filter by Line:</label>
+                    <label for="item_id">Filter by Line:</label>
                     <select class="" id="dropdown">
                         <option value="">Please Select Item</option>
                             @foreach($items as $item)
