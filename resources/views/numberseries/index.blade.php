@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                <!-- resources/views/number_series/index.blade.php -->
+                <!-- resources/views/numberseries/index.blade.php -->
                 <form method="GET" action="{{ route('numberseries.index') }}">
                     <label for="item_id">Filter by Line:</label>
                     <select class="" id="item_id" name="item_id">
@@ -23,10 +23,6 @@
                                 </option>
                             @endforeach
                     </select>
-                    
-                    <label for="created_at">Filter by Date:</label>
-                    <input type="date" id="created_at" name="created_at" value="">
-
                     <button type="submit">Filter</button>
                     <a href="{{ route('numberseries.index') }}">Reset</a> <!-- Reset filter -->
                 </form>
