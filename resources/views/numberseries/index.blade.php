@@ -23,7 +23,7 @@
                                 </option>
                             @endforeach
                     </select>
-                    <button type="submit" class="bg-orange-500 text-white hover:bg-orange-700 text-sm px-2 py-1 rounded-md">Filter</button>
+                    <button type="submit" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Filter</button>
                     <a href="{{ route('numberseries.index') }}" class="bg-gray-500 text-white hover:bg-gray-700 text-sm px-2 py-1 rounded-md">Reset</a> <!-- Reset filter -->
                 </form>
                     
