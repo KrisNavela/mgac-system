@@ -28,24 +28,16 @@ class NumberSeriesController extends Controller
         $items = Item::all();
 
         // Apply item id filter if provided
-        //if ($request->filled('item_id')) {
-        //    $query->where('item_id', $request->input('item_id'));
-        //}
+        if ($request->filled('item_id')) {
+            $query->where('item_id', $request->input('item_id'));
+        }
 
-        //if ($roleId == 2){
-            // Apply branch code filter if provided
-        //    if ($request->filled('branch_code')) {
-        //        $query->where('branch_code', '=','MKT');
-        //    }
-        //} else {
-            // Apply branch code filter if provided
-            //if ($request->filled('branch_code')) {
-            //    $query->where('branch_code', $request->input('branch_code'));
-            //}
-            if ($request->filled('branch_code')) {
-                $query->where('branch_code', '=','MKT');
-            }
-        //}
+        
+        // Apply branch code filter if provided
+        if ($request->filled('branch_code')) {
+            $query->where('branch_code', $request->input('branch_code'));
+        }
+        
         
 
         // Paginate the results

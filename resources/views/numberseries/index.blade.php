@@ -55,7 +55,15 @@
                     </div>
                 </form>
                     
-                    <table class="min-w-full divide-y divide-gray-200 mt-2">
+
+
+                <!-- Results Section -->
+                @if($numberSeries->isEmpty() && !request()->hasAny(['item_id']))
+                    <p>No records to display. Please apply filters.</p>
+                @elseif($numberSeries->isEmpty())
+                    <p>No results found for the applied filters.</p>
+                @else
+                <table class="min-w-full divide-y divide-gray-200 mt-2">
                         <thead class="bg-gray-50">
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">ID</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Req No</th>
@@ -96,6 +104,17 @@
             <div>
                 {{ $numberseries->links() }}
             </div>
+                @endif
+
+
+
+
+
+
+                
+
+
+                    
         </div>
     </div>
 
