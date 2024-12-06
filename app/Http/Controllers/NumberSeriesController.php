@@ -18,6 +18,7 @@ class NumberSeriesController extends Controller
         $user = auth()->user(); 
         $userId = $user->id;
         $roleId = $user->role_id;
+        $branch_code = $user->branch->branch_code;
 
         // Start the query builder
         $query = NumberSeries::query();
@@ -28,13 +29,21 @@ class NumberSeriesController extends Controller
 
         // Apply item id filter if provided
         if ($request->filled('item_id')) {
-            $query->where('item_id', '=', $request->input('item_id'));
+            $query->where('item_id', $request->input('item_id'));
         }
 
-        // Apply branch code filter if provided
-        if ($request->filled('branch_code')) {
-            $query->where('branch_code', '=', $request->input('branch_code'));
+        if ($roleId == "2"){
+            // Apply branch code filter if provided
+            if ($request->filled('branch_code')) {
+                $query->where('branch_code', $branch_code);
+            }
+        } else {
+            // Apply branch code filter if provided
+            if ($request->filled('branch_code')) {
+                $query->where('branch_code', $request->input('branch_code'));
+            }
         }
+        
 
         // Paginate the results
         $numberseries = $query->paginate(20);
