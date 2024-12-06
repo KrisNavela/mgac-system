@@ -395,18 +395,44 @@
         @endif
 
         <div class="p-6 text-gray-900" x-data="{
-                            requisitionItems: {{ $requisitionItems }},
-                            addItem() {
-                                this.requisitionItems.push({
-                                    id: null,
-                                    unreported: 0,
-                                    quantity: 1,
-                                    unit: 'Pad',
-                                });
-                            },
-                            removeItem(index) {
-                                this.requisitionItems.splice(index, 1);
-                            }}">
+        items: [{
+            id: null,
+            quantity: 1,
+            unit: 'Pad',
+            unreportedCount: 0
+        }],
+        
+        addItem() {
+            this.items.push({
+                id: null,
+                quantity: 1,
+                unit: 'Pad',
+                unreportedCount: 0
+            });
+        },
+        
+        removeItem(index) {
+            this.items.splice(index, 1);
+        },
+        
+        // Function to fetch unreported count
+        fetchUnreportedCount(event, index) {
+            const itemId = event.target.value;
+
+            if (itemId) {
+                fetch(`/get-unreported-count-reviewer?item_id=${itemId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        this.items[index].unreportedCount = data.count;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching unreported count:', error);
+                    });
+            } else {
+                this.items[index].unreportedCount = 0;
+            }
+        }
+    }">
 
                             <div class="flex justify-end space-x-4">
                             <div class="flex justify-end">      
@@ -680,6 +706,21 @@
                                                 @foreach($items as $item)
                                                     <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
                                                 @endforeach
+                                            </select>
+                                        </td>
+
+                                        <td class="px-2 py-2">
+                                            <select 
+                                                class="form-select"  
+                                                id="dropdown"
+                                                x-model="item.item_id"
+                                                :name="'items['+index+'][id]'"
+                                                @change="fetchUnreportedCount($event, index)"
+                                            >
+                                                <option value="">Please Select Item</option>
+                                                    @foreach($items as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
+                                                    @endforeach
                                             </select>
                                         </td>
 
