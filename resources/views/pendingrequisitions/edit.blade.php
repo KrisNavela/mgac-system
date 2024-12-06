@@ -701,7 +701,7 @@
                                                 class="form-select"  
                                                 id="dropdown"
                                                 x-model="item.item_id"
-                                                :name="'items['+index+'][id]'"
+                                                :name="'items['+index+'][item_id]'"
                                                 @change="fetchUnreportedCount($event, index)"
                                             >
                                                 <option value="">Please Select Item</option>
