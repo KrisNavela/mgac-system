@@ -19,7 +19,7 @@ class NumberSeriesController extends Controller
         //$roleId = $user->role_id;
 
         $numberseries = NumberSeries::All()
-        ->orderBy('id', 'desc')
+        //->orderBy('id', 'desc')
         ->paginate(20)
         ->withQueryString();
 
