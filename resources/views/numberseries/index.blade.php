@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900">
 
                 <!-- resources/views/number_series/index.blade.php -->
-                <form method="GET" action="">
+                <form method="GET" action="{{ route('numberseries.index') }}">
                     <label for="item_id">Filter by Line:</label>
                     <select class="" id="dropdown">
                         <option value="">Please Select Item</option>
@@ -24,7 +24,7 @@
                     <input type="date" id="created_at" name="created_at" value="">
 
                     <button type="submit">Filter</button>
-                    <a href="">Reset</a> <!-- Reset filter -->
+                    <a href="{{ route('numberseries.index') }}">Reset</a> <!-- Reset filter -->
                 </form>
                     
                     <table class="min-w-full divide-y divide-gray-200 mt-2">
