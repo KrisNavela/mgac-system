@@ -17,6 +17,10 @@ class NumberSeriesController extends Controller
         //$user = auth()->user(); // Get the authenticated user
         //$userId = $user->id;
         //$roleId = $user->role_id;
+        $branches = branch::all();
+        $users = User::all();
+        $requisitions = Requisition::all();
+        
 
         $numberseries = NumberSeries::paginate(20);
         //->orderBy('id', 'desc')
@@ -25,6 +29,10 @@ class NumberSeriesController extends Controller
 
         return view('numberseries.index', [
             'numberseries' => $numberseries,
+            'requisitions' => $requisitions,
+            'branches' => $branches,
+            'users' => $users,
+
         ]);
 
     }
