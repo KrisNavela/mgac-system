@@ -71,34 +71,9 @@ class NumberSeriesController extends Controller
         $numberseries = NumberSeries::findOrFail($id);
         $numberseries->number_status = 'Used';
         $numberseries->save(); // Save the changes
-        
-        // Start the query builder
-        $query = NumberSeries::query();
-        $branches = branch::all();
-        $users = User::all();
-        $requisitions = Requisition::all();
-        $items = Item::all();
-
-        // Apply name filter if provided
-        if ($request->filled('item_id')) {
-            $query->where('item_id', $request->input('item_id'));
-        }
-
-
-        // Paginate the results
-        $numberseries = $query->paginate(20);
-
-        // Preserve query parameters in pagination links
-        $numberseries->appends($request->all());
-
-        return view('numberseries.index', [
-            'numberseries' => $numberseries,
-            'requisitions' => $requisitions,
-            'branches' => $branches,
-            'users' => $users,
-            'items' => $items,
-        ]);
 
         //return redirect()->route('numberseries.index')->with('success', 'Reported successfully');
+        return redirect()->route('numberseries.index', $request->query())
+                     ->with('success', 'Record updated successfully.');
     }
 }

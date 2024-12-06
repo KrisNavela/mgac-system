@@ -49,7 +49,7 @@
                                     <td>
                                     
 
-                                    <form action="{{ route('numberseries.update.forreported', $newnumberseries->id) }}" method="POST">
+                                    <form action="{{ route('numberseries.update.forreported', $newnumberseries->id) }}?{{ http_build_query(request()->all()) }}" method="POST">
                                         @csrf
                                         @method('PUT') <!-- Specify PUT for update -->
                                         <button type="submit" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md"
