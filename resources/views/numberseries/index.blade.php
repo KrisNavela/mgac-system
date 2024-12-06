@@ -13,19 +13,22 @@
                     <table class="min-w-full divide-y divide-gray-200 mt-2">
                         <thead class="bg-gray-50">
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">ID</th>
-                            
+                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Req No</th>
+                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Date</th>
+                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Line</th>
+                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Number</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Action</th>
                         </thead>                
                         <tbody class="bg-white divide-y divide-gray-200">
                             @foreach ($numberseries as $newnumberseries)
                             <tr class="px-6 py-4 whitespace-nowrap">
                                 <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->id }}</td>
-                                
+                                <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->requisitions->req_no }}</td>
                                 <td>
                                     <a href="" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Show</a>
                                     <a href="" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Edit</a>
                                 </td>
-                                
+
                             </tr>
                             @endforeach
                         </tbody>
