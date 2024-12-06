@@ -418,13 +418,13 @@
                 fetch(`/get-unreported-count-reviewer?item_id=${itemId}`)
                     .then(response => response.json())
                     .then(data => {
-                        this.requisitionItems[index].unreportedCount = data.count;
+                        this.requisitionItems[index].unreported = data.count;
                     })
                     .catch(error => {
                         console.error('Error fetching unreported count:', error);
                     });
             } else {
-                this.requisitionItems[index].unreportedCount = 0;
+                this.requisitionItems[index].unreported = 0;
             }
         }
     }">
@@ -715,8 +715,8 @@
                                             <input 
                                                 type="number" 
                                                 class="form-input"
-                                                x-model="item.unreportedCount"
-                                                :name="'items[' + index + '][unreportedCount]'"
+                                                x-model="item.unreported"
+                                                :name="'items[' + index + '][unreported]'"
                                                 min="0"
                                                 style="width: 100px;"
                                                 readonly
