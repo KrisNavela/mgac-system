@@ -35,7 +35,7 @@
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Line</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Series Number</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Status</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Reported?</th>
+                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Used?</th>
                         </thead>                
                         <tbody class="bg-white divide-y divide-gray-200">
                             @foreach ($numberseries as $newnumberseries)
