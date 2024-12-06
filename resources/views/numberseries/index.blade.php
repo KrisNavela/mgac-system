@@ -23,8 +23,8 @@
                                 </option>
                             @endforeach
                     </select>
-                    <button type="submit">Filter</button>
-                    <a href="{{ route('numberseries.index') }}">Reset</a> <!-- Reset filter -->
+                    <button type="submit" class="bg-orange-500 text-white hover:bg-orange-700 text-sm px-2 py-1 rounded-md">Filter</button>
+                    <a href="{{ route('numberseries.index') }}" class="bg-gray-500 text-white hover:bg-gray-700 text-sm px-2 py-1 rounded-md">Reset</a> <!-- Reset filter -->
                 </form>
                     
                     <table class="min-w-full divide-y divide-gray-200 mt-2">
@@ -33,7 +33,7 @@
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Req No</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Date</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Line</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Number</th>
+                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Series Number</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Status</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Reported?</th>
                         </thead>                
