@@ -9,6 +9,18 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+
+                <!-- resources/views/number_series/index.blade.php -->
+                <form method="GET" action="">
+                    <label for="name">Filter by Name:</label>
+                    <input type="text" id="name" name="name" value="">
+                    
+                    <label for="created_at">Filter by Date:</label>
+                    <input type="date" id="created_at" name="created_at" value="">
+
+                    <button type="submit">Filter</button>
+                    <a href="">Reset</a> <!-- Reset filter -->
+                </form>
                     
                     <table class="min-w-full divide-y divide-gray-200 mt-2">
                         <thead class="bg-gray-50">
@@ -17,7 +29,7 @@
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Date</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Line</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Number</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Statu</th>
+                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Status</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Reported?</th>
                         </thead>                
                         <tbody class="bg-white divide-y divide-gray-200">
