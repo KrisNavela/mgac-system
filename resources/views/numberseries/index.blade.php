@@ -12,8 +12,13 @@
 
                 <!-- resources/views/number_series/index.blade.php -->
                 <form method="GET" action="">
-                    <label for="name">Filter by Name:</label>
-                    <input type="text" id="name" name="name" value="">
+                    <label for="name">Filter by Line:</label>
+                    <select class="" id="dropdown">
+                        <option value="">Please Select Item</option>
+                            @foreach($items as $item)
+                                <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
+                            @endforeach
+                    </select>
                     
                     <label for="created_at">Filter by Date:</label>
                     <input type="date" id="created_at" name="created_at" value="">
