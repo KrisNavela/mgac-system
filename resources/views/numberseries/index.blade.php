@@ -30,7 +30,7 @@
                             @foreach ($branches as $branch)
                                 <option 
                                     value="{{ $branch->branch_code }}" 
-                                    {{ request('branch_code') == $item->branch_code ? 'selected' : '' }}>
+                                    {{ request('branch_code') == $branch->branch_code ? 'selected' : '' }}>
                                     {{ $branch->branch_name }}
                                 </option>
                             @endforeach
@@ -46,6 +46,7 @@
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Req No</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Date</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Line</th>
+                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Branch</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Series Number</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Status</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Used?</th>
@@ -57,6 +58,7 @@
                                     <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->requisition->req_no }}</td>
                                     <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->requisition->req_date }}</td>
                                     <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->item->item_desc }}</td>
+                                    <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->branch->branch_name }}</td>
                                     <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->number }}</td>
                                     <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->number_status }}</td>
                                     <td>
