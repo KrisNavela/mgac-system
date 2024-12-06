@@ -14,29 +14,10 @@ class NumberSeriesController extends Controller
 {
     public function index(Request $request)
     {
-
-        //$user = auth()->user(); // Get the authenticated user
-        //$userId = $user->id;
-        //$roleId = $user->role_id;
-        //$branches = branch::all();
-        //$users = User::all();
-        //$requisitions = Requisition::all();
-        //$items = Item::all();
-        
-
-        //$numberseries = NumberSeries::paginate(30);
-        //->orderBy('id', 'desc')
-        //->paginate(20)
-        //->withQueryString();
-
-        //return view('numberseries.index', [
-        //    'numberseries' => $numberseries,
-        //    'requisitions' => $requisitions,
-        //    'branches' => $branches,
-        //    'users' => $users,
-        //    'items' => $items,
-
-        //]);
+        // Get the authenticated user
+        $user = auth()->user(); 
+        $userId = $user->id;
+        $roleId = $user->role_id;
 
         // Start the query builder
         $query = NumberSeries::query();
@@ -54,7 +35,6 @@ class NumberSeriesController extends Controller
         if ($request->filled('branch_code')) {
             $query->where('branch_code', $request->input('branch_code'));
         }
-
 
         // Paginate the results
         $numberseries = $query->paginate(20);
@@ -77,7 +57,6 @@ class NumberSeriesController extends Controller
         $numberseries->number_status = 'Used';
         $numberseries->save(); // Save the changes
 
-        //return redirect()->route('numberseries.index')->with('success', 'Reported successfully');
         return redirect()->route('numberseries.index', $request->query())
                      ->with('success', 'Record updated successfully.');
     }
