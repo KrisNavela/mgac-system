@@ -46,7 +46,9 @@
 
                 </div>
             </div>
-
+            <div>
+                {{ $numberseries->links() }}
+            </div>
         </div>
     </div>
 
