@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div>
-                {{ $requisitions->links() }}
+                {{ $numberseries->links() }}
             </div>
         </div>
     </div>
