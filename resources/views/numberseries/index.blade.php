@@ -36,6 +36,9 @@
 
                 </div>
             </div>
+            <div>
+                {{ $requisitions->links() }}
+            </div>
         </div>
     </div>
 
