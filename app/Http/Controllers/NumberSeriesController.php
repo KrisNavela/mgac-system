@@ -28,12 +28,12 @@ class NumberSeriesController extends Controller
 
         // Apply item id filter if provided
         if ($request->filled('item_id')) {
-            $query->where('item_id', $request->input('item_id'));
+            $query->where('item_id', '=', $request->input('item_id'));
         }
 
         // Apply branch code filter if provided
         if ($request->filled('branch_code')) {
-            $query->where('branch_code', $request->input('branch_code'));
+            $query->where('branch_code', '=', $request->input('branch_code'));
         }
 
         // Paginate the results
