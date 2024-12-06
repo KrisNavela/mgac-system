@@ -719,7 +719,17 @@
                                             </select>
                                         </td>
 
-                                        
+                                        <td class="px-2 py-2">
+                                            <input 
+                                                type="number" 
+                                                class="form-input"
+                                                x-model="item.unreported"
+                                                :name="'items[' + index + '][unreportedCount]'"
+                                                min="0"
+                                                style="width: 100px;"
+                                                readonly
+                                            >
+                                        </td>
 
                                         <td class="px-2 py-2">
                                             <input type="number" x-model="item.quantity" :name="'items['+index+'][quantity]'"> 
