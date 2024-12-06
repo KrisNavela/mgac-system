@@ -37,6 +37,8 @@
                             <x-text-input id="branch_name" class="block mt-1 w-full" style="width: 300px;" type="text" name="branch_name" :value="auth()->user()->branch?->branch_name" disable/>
                         </div>
                     @else 
+                    <div class="mt-4">
+                        <x-input-label for="branch_code" :value="__('Branch Code')" />
                         <select class="" id="branch_code" name="branch_code">
                             <option value="">Select Branch</option> <!-- Default option -->
                                 @foreach ($branches as $branch)
@@ -47,6 +49,7 @@
                                     </option>
                                 @endforeach
                         </select>
+                    </div>
                     @endif
 
                     <div class="mt-4">
