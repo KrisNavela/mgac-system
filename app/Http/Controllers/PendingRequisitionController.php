@@ -521,14 +521,14 @@ class PendingRequisitionController extends Controller
                     'quantity' => $item['quantity'], 
                     'quantity_unit' => $item['quantity_unit'],
                     'in_pcs' => $item['quantity'] * 50,
-                    'unreported'  => $item['unreportedCount']
+                    'unreported'  => $item['unreported']
                 ]);
             } else {
                 $pendingrequisition->items()->attach($item['item_id'], [
                     'quantity' => $item['quantity'], 
                     'quantity_unit' => $item['quantity_unit'],
                     'in_pcs' => $item['quantity'],
-                    'unreported'  => $item['unreportedCount']
+                    'unreported'  => $item['unreported']
                 ]);
             }
         }
