@@ -18,7 +18,7 @@ class NumberSeriesController extends Controller
         $user = auth()->user(); 
         $userId = $user->id;
         $roleId = $user->role_id;
-        $branch_code = auth()->user()->branch?->branch_code;
+        $branch_code = auth()->user()->branches?->branch_code;
 
         // Start the query builder
         $query = NumberSeries::query();
