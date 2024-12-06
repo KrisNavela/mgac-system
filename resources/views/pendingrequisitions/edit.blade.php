@@ -395,12 +395,7 @@
         @endif
 
         <div class="p-6 text-gray-900" x-data="{
-        items: [{
-            id: null,
-            quantity: 1,
-            unit: 'Pad',
-            unreportedCount: 0
-        }],
+        requisitionItems: {{ $requisitionItems }},
         
         addItem() {
             this.items.push({
