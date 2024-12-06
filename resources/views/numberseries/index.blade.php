@@ -14,7 +14,7 @@
                 <form method="GET" action="{{ route('numberseries.index') }}">
                     <label for="item_id">Filter by Line:</label>
                     <select class="" id="item_id" name="item_id">
-                        <option value="{{ $item->id }}">Please Select Item</option>
+                        <option value="{{ $items->id }}">Please Select Item</option>
                             @foreach($items as $item)
                                 <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
                             @endforeach
