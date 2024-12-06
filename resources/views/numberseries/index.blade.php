@@ -31,9 +31,13 @@
                                 <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->number }}</td>
                                 <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->number_status }}</td>
                                 <td>
-                                <a href="{{ route('numberseries.update.forreported', $numberseries->id) }}" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md"
-                                onclick="return confirm('Are you sure you want to proceed this?');">Yes</a>
-                                </td>
+                                
+
+                                <form action="{{ route('numberseries.update.forreported', $numberseries->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT') <!-- Specify PUT for update -->
+                                    <button type="submit">Update</button>
+                                </form>
 
                             </tr>
                             @endforeach
