@@ -18,8 +18,7 @@
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Line</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Number</th>
                             <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Statu</th>
-
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Action</th>
+                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Reported?</th>
                         </thead>                
                         <tbody class="bg-white divide-y divide-gray-200">
                             @foreach ($numberseries as $newnumberseries)
@@ -37,7 +36,7 @@
                                         @csrf
                                         @method('PUT') <!-- Specify PUT for update -->
                                         <button type="submit" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md"
-                                        onclick="return confirm('Are you sure you want to proceed this?');">Update</button>
+                                        onclick="return confirm('Are you sure you want to proceed this?');">Yes</button>
                                     </form>
 
                                 </tr>
