@@ -27,6 +27,8 @@ class NumberSeriesController extends Controller
         $requisitions = Requisition::all();
         $items = Item::all();
 
+
+        
         // Apply item id filter if provided
         if ($request->filled('item_id')) {
             $query->where('item_id', $request->input('item_id'));
