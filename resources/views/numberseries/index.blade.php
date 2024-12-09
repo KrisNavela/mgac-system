@@ -54,7 +54,7 @@
 
                     <div class="mt-4">
                         <x-input-label for="number_status" :value="__('Status')" />
-                        <select class="" id="number_status" name="number_status">
+                        <select class="form-control" id="number_status" name="number_status">
                             <option value="" {{ old('number_status') == '' ? 'selected' : '' }}>Select a category</option>
                             <option value="Unused" {{ old('number_status') == 'Unused' ? 'selected' : '' }}>Unused</option>
                             <option value="Used" {{ old('catenumber_statusgory') == 'Used' ? 'selected' : '' }}>Used</option>
