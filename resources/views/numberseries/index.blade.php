@@ -55,7 +55,7 @@
                     <div class="mt-4">
                         <x-input-label for="number_status" :value="__('Status')" />
                         <select class="" id="number_status" name="number_status">
-                            <option value="">Select Status</option> <!-- Default option -->
+                            <option value="" selected>Select a category</option>
                             <option value="Unused">Unused</option>
                             <option value="Used" selected>Used</option>
                         </select>
