@@ -57,7 +57,7 @@
                         <select class="form-control" id="number_status" name="number_status">
                             <option value="" {{ old('number_status') == '' ? 'selected' : '' }}>Select a category</option>
                             <option value="Unused" {{ old('number_status') == 'Unused' ? 'selected' : '' }}>Unused</option>
-                            <option value="Used" {{ old('catenumber_statusgory') == 'Used' ? 'selected' : '' }}>Used</option>
+                            <option value="Used" {{ old('number_status') == 'Used' ? 'selected' : '' }}>Used</option>
                         </select>
                     </div>
 
