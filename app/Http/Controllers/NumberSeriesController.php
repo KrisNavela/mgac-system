@@ -37,6 +37,11 @@ class NumberSeriesController extends Controller
         if ($request->filled('branch_code')) {
             $query->where('branch_code', $request->input('branch_code'));
         }
+
+        // Apply branch code filter if provided
+        if ($request->filled('number_status')) {
+            $query->where('number_status', $request->input('number_status'));
+        }
         
         
 
