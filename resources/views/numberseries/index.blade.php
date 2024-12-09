@@ -57,7 +57,7 @@
                         <select class="" id="number_status" name="number_status">
                             <option value="" selected>Select a category</option>
                             <option value="Unused">Unused</option>
-                            <option value="Used" selected>Used</option>
+                            <option value="Used">Used</option>
                         </select>
                     </div>
 
