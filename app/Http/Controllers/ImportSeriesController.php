@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Imports\SeriesImport;
-use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Http\Request;
+use App\Imports\SeriesImport; // Import your import class
+use Maatwebsite\Excel\Facades\Excel; // Import the Excel facade
+
+
 
 class ImportSeriesController extends Controller
 {
