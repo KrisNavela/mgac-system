@@ -10,71 +10,72 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
+                <div style="display: flex; gap: 20px; justify-content: center;">
 
-                <form action="{{ route('import.series') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <x-input-label :value="__('Batch Upload')" />
-                    <input type="file" name="file" required>
-                    <button type="submit">Upload</button>
-                </form>
+                    <form action="{{ route('import.series') }}" method="POST" enctype="multipart/form-data" style="flex: 1; max-width: 400px;">
+                        @csrf
+                        <x-input-label :value="__('Batch Upload')" />
+                        <input type="file" name="file" required>
+                        <button type="submit">Upload</button>
+                    </form>
 
-                <!-- resources/views/numberseries/index.blade.php -->
-                <form method="GET" action="{{ route('numberseries.index') }}">
-                    <div class="mt-4">
-                        <x-input-label for="item_id" :value="__('Line')" />
-                        <select class="" id="item_id" name="item_id">
-                            <option value="">Select an Item</option> <!-- Default option -->
-                                @foreach ($items as $item)
-                                    <option 
-                                        value="{{ $item->id }}" 
-                                        {{ request('item_id') == $item->id ? 'selected' : '' }}>
-                                        {{ $item->item_desc }}
-                                    </option>
-                                @endforeach
-                        </select>
-                    </div>
+                    <!-- resources/views/numberseries/index.blade.php -->
+                    <form method="GET" action="{{ route('numberseries.index') }}" style="flex: 1; max-width: 400px;">
+                        <div class="mt-4">
+                            <x-input-label for="item_id" :value="__('Line')" />
+                            <select class="" id="item_id" name="item_id">
+                                <option value="">Select an Item</option> <!-- Default option -->
+                                    @foreach ($items as $item)
+                                        <option 
+                                            value="{{ $item->id }}" 
+                                            {{ request('item_id') == $item->id ? 'selected' : '' }}>
+                                            {{ $item->item_desc }}
+                                        </option>
+                                    @endforeach
+                            </select>
+                        </div>
 
-                    @if (auth()->user()->role_id == '2')
+                        @if (auth()->user()->role_id == '2')
+                            <div class="mt-4">
+                                <x-input-label for="branch_code" :value="__('Branch Code')" />
+                                <x-text-input id="branch_code" class="block mt-1 w-full" style="width: 100px;" type="text" name="branch_code" :value="auth()->user()->branch?->branch_code" disable/>
+                            </div>
+
+                            <div class="mt-4">
+                                <x-input-label for="branch_name" :value="__('Branch Name')" />
+                                <x-text-input id="branch_name" class="block mt-1 w-full" style="width: 300px;" type="text" name="branch_name" :value="auth()->user()->branch?->branch_name" disable/>
+                            </div>
+                        @else 
                         <div class="mt-4">
                             <x-input-label for="branch_code" :value="__('Branch Code')" />
-                            <x-text-input id="branch_code" class="block mt-1 w-full" style="width: 100px;" type="text" name="branch_code" :value="auth()->user()->branch?->branch_code" disable/>
+                            <select class="" id="branch_code" name="branch_code">
+                                <option value="">Select Branch</option> <!-- Default option -->
+                                    @foreach ($branches as $branch)
+                                        <option 
+                                            value="{{ $branch->branch_code }}" 
+                                            {{ request('branch_code') == $branch->branch_code ? 'selected' : '' }}>
+                                            {{ $branch->branch_name }}
+                                        </option>
+                                    @endforeach
+                            </select>
+                        </div>
+                        @endif
+
+                        <div class="mt-4">
+                            <x-input-label for="number_status" :value="__('Status')" />
+                            <select name="number_status" class="form-control">
+                                <option value="" {{ request('number_status') == '' ? 'selected' : '' }}>Select a category</option>
+                                <option value="Unused" {{ request('number_status') == 'Unused' ? 'selected' : '' }}>Unused</option>
+                                <option value="Used" {{ request('number_status') == 'Used' ? 'selected' : '' }}>Used</option>
+                            </select>
                         </div>
 
                         <div class="mt-4">
-                            <x-input-label for="branch_name" :value="__('Branch Name')" />
-                            <x-text-input id="branch_name" class="block mt-1 w-full" style="width: 300px;" type="text" name="branch_name" :value="auth()->user()->branch?->branch_name" disable/>
+                            <button type="submit" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Filter</button>
+                            <a href="{{ route('numberseries.index') }}" class="bg-gray-500 text-white hover:bg-gray-700 text-sm px-2 py-1 rounded-md">Reset</a> <!-- Reset filter -->
                         </div>
-                    @else 
-                    <div class="mt-4">
-                        <x-input-label for="branch_code" :value="__('Branch Code')" />
-                        <select class="" id="branch_code" name="branch_code">
-                            <option value="">Select Branch</option> <!-- Default option -->
-                                @foreach ($branches as $branch)
-                                    <option 
-                                        value="{{ $branch->branch_code }}" 
-                                        {{ request('branch_code') == $branch->branch_code ? 'selected' : '' }}>
-                                        {{ $branch->branch_name }}
-                                    </option>
-                                @endforeach
-                        </select>
-                    </div>
-                    @endif
-
-                    <div class="mt-4">
-                        <x-input-label for="number_status" :value="__('Status')" />
-                        <select name="number_status" class="form-control">
-                            <option value="" {{ request('number_status') == '' ? 'selected' : '' }}>Select a category</option>
-                            <option value="Unused" {{ request('number_status') == 'Unused' ? 'selected' : '' }}>Unused</option>
-                            <option value="Used" {{ request('number_status') == 'Used' ? 'selected' : '' }}>Used</option>
-                        </select>
-                    </div>
-
-                    <div class="mt-4">
-                        <button type="submit" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Filter</button>
-                        <a href="{{ route('numberseries.index') }}" class="bg-gray-500 text-white hover:bg-gray-700 text-sm px-2 py-1 rounded-md">Reset</a> <!-- Reset filter -->
-                    </div>
-                </form>
-                    
+                    </form>
+                </div>    
 
 
                 <!-- Results Section -->
