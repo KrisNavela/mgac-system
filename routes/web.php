@@ -73,7 +73,7 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/get-unreported-count', [RequisitionController::class, 'getUnreportedCount']);
     Route::get('/get-unreported-count-reviewer', [PendingRequisitionController::class, 'getUnreportedCountReviewer']);
-    Route::post('/import-series', [NumberSeriesController::class, 'importSeries'])->name('import.series');
+    Route::post('numberseries/import-series', [NumberSeriesController::class, 'importSeries'])->name('import.series');
 
 });
 
