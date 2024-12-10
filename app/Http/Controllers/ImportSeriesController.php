@@ -18,6 +18,6 @@ class ImportSeriesController extends Controller
 
         Excel::import(new SeriesImport, $request->file('file'));
 
-        return redirect()->back()->with('success', 'Series status updated successfully.');
+        return redirect()->back()->with('success', 'Import Series updated successfully.');
     }
 }
