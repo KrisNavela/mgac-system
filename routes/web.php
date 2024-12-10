@@ -19,6 +19,7 @@ use App\Http\Controllers\SpoiledFormController;
 use App\Http\Controllers\COCApprovalController;
 use App\Http\Controllers\TreasuryApprovalController;
 use App\Http\Controllers\NumberSeriesController;
+use App\Http\Controllers\ImportSeriesController;
 
 
 Route::get('/', function () {
@@ -73,7 +74,7 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/get-unreported-count', [RequisitionController::class, 'getUnreportedCount']);
     Route::get('/get-unreported-count-reviewer', [PendingRequisitionController::class, 'getUnreportedCountReviewer']);
-    Route::post('/import-excel', [NumberSeriesController::class, 'importexcel'])->name('import.excel');
+    Route::post('/import-series', [ImportSeriesController::class, 'importSeries'])->name('import.series');
 
 });
 
