@@ -10,6 +10,13 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
+
+                <form action="{{ route('import.series') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="file" required>
+                    <button type="submit">Upload</button>
+                </form>
+
                 <!-- resources/views/numberseries/index.blade.php -->
                 <form method="GET" action="{{ route('numberseries.index') }}">
                     <div class="mt-4">
@@ -114,17 +121,7 @@
             <div>
                 {{ $numberseries->links() }}
             </div>
-                @endif
-
-
-
-
-
-
-                
-
-
-                    
+                @endif       
         </div>
     </div>
 
