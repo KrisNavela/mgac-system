@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                <div style="display: flex; gap: 20px; justify-content: center;">
+                <div style="display: flex; gap: 20px; justify-content: left;">
                     <!-- resources/views/numberseries/index.blade.php -->
                     <form method="GET" action="{{ route('numberseries.index') }}" style="flex: 1; max-width: 400px;">
                         <div class="">
