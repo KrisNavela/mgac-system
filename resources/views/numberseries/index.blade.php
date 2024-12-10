@@ -13,7 +13,7 @@
                 <div style="display: flex; gap: 20px; justify-content: center;">
                     <!-- resources/views/numberseries/index.blade.php -->
                     <form method="GET" action="{{ route('numberseries.index') }}" style="flex: 1; max-width: 400px;">
-                        <div class="mt-4">
+                        <div class="">
                             <x-input-label for="item_id" :value="__('Line')" />
                             <select class="" id="item_id" name="item_id">
                                 <option value="">Select an Item</option> <!-- Default option -->
