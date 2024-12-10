@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Facades\Excel; // Import the Excel facade
 
 class ImportSeriesController extends Controller
 {
-    public function importSeries(Request $request)
+    public function importexcel(Request $request)
 {
     $request->validate([
         'file' => 'required|file|mimes:xlsx,csv',
