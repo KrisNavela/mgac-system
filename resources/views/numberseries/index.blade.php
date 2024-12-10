@@ -13,6 +13,7 @@
 
                 <form action="{{ route('import.series') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <x-input-label :value="__('Batch Upload')" />
                     <input type="file" name="file" required>
                     <button type="submit">Upload</button>
                 </form>
