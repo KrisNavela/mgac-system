@@ -11,14 +11,6 @@
                 <div class="p-6 text-gray-900">
 
                 <div style="display: flex; gap: 20px; justify-content: center;">
-
-                    <form action="{{ route('import.series') }}" method="POST" enctype="multipart/form-data" style="flex: 1; max-width: 400px;">
-                        @csrf
-                        <x-input-label :value="__('Batch Upload')" />
-                        <input type="file" name="file" required>
-                        <button type="submit">Upload</button>
-                    </form>
-
                     <!-- resources/views/numberseries/index.blade.php -->
                     <form method="GET" action="{{ route('numberseries.index') }}" style="flex: 1; max-width: 400px;">
                         <div class="mt-4">
@@ -75,6 +67,14 @@
                             <a href="{{ route('numberseries.index') }}" class="bg-gray-500 text-white hover:bg-gray-700 text-sm px-2 py-1 rounded-md">Reset</a> <!-- Reset filter -->
                         </div>
                     </form>
+
+                    <form action="{{ route('import.series') }}" method="POST" enctype="multipart/form-data" style="flex: 1; max-width: 400px;">
+                        @csrf
+                        <x-input-label :value="__('Batch Upload')" />
+                        <input type="file" name="file" required>
+                        <button type="submit">Upload</button>
+                    </form>
+
                 </div>    
 
 
