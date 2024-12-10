@@ -72,7 +72,7 @@
                         @csrf
                         <x-input-label :value="__('Batch Upload')" />
                         <input type="file" name="file" required>
-                        <button type="submit">Upload</button>
+                        <button type="submit" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Upload</button>
                     </form>
 
                 </div>    
