@@ -70,9 +70,14 @@
 
                     <form action="{{ route('import.series') }}" method="POST" enctype="multipart/form-data" style="flex: 1; max-width: 400px;">
                         @csrf
-                        <x-input-label :value="__('Batch Upload')" />
-                        <input type="file" name="file" required>
-                        <button type="submit" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Upload</button>
+                        <div class="mt-4">
+                            <x-input-label :value="__('Batch Upload')" />
+                            <input type="file" name="file" required>
+                        </div>
+                        <div class="mt-4">
+                            <button type="submit" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Upload</button>
+                        </div>
+
                     </form>
 
                 </div>    
