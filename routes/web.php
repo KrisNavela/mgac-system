@@ -75,7 +75,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/get-unreported-count', [RequisitionController::class, 'getUnreportedCount']);
     Route::get('/get-unreported-count-reviewer', [PendingRequisitionController::class, 'getUnreportedCountReviewer']);
     Route::post('/import-series', [ImportSeriesController::class, 'importSeries'])->name('import.series');
-    Route::put('/foruwapprovalrequisitions/{id}/approved-uwapproval', [ForUWApprovalRequisitionController::class, 'approveduwapproval'])->name('foruwapprovalrequisitions.approved.uwapproval');
+    Route::post('/foruwapprovalrequisitions/{id}/approved-uwapproval', [ForUWApprovalRequisitionController::class, 'approveduwapproval'])->name('foruwapprovalrequisitions.approved.uwapproval');
 });
 
 require __DIR__.'/auth.php';
