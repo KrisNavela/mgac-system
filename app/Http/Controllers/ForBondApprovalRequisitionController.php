@@ -515,7 +515,7 @@ class ForBondApprovalRequisitionController extends Controller
         return redirect()->route('forbondapprovalrequisitions.index')->with('success', 'Requisition created successfully');
     }
 
-    // Method to update additional user information (password, profile picture)
+    
     public function updatebondapproval(UpdateRequisitionRequest $request, Requisition $forbondapprovalrequisition, RequisitionRemarks $remarks, $id)
     {
         // Validate the incoming request data
@@ -541,6 +541,32 @@ class ForBondApprovalRequisitionController extends Controller
         RequisitionRemarks::create([
             'requisition_id' => $forbondapprovalrequisition->id,
             'content' => $request->content,
+            'user_id' => Auth::id(),
+            'role_name' => $rolename,
+        ]);
+
+         return redirect()->route('forbondapprovalrequisitions.index')->with('success', 'Requisition created successfully');
+    }
+
+    public function approvedbondapproval(UpdateRequisitionRequest $request, Requisition $forbondapprovalrequisition, RequisitionRemarks $remarks, $id)
+    {
+
+        // Find the user record in the database
+        $forbondapprovalrequisition = Requisition::findOrFail($id);
+
+        // Update the user's basic information
+        $forbondapprovalrequisition->bonds_status = 'approved';
+        $forbondapprovalrequisition->bonds_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
+        $forbondapprovalrequisition->save(); // Save the changes
+
+
+        $user = auth()->user(); // Get the authenticated user
+        $userId = $user->id;
+        $rolename = $user->role->name;
+
+        RequisitionRemarks::create([
+            'requisition_id' => $forbondapprovalrequisition->id,
+            'content' => 'Approved.',
             'user_id' => Auth::id(),
             'role_name' => $rolename,
         ]);
