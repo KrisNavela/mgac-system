@@ -513,7 +513,7 @@ class ForUWApprovalRequisitionController extends Controller
         return redirect()->route('foruwapprovalrequisitions.index')->with('success', 'Requisition created successfully');
     }
 
-    // Method to update additional user information (password, profile picture)
+    
     public function updateuwapproval(UpdateRequisitionRequest $request, Requisition $foruwapprovalrequisition, RequisitionRemarks $remarks, $id)
     {
         // Validate the incoming request data
@@ -538,6 +538,31 @@ class ForUWApprovalRequisitionController extends Controller
         RequisitionRemarks::create([
             'requisition_id' => $foruwapprovalrequisition->id,
             'content' => $request->content,
+            'user_id' => Auth::id(),
+            'role_name' => $rolename,
+        ]);
+
+         return redirect()->route('foruwapprovalrequisitions.index')->with('success', 'Requisition created successfully');
+    }
+
+    public function approveduwapproval(UpdateRequisitionRequest $request, Requisition $foruwapprovalrequisition, RequisitionRemarks $remarks, $id)
+    {
+        // Find the user record in the database
+        $foruwapprovalrequisition = Requisition::findOrFail($id);
+
+        // Update the user's basic information
+        //$foruwapprovalrequisition->bonds_status = $validatedData['bonds_status_modal'];
+        $foruwapprovalrequisition->uw_status = 'approved';
+        $foruwapprovalrequisition->uw_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
+        $foruwapprovalrequisition->save(); // Save the changes
+
+        $user = auth()->user(); // Get the authenticated user
+        $userId = $user->id;
+        $rolename = $user->role->name;
+
+        RequisitionRemarks::create([
+            'requisition_id' => $foruwapprovalrequisition->id,
+            'content' => 'Approved.',
             'user_id' => Auth::id(),
             'role_name' => $rolename,
         ]);
