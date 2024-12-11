@@ -522,12 +522,11 @@ class ApprovedRequisitionController extends Controller
         //return redirect()->route('approvedrequisitions.index')->with('success', 'Requisition created successfully');
     }
 
-    // Method to update additional user information (password, profile picture)
+    
     public function updateapproval(UpdateRequisitionRequest $request, Requisition $approvedrequisition, RequisitionRemarks $remarks, $id)
     {
         // Validate the incoming request data
         $validatedData = $request->validate([
-            //'status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
             'finalapproval_status_modal' => 'required|string|max:255', // Password is optional, but must be confirmed
         ]);
 
