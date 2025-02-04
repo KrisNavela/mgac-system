@@ -544,7 +544,7 @@
                         </div>
 
 
-                        <div class="overflow-x-auto">
+
     <table class="min-w-full divide-y divide-gray-200 text-xs">
         <thead class="bg-gray-50">
             <tr>
@@ -575,7 +575,7 @@
                     </td>
 
                     <td class="p-1">
-                        <input type="text" class="w-8 h-7 text-xs" x-model="item.quantity_unit" />
+                        <input type="text" class="w-16 h-7 text-xs" x-model="item.quantity_unit" />
                     </td>
 
                     <td class="p-1">
@@ -587,7 +587,7 @@
                     </td>
 
                     <td class="p-1">
-                        <input type="text" class="w-8 h-7 text-xs" x-model="item.coc_prefix" />
+                        <input type="text" class="w-24 h-7 text-xs" x-model="item.coc_prefix" />
                     </td>
 
                     <td class="p-1">
@@ -601,7 +601,6 @@
             </template>
         </tbody>
     </table>
-</div>
 
 
 
