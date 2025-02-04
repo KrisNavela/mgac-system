@@ -561,45 +561,45 @@
         <tbody class="bg-white divide-y divide-gray-200">
             <template x-for="(item, index) in requisitionItems" :key="index">
                 <tr class="hover:bg-gray-200">
-                    <td class="p-1">
-                        <select class="text-xs h-7 w-16" x-model="item.item_id">
-                            <option value="">Select</option>
+                <td class="px-2 py-2">
+                        <select class="" x-model="item.item_id" >
+                            <option value="">Please Select Item</option>
                             @foreach($items as $item)
                                 <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
                             @endforeach
                         </select>
                     </td>
 
-                    <td class="p-1">
-                        <input type="number" class="w-16 h-7 text-xs" x-model="item.quantity" />
+                    <td class="px-2 py-2">
+                        <input type="number" style="width: 80px" x-model="item.quantity"/>
                     </td>
 
-                    <td class="p-1">
-                        <input type="text" class="w-16 h-7 text-xs" x-model="item.quantity_unit" />
+                    <td class="px-2 py-2">
+                        <input type="text" style="width: 80px"x-model="item.quantity_unit "/>
                     </td>
 
-                    <td class="p-1">
-                        <input type="text" class="w-16 h-7 text-xs" x-model="item.ho_ctrl_start" />
+                    <td class="px-2 py-2">
+                        <input type="text" style="width: 150px" x-model="item.ho_ctrl_start "/>
                     </td>
 
-                    <td class="p-1">
-                        <input type="text" class="w-16 h-7 text-xs" x-model="item.ho_ctrl_end" />
+                    <td class="px-2 py-2">
+                        <input type="text" style="width: 150px" x-model="item.ho_ctrl_end "/>
                     </td>
 
-                    <td class="p-1">
-                        <input type="text" class="w-16 h-7 text-xs" x-model="item.coc_prefix" />
+                    <td class="px-2 py-2">
+                        <input type="text" style="width: 150px" x-model="item.coc_prefix "/>
                     </td>
 
-                    <td class="p-1">
-                        <input type="text" class="w-16 h-7 text-xs" x-model="item.series_start" />
+                    <td class="px-2 py-2">
+                        <input type="text" style="width: 150px" x-model="item.series_start "/>
                     </td>
 
-                    <td class="p-1">
-                        <input type="text" class="w-16 h-7 text-xs" x-model="item.series_end" />
+                    <td class="px-2 py-2">
+                        <input type="text" style="width: 150px" x-model="item.series_end "/>
                     </td>
                 </tr>
             </template>
-        </tbody>
+    </tbody>
     </table>
 
 
