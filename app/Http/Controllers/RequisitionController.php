@@ -107,7 +107,7 @@ class RequisitionController extends Controller
 
             $requisitions = Requisition::withCount('items')
                 ->when($search, function ($query) use ($search) {
-                    $query->where('id', 'like', "%$search%")
+                    $query->where('req_no', 'like', "%$search%")
                         ->orWhere('status', 'like', "%$search%");
                 })
                 ->orderBy('id', 'desc')
@@ -244,7 +244,7 @@ class RequisitionController extends Controller
                     });
                 })
                 ->when($search, function ($query) use ($search) {
-                    $query->where('id', 'like', "%$search%")
+                    $query->where('req_no', 'like', "%$search%")
                         ->orWhereHas('user', function ($q) use ($search) {
                             $q->where('name', 'like', "%$search%"); // Searching by user name
                         })
@@ -384,7 +384,7 @@ class RequisitionController extends Controller
                     });
                 })
                 ->when($search, function ($query) use ($search) {
-                    $query->where('id', 'like', "%$search%")
+                    $query->where('req_no', 'like', "%$search%")
                         ->orWhere('status', 'like', "%$search%")
                         ->orWhereHas('user', function ($q) use ($search) {
                             $q->where('name', 'like', "%$search%"); // Adjust based on your column
