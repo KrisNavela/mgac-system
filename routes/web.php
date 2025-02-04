@@ -20,6 +20,7 @@ use App\Http\Controllers\COCApprovalController;
 use App\Http\Controllers\TreasuryApprovalController;
 use App\Http\Controllers\NumberSeriesController;
 use App\Http\Controllers\ImportSeriesController;
+use App\Http\Controllers\DoneRequisitionController;
 
 
 Route::get('/', function () {
@@ -51,6 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('cocapprovalrequisitions', COCApprovalController::class);
     Route::resource('treasuryapprovalrequisitions', TreasuryApprovalController::class);
     Route::resource('numberseries', NumberSeriesController::class);
+    Route::resource('donerequisitions', DoneRequisitionController::class);
     
     Route::put('/numberseries/{id}/update-forreported', [NumberSeriesController::class, 'updateforreported'])->name('numberseries.update.forreported');
 
