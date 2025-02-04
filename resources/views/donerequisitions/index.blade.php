@@ -181,16 +181,7 @@
                     <p class="text-sm text-gray-600">Type: {{ $requisition->user->branch->type_office }}</p>
                     <p class="text-sm text-gray-600">COC Request: <label class="text-sm text-gray-600 uppercase">{{ $requisition->coc_request_status }}</label></p> 
                     <div class="mt-4">
-                    <a href="{{ route('requisitions.show', $requisition->id) }}" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Show</a>
-                        @can('view', $requisition)
-                            <a href="{{ route('requisitions.edit', $requisition->id)}}" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md" >Edit</a>
-
-                            <form action="{{ route('requisitions.destroy', $requisition->id) }}" method="POST" class="inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md">Delete</button> 
-                            </form>
-                        @endcan
+                        <a href="{{ route('donerequisitions.show', $requisition->id) }}" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Show</a>
                     </div>
                 </div>
                 @endforeach
