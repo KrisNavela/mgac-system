@@ -98,10 +98,21 @@ class RequisitionController extends Controller
             ->where('cocapproval_status', '=', 'for approval')
             ->count();
 
+            //$requisitions = Requisition::withCount('items')
+            //->orderBy('id', 'desc')
+            //->paginate(10)
+            //->withQueryString();
+
+            $search = request('search');
+
             $requisitions = Requisition::withCount('items')
-            ->orderBy('id', 'desc')
-            ->paginate(10)
-            ->withQueryString();
+                ->when($search, function ($query) use ($search) {
+                    $query->where('id', 'like', "%$search%")
+                        ->orWhere('status', 'like', "%$search%");
+                })
+                ->orderBy('id', 'desc')
+                ->paginate(10)
+                ->withQueryString();
 
             return view('requisitions.index', [
                 'requisitions' => $requisitions,
@@ -119,6 +130,7 @@ class RequisitionController extends Controller
                 'fortransmittalCount' => $fortransmittalCount,
                 'treasuryapprovalCount' => $treasuryapprovalCount,
                 'cocapprovalCount' => $cocapprovalCount,
+                'search' => $search,
 
             ]);
         //Initial approver Branches and Final approver Branches Access
