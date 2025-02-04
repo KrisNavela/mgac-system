@@ -59,6 +59,7 @@ class NumberSeriesController extends Controller
             'branches' => $branches,
             'users' => $users,
             'items' => $items,
+            'roleId' => $roleId,
         ]);
     }
 
