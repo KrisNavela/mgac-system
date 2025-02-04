@@ -571,7 +571,7 @@
                     </td>
 
                     <td class="px-2 py-2">
-                        <input type="number" class="w-24 h-7 text-xs" style="width: 50px" x-model="item.quantity"/>
+                        <input type="number" class="w-24 h-7 text-xs" style="width: 80px" x-model="item.quantity"/>
                     </td>
 
                     <td class="px-2 py-2">
@@ -579,11 +579,11 @@
                     </td>
 
                     <td class="px-2 py-2">
-                        <input type="text" class="w-24 h-7 text-xs" style="width: 150px" x-model="item.ho_ctrl_start "/>
+                        <input type="text" class="w-24 h-7 text-xs" style="width: 140px" x-model="item.ho_ctrl_start "/>
                     </td>
 
                     <td class="px-2 py-2">
-                        <input type="text" class="w-24 h-7 text-xs" style="width: 150px" x-model="item.ho_ctrl_end "/>
+                        <input type="text" class="w-24 h-7 text-xs" style="width: 140px" x-model="item.ho_ctrl_end "/>
                     </td>
 
                     <td class="px-2 py-2">
@@ -591,11 +591,11 @@
                     </td>
 
                     <td class="px-2 py-2">
-                        <input type="text" class="w-24 h-7 text-xs" style="width: 150px" x-model="item.series_start "/>
+                        <input type="text" class="w-24 h-7 text-xs" style="width: 140px" x-model="item.series_start "/>
                     </td>
 
                     <td class="px-2 py-2">
-                        <input type="text" class="w-24 h-7 text-xs" style="width: 150px" x-model="item.series_end "/>
+                        <input type="text" class="w-24 h-7 text-xs" style="width: 140px" x-model="item.series_end "/>
                     </td>
                 </tr>
             </template>
