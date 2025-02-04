@@ -510,11 +510,7 @@
                             <x-text-input id="req_date" class="block mt-1 w-full text-gray-500 uppercase" style="width: 300px;" type="text" name="req_date" :value="$requisition->req_date" disable/>
                         </div>
 
-                        <div class="mt-4">
-                            <x-input-label for="full_name" :value="__('Request By')" />
-                            <x-text-input id="full_name" class="block mt-1 w-full text-gray-500 uppercase" style="width: 300px;" type="text" name="full_name" value="{{ $requisition->user->first_name }} {{ $requisition->user->last_name }}" autofocus autocomplete="full_name" />
-                            <x-input-error :messages="$errors->get('full_name')" class="mt-2" />
-                        </div>
+                        
 
                         <div class="mt-4">
                             <x-input-label for="branch_name" :value="__('Branch Name')" />
