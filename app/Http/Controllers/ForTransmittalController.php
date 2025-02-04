@@ -520,22 +520,44 @@ class ForTransmittalController extends Controller
             $lineitem = Item::find($id);
             
             // Get the start and end values
+            //$start = $item['series_start'];
+            //$end = $item['series_end'];
+
+            // Store the series in the database
+            //for ($i = $start; $i <= $end; $i++) {
+            //    NumberSeries::create([
+            //        'number' => $i,
+            //        'requisition_id' => $fortransmittal->id,
+            //        'branch_code' => $request->branch_code,
+            //        'branch_name' => $request->branch_name,
+                    //'item_code' => $itemid,
+            //        'item_id' => $item['item_id'],
+            //        'item_code' => $lineitem->item_code,
+            //        'number_status' => "Unused",
+            //        'coc_prefix' => $item['coc_prefix'],
+            //    ]);
+            //}
+
+            // Get the start and end values
             $start = $item['series_start'];
             $end = $item['series_end'];
 
-            // Store the series in the database
-            for ($i = $start; $i <= $end; $i++) {
-                NumberSeries::create([
-                    'number' => $i,
-                    'requisition_id' => $fortransmittal->id,
-                    'branch_code' => $request->branch_code,
-                    'branch_name' => $request->branch_name,
-                    //'item_code' => $itemid,
-                    'item_id' => $item['item_id'],
-                    'item_code' => $lineitem->item_code,
-                    'number_status' => "Unused",
-                    'coc_prefix' => $item['coc_prefix'],
-                ]);
+            // Process only if start is not equal to 0
+            if ($start != 0) {
+                // Store the series in the database
+                for ($i = $start; $i <= $end; $i++) {
+                    NumberSeries::create([
+                        'number' => $i,
+                        'requisition_id' => $fortransmittal->id,
+                        'branch_code' => $request->branch_code,
+                        'branch_name' => $request->branch_name,
+                        //'item_code' => $itemid,
+                        'item_id' => $item['item_id'],
+                        'item_code' => $lineitem->item_code,
+                        'number_status' => "Unused",
+                        'coc_prefix' => $item['coc_prefix'],
+                    ]);
+                }
             }
         }
 
