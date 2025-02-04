@@ -109,6 +109,7 @@ class DoneRequisitionController extends Controller
                     $query->where('req_no', 'like', "%$search%")
                         ->orWhere('status', 'like', "%$search%");
                 })
+                ->where('status', '=', 'done')
                 ->orderBy('id', 'desc')
                 ->paginate(10)
                 ->withQueryString();
@@ -249,6 +250,7 @@ class DoneRequisitionController extends Controller
                         })
                         ->orWhere('status', 'like', "%$search%"); // Searching by status
                 })
+                ->where('status', '=', 'done')
                 ->orderBy('id', 'desc')
                 ->paginate(10)
                 ->withQueryString();
@@ -389,6 +391,7 @@ class DoneRequisitionController extends Controller
                             $q->where('name', 'like', "%$search%"); // Adjust based on your column
                         });
                 })
+                ->where('status', '=', 'done')
                 ->orderBy('id', 'desc')
                 ->paginate(10)
                 ->withQueryString();
