@@ -226,15 +226,33 @@ class RequisitionController extends Controller
             //->where('finalapproval_status', '=', 'approved')
             ->count();
 
-            $requisitions = Requisition::withCount('items')
-            ->whereHas('user', function ($query) {
-                $query->whereHas('branch', function ($query1) {
-                    $query1->where('type_office', 'Branch');}
-            );})
-            ->orderBy('id', 'desc')
-            ->paginate(10)
-            ->withQueryString();
+            //$requisitions = Requisition::withCount('items')
+            //->whereHas('user', function ($query) {
+            //    $query->whereHas('branch', function ($query1) {
+            //        $query1->where('type_office', 'Branch');}
+            //);})
+            //->orderBy('id', 'desc')
+            //->paginate(10)
+            //->withQueryString();
 
+            $search = request('search');
+
+            $requisitions = Requisition::withCount('items')
+                ->whereHas('user', function ($query) {
+                    $query->whereHas('branch', function ($query1) {
+                        $query1->where('type_office', 'Branch');
+                    });
+                })
+                ->when($search, function ($query) use ($search) {
+                    $query->where('id', 'like', "%$search%")
+                        ->orWhereHas('user', function ($q) use ($search) {
+                            $q->where('name', 'like', "%$search%"); // Searching by user name
+                        })
+                        ->orWhere('status', 'like', "%$search%"); // Searching by status
+                })
+                ->orderBy('id', 'desc')
+                ->paginate(10)
+                ->withQueryString();
 
             return view('requisitions.index', [
                 'requisitions' => $requisitions,
@@ -252,6 +270,7 @@ class RequisitionController extends Controller
                 'fortransmittalCount' => $fortransmittalCount,
                 'treasuryapprovalCount' => $treasuryapprovalCount,
                 'cocapprovalCount' => $cocapprovalCount,
+                'search' => $search,
             ]);
 
         //Initial Approver Agencies Access
@@ -347,15 +366,33 @@ class RequisitionController extends Controller
             //->where('finalapproval_status', '=', 'approved')
             ->count();
 
-            $requisitions =  Requisition::withCount('items')
-            ->whereHas('user', function ($query) {
-                $query->whereHas('branch', function ($query1) {
-                    $query1->where('type_office', 'Agency');}
-            );})
-            ->orderBy('id', 'desc')
-            ->paginate(10)
-            ->withQueryString();
+            //$requisitions =  Requisition::withCount('items')
+            //->whereHas('user', function ($query) {
+            //    $query->whereHas('branch', function ($query1) {
+            //        $query1->where('type_office', 'Agency');}
+            //);})
+            //->orderBy('id', 'desc')
+            //->paginate(10)
+            //->withQueryString();
 
+            $search = request('search');
+
+            $requisitions = Requisition::withCount('items')
+                ->whereHas('user', function ($query) {
+                    $query->whereHas('branch', function ($query1) {
+                        $query1->where('type_office', 'Agency');
+                    });
+                })
+                ->when($search, function ($query) use ($search) {
+                    $query->where('id', 'like', "%$search%")
+                        ->orWhere('status', 'like', "%$search%")
+                        ->orWhereHas('user', function ($q) use ($search) {
+                            $q->where('name', 'like', "%$search%"); // Adjust based on your column
+                        });
+                })
+                ->orderBy('id', 'desc')
+                ->paginate(10)
+                ->withQueryString();
 
             return view('requisitions.index', [
                 'requisitions' => $requisitions,
@@ -373,6 +410,7 @@ class RequisitionController extends Controller
                 'fortransmittalCount' => $fortransmittalCount,
                 'treasuryapprovalCount' => $treasuryapprovalCount,
                 'cocapprovalCount' => $cocapprovalCount,
+                'search' => $search,
             ]);
         }
         
@@ -463,8 +501,6 @@ class RequisitionController extends Controller
             ->orderBy('id', 'desc')
             ->paginate(5)
             ->withQueryString();
-
-        
 
             return view('requisitions.index', [
                 'requisitions' => $requisitions,
