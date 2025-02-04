@@ -445,7 +445,7 @@ class RequisitionController extends Controller
         $requisitions = Requisition::withCount('items')
             ->where('user_id', $userId)
             ->when($search, function ($query) use ($search) {
-                $query->where('id', 'like', "%$search%")
+                $query->where('req_no', 'like', "%$search%")
                     ->orWhere('status', 'like', "%$search%");
             })
             ->orderBy('id', 'desc')
