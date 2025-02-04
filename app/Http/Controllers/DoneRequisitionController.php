@@ -521,18 +521,18 @@ class DoneRequisitionController extends Controller
             ]);
     }
 
-    public function show(Requisition $requisition)
+    public function show(Requisition $donerequisition)
     {
 
-        $requisitionid = $requisition->id;
+        $requisitionid = $donerequisition->id;
 
         $attachments = RequisitionAttachment::where('requisition_id',$requisitionid)->get();
         $remarks = RequisitionRemarks::where('requisition_id',$requisitionid)->get();
         $items = Item::all();
-        $requisitionItems = $requisition->items->pluck('pivot');
+        $requisitionItems = $donerequisition->items->pluck('pivot');
 
         return view('donerequisitions.show', [
-            'requisition' => $requisition,
+            'requisition' => $donerequisition,
             'items' => $items,
             'requisitionItems' => $requisitionItems,
             'remarks' => $remarks,
