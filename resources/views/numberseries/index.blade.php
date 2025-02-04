@@ -87,6 +87,8 @@
                         </div>
                     </form>
 
+                    @if ($roleId == 1 || $roleId == 11)
+
                     <form action="{{ route('import.series') }}" method="POST" enctype="multipart/form-data" style="flex: 1; max-width: 400px;">
                         @csrf
                         <div class="">
@@ -98,7 +100,9 @@
                         </div>
 
                     </form>
-
+                    
+                    @endif
+                    
                 </div>    
 
 
