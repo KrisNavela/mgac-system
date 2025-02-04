@@ -143,7 +143,7 @@
             
         <form method="GET" action="{{ route('requisitions.index') }}">
             <input type="text" name="search" placeholder="Search..." value="{{ request('search') }}">
-            <button type="submit">Search</button>
+            <button type="submit" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Search</button>
         </form>
 
             <div class="flex justify-end">
