@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRequisitionRequest;
+use App\Http\Requests\UpdateRequisitionRequest;
 use App\Models\Requisition;
 use App\Models\Item;
 use App\Models\branch;
@@ -9,8 +11,15 @@ use App\Models\User;
 use App\Models\RequisitionRemarks;
 use App\Models\RequisitionAttachment;
 use App\Models\NumberSeries;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Mail\RequisitionCreatedMail;
+use App\Mail\ForApprovalRequisitionAgencyMail;
+use App\Mail\ForApprovalRequisitionBranchMail;
+use App\Mail\ForApprovalCollAsstMail;
+
+use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 
 class DoneRequisitionController extends Controller
 {
