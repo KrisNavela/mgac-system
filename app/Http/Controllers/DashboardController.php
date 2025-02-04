@@ -201,34 +201,15 @@ class DashboardController extends Controller
             ->where('cocapproval_status', '=', 'for approval')
             //->where('finalapproval_status', '=', 'approved')
             ->count();
-
-
-
-            $search = request('search');
-
-            $requisitions = Requisition::withCount('items')
-                ->whereHas('user', function ($query) {
-                    $query->whereHas('branch', function ($query1) {
-                        $query1->where('type_office', 'Branch');
-                    });
-                })
-                ->when($search, function ($query) use ($search) {
-                    $query->where('id', 'like', "%$search%")
-                        ->orWhere('status', 'like', "%$search%");
-                })
-                ->orderBy('id', 'desc')
-                ->paginate(10)
-                ->withQueryString();
-
     
-            //$requisitions = Requisition::withCount('items')
-            //->whereHas('user', function ($query) {
-            //    $query->whereHas('branch', function ($query1) {
-            //        $query1->where('type_office', 'Branch');}
-            //);})
-            //->orderBy('id', 'desc')
-            //->paginate(10)
-            //->withQueryString();
+            $requisitions = Requisition::withCount('items')
+            ->whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'Branch');}
+            );})
+            ->orderBy('id', 'desc')
+            ->paginate(10)
+            ->withQueryString();
 
 
             return view('requisitions.index', [
@@ -247,7 +228,6 @@ class DashboardController extends Controller
                 'fortransmittalCount' => $fortransmittalCount,
                 'treasuryapprovalCount' => $treasuryapprovalCount,
                 'cocapprovalCount' => $cocapprovalCount,
-                'search' => $search,
             ]);
             
         //Initial Approver Agencies Access

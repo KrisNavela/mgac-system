@@ -135,15 +135,16 @@
     </div>
 </div>
     
-    <form method="GET" action="{{ route('requisitions.index') }}">
-        <input type="text" name="search" placeholder="Search..." value="{{ request('search') }}">
-        <button type="submit">Search</button>
-    </form>
+    
 
     <!-- Card view for mobile screens -->
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
         <div class="space-y-4">
-        
+            
+        <form method="GET" action="{{ route('requisitions.index') }}">
+            <input type="text" name="search" placeholder="Search..." value="{{ request('search') }}">
+            <button type="submit">Search</button>
+        </form>
 
             <div class="flex justify-end">
                 <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>

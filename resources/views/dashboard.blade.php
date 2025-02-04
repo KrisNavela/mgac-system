@@ -123,10 +123,7 @@
         </div>
     </nav>
 
-    <form method="GET" action="{{ route('requisitions.index') }}">
-        <input type="text" name="search" placeholder="Search..." value="{{ request('search') }}">
-        <button type="submit">Search</button>
-    </form>
+   
 
     <!-- Card view for mobile screens -->
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
