@@ -562,7 +562,7 @@
             <template x-for="(item, index) in requisitionItems" :key="index">
                 <tr class="hover:bg-gray-200">
                 <td class="px-2 py-2">
-                        <select class="" x-model="item.item_id" >
+                        <select class="" x-model="item.item_id" class="w-24 h-7 text-xs">
                             <option value="">Please Select Item</option>
                             @foreach($items as $item)
                                 <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
@@ -571,11 +571,11 @@
                     </td>
 
                     <td class="px-2 py-2">
-                        <input type="number" class="w-24 h-7 text-xs" style="width: 80px" x-model="item.quantity"/>
+                        <input type="number" class="w-24 h-7 text-xs" style="width: 50px" x-model="item.quantity"/>
                     </td>
 
                     <td class="px-2 py-2">
-                        <input type="text" class="w-24 h-7 text-xs" style="width: 80px"x-model="item.quantity_unit "/>
+                        <input type="text" class="w-24 h-7 text-xs" style="width: 50px"x-model="item.quantity_unit "/>
                     </td>
 
                     <td class="px-2 py-2">
@@ -587,7 +587,7 @@
                     </td>
 
                     <td class="px-2 py-2">
-                        <input type="text" class="w-24 h-7 text-xs" style="width: 150px" x-model="item.coc_prefix "/>
+                        <input type="text" class="w-24 h-7 text-xs" style="width: 50px" x-model="item.coc_prefix "/>
                     </td>
 
                     <td class="px-2 py-2">
