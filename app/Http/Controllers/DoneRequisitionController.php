@@ -549,17 +549,22 @@ class DoneRequisitionController extends Controller
      */
     public function edit(Requisition $donerequisition)
     {
-
         $requisitionid = $donerequisition->id;
+        $branches = branch::all();
+        $users = User::all();
 
         $attachments = RequisitionAttachment::where('requisition_id',$requisitionid)->get();
+        $remarks = RequisitionRemarks::where('requisition_id',$requisitionid)->get();
         $items = Item::all();
         $requisitionItems = $donerequisition->items->pluck('pivot');
 
         return view('donerequisitions.edit', [
             'requisition' => $donerequisition,
+            'branches'=> $branches,
+            'users'=> $users,
             'items' => $items,
             'requisitionItems' => $requisitionItems,
+            'remarks' => $remarks,
             'attachments' => $attachments,
         ]);
     }
