@@ -686,7 +686,7 @@
                                 <a href="{{ url('/fortransmittal/' . $requisition->id . '/print') }}" target="_blank" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md">Print PDF</a>
                             </div>
                             <div class="flex items-center justify-end mt-4">
-                                <a href="{{ route('fortransmittal.index') }}" class="bg-gray-700 text-white hover:bg-gray-900 text-sm px-2 py-1 rounded-md">Done</a>
+                                <a href="{{ route('donerequisitions.index') }}" class="bg-gray-700 text-white hover:bg-gray-900 text-sm px-2 py-1 rounded-md">Done</a>
                             </div>
                         </div>
 
