@@ -550,12 +550,12 @@
 
                         <div class="mt-4">
                             <x-input-label for="delivery_name" :value="__('Courier Name')" />
-                            <x-text-input id="delivery_name" class="block mt-1 w-full" type="text" name="delivery_name" :value="$requisition->delivery_name" disable/>
+                            <x-text-input id="delivery_name" class="block mt-1 w-full text-gray-500 uppercase" type="text" name="delivery_name" :value="$requisition->delivery_name" disable/>
                         </div>
 
                         <div class="mt-4">
                             <x-input-label for="delivery_no" :value="__('Courier Ref No.')" />
-                            <x-text-input id="delivery_no" class="block mt-1 w-full" type="text" name="delivery_no" :value="$requisition->delivery_no" disable/>
+                            <x-text-input id="delivery_no" class="block mt-1 w-full text-gray-500 uppercase" type="text" name="delivery_no" :value="$requisition->delivery_no" disable/>
                         </div>
 
                         <div class="mt-4">
