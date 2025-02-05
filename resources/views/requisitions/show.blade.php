@@ -560,7 +560,12 @@
 
                         <div class="mt-4">
                             <x-input-label for="delivery_status" :value="__('Status')" />
-                            <x-text-input id="delivery_status" class="block mt-1 w-full" type="text" name="delivery_status" :value="$requisition->delivery_status" disable/>
+                            <x-text-input id="delivery_status" class="block mt-1 w-full text-gray-500 uppercase" type="text" name="delivery_status" :value="$requisition->delivery_status" disable/>
+                        </div>
+
+                        <div class="mt-4">
+                            <x-input-label for="delivery_date" :value="__('Delivery Date & Time')" />
+                            <x-text-input id="delivery_date" class="block mt-1 w-full text-gray-500 uppercase" style="width: 300px;" type="text" name="delivery_date" :value="$requisition->delivery_date" disable/>
                         </div>
 
 
