@@ -604,11 +604,65 @@ class ApprovedRequisitionController extends Controller
         // Find the user record in the database
         $approvedrequisition = Requisition::findOrFail($id);
 
+
+
+
+
+
         // Update the user's basic information
         //$foruwapprovalrequisition->bonds_status = $validatedData['bonds_status_modal'];
-        $approvedrequisition->finalapproval_status = 'approved';
-        $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
-        $approvedrequisition->save(); // Save the changes
+        //$approvedrequisition->finalapproval_status = 'approved';
+        //$approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
+        //$approvedrequisition->save(); // Save the changes
+
+
+
+        $coc_request_status = $approvedrequisition->coc_request_status;
+
+        if ($coc_request_status == 'no'){
+
+            if ($approvedrequisition->type_request === 'Replenishment' ) {
+                // Update the user's basic information
+                //$approvedrequisition->status = $validatedData['status_modal'];
+                $approvedrequisition->finalapproval_status = 'approved';
+                $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
+                $approvedrequisition->save(); // Save the changes
+                
+                Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCollAsstMail($approvedrequisition));
+            
+            } else {
+
+                $approvedrequisition->status = 'approved';
+                $approvedrequisition->finalapproval_status = 'approved';
+                $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
+                $approvedrequisition->save(); // Save the changes
+
+                Mail::to('knavela@milestoneguaranty.com')->send(new ForTransmittalMail($approvedrequisition));
+
+            }
+
+        } else {
+
+            if ($approvedrequisition->type_request === 'Replenishment' ) {
+                // Update the user's basic information
+                //$approvedrequisition->status = $validatedData['status_modal'];
+                $approvedrequisition->finalapproval_status = 'approved';
+                $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
+                $approvedrequisition->save(); // Save the changes
+
+                Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCollAsstMail($approvedrequisition));
+            
+            } else {
+                $approvedrequisition->treasuryapproval_status = 'for approval';
+                $approvedrequisition->finalapproval_status = 'approved';
+                $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
+                $approvedrequisition->save(); // Save the changes
+                
+                Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalTreasuryMail($approvedrequisition));
+
+            }    
+
+        }
 
         $user = auth()->user(); // Get the authenticated user
         $userId = $user->id;
