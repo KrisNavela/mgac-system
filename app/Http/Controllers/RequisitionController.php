@@ -564,6 +564,7 @@ class RequisitionController extends Controller
                 'cocapproval_status' =>  'no',
                 'treasuryapproval_status' => 'no',
                 'user_id' => Auth::id(),
+                'remarks' => $request->remarks,
             ]);
         } else {
             $requisition = Requisition::create([
@@ -577,6 +578,7 @@ class RequisitionController extends Controller
                 'cocapproval_status' =>  'no',
                 'treasuryapproval_status' => 'no',
                 'user_id' => Auth::id(),
+                'remarks' => $request->remarks,
             ]);
         }
 
@@ -710,6 +712,7 @@ class RequisitionController extends Controller
             'type_request' => $request->type_request,
             'replenishment_month' => $request->replenishment_month,
             'replenishment_year' => $request->replenishment_year,
+            'remarks' => $request->remarks,
         ]);
         
         $requisition->items()->detach();

@@ -30,6 +30,10 @@ class Requisition extends Model
         'collasst_date',
         'collmanager_date',
         'finalapproval_date',
+        'finalapproval_date',
+        'remarks',
+        'delivery_status',
+        'delivery_no',
 
     ];
 

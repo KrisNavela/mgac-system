@@ -89,6 +89,12 @@
                                 <x-input-error :messages="$errors->get('replenishment_year')" class="mt-2" />
                             </div>
 
+                            <div class="mt-4" style="width: 200px;">
+                                <x-input-label for="remarks" :value="__('Remarks')" />
+                                <x-text-input id="remarks" class="block mt-1 w-full" type="text" name="remarks" autofocus autocomplete="remarks" />
+                                <x-input-error :messages="$errors->get('remarks')" class="mt-2" />
+                            </div>
+
                         <table class="min-w-full divide-y divide-gray-200 mt-2">
                             <thead class="bg-gray-50">
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Item Name</th>
