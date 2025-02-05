@@ -521,7 +521,7 @@
                                     }                
                                     </script>
 
-<div class="mt-4">
+                        <div class="mt-4">
                             <x-input-label for="req_no" :value="__('Requisition Number')" />
                             <x-text-input id="req_no" class="block mt-1 w-full" type="text" style="width: 300px;" name="req_no" :value="old('req_no', $requisition->req_no)" autofocus autocomplete="req_no" />
                             <x-input-error :messages="$errors->get('req_no')" class="mt-2" />
@@ -570,6 +570,11 @@
                         <div class="mt-4">
                             <x-input-label for="replenishment_year" :value="__('Year')" />
                             <x-text-input id="replenishment_year" class="block mt-1 w-full" style="width: 100px;" type="text" name="replenishment_year" :value="$requisition->replenishment_year" disable/>
+                        </div>
+
+                        <div class="mt-4">
+                            <x-input-label for="remarks" :value="__('Remarks')" />
+                            <x-text-input id="remarks" class="block mt-1 w-full text-gray-500 uppercase" type="text" name="remarks" :value="$requisition->remarks" disable/>
                         </div>
 
 

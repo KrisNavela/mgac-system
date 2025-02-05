@@ -588,6 +588,11 @@
                             <x-text-input id="replenishment_year" class="block mt-1 w-full" type="text" style="width: 150px" name="replenishment_year" :value="$requisition->replenishment_year" disable/>
                         </div>
 
+                        <div class="mt-4">
+                            <x-input-label for="remarks" :value="__('Remarks')" />
+                            <x-text-input id="remarks" class="block mt-1 w-full" type="text" name="remarks" :value="$requisition->remarks" disable/>
+                        </div>
+
                         <table class="min-w-full divide-y divide-gray-200 mt-2">
                             <thead class="bg-gray-50">
                                 <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Item Name</th>
