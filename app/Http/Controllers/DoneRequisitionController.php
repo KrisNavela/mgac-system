@@ -576,6 +576,7 @@ class DoneRequisitionController extends Controller
             //'req_date' => $request->req_date,
             'delivery_status' => $request->delivery_status,
             'delivery_no' => $request->delivery_no,
+            'delivery_name' => $request->delivery_name,
             //'bonds_status' => $request->bonds_status,
             //'uw_status' => $request->uw_status,
             //'type_request' => $request->type_request,

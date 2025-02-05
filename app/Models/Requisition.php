@@ -34,6 +34,7 @@ class Requisition extends Model
         'remarks',
         'delivery_status',
         'delivery_no',
+        'delivery_name',
 
     ];
 

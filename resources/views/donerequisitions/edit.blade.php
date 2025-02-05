@@ -593,6 +593,25 @@
                             <x-text-input id="remarks" class="block mt-1 w-full" type="text" name="remarks" :value="$requisition->remarks" disable/>
                         </div>
 
+                        <div class="mt-4">
+                            <x-input-label for="delivery_name" :value="__('Deliver By')" />
+                            <x-text-input id="delivery_name" class="block mt-1 w-full" type="text" name="delivery_name" :value="$requisition->delivery_name" disable/>
+                        </div>
+
+                        <div class="mt-4">
+                            <x-input-label for="delivery_no" :value="__('Delivery Ref No.')" />
+                            <x-text-input id="delivery_no" class="block mt-1 w-full" type="text" name="delivery_no" :value="$requisition->delivery_no" disable/>
+                        </div>
+
+                        <div class="mt-4">
+                            <x-input-label for="delivery_status" :value="__('Status')" />
+
+                            <select id="delivery_status" name="delivery_status" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm">
+                                <option value="for delivery" {{ $requisition->delivery_status == 'for delivery' ? 'selected' : '' }}>For Delivery</option>
+                                <option value="pending" {{ $requisition->delivery_status == 'pending' ? 'selected' : '' }}>Pending</option>
+                            </select>
+                        </div>
+
                         <table class="min-w-full divide-y divide-gray-200 mt-2">
                             <thead class="bg-gray-50">
                                 <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Item Name</th>
