@@ -565,11 +565,11 @@
                                 <x-input-label for="replenishment_year" :value="__('Year')" />
                                 <x-text-input id="replenishment_year" class="block mt-1 w-full" type="text" name="replenishment_year" :value="$requisition->replenishment_year" disable/>
                             </div>
+                        </div>
 
-                            <div class="mt-4">
-                                <x-input-label for="remarks" :value="__('Remarks')" />
-                                <x-text-input id="remarks" class="block mt-1 w-full" type="text" name="remarks" :value="$requisition->remarks" disable/>
-                            </div>
+                        <div class="mt-4">
+                            <x-input-label for="remarks" :value="__('Remarks')" />
+                            <x-text-input id="remarks" class="block mt-1 w-full" type="text" name="remarks" :value="$requisition->remarks" disable/>
                         </div>
 
                         <table class="min-w-full divide-y divide-gray-200 mt-2">
