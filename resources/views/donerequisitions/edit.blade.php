@@ -533,7 +533,7 @@
             </script>
 
 
-                <form action="{{ route('fortransmittal.update', $requisition->id) }}" method="POST">
+                <form action="{{ route('donerequisition.update', $requisition->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="mt-4">
