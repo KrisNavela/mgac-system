@@ -493,6 +493,7 @@ class ForTransmittalController extends Controller
 
             if ($item['quantity_unit'] === 'Pad'){
                 $fortransmittal->items()->attach($item['item_id'], [
+                    'unreported' => $item['unreported'], 
                     'quantity' => $item['quantity'], 
                     'quantity_unit' => $item['quantity_unit'],
                     'in_pcs' => $item['quantity'] * 50,
@@ -504,6 +505,7 @@ class ForTransmittalController extends Controller
                 ]);
             } else {
                 $fortransmittal->items()->attach($item['item_id'], [
+                    'unreported' => $item['unreported'], 
                     'quantity' => $item['quantity'], 
                     'quantity_unit' => $item['quantity_unit'],
                     'in_pcs' => $item['quantity'],

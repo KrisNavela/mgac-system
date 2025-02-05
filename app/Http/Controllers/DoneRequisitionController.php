@@ -557,7 +557,7 @@ class DoneRequisitionController extends Controller
         $remarks = RequisitionRemarks::where('requisition_id',$requisitionid)->get();
         $items = Item::all();
         $requisitionItems = $donerequisition->items->pluck('pivot');
-
+        
         return view('donerequisitions.edit', [
             'requisition' => $donerequisition,
             'branches'=> $branches,
