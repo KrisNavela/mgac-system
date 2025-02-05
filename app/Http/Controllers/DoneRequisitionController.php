@@ -543,4 +543,24 @@ class DoneRequisitionController extends Controller
             'attachments' => $attachments,
         ]);
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Requisition $donerequisition)
+    {
+
+        $requisitionid = $donerequisition->id;
+
+        $attachments = RequisitionAttachment::where('requisition_id',$requisitionid)->get();
+        $items = Item::all();
+        $requisitionItems = $donerequisition->items->pluck('pivot');
+
+        return view('donerequisitions.edit', [
+            'requisition' => $donerequisition,
+            'items' => $items,
+            'requisitionItems' => $requisitionItems,
+            'attachments' => $attachments,
+        ]);
+    }
 }
