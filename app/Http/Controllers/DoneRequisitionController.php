@@ -557,7 +557,7 @@ class DoneRequisitionController extends Controller
         $remarks = RequisitionRemarks::where('requisition_id',$requisitionid)->get();
         $items = Item::all();
         $requisitionItems = $donerequisition->items->pluck('pivot');
-        
+
         return view('donerequisitions.edit', [
             'requisition' => $donerequisition,
             'branches'=> $branches,
@@ -567,5 +567,21 @@ class DoneRequisitionController extends Controller
             'remarks' => $remarks,
             'attachments' => $attachments,
         ]);
+    }
+
+    public function update(UpdateRequisitionRequest $request, Requisition $donerequisition)
+    {
+        $donerequisition->update([
+            //'req_no' => $request->req_no,
+            //'req_date' => $request->req_date,
+            'delivery_status' => $request->delivery_status,
+            'delivery_no' => $request->delivery_no,
+            //'bonds_status' => $request->bonds_status,
+            //'uw_status' => $request->uw_status,
+            //'type_request' => $request->type_request,
+            //'replenishment_month' => $request->replenishment_month,
+            //'replenishment_year' => $request->replenishment_year,
+        ]);
+        //return redirect()->route('fortransmittal.index')->with('success', 'Requisition created successfully');
     }
 }
