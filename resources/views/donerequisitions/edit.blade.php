@@ -594,7 +594,7 @@
                         </div>
 
                         <div class="mt-4">
-                            <x-input-label for="delivery_name" :value="__('Deliver By')" />
+                            <x-input-label for="delivery_name" :value="__('Courier Name')" />
                             <x-text-input id="delivery_name" class="block mt-1 w-full" type="text" name="delivery_name" :value="$requisition->delivery_name" disable/>
                         </div>
 
