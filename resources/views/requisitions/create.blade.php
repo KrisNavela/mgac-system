@@ -89,7 +89,7 @@
                                 <x-input-error :messages="$errors->get('replenishment_year')" class="mt-2" />
                             </div>
 
-                            <div class="mt-4" style="width: 200px;">
+                            <div class="mt-4">
                                 <x-input-label for="remarks" :value="__('Remarks')" />
                                 <x-text-input id="remarks" class="block mt-1 w-full" type="text" name="remarks" autofocus autocomplete="remarks" />
                                 <x-input-error :messages="$errors->get('remarks')" class="mt-2" />
