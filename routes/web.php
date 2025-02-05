@@ -79,6 +79,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/import-series', [ImportSeriesController::class, 'importSeries'])->name('import.series');
     Route::get('/foruwapprovalrequisitions/{id}/approved-uwapproval', [ForUWApprovalRequisitionController::class, 'approveduwapproval'])->name('foruwapprovalrequisitions.approved.uwapproval');
     Route::get('/forbondapprovalrequisitions/{id}/approved-bondapproval', [ForBondApprovalRequisitionController::class, 'approvedbondapproval'])->name('forbondapprovalrequisitions.approved.bondapproval');
+    Route::get('/approvedrequisitions/{id}/approved-finalapproval', [ApprovedRequisitionController::class, 'approvedfinalapproval'])->name('approvedrequisitions.approved.finalapproval');
 });
 
 require __DIR__.'/auth.php';

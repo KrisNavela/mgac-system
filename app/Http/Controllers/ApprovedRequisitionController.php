@@ -598,4 +598,29 @@ class ApprovedRequisitionController extends Controller
 
          return redirect()->route('approvedrequisitions.index')->with('success', 'Requisition created successfully');
     }
+
+    public function approvedfinalapproval(UpdateRequisitionRequest $request, Requisition $approvedrequisition, RequisitionRemarks $remarks, $id)
+    {
+        // Find the user record in the database
+        $approvedrequisition = Requisition::findOrFail($id);
+
+        // Update the user's basic information
+        //$foruwapprovalrequisition->bonds_status = $validatedData['bonds_status_modal'];
+        $approvedrequisition->finalapproval_status = 'approved';
+        $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
+        $approvedrequisition->save(); // Save the changes
+
+        $user = auth()->user(); // Get the authenticated user
+        $userId = $user->id;
+        $rolename = $user->role->name;
+
+        RequisitionRemarks::create([
+            'requisition_id' => $approvedrequisition->id,
+            'content' => 'Approved.',
+            'user_id' => Auth::id(),
+            'role_name' => $rolename,
+        ]);
+
+         return redirect()->route('approvedrequisitions.index')->with('success', 'Requisition created successfully');
+    }
 }
