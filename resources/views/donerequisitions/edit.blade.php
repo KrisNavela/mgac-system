@@ -613,9 +613,11 @@
                         </div>
 
                         <div class="mt-4">
-                            <x-input-label for="delivery_date" :value="__('Delivery Date')" />
-                            <x-text-input id="delivery_date" class="block mt-1 w-full" type="date" name="delivery_date" :value="$requisition->delivery_date" />
+                            <x-input-label for="delivery_date" :value="__('Delivery Date & Time')" />
+                            <x-text-input id="delivery_date" class="block mt-1 w-full" type="datetime-local" name="delivery_date" 
+                                :value="old('delivery_date', $requisition->delivery_date ? \Carbon\Carbon::parse($requisition->delivery_date)->format('Y-m-d\TH:i') : '')" />
                         </div>
+
 
                         <table class="min-w-full divide-y divide-gray-200 mt-2">
                             <thead class="bg-gray-50">
