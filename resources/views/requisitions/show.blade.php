@@ -545,7 +545,7 @@
 
                         <div class="mt-4">
                             <x-input-label for="remarks" :value="__('Remarks')" />
-                            <x-text-input id="remarks" class="block mt-1 w-full text-gray-500 uppercase" style="width: 200px;" type="text" name="remarks" :value="$requisition->remarks" disable/>
+                            <x-text-input id="remarks" class="block mt-1 w-full text-gray-500 uppercase" type="text" name="remarks" :value="$requisition->remarks" disable/>
                         </div>
 
 
