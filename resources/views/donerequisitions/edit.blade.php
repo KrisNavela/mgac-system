@@ -607,9 +607,14 @@
                             <x-input-label for="delivery_status" :value="__('Status')" />
 
                             <select id="delivery_status" name="delivery_status" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm">
-                                <option value="for delivery" {{ $requisition->delivery_status == 'for delivery' ? 'selected' : '' }}>For Delivery</option>
+                                <option value="delivered" {{ $requisition->delivery_status == 'delivered' ? 'selected' : '' }}>Delivered</option>
                                 <option value="pending" {{ $requisition->delivery_status == 'pending' ? 'selected' : '' }}>Pending</option>
                             </select>
+                        </div>
+
+                        <div class="mt-4">
+                            <x-input-label for="delivery_date" :value="__('Delivery Date')" />
+                            <x-text-input id="delivery_date" class="block mt-1 w-full" type="date" name="delivery_date" :value="$requisition->delivery_date" />
                         </div>
 
                         <table class="min-w-full divide-y divide-gray-200 mt-2">
