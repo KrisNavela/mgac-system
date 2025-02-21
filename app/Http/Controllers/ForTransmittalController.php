@@ -585,7 +585,7 @@ class ForTransmittalController extends Controller
             'attachments' => $attachments,
         ]);
         
-        //return redirect()->route('fortransmittal.index')->with('success', 'Requisition created successfully');
+        return redirect()->route('donerequisitions.index')->with('success', 'Requisition created successfully');
     }
 
     public function show(Requisition $fortransmittal)
