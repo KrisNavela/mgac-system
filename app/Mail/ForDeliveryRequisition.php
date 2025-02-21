@@ -56,7 +56,7 @@ class ForTransmittalMail extends Mailable
     {
         return $this->from('noreply@milestoneguaranty.com')
                     ->subject('For Delivery')
-                    ->view('emails.fordeliveryrequisition.blade')
+                    ->view('emails.fordeliveryrequisition')
                     ->with(['requisition' => $this->requisition]);
     }
 }
