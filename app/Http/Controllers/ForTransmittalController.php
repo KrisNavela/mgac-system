@@ -575,15 +575,15 @@ class ForTransmittalController extends Controller
         $emailto = $fortransmittal->user->email;
         Mail::to($emailto)->send(new DoneRequisitionMail($fortransmittal));
 
-        return view('fortransmittal.edit', [
-            'requisition' => $fortransmittal,
-            'branches'=> $branches,
-            'users'=> $users,
-            'items' => $items,
-            'requisitionItems' => $requisitionItems,
-            'remarks' => $remarks,
-            'attachments' => $attachments,
-        ]);
+        //return view('fortransmittal.edit', [
+        //    'requisition' => $fortransmittal,
+        //    'branches'=> $branches,
+        //    'users'=> $users,
+        //    'items' => $items,
+        //    'requisitionItems' => $requisitionItems,
+        //    'remarks' => $remarks,
+        //    'attachments' => $attachments,
+        //]);
         
         return redirect()->route('donerequisitions.index')->with('success', 'Requisition created successfully');
     }
