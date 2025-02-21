@@ -584,6 +584,6 @@ class DoneRequisitionController extends Controller
             //'replenishment_month' => $request->replenishment_month,
             //'replenishment_year' => $request->replenishment_year,
         ]);
-        //return redirect()->route('fortransmittal.index')->with('success', 'Requisition created successfully');
+        return redirect()->route('donerequisitions.index')->with('success', 'Requisition created successfully');
     }
 }
