@@ -13,7 +13,7 @@ use App\Models\RequisitionAttachment;
 use App\Models\NumberSeries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Mail\ForDeliveryRequisition;
+use App\Mail\ForDeliveryRequisitionMail;
 
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
@@ -592,7 +592,7 @@ class DoneRequisitionController extends Controller
         $requisitionItems = $donerequisition->items->pluck('pivot');
 
         $emailto = $donerequisition->user->email;
-        Mail::to($emailto)->send(new ForDeliveryRequisition($donerequisition));
+        Mail::to($emailto)->send(new ForDeliveryRequisitionMail($donerequisition));
 
         return view('donerequisitions.edit', [
             'requisition' => $donerequisition,
