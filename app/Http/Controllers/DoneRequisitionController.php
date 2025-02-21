@@ -17,7 +17,7 @@ use App\Mail\RequisitionCreatedMail;
 use App\Mail\ForApprovalRequisitionAgencyMail;
 use App\Mail\ForApprovalRequisitionBranchMail;
 use App\Mail\ForApprovalCollAsstMail;
-use App\Mail\ForDeliveryRequisition;
+use App\Mail\DoneRequisitionMail;
 
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
@@ -596,7 +596,7 @@ class DoneRequisitionController extends Controller
         $requisitionItems = $donerequisition->items->pluck('pivot');
 
         $emailto = $donerequisition->user->email;
-        Mail::to($emailto)->send(new ForDeliveryRequisition($donerequisition));
+        Mail::to($emailto)->send(new DoneRequisitionMail($donerequisition));
 
         return view('donerequisition.edit', [
             'requisition' => $donerequisition,
