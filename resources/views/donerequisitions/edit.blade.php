@@ -686,14 +686,14 @@
                         <div class="flex justify-end space-x-4">
                             <div class="flex items-center justify-end mt-4">
                                 <button class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">
-                                    Save
+                                    Delivered
                                 </button>
                             </div>
                             <div class="flex items-center justify-end mt-4">
                                 <a href="{{ url('/fortransmittal/' . $requisition->id . '/print') }}" target="_blank" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md">Print PDF</a>
                             </div>
                             <div class="flex items-center justify-end mt-4">
-                                <a href="{{ route('donerequisitions.index') }}" class="bg-gray-700 text-white hover:bg-gray-900 text-sm px-2 py-1 rounded-md">Delivered</a>
+                                <a href="{{ route('donerequisitions.index') }}" class="bg-gray-700 text-white hover:bg-gray-900 text-sm px-2 py-1 rounded-md">Done</a>
                             </div>
                         </div>
 
