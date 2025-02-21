@@ -598,7 +598,7 @@ class DoneRequisitionController extends Controller
         $emailto = $donerequisition->user->email;
         Mail::to($emailto)->send(new DoneRequisitionMail($donerequisition));
 
-        return view('donerequisition.edit', [
+        return view('donerequisitions.edit', [
             'requisition' => $donerequisition,
             'branches'=> $branches,
             'users'=> $users,
