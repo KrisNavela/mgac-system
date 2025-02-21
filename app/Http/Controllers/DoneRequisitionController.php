@@ -14,7 +14,6 @@ use App\Models\NumberSeries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\ForDeliveryRequisitionMail;
-
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 
