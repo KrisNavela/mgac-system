@@ -13,11 +13,7 @@ use App\Models\RequisitionAttachment;
 use App\Models\NumberSeries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Mail\RequisitionCreatedMail;
-use App\Mail\ForApprovalRequisitionAgencyMail;
-use App\Mail\ForApprovalRequisitionBranchMail;
-use App\Mail\ForApprovalCollAsstMail;
-use App\Mail\DoneRequisitionMail;
+use App\Mail\ForDeliveryRequisition;
 
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
@@ -596,7 +592,7 @@ class DoneRequisitionController extends Controller
         $requisitionItems = $donerequisition->items->pluck('pivot');
 
         $emailto = $donerequisition->user->email;
-        Mail::to($emailto)->send(new DoneRequisitionMail($donerequisition));
+        Mail::to($emailto)->send(new ForDeliveryRequisition($donerequisition));
 
         return view('donerequisitions.edit', [
             'requisition' => $donerequisition,
