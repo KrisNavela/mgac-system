@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Requisition;
 
-class ForTransmittalMail extends Mailable
+class ForDeliveryRequisitionMail extends Mailable
 {
     use Queueable, SerializesModels;
 
