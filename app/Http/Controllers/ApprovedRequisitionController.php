@@ -532,6 +532,7 @@ class ApprovedRequisitionController extends Controller
 
         // Find the user record in the database
         $approvedrequisition = Requisition::findOrFail($id);
+        $typeOffice = $approvedrequisition->user->branch->type_office;
 
         $coc_request_status = $approvedrequisition->coc_request_status;
 
@@ -596,6 +597,13 @@ class ApprovedRequisitionController extends Controller
             'role_name' => $rolename,
         ]);
 
+        //For Reviewer Email Notification
+        if ($typeOffice === 'Branch'){
+            Mail::to('knavela@milestoneguaranty.com')->send(new ApprovedbyApproverMail($approvedrequisition));
+        } else {
+            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ApprovedbyApproverMail($approvedrequisition));
+        }
+
          return redirect()->route('approvedrequisitions.index')->with('success', 'Requisition created successfully');
     }
 
@@ -603,11 +611,7 @@ class ApprovedRequisitionController extends Controller
     {
         // Find the user record in the database
         $approvedrequisition = Requisition::findOrFail($id);
-
-
-
-
-
+        $typeOffice = $approvedrequisition->user->branch->type_office;
 
         // Update the user's basic information
         //$foruwapprovalrequisition->bonds_status = $validatedData['bonds_status_modal'];
@@ -674,6 +678,13 @@ class ApprovedRequisitionController extends Controller
             'user_id' => Auth::id(),
             'role_name' => $rolename,
         ]);
+
+        //For Reviewer Email Notification
+        if ($typeOffice === 'Branch'){
+            Mail::to('knavela@milestoneguaranty.com')->send(new ApprovedbyApproverMail($approvedrequisition));
+        } else {
+            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ApprovedbyApproverMail($approvedrequisition));
+        }
 
          return redirect()->route('approvedrequisitions.index')->with('success', 'Requisition created successfully');
     }
