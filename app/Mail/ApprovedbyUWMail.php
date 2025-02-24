@@ -56,7 +56,7 @@ class ApprovedbyUWMail extends Mailable
     {
         return $this->from('noreply@milestoneguaranty.com')
                     ->subject('Approved by Underwriting')
-                    ->view('emails.approvedbyuw.')
+                    ->view('emails.approvedbyuw')
                     ->with(['requisition' => $this->requisition]);
     }
 }
