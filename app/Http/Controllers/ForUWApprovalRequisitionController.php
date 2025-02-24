@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\RequisitionAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 
 class ForUWApprovalRequisitionController extends Controller
@@ -549,6 +550,7 @@ class ForUWApprovalRequisitionController extends Controller
     {
         // Find the user record in the database
         $foruwapprovalrequisition = Requisition::findOrFail($id);
+        $typeOffice = $foruwapprovalrequisition->user->branch->type_office;
 
         // Update the user's basic information
         //$foruwapprovalrequisition->bonds_status = $validatedData['bonds_status_modal'];
@@ -566,6 +568,13 @@ class ForUWApprovalRequisitionController extends Controller
             'user_id' => Auth::id(),
             'role_name' => $rolename,
         ]);
+
+        //For Reviewer Email Notification
+        if ($typeOffice === 'Branch'){
+            Mail::to('knavela@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
+        } else {
+            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
+        }
 
          return redirect()->route('foruwapprovalrequisitions.index')->with('success', 'Requisition created successfully');
     }
