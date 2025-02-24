@@ -529,6 +529,7 @@ class ForBondApprovalRequisitionController extends Controller
         // Find the user record in the database
         $forbondapprovalrequisition = Requisition::findOrFail($id);
         $typeOffice = $forbondapprovalrequisition->user->branch->type_office;
+        $collasststatus = $forbondapprovalrequisition->collasst_status;
 
         // Update the user's basic information
         $forbondapprovalrequisition->bonds_status = $validatedData['bonds_status_modal'];
@@ -549,10 +550,15 @@ class ForBondApprovalRequisitionController extends Controller
         ]);
 
         //For Reviewer Email Notification
-        if ($typeOffice === 'Branch'){
-            Mail::to('knavela@milestoneguaranty.com')->send(new ApprovedbyBondMail($forbondapprovalrequisition));
+        if ($collasststatus === 'no'){
+            //For Reviewer Email Notification
+            if ($typeOffice === 'Branch'){
+                Mail::to('knavela@milestoneguaranty.com')->send(new ApprovedbyBondMail($forbondapprovalrequisition));
+            } else {
+                Mail::to('cj.soriano@milestoneguaranty.com')->send(new ApprovedbyBondMail($forbondapprovalrequisition));
+            }
         } else {
-            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ApprovedbyBondMail($forbondapprovalrequisition));
+            Mail::to('micaelaruth.aquino@milestoneguaranty.com')->send(new ApprovedbyBondMail($forbondapprovalrequisition));
         }
 
          return redirect()->route('forbondapprovalrequisitions.index')->with('success', 'Requisition created successfully');
@@ -564,6 +570,7 @@ class ForBondApprovalRequisitionController extends Controller
         // Find the user record in the database
         $forbondapprovalrequisition = Requisition::findOrFail($id);
         $typeOffice = $forbondapprovalrequisition->user->branch->type_office;
+        $collasststatus = $forbondapprovalrequisition->collasst_status;
 
         // Update the user's basic information
         $forbondapprovalrequisition->bonds_status = 'approved';
@@ -582,12 +589,18 @@ class ForBondApprovalRequisitionController extends Controller
             'role_name' => $rolename,
         ]);
 
-        //For Reviewer Email Notification
-        if ($typeOffice === 'Branch'){
-            Mail::to('knavela@milestoneguaranty.com')->send(new ApprovedbyBondMail($forbondapprovalrequisition));
+
+        if ($collasststatus === 'no'){
+            //For Reviewer Email Notification
+            if ($typeOffice === 'Branch'){
+                Mail::to('knavela@milestoneguaranty.com')->send(new ApprovedbyBondMail($forbondapprovalrequisition));
+            } else {
+                Mail::to('cj.soriano@milestoneguaranty.com')->send(new ApprovedbyBondMail($forbondapprovalrequisition));
+            }
         } else {
-            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ApprovedbyBondMail($forbondapprovalrequisition));
+            Mail::to('micaelaruth.aquino@milestoneguaranty.com')->send(new ApprovedbyBondMail($forbondapprovalrequisition));
         }
+        
 
          return redirect()->route('forbondapprovalrequisitions.index')->with('success', 'Requisition created successfully');
     }
