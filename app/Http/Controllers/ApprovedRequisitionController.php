@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Mail\ForApprovalCollAsstMail;
 use App\Mail\ForTransmittalMail;
 use App\Mail\ForApprovalTreasuryMail;
+use App\Mail\ApprovedbyApproverMail;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 

@@ -28,7 +28,7 @@ class ApprovedbyApproverMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Approved by Bonds',
+            subject: 'Approved by Final Approver',
         );
     }
 
@@ -55,7 +55,7 @@ class ApprovedbyApproverMail extends Mailable
     public function build()
     {
         return $this->from('noreply@milestoneguaranty.com')
-                    ->subject('Approved by Bonds')
+                    ->subject('Approved by Final Approver')
                     ->view('emails.approvedbyapprover')
                     ->with(['requisition' => $this->requisition]);
     }
