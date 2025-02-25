@@ -513,6 +513,7 @@ class COCApprovalController extends Controller
         // Find the user record in the database
         $cocapprovalrequisition = Requisition::findOrFail($id);
 
+        
             // Update the user's basic information
             $cocapprovalrequisition->cocapproval_status = $validatedData['cocapproval_status'];
             $cocapprovalrequisition->status = $validatedData['cocapproval_status'];
@@ -530,7 +531,7 @@ class COCApprovalController extends Controller
             'role_name' => $rolename,
         ]);
 
-        Mail::to('knavela@milestoneguaranty.com')->send(new ForTransmittalMail($cocapprovalrequisition));
+            Mail::to('knavela@milestoneguaranty.com')->send(new ForTransmittalMail($cocapprovalrequisition));
 
          return redirect()->route('cocapprovalrequisitions.index')->with('success', 'Requisition created successfully');
     }
