@@ -527,6 +527,7 @@ class ForUWApprovalRequisitionController extends Controller
         // Find the user record in the database
         $foruwapprovalrequisition = Requisition::findOrFail($id);
         $typeOffice = $foruwapprovalrequisition->user->branch->type_office;
+        $collasststatus = $foruwapprovalrequisition->collasst_status;
 
         // Update the user's basic information
         //$foruwapprovalrequisition->bonds_status = $validatedData['bonds_status_modal'];
@@ -545,11 +546,15 @@ class ForUWApprovalRequisitionController extends Controller
             'role_name' => $rolename,
         ]);
 
-        //For Reviewer Email Notification
-        if ($typeOffice === 'Branch'){
-            Mail::to('knavela@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
+        if ($collasststatus === 'no'){
+            //For Reviewer Email Notification
+            if ($typeOffice === 'Branch'){
+                Mail::to('knavela@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
+            } else {
+                Mail::to('cj.soriano@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
+            }
         } else {
-            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
+            Mail::to('micaelaruth.aquino@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
         }
 
          return redirect()->route('foruwapprovalrequisitions.index')->with('success', 'Requisition created successfully');
@@ -560,6 +565,7 @@ class ForUWApprovalRequisitionController extends Controller
         // Find the user record in the database
         $foruwapprovalrequisition = Requisition::findOrFail($id);
         $typeOffice = $foruwapprovalrequisition->user->branch->type_office;
+        $collasststatus = $foruwapprovalrequisition->collasst_status;
 
         // Update the user's basic information
         //$foruwapprovalrequisition->bonds_status = $validatedData['bonds_status_modal'];
@@ -578,11 +584,15 @@ class ForUWApprovalRequisitionController extends Controller
             'role_name' => $rolename,
         ]);
 
-        //For Reviewer Email Notification
-        if ($typeOffice === 'Branch'){
-            Mail::to('knavela@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
+        if ($collasststatus === 'no'){
+            //For Reviewer Email Notification
+            if ($typeOffice === 'Branch'){
+                Mail::to('knavela@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
+            } else {
+                Mail::to('cj.soriano@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
+            }
         } else {
-            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
+            Mail::to('micaelaruth.aquino@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
         }
 
          return redirect()->route('foruwapprovalrequisitions.index')->with('success', 'Requisition created successfully');
