@@ -53,7 +53,7 @@
             text-align: left;
         }
         .items-table th {
-            background-color: #007bff;
+            background-color: #FFFFFF;
             color: white;
             text-transform: uppercase;
         }
