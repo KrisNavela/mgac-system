@@ -73,7 +73,7 @@
         }
         .footer p {
             margin: 5px 0;
-            font-size: 16px;
+            font-size: 10px;
         }
         .footer span {
             font-weight: bold;
