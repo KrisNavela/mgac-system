@@ -42,7 +42,7 @@
 
     <table class="table">
         <tr>
-            <th>Requisition Number</th>
+            <td>Requisition Number</td>
             <td>{{ $requisition->req_no }}</td>
         </tr>
         <tr>
