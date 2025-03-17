@@ -54,7 +54,7 @@
         }
         .items-table th {
             background-color: #FFFFFF;
-            color: white;
+            color: black;
             text-transform: uppercase;
         }
         .items-table tbody tr:nth-child(even) {
