@@ -111,12 +111,18 @@
         </table>
 
         <div class="details">
-        <p><span>Prepared By:</span></p>
-        <p>&nbsp;</p> <!-- Blank line -->
-        <p>&nbsp;</p> <!-- Blank line -->
-        <p>&nbsp;</p> <!-- Blank line -->
-        <p>&nbsp;</p> <!-- Blank line -->
-        <p><span>Received By:</span></p>
+                <p>&nbsp;</p> <!-- Blank line -->
+                <p>&nbsp;</p> <!-- Blank line -->
+            <p><span>Prepared By:</span></p>
+                <p>&nbsp;</p> <!-- Blank line -->
+                <p>&nbsp;</p> <!-- Blank line -->
+            <p><span>Name and Signature</span></p>
+                <p>&nbsp;</p> <!-- Blank line -->
+                <p>&nbsp;</p> <!-- Blank line -->
+            <p><span>Received By:</span></p>
+                <p>&nbsp;</p> <!-- Blank line -->
+                <p>&nbsp;</p> <!-- Blank line -->
+            <p><span>Name and Signature</span></p>
         </div>
     </div>
 
