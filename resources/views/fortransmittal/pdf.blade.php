@@ -90,10 +90,9 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            text-align: center;
+            text-align: right;
             font-size: 12px;
             padding: 10px;
-            border-top: 1px solid black;
         }
     </style>
 </head>
