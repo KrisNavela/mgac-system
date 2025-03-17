@@ -23,9 +23,10 @@
             border-bottom: 3px solid #000000;
         }
         .logo {
-            max-width: 150px; /* Adjust size */
             display: block;
-            margin: 0 auto 10px; /* Center the logo */
+            margin: 0 auto;
+            width: 250px; /* Increase width */
+            height: auto; /* Maintain aspect ratio */
         }
         h1 {
             font-size: 24px;
