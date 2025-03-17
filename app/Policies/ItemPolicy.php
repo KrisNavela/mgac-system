@@ -13,9 +13,8 @@ class ItemPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->hasAnyRole(['Admin', 'Inventory Clerk']);
+        return $user->hasRole('Admin');
     }
-
 
     /**
      * Determine whether the user can view the model.
