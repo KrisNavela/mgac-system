@@ -109,6 +109,15 @@
                 @endforeach
             </tbody>
         </table>
+
+        <div class="details">
+        <p><span>Prepared By:</span></p>
+        <p>&nbsp;</p> <!-- Blank line -->
+        <p>&nbsp;</p> <!-- Blank line -->
+        <p>&nbsp;</p> <!-- Blank line -->
+        <p>&nbsp;</p> <!-- Blank line -->
+        <p><span>Received By:</span></p>
+        </div>
     </div>
 
 </body>
