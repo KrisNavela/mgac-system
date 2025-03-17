@@ -20,7 +20,7 @@
         .header {
             text-align: center;
             padding-bottom: 20px;
-            border-bottom: 3px solid #007bff;
+            border-bottom: 3px solid #000000;
         }
         h1 {
             font-size: 24px;
