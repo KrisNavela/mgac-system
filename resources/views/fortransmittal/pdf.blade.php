@@ -116,12 +116,13 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Quantity</th>
+                    <th>Qty</th>
                     <th>Unit</th>
-                    <th>HO Control Start</th>
-                    <th>HO Control End</th>
+                    <th>HO Ctrl Start</th>
+                    <th>HO Ctrl End</th>
                     <th>Series Start</th>
                     <th>Series End</th>
+                    <th>Unreported</th>
                 </tr>
             </thead>
             <tbody>
@@ -134,6 +135,7 @@
                         <td>{{ $item->ho_ctrl_end }}</td>
                         <td>{{ $item->series_start }}</td>
                         <td>{{ $item->series_end }}</td>
+                        <td>{{ $item->unreported }}</td>
                     </tr>
                 @endforeach
             </tbody>
