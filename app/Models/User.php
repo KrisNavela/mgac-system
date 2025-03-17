@@ -59,8 +59,16 @@ class User extends Authenticatable
         return $this->belongsTo(branch::class);
     }
 
-    public function hasRole(string $role): bool
+    public function hasRole(string|array $roles): bool
     {
-        return $this->role && $this->role->name === $role;
+        if (!$this->role) {
+            return false;
+        }
+
+        if (is_array($roles)) {
+            return in_array($this->role->name, $roles);
+        }
+
+        return $this->role->name === $roles;
     }
 }
