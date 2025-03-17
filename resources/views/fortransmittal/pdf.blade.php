@@ -7,7 +7,7 @@
             font-family: "Segoe UI", Arial, sans-serif;
             margin: 40px;
             color: #333;
-            background-color: #f4f4f4;
+            background-color: white; /* Removed gray background */
         }
         .container {
             max-width: 900px;
@@ -29,9 +29,9 @@
         .details {
             margin-top: 20px;
             padding: 15px;
-            background: #f9f9f9;
             border-radius: 8px;
             line-height: 1.6;
+            background: none; /* Removed gray background */
         }
         .details p {
             margin: 5px 0;
@@ -58,7 +58,7 @@
             text-transform: uppercase;
         }
         .items-table tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background: none; /* Removed gray alternating rows */
         }
         .items-table tbody tr:hover {
             background-color: #e9f2ff;
