@@ -7,7 +7,7 @@
             font-family: "Segoe UI", Arial, sans-serif;
             margin: 40px;
             color: #333;
-            background-color: white; /* Removed gray background */
+            background-color: white;
         }
         .container {
             max-width: 900px;
@@ -22,6 +22,11 @@
             padding-bottom: 20px;
             border-bottom: 3px solid #000000;
         }
+        .logo {
+            max-width: 150px; /* Adjust size */
+            display: block;
+            margin: 0 auto 10px; /* Center the logo */
+        }
         h1 {
             font-size: 24px;
             color: #000000;
@@ -31,7 +36,6 @@
             padding: 15px;
             border-radius: 8px;
             line-height: 1.6;
-            background: none; /* Removed gray background */
         }
         .details p {
             margin: 5px 0;
@@ -45,7 +49,7 @@
             width: 100%;
             margin-top: 30px;
             border-collapse: collapse;
-            font-size: 12px; /* Adjust the font size here */
+            font-size: 12px;
         }
         .items-table th, .items-table td {
             border: 1px solid #ddd;
@@ -57,9 +61,6 @@
             color: black;
             text-transform: uppercase;
         }
-        .items-table tbody tr:nth-child(even) {
-            background: none; /* Removed gray alternating rows */
-        }
         .items-table tbody tr:hover {
             background-color: #e9f2ff;
         }
@@ -69,6 +70,8 @@
 
     <div class="container">
         <div class="header">
+            <!-- Company Logo -->
+            <img src="{{ asset('images/MGACLOGO.jpg') }}" alt="Company Logo" class="logo">
             <h1>Transmittal Report</h1>
         </div>
 
@@ -106,6 +109,6 @@
             </tbody>
         </table>
     </div>
-    <img src="{{ asset('images/MGACLOGO.jpg') }}" alt="New Dashboard Logo" class="block h-9 w-auto">
+
 </body>
 </html>
