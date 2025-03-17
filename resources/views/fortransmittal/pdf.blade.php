@@ -39,7 +39,7 @@
         }
         .details span {
             font-weight: bold;
-            color: #007bff;
+            color: #000000;
         }
         .items-table {
             width: 100%;
