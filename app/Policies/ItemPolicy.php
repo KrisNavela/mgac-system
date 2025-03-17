@@ -13,7 +13,7 @@ class ItemPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->hasAnyRole(['Admin', 'Inventory Clerk']); // ✅ Correct
+        return $user->hasAnyRole(['Admin', 'Inventory Clerk']);
     }
 
 
