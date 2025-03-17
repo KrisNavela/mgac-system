@@ -65,6 +65,20 @@
         .items-table tbody tr:hover {
             background-color: #e9f2ff;
         }
+        .footer {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            line-height: 1.6;
+        }
+        .footer p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        .footer span {
+            font-weight: bold;
+            color: #000000;
+        }
     </style>
 </head>
 <body>
@@ -110,7 +124,7 @@
             </tbody>
         </table>
 
-        <div class="details">
+        <div class="footer">
                 <p>&nbsp;</p> <!-- Blank line -->
                 <p>&nbsp;</p> <!-- Blank line -->
             <p><span>Prepared By:</span></p>
