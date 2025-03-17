@@ -24,7 +24,7 @@
         }
         h1 {
             font-size: 24px;
-            color: #007bff;
+            color: #000000;
         }
         .details {
             margin-top: 20px;
