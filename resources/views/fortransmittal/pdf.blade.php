@@ -45,10 +45,11 @@
             width: 100%;
             margin-top: 30px;
             border-collapse: collapse;
+            font-size: 12px; /* Adjust the font size here */
         }
         .items-table th, .items-table td {
             border: 1px solid #ddd;
-            padding: 12px;
+            padding: 10px;
             text-align: left;
         }
         .items-table th {
@@ -73,7 +74,7 @@
 
         <!-- Requisition Details using Paragraphs -->
         <div class="details">
-            <p><span>Requisition Number:</span> {{ $requisition->req_no }}</p>
+            <p><span>Requisition No.:</span> {{ $requisition->req_no }}</p>
             <p><span>Date:</span> {{ $requisition->req_date }}</p>
         </div>
 
