@@ -107,11 +107,11 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
-            @if ($roleId == 1 || $roleId == 11)
+            @can('viewAny', App\Models\Item::class)
                 <x-responsive-nav-link :href="route('items.index')" :active="request()->routeIs('items.index')">
                     {{ __('Items') }}
                 </x-responsive-nav-link>
-            @endif
+            @endcan
 
             @can('viewAny', App\Models\Branch::class)
                 <x-responsive-nav-link :href="route('branches.index')" :active="request()->routeIs('branches.index')">
