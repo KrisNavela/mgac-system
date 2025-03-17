@@ -85,6 +85,16 @@
             margin: 10px 0; /* Space around the line */
             padding-top: 5px; /* Space between line and text */
         }
+        .page-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            padding: 10px;
+            border-top: 1px solid black;
+        }
     </style>
 </head>
 <body>
@@ -143,6 +153,10 @@
                 <p>&nbsp;</p> <!-- Blank line -->
                 <p>&nbsp;</p> <!-- Blank line -->
             <p class="signature-line">Name and Signature</p>
+        </div>
+
+        <div class="page-footer">
+            <p>Generated on: {{ now()->format('F d, Y h:i A') }}</p>
         </div>
     </div>
 
