@@ -73,11 +73,17 @@
         }
         .footer p {
             margin: 5px 0;
-            font-size: 10px;
+            font-size: 12px;
         }
         .footer span {
             font-weight: bold;
             color: #000000;
+        }
+        .signature-line {
+            border-top: 1px solid black; /* Thin black line */
+            width: 200px; /* Adjust width as needed */
+            margin: 10px 0; /* Space around the line */
+            padding-top: 5px; /* Space between line and text */
         }
     </style>
 </head>
@@ -130,13 +136,13 @@
             <p><span>Prepared By:</span></p>
                 <p>&nbsp;</p> <!-- Blank line -->
                 <p>&nbsp;</p> <!-- Blank line -->
-            <p><span>Name and Signature</span></p>
+            <p class="signature-line">Name and Signature</p>
                 <p>&nbsp;</p> <!-- Blank line -->
                 <p>&nbsp;</p> <!-- Blank line -->
             <p><span>Received By:</span></p>
                 <p>&nbsp;</p> <!-- Blank line -->
                 <p>&nbsp;</p> <!-- Blank line -->
-            <p><span>Name and Signature</span></p>
+            <p class="signature-line">Name and Signature</p>
         </div>
     </div>
 
