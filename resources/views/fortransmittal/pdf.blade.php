@@ -71,7 +71,7 @@
     <div class="container">
         <div class="header">
             <!-- Company Logo -->
-            <img src="{{ asset('images/MGACLOGO.jpg') }}" alt="Company Logo" class="logo">
+            <img src="{{ public_path('images/MGACLOGO.jpg') }}" alt="Company Logo" class="logo">
             <h1>Transmittal Report</h1>
         </div>
 
