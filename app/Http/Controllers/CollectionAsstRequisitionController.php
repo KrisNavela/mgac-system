@@ -559,7 +559,7 @@ class CollectionAsstRequisitionController extends Controller
 
         $bondStatus = $request->bonds_status_modal;
         $uwStatus = $request->uw_status_modal;
-        $uwStatus = $request->collasst_status_modal;
+        $collasstStatus = $request->collasst_status_modal;
 
         // Find the user record in the database
         $collasstrequisition = Requisition::findOrFail($id);
