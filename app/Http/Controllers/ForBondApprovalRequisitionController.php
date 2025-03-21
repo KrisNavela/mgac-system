@@ -593,12 +593,12 @@ class ForBondApprovalRequisitionController extends Controller
         if ($collasststatus === 'no'){
             //For Reviewer Email Notification
             if ($typeOffice === 'Branch'){
-                Mail::to('knavela@milestoneguaranty.com')->send(new ApprovedbyBondMail($forbondapprovalrequisition));
+                Mail::to('hannahfaith.yamano@milestoneguaranty.com')->send(new ApprovedbyBondMail($forbondapprovalrequisition));
             } else {
-                Mail::to('cj.soriano@milestoneguaranty.com')->send(new ApprovedbyBondMail($forbondapprovalrequisition));
+                Mail::to('hazel.cruz@milestoneguaranty.com')->send(new ApprovedbyBondMail($forbondapprovalrequisition));
             }
         } else {
-            Mail::to('micaelaruth.aquino@milestoneguaranty.com')->send(new ApprovedbyBondMail($forbondapprovalrequisition));
+            Mail::to('ainductivo@milestoneguaranty.com')->send(new ApprovedbyBondMail($forbondapprovalrequisition));
         }
         
 
