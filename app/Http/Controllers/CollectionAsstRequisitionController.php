@@ -590,7 +590,7 @@ class CollectionAsstRequisitionController extends Controller
             Mail::to('allan.quing@milestoneguaranty.com')->send(new ForApprovalUwMail($collasstrequisition));
         }
 
-        if ($collasstStatus === 'for approval'){
+        if ($collasstStatus === 'approved'){
             Mail::to('micaella.borromeo@milestoneguaranty.com')->send(new ForApprovalCollMngMail($collasstrequisition));
         }
 
