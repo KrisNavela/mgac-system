@@ -580,20 +580,20 @@ class PendingRequisitionController extends Controller
         ]);
 
         if ($bondStatus === 'for approval'){
-            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalBondsMail($pendingrequisition));
+            Mail::to('ronald.ladion@milestoneguaranty.com')->send(new ForApprovalBondsMail($pendingrequisition));
         } 
         
         if ($uwStatus === 'for approval'){
-            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalUwMail($pendingrequisition));
+            Mail::to('allan.quing@milestoneguaranty.com')->send(new ForApprovalUwMail($pendingrequisition));
         }
 
         //For Final Approval Email Notification
         if ($finalapproval_status === 'for approval') {
             if ($type_office === 'Branch'){
-                Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalRequisitionBranchMail($pendingrequisition));
-                Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($pendingrequisition));
+                Mail::to('victor.peco@milestoneguaranty.com')->send(new ForApprovalRequisitionBranchMail($pendingrequisition));
+                Mail::to('jairo.aquino@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($pendingrequisition));
             } else {
-                Mail::to('cj.soriano@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($pendingrequisition));
+                Mail::to('victor.peco@milestoneguaranty.com')->send(new ForApprovalRequisitionAgencyMail($pendingrequisition));
             }
         }
         

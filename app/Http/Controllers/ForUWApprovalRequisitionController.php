@@ -549,12 +549,12 @@ class ForUWApprovalRequisitionController extends Controller
         if ($collasststatus === 'no'){
             //For Reviewer Email Notification
             if ($typeOffice === 'Branch'){
-                Mail::to('knavela@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
+                Mail::to('hannahfaith.yamano@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
             } else {
-                Mail::to('cj.soriano@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
+                Mail::to('hazel.cruz@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
             }
         } else {
-            Mail::to('micaelaruth.aquino@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
+            Mail::to('ainductivo@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
         }
 
          return redirect()->route('foruwapprovalrequisitions.index')->with('success', 'Requisition created successfully');

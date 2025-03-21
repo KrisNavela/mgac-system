@@ -531,7 +531,7 @@ class COCApprovalController extends Controller
             'role_name' => $rolename,
         ]);
 
-            Mail::to('knavela@milestoneguaranty.com')->send(new ForTransmittalMail($cocapprovalrequisition));
+            Mail::to('cristine.ferrer@milestoneguaranty.com')->send(new ForTransmittalMail($cocapprovalrequisition));
 
          return redirect()->route('cocapprovalrequisitions.index')->with('success', 'Requisition created successfully');
     }

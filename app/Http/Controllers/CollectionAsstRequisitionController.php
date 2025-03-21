@@ -518,7 +518,7 @@ class CollectionAsstRequisitionController extends Controller
         $collasstStatus = $request->collasst_status;
 
         //if ($collasstStatus === 'approved'){
-        //    Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCollMngMail($collasstrequisition));
+        //    Mail::to('micaella.borromeo@milestoneguaranty.com')->send(new ForApprovalCollMngMail($collasstrequisition));
         //}
         
         $collasstrequisition->items()->detach();
@@ -559,6 +559,7 @@ class CollectionAsstRequisitionController extends Controller
 
         $bondStatus = $request->bonds_status_modal;
         $uwStatus = $request->uw_status_modal;
+        $uwStatus = $request->collasst_status_modal;
 
         // Find the user record in the database
         $collasstrequisition = Requisition::findOrFail($id);
@@ -582,11 +583,15 @@ class CollectionAsstRequisitionController extends Controller
         ]);
 
         if ($bondStatus === 'for approval'){
-            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalBondsMail($collasstrequisition));
+            Mail::to('ronald.ladion@milestoneguaranty.com')->send(new ForApprovalBondsMail($collasstrequisition));
         } 
         
         if ($uwStatus === 'for approval'){
-            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalUwMail($collasstrequisition));
+            Mail::to('allan.quing@milestoneguaranty.com')->send(new ForApprovalUwMail($collasstrequisition));
+        }
+
+        if ($collasstStatus === 'for approval'){
+            Mail::to('micaella.borromeo@milestoneguaranty.com')->send(new ForApprovalCollMngMail($collasstrequisition));
         }
 
          return redirect()->route('collasstrequisitions.index')->with('success', 'Requisition created successfully');

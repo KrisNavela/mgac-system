@@ -633,7 +633,7 @@ class ApprovedRequisitionController extends Controller
                 $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
                 $approvedrequisition->save(); // Save the changes
                 
-                Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCollAsstMail($approvedrequisition));
+                Mail::to('ainductivo@milestoneguaranty.com')->send(new ForApprovalCollAsstMail($approvedrequisition));
             
             } else {
 
@@ -642,7 +642,7 @@ class ApprovedRequisitionController extends Controller
                 $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
                 $approvedrequisition->save(); // Save the changes
 
-                Mail::to('knavela@milestoneguaranty.com')->send(new ForTransmittalMail($approvedrequisition));
+                Mail::to('cristine.ferrer@milestoneguaranty.com')->send(new ForTransmittalMail($approvedrequisition));
 
             }
 
@@ -655,7 +655,7 @@ class ApprovedRequisitionController extends Controller
                 $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
                 $approvedrequisition->save(); // Save the changes
 
-                Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCollAsstMail($approvedrequisition));
+                Mail::to('cristine.ferrer@milestoneguaranty.com')->send(new ForApprovalCollAsstMail($approvedrequisition));
             
             } else {
                 $approvedrequisition->treasuryapproval_status = 'for approval';
@@ -663,7 +663,7 @@ class ApprovedRequisitionController extends Controller
                 $approvedrequisition->finalapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
                 $approvedrequisition->save(); // Save the changes
                 
-                Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalTreasuryMail($approvedrequisition));
+                Mail::to('cong@milestoneguaranty.com')->send(new ForApprovalTreasuryMail($approvedrequisition));
 
             }    
 
@@ -682,9 +682,9 @@ class ApprovedRequisitionController extends Controller
 
         //For Reviewer Email Notification
         if ($typeOffice === 'Branch'){
-            Mail::to('knavela@milestoneguaranty.com')->send(new ApprovedbyApproverMail($approvedrequisition));
+            Mail::to('hannahfaith.yamano@milestoneguaranty.com')->send(new ApprovedbyApproverMail($approvedrequisition));
         } else {
-            Mail::to('cj.soriano@milestoneguaranty.com')->send(new ApprovedbyApproverMail($approvedrequisition));
+            Mail::to('hazel.cruz@milestoneguaranty.com')->send(new ApprovedbyApproverMail($approvedrequisition));
         }
 
          return redirect()->route('approvedrequisitions.index')->with('success', 'Requisition created successfully');

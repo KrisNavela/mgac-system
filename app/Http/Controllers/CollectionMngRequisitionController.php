@@ -557,7 +557,7 @@ class CollectionMngRequisitionController extends Controller
             $collmngrequisition->collmanager_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
             $collmngrequisition->save(); // Save the changes
 
-            Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalTreasuryMail($collmngrequisition));
+            Mail::to('cong@milestoneguaranty.com')->send(new ForApprovalTreasuryMail($collmngrequisition));
 
         } else {
 
@@ -566,7 +566,7 @@ class CollectionMngRequisitionController extends Controller
             $collmngrequisition->collmanager_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
             $collmngrequisition->save(); // Save the changes
 
-            Mail::to('knavela@milestoneguaranty.com')->send(new ForTransmittalMail($collmngrequisition));
+            Mail::to('cristine.ferrer@milestoneguaranty.com')->send(new ForTransmittalMail($collmngrequisition));
 
         }
 
