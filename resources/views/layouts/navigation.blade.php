@@ -37,8 +37,9 @@
                         <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                             {{ __('Users') }}
                         </x-nav-link>
-                    
+                    @endcan
 
+                    @can('viewAny', App\Models\Item::class)
                         <x-nav-link :href="route('spoiledforms.index')" :active="request()->routeIs('spoiledseries.index')">
                             {{ __('Spoiled/HO Request') }}
                         </x-nav-link>
