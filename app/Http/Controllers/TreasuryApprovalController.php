@@ -521,10 +521,15 @@ class TreasuryApprovalController extends Controller
             $treasuryapprovalrequisition->treasuryapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
             $treasuryapprovalrequisition->save(); // Save the changes
         
+        $user = auth()->user(); // Get the authenticated user
+        $userId = $user->id;
+        $rolename = $user->role->name;
+
         RequisitionRemarks::create([
             'requisition_id' => $treasuryapprovalrequisition->id,
             'content' => $request->content,
             'user_id' => Auth::id(),
+            'role_name' => $rolename,
         ]);
 
         Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCOC($treasuryapprovalrequisition));
