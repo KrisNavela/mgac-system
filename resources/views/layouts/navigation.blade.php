@@ -40,7 +40,7 @@
                     
 
                         <x-nav-link :href="route('spoiledforms.index')" :active="request()->routeIs('spoiledseries.index')">
-                            {{ __('Spoiled') }}
+                            {{ __('Spoiled/HO Request') }}
                         </x-nav-link>
                     @endcan
 
