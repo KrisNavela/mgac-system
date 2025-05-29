@@ -429,47 +429,47 @@
         }
     }">
 
-                            <div class="flex justify-end space-x-4">
-                                <div class="flex justify-end">      
-                                    <!-- Button to open the modal -->
-                                    <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modalAttachment-id')">Attachment</button>
-                                </div>
-                                    
-                                            <div id="modalAttachment-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-center">
-                                            <div class="bg-white p-6 rounded-lg shadow-lg w-2/3">
-                                                <div class="flex justify-end"> 
-                                                    <button class="bg-red-500 text-white text-sm px-2 py-1 rounded-md" onclick="toggleModal('modalAttachment-id')">
-                                                        Close
-                                                    </button>
-                                                </div>
-                                    
-                                    
-                                                    <div class="py-2" style="font-size: 16px; font-weight: bold; color: #333;">
-                                                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                                                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+<div class="flex justify-end space-x-4">
+    <div class="flex justify-end">      
+        <!-- Button to open the modal -->
+        <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modalAttachment-id')">Attachment</button>
+    </div>
+        
+    <div id="modalAttachment-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-2/3">
+            <div class="flex justify-end"> 
+                <button class="bg-red-500 text-white text-sm px-2 py-1 rounded-md" onclick="toggleModal('modalAttachment-id')">
+                    Close
+                </button>
+            </div>
 
-                                                            <table class="min-w-full divide-y divide-gray-200 mt-2">
-                                                                <thead class="bg-gray-50">
-                                                                    <th class="px-3 py-2 text=left text-sm text-gray-500 uppercase">Path</th>
-                                                                    <th class="px-3 py-2 text=left text-sm text-gray-500 uppercase">Action</th>
-                                                                </thead>                
-                                                                <tbody class="bg-white divide-y divide-gray-200">
-                                                                    @foreach ($attachments as $attachment)
-                                                                    <tr class="px-4 py-3 whitespace-nowrap">
-                                                                        <td> <a href="{{ Storage::url($attachment->file_path) }}" target="_blank">{{ $attachment->file_path }}</a> </td>
-                                                                        <td> <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="bg-green-500 text-white hover:bg-green-700 text-sm px-1 py-1 rounded-md">Download File</a> </td>
-                                                                    </tr>
-                                                                    @endforeach
-                                                                </tbody>
-                                                            </table>
-                                                        
-                                    
-                                                        
-                                                    </div>
-                                                    </div>
-                                                    </div>
-                                            </div>
-                                            </div>
+
+                <div class="py-2" style="font-size: 16px; font-weight: bold; color: #333;">
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+
+                            <table class="min-w-full divide-y divide-gray-200 mt-2">
+                                <thead class="bg-gray-50">
+                                    <th class="px-3 py-2 text=left text-sm text-gray-500 uppercase">Path</th>
+                                    <th class="px-3 py-2 text=left text-sm text-gray-500 uppercase">Action</th>
+                                </thead>                
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    @foreach ($attachments as $attachment)
+                                    <tr class="px-4 py-3 whitespace-nowrap">
+                                        <td> <a href="{{ Storage::url($attachment->file_path) }}" target="_blank">{{ $attachment->file_path }}</a> </td>
+                                        <td> <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="bg-green-500 text-white hover:bg-green-700 text-sm px-1 py-1 rounded-md">Download File</a> </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        
+    
+                        
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
                         
                         
                                 
@@ -479,114 +479,115 @@
     </div>
 
         <div id="modal-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-center">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-2/3">
-            <div class="flex justify-end"> 
-            <button class="bg-red-500 text-white text-sm px-2 py-1 rounded-md" onclick="toggleModal('modal-id')">
-                Close
-            </button>
-            </div>
-            <div class="py-2" style="font-size: 11px; font-weight: bold; color: #333;">
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-2/3">
+                    <div class="flex justify-end"> 
+                    <button class="bg-red-500 text-white text-sm px-2 py-1 rounded-md" onclick="toggleModal('modal-id')">
+                        Close
+                    </button>
+                    </div>
+                    
+                    <div class="py-2" style="font-size: 11px; font-weight: bold; color: #333;">
+                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
 
-                <div class="py-4 text-sm text-gray-800 font-semibold">
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                        <div class="bg-white shadow-sm sm:rounded-lg p-4">
+                            <div class="py-4 text-sm text-gray-800 font-semibold">
+                                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                                    <div class="bg-white shadow-sm sm:rounded-lg p-4">
 
-                            <!-- Remarks Table (Scrollable) -->
-                            <div class="overflow-y-auto max-h-60 border border-gray-200 rounded-md">
-                                <table class="min-w-full divide-y divide-gray-200 text-xs">
-                                    <thead class="bg-gray-100 uppercase text-gray-600 font-bold">
-                                        <tr>
-                                            <th class="px-2 py-2 text-left">Date</th>
-                                            <th class="px-2 py-2 text-left">Content</th>
-                                            <th class="px-2 py-2 text-left">Name</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="bg-white divide-y divide-gray-200">
-                                        @foreach ($remarks as $remark)
-                                        <tr>
-                                            <td class="px-2 py-1">{{ $remark->created_at }}</td>
-                                            <td class="px-2 py-1">{{ $remark->content }}</td>
-                                            <td class="px-2 py-1">{{ $remark->user->first_name }} {{ $remark->user->last_name }}</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                                        <!-- Remarks Table (Scrollable) -->
+                                        <div class="overflow-y-auto max-h-60 border border-gray-200 rounded-md">
+                                            <table class="min-w-full divide-y divide-gray-200 text-xs">
+                                                <thead class="bg-gray-100 uppercase text-gray-600 font-bold">
+                                                    <tr>
+                                                        <th class="px-2 py-2 text-left">Date</th>
+                                                        <th class="px-2 py-2 text-left">Content</th>
+                                                        <th class="px-2 py-2 text-left">Name</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    @foreach ($remarks as $remark)
+                                                    <tr>
+                                                        <td class="px-2 py-1">{{ $remark->created_at }}</td>
+                                                        <td class="px-2 py-1">{{ $remark->content }}</td>
+                                                        <td class="px-2 py-1">{{ $remark->user->first_name }} {{ $remark->user->last_name }}</td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
 
 
-                            <!-- Remarks Form -->
-                            <form method="POST" action="{{ route('pendingrequisitions.update.forapproval', $requisition->id) }}">
-                                @csrf
-                                @method('PUT')
+                                        <!-- Remarks Form -->
+                                        <form method="POST" action="{{ route('pendingrequisitions.update.forapproval', $requisition->id) }}">
+                                            @csrf
+                                            @method('PUT')
 
-                                <!-- Content Field -->
-                                <div class="mt-4">
-                                    <x-input-label for="content" :value="__('Content')" />
-                                    <x-text-input id="content" class="mt-1 w-full" type="text" name="content"
-                                        :value="old('content', $requisition->content)" required />
-                                    <x-input-error :messages="$errors->get('content')" class="mt-2" />
+                                            <!-- Content Field -->
+                                            <div class="mt-4">
+                                                <x-input-label for="content" :value="__('Content')" />
+                                                <x-text-input id="content" class="mt-1 w-full" type="text" name="content"
+                                                    :value="old('content', $requisition->content)" required />
+                                                <x-input-error :messages="$errors->get('content')" class="mt-2" />
+                                            </div>
+
+                                            <!-- Conditional Approval Fields -->
+                                            @if ($requisition->type_request == 'Replenishment' && $requisition->coc_request_status == 'no')
+                                                @include('components.select-approval', [
+                                                    'field' => 'bonds_status_modal',
+                                                    'label' => 'For bonds approval?',
+                                                    'options' => ['no'],
+                                                    'selected' => $requisition->bonds_status
+                                                ])
+                                                @include('components.select-approval', [
+                                                    'field' => 'uw_status_modal',
+                                                    'label' => 'For UW approval?',
+                                                    'options' => ['no'],
+                                                    'selected' => $requisition->uw_status
+                                                ])
+                                            @else
+                                                @include('components.select-approval', [
+                                                    'field' => 'bonds_status_modal',
+                                                    'label' => 'For bonds approval?',
+                                                    'options' => ['no', 'for approval', 'approved', 'return'],
+                                                    'selected' => $requisition->bonds_status
+                                                ])
+                                                @include('components.select-approval', [
+                                                    'field' => 'uw_status_modal',
+                                                    'label' => 'For UW approval?',
+                                                    'options' => ['no', 'for approval', 'approved', 'return'],
+                                                    'selected' => $requisition->uw_status
+                                                ])
+                                            @endif
+
+                                            <!-- Final Approval Field -->
+                                            @include('components.select-approval', [
+                                                'field' => 'finalapproval_status_modal',
+                                                'label' => 'For final approval?',
+                                                'options' => ['no', 'for approval', 'return'],
+                                                'selected' => $requisition->finalapproval_status
+                                            ])
+
+                                            <!-- Submit Button -->
+                                            <div class="mt-4">
+                                                <button class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                                    Save
+                                                </button>
+                                            </div>
+                                        </form>
+                                        <div class="mt-4">
+                                            <a href="{{ route('pendingrequisitions.update.forcancel', $requisition->id) }}" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded"
+                                            onclick="return confirm('Are you sure you want to cancel this requisition?');">Cancel Requisitioin</a>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <!-- Conditional Approval Fields -->
-                                @if ($requisition->type_request == 'Replenishment' && $requisition->coc_request_status == 'no')
-                                    @include('components.select-approval', [
-                                        'field' => 'bonds_status_modal',
-                                        'label' => 'For bonds approval?',
-                                        'options' => ['no'],
-                                        'selected' => $requisition->bonds_status
-                                    ])
-                                    @include('components.select-approval', [
-                                        'field' => 'uw_status_modal',
-                                        'label' => 'For UW approval?',
-                                        'options' => ['no'],
-                                        'selected' => $requisition->uw_status
-                                    ])
-                                @else
-                                    @include('components.select-approval', [
-                                        'field' => 'bonds_status_modal',
-                                        'label' => 'For bonds approval?',
-                                        'options' => ['no', 'for approval', 'approved', 'return'],
-                                        'selected' => $requisition->bonds_status
-                                    ])
-                                    @include('components.select-approval', [
-                                        'field' => 'uw_status_modal',
-                                        'label' => 'For UW approval?',
-                                        'options' => ['no', 'for approval', 'approved', 'return'],
-                                        'selected' => $requisition->uw_status
-                                    ])
-                                @endif
-
-                                <!-- Final Approval Field -->
-                                @include('components.select-approval', [
-                                    'field' => 'finalapproval_status_modal',
-                                    'label' => 'For final approval?',
-                                    'options' => ['no', 'for approval', 'return'],
-                                    'selected' => $requisition->finalapproval_status
-                                ])
-
-                                <!-- Submit Button -->
-                                <div class="mt-4">
-                                    <button class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
-                                        Save
-                                    </button>
-                                </div>
-                            </form>
-                            <div class="mt-4">
-                                <a href="{{ route('pendingrequisitions.update.forcancel', $requisition->id) }}" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded"
-                                onclick="return confirm('Are you sure you want to cancel this requisition?');">Cancel Requisitioin</a>
                             </div>
+                            
                         </div>
                     </div>
-                </div>
-                    
-                </div>
-                </div>
 
-            </div>
-            </div>
-            </div>
+                </div>
+        </div>
+</div>
 
 
             <!-- Add this JavaScript for modal functionality -->
