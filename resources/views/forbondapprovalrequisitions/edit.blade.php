@@ -522,7 +522,7 @@
                                         </div>
                                         -->
                                         <div class="mt-4">
-                                            <button class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">
+                                            <button class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
                                                 Save
                                             </button>
                                         </div>
