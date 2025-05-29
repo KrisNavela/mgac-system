@@ -570,13 +570,14 @@
                                     </button>
                                 </div>
                             </form>
+                            <div class="mt-4">
+                                <a href="{{ route('pendingrequisitions.update.forcancel', $requisition->id) }}" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded"
+                                onclick="return confirm('Are you sure you want to cancel this requisition?');">Cancel Requisitioin</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                    <div class="mt-4">
-                        <a href="{{ route('pendingrequisitions.update.forcancel', $requisition->id) }}" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded"
-                        onclick="return confirm('Are you sure you want to cancel this requisition?');">Cancel Requisitioin</a>
-                    </div>
+                    
                 </div>
                 </div>
                 </div>
