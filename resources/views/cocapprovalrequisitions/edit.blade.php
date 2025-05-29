@@ -407,7 +407,6 @@
                             removeItem(index) {
                                 this.requisitionItems.splice(index, 1);
                             }}">
-
                         <div class="flex justify-end space-x-4">
                             <div class="flex justify-end">    
                                 <!-- Button to open the modal -->
@@ -441,7 +440,9 @@
                                                         @endforeach
                                                     </tbody>
                                                 </table>
-
+                                            
+                        
+                                            
                                         </div>
                                         </div>
                                         </div>
