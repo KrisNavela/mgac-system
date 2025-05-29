@@ -493,7 +493,7 @@
                                 </div>
 
 
-                                <form method="POST" action="{{ route('approvedrequisitions.update.approval', $requisition->id) }}" method="POST">
+                                <form method="POST" action="{{ route('cocapprovalrequisitions.update.cocapproval', $requisition->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <div class="mt-4">
@@ -501,18 +501,29 @@
                                         <x-text-input id="content" class="block mt-1 w-full" type="text" name="content" :value="old('content', $requisition->content)" autofocus autocomplete="content" required />
                                         <x-input-error :messages="$errors->get('content')" class="mt-2" />
                                     </div>
-
+            
                                     <div class="mt-4">
-                                        <x-input-label for="finalapproval_status_modal" :value="__('For Final Approval?')" />
-                                        <select name="finalapproval_status_modal" class="w-full mt-1">
-                                            <option value="for approval" {{ 'for approval' === $requisition->finalapproval_status ? 'selected' : '' }}>For Approval</option>
-                                            <option value="approved" {{ 'approved' === $requisition->finalapproval_status ? 'selected' : '' }}>Approved</option>
-                                            <option value="return" {{ 'return' === $requisition->finalapproval_status ? 'selected' : '' }}>Return</option>
-                                            <option value="cancelled" {{ 'cancelled' === $requisition->finalapproval_status ? 'selected' : '' }}>Cancelled</option>
-                                        </select>
-                                        <x-input-error :messages="$errors->get('finalapproval_status_modal')" class="mt-2" />
+                                        <x-input-label for="status_modal" :value="__('Requisition Status')" />
+                                        <x-text-input id="status_modal" class="block mt-1 w-full uppercase" style="width: 200px;" type="text" name="status_modal" :value="old('status_modal', $requisition->status)" autofocus autocomplete="status_modal" />
+                                        <x-input-error :messages="$errors->get('status_modal')" class="mt-2" />
                                     </div>
 
+                                    <div class="mt-4">
+                                        <x-input-label for="treasurystatus_modal" :value="__('Treasury Status')" />
+                                        <x-text-input id="treasurystatus_modal" class="block mt-1 w-full uppercase" style="width: 200px;" type="text" name="treasurystatus_modal" :value="old('treasurystatus_modal', $requisition->treasuryapproval_status)" autofocus autocomplete="treasurystatus_modal" />
+                                        <x-input-error :messages="$errors->get('treasurystatus_modal')" class="mt-2" />
+                                    </div>
+
+
+                                    <div class="mt-4">
+                                        <x-input-label for="cocapproval_status" :value="__('COC Approval?')" />
+                                        <select name="cocapproval_status" class="w-full mt-1">
+                                            <option value="approved" {{ 'approved' === $requisition->cocapproval_status ? 'selected' : '' }}>Approved</option>
+                                            <option value="for approval" {{ 'for approval' === $requisition->cocapproval_status ? 'selected' : '' }}>For Approval</option>
+                                        </select>
+                                        <x-input-error :messages="$errors->get('cocapproval_status')" class="mt-2" />
+                                    </div>
+            
                                     <div class="mt-4">
                                         <button class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
                                             Save
