@@ -493,25 +493,28 @@
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <div class="bg-white shadow-sm sm:rounded-lg p-4">
 
-                            <!-- Remarks Table -->
-                            <table class="min-w-full divide-y divide-gray-200 text-xs">
-                                <thead class="bg-gray-100 uppercase text-gray-600 font-bold">
-                                    <tr>
-                                        <th class="px-2 py-2 text-left">Date</th>
-                                        <th class="px-2 py-2 text-left">Content</th>
-                                        <th class="px-2 py-2 text-left">Name</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="bg-white divide-y divide-gray-200">
-                                    @foreach ($remarks as $remark)
-                                    <tr>
-                                        <td class="px-2 py-1">{{ $remark->created_at }}</td>
-                                        <td class="px-2 py-1">{{ $remark->content }}</td>
-                                        <td class="px-2 py-1">{{ $remark->user->first_name }} {{ $remark->user->last_name }}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                            <!-- Remarks Table (Scrollable) -->
+<div class="overflow-y-auto max-h-60 border border-gray-200 rounded-md">
+    <table class="min-w-full divide-y divide-gray-200 text-xs">
+        <thead class="bg-gray-100 uppercase text-gray-600 font-bold">
+            <tr>
+                <th class="px-2 py-2 text-left">Date</th>
+                <th class="px-2 py-2 text-left">Content</th>
+                <th class="px-2 py-2 text-left">Name</th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+            @foreach ($remarks as $remark)
+            <tr>
+                <td class="px-2 py-1">{{ $remark->created_at }}</td>
+                <td class="px-2 py-1">{{ $remark->content }}</td>
+                <td class="px-2 py-1">{{ $remark->user->first_name }} {{ $remark->user->last_name }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
 
                             <!-- Remarks Form -->
                             <form method="POST" action="{{ route('pendingrequisitions.update.forapproval', $requisition->id) }}">
