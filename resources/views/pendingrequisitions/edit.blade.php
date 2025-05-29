@@ -473,125 +473,155 @@
                         
                         
                                 
-    <!-- Action Button -->
-<div class="flex justify-end mb-4">
-    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow-sm transition" onclick="toggleModal('modal-id')">
-        Action
-    </button>
-</div>
+    <div class="flex justify-end space-x-4">
+        <!-- Button to open the modal -->
+        <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modal-id')">Action</button>
+    </div>
 
-<!-- Modal -->
-<div id="modal-id" class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center">
-    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl p-6 space-y-6">
-        
-        <!-- Modal Header -->
-        <div class="flex justify-between items-center border-b pb-2">
-            <h2 class="text-lg font-semibold text-gray-800">Requisition Remarks & Action</h2>
-            <button class="text-sm bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded" onclick="toggleModal('modal-id')">
+        <div id="modal-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-2/3">
+            <div class="flex justify-end"> 
+            <button class="bg-red-500 text-white text-sm px-2 py-1 rounded-md" onclick="toggleModal('modal-id')">
                 Close
             </button>
-        </div>
+            </div>
 
-        <!-- Remarks Table -->
-        <div>
-            <h3 class="text-sm font-semibold text-gray-600 mb-2">Previous Remarks</h3>
-            <div class="overflow-x-auto">
-                <table class="min-w-full text-sm text-left border border-gray-200 rounded-md overflow-hidden">
-                    <thead class="bg-gray-100 text-gray-600">
-                        <tr>
-                            <th class="px-3 py-2">Date</th>
-                            <th class="px-3 py-2">Content</th>
-                            <th class="px-3 py-2">Name</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-100 bg-white">
-                        @foreach ($remarks as $remark)
-                            <tr>
-                                <td class="px-3 py-2">{{ $remark->created_at }}</td>
-                                <td class="px-3 py-2">{{ $remark->content }}</td>
-                                <td class="px-3 py-2">{{ $remark->user->first_name }} {{ $remark->user->last_name }}</td>
+
+                <div class="py-2" style="font-size: 11px; font-weight: bold; color: #333;">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <table class="min-w-full divide-y divide-gray-200 mt-2">
+                        <thead class="bg-gray-50">
+                            <th class="px-1 py-1 text=left text-sm text-gray-500 uppercase" style="font-size: 11px; font-weight: bold; color: #333;">Date</th>
+                            <th class="px-1 py-1 text=left text-sm text-gray-500 uppercase" style="font-size: 11px; font-weight: bold; color: #333;">Content</th>
+                            <th class="px-1 py-1 text=left text-sm text-gray-500 uppercase" style="font-size: 11px; font-weight: bold; color: #333;">Name</th>
+                        </thead>                
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            @foreach ($remarks as $remark)
+                            <tr class="px-1 py-1 whitespace-nowrap">
+                                <td> {{ $remark->created_at }}</td>
+                                <td> {{ $remark->content }}</td>
+                                <td> {{ $remark->user->first_name }} {{ $remark->user->last_name }}</td>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Form -->
-        <form method="POST" action="{{ route('pendingrequisitions.update.forapproval', $requisition->id) }}">
-            @csrf
-            @method('PUT')
-
-            <!-- Content Field -->
-            <div>
-                <x-input-label for="content" :value="__('Content')" />
-                <x-text-input id="content" class="mt-1 block w-full" type="text" name="content" :value="old('content', $requisition->content)" />
-                <x-input-error :messages="$errors->get('content')" class="mt-1" />
-            </div>
-
-            <!-- Approval Fields -->
-            @php
-                $statuses = ['no', 'for approval', 'approved', 'return'];
-            @endphp
-
-            @if ($requisition->type_request == 'Replenishment' && $requisition->coc_request_status == 'no')
-                @foreach (['bonds_status_modal' => 'Bonds', 'uw_status_modal' => 'UW'] as $field => $label)
-                    <div class="mt-4">
-                        <x-input-label :for="$field" :value="__('For ' . $label . ' approval?')" />
-                        <select name="{{ $field }}" id="{{ $field }}" class="w-full mt-1 border-gray-300 rounded-md shadow-sm">
-                            <option value="no" {{ 'no' === $requisition->$field ? 'selected' : '' }}>No</option>
-                        </select>
-                        <x-input-error :messages="$errors->get($field)" class="mt-1" />
-                    </div>
-                @endforeach
-            @else
-                @foreach (['bonds_status_modal' => 'Bonds', 'uw_status_modal' => 'UW'] as $field => $label)
-                    <div class="mt-4">
-                        <x-input-label :for="$field" :value="__('For ' . $label . ' approval?')" />
-                        <select name="{{ $field }}" id="{{ $field }}" class="w-full mt-1 border-gray-300 rounded-md shadow-sm">
-                            @foreach ($statuses as $status)
-                                <option value="{{ $status }}" {{ $status === $requisition->$field ? 'selected' : '' }}>{{ ucfirst($status) }}</option>
                             @endforeach
-                        </select>
-                        <x-input-error :messages="$errors->get($field)" class="mt-1" />
-                    </div>
-                @endforeach
-            @endif
+                        </tbody>
+                    </table>
+                    <form method="POST" action="{{ route('pendingrequisitions.update.forapproval', $requisition->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="mt-4">
+                            <x-input-label for="content" :value="__('Content')" />
+                            <x-text-input id="content" class="block mt-1 w-full" type="text" name="content" :value="old('content', $requisition->content)" autofocus autocomplete="content" />
+                            <x-input-error :messages="$errors->get('content')" class="mt-2" />
+                        </div>
+                        
+                        @if ($requisition->type_request == 'Replenishment')
 
-            <!-- Final Approval -->
-            <div class="mt-4">
-                <x-input-label for="finalapproval_status_modal" :value="__('For final approval?')" />
-                <select name="finalapproval_status_modal" id="finalapproval_status_modal" class="w-full mt-1 border-gray-300 rounded-md shadow-sm">
-                    @foreach (['no', 'for approval', 'return'] as $status)
-                        <option value="{{ $status }}" {{ $status === $requisition->finalapproval_status ? 'selected' : '' }}>{{ ucfirst($status) }}</option>
-                    @endforeach
-                </select>
-                <x-input-error :messages="$errors->get('finalapproval_status_modal')" class="mt-1" />
+                            @if ($requisition->coc_request_status == 'no')
+
+                                <div class="mt-4">
+                                    <x-input-label for="bonds_status_modal" :value="__('For bonds approval?')" />
+                                    <select name="bonds_status_modal" id="">
+                                        <option value="no" {{ 'no' === $requisition->bonds_status ? 'selected' : '' }}>No</option>
+                                    </select>
+                                    <x-input-error :messages="$errors->get('bonds_status_modal')" class="mt-2" />
+                                </div>
+
+                                <div class="mt-4">
+                                    <x-input-label for="uw_status_modal" :value="__('For UW approval?')" />
+                                    <select name="uw_status_modal" id="">
+                                        <option value="no" {{ 'no' === $requisition->uw_status ? 'selected' : '' }}>No</option>
+                                    </select>
+                                    <x-input-error :messages="$errors->get('uw_status_modal')" class="mt-2" />
+                                </div>
+
+                            @else
+
+                                <div class="mt-4">
+                                    <x-input-label for="bonds_status_modal" :value="__('For bonds approval?')" />
+                                    <select name="bonds_status_modal" id="">
+                                        <option value="no" {{ 'no' === $requisition->bonds_status ? 'selected' : '' }}>No</option>
+                                        <option value="for approval" {{ 'for approval' === $requisition->bonds_status ? 'selected' : '' }}>For Approval</option>
+                                        <option value="approved" {{ 'approved' === $requisition->bonds_status ? 'selected' : '' }}>Approved</option>
+                                        <option value="return" {{ 'return' === $requisition->bonds_status ? 'selected' : '' }}>Return</option>
+                                    </select>
+                                    <x-input-error :messages="$errors->get('bonds_status_modal')" class="mt-2" />
+                                </div>
+
+                                <div class="mt-4">
+                                    <x-input-label for="uw_status_modal" :value="__('For UW approval?')" />
+                                    <select name="uw_status_modal" id="">
+                                        <option value="no" {{ 'no' === $requisition->uw_status ? 'selected' : '' }}>No</option>
+                                        <option value="for approval" {{ 'for approval' === $requisition->uw_status ? 'selected' : '' }}>For Approval</option>
+                                        <option value="approved" {{ 'approved' === $requisition->uw_status ? 'selected' : '' }}>Approved</option>
+                                        <option value="return" {{ 'return' === $requisition->uw_status ? 'selected' : '' }}>Return</option>
+                                    </select>
+                                    <x-input-error :messages="$errors->get('uw_status_modal')" class="mt-2" />
+                                </div>
+
+                            @endif
+
+                        @else
+
+                            <div class="mt-4">
+                                <x-input-label for="bonds_status_modal" :value="__('For bonds approval?')" />
+                                <select name="bonds_status_modal" id="">
+                                    <option value="no" {{ 'no' === $requisition->bonds_status ? 'selected' : '' }}>No</option>
+                                    <option value="for approval" {{ 'for approval' === $requisition->bonds_status ? 'selected' : '' }}>For Approval</option>
+                                    <option value="approved" {{ 'approved' === $requisition->bonds_status ? 'selected' : '' }}>Approved</option>
+                                    <option value="return" {{ 'return' === $requisition->bonds_status ? 'selected' : '' }}>Return</option>
+                                </select>
+                                <x-input-error :messages="$errors->get('bonds_status_modal')" class="mt-2" />
+                            </div>
+
+                            <div class="mt-4">
+                                <x-input-label for="uw_status_modal" :value="__('For UW approval?')" />
+                                <select name="uw_status_modal" id="">
+                                    <option value="no" {{ 'no' === $requisition->uw_status ? 'selected' : '' }}>No</option>
+                                    <option value="for approval" {{ 'for approval' === $requisition->uw_status ? 'selected' : '' }}>For Approval</option>
+                                    <option value="approved" {{ 'approved' === $requisition->uw_status ? 'selected' : '' }}>Approved</option>
+                                    <option value="return" {{ 'return' === $requisition->uw_status ? 'selected' : '' }}>Return</option>
+                                </select>
+                                <x-input-error :messages="$errors->get('uw_status_modal')" class="mt-2" />
+                            </div>
+
+                        @endif
+                        
+
+                        <div class="mt-4">
+                            <x-input-label for="finalapproval_status_modal" :value="__('For final approval?')" />
+                            <select name="finalapproval_status_modal" id="">
+                                <option value="no" {{ 'no' === $requisition->finalapproval_status ? 'selected' : '' }}>No</option>
+                                <option value="for approval" {{ 'for approval' === $requisition->finalapproval_status ? 'selected' : '' }}>For Approval</option>
+                                <option value="for approval" {{ 'return' === $requisition->finalapproval_status ? 'selected' : '' }}>Return</option>
+                            </select>
+                            <x-input-error :messages="$errors->get('finalapproval_status_modal')" class="mt-2" />
+                        </div>
+
+                        <div class="py-2">
+                            <button class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">
+                                Save
+                            </button>
+                        </div>
+
+                    </form>
+                    <a href="{{ route('pendingrequisitions.update.forcancel', $requisition->id) }}" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md"
+                    onclick="return confirm('Are you sure you want to cancel this requisition?');">Cancel Requisitioin</a>
+                    
+                </div>
+                </div>
+                </div>
+            </div>
+            </div>
             </div>
 
-            <!-- Save Button -->
-            <div class="mt-6 flex justify-end space-x-3">
-                <button type="submit" class="bg-green-600 hover:bg-green-700 text-white text-sm px-4 py-2 rounded shadow">
-                    Save
-                </button>
-
-                <a href="{{ route('pendingrequisitions.update.forcancel', $requisition->id) }}"
-                   onclick="return confirm('Are you sure you want to cancel this requisition?');"
-                   class="bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2 rounded shadow">
-                    Cancel Requisition
-                </a>
-            </div>
-        </form>
-    </div>
-</div>
-
-<!-- Modal JS -->
-<script>
-    function toggleModal(modalID) {
-        document.getElementById(modalID).classList.toggle('hidden');
-    }
-</script>
-
+            <!-- Add this JavaScript for modal functionality -->
+            <script>
+                function toggleModal(modalID) {
+                    let modal = document.getElementById(modalID);
+                    modal.classList.toggle('hidden');
+                }                
+            </script>
 
                 <!-- Success Notification -->
                 @if (session('success'))
