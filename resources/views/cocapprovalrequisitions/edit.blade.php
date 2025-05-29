@@ -542,13 +542,13 @@
         </div>
 </div>
                         
-                                    <!-- Add this JavaScript for modal functionality -->
-                                    <script>
-                                        function toggleModal(modalID) {
-                                            let modal = document.getElementById(modalID);
-                                            modal.classList.toggle('hidden');
-                                        }
-                                    </script>
+                <!-- Add this JavaScript for modal functionality -->
+                <script>
+                    function toggleModal(modalID) {
+                        let modal = document.getElementById(modalID);
+                        modal.classList.toggle('hidden');
+                    }
+                </script>
 
                 <form action="{{ route('approvedrequisitions.update', $requisition->id) }}" method="POST">
                         @csrf
