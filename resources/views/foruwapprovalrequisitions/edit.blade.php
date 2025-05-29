@@ -462,25 +462,27 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
-                        <!-- Table -->
-                        <table class="min-w-full divide-y divide-gray-200 mt-2 text-xs">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th class="px-1 py-1 text-left text-gray-500 uppercase">Date</th>
-                                    <th class="px-1 py-1 text-left text-gray-500 uppercase">Content</th>
-                                    <th class="px-1 py-1 text-left text-gray-500 uppercase">Name</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                @foreach ($remarks as $remark)
-                                <tr class="px-1 py-1 whitespace-nowrap">
-                                    <td>{{ $remark->created_at }}</td>
-                                    <td>{{ $remark->content }}</td>
-                                    <td>{{ $remark->user->first_name }} {{ $remark->user->last_name }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                        <!-- Remarks Table (Scrollable) -->
+                        <div class="overflow-y-auto max-h-60 border border-gray-200 rounded-md">
+                            <table class="min-w-full divide-y divide-gray-200 text-xs">
+                                <thead class="bg-gray-100 uppercase text-gray-600 font-bold">
+                                    <tr>
+                                        <th class="px-2 py-2 text-left">Date</th>
+                                        <th class="px-2 py-2 text-left">Content</th>
+                                        <th class="px-2 py-2 text-left">Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    @foreach ($remarks as $remark)
+                                    <tr>
+                                        <td class="px-2 py-1">{{ $remark->created_at }}</td>
+                                        <td class="px-2 py-1">{{ $remark->content }}</td>
+                                        <td class="px-2 py-1">{{ $remark->user->first_name }} {{ $remark->user->last_name }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
 
                         <!-- Form -->
                         <form method="POST" action="{{ route('foruwapprovalrequisitions.update.uwapproval', $requisition->id) }}">
