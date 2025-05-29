@@ -430,17 +430,17 @@
     }">
 
                             <div class="flex justify-end space-x-4">
-                            <div class="flex justify-end">      
-                                            <!-- Button to open the modal -->
-                                            <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modalAttachment-id')">Attachment</button>
-                                        </div>
+                                <div class="flex justify-end">      
+                                    <!-- Button to open the modal -->
+                                    <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modalAttachment-id')">Attachment</button>
+                                </div>
                                     
                                             <div id="modalAttachment-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-center">
                                             <div class="bg-white p-6 rounded-lg shadow-lg w-2/3">
                                                 <div class="flex justify-end"> 
-                                                <button class="bg-red-500 text-white text-sm px-2 py-1 rounded-md" onclick="toggleModal('modalAttachment-id')">
-                                                    Close
-                                                </button>
+                                                    <button class="bg-red-500 text-white text-sm px-2 py-1 rounded-md" onclick="toggleModal('modalAttachment-id')">
+                                                        Close
+                                                    </button>
                                                 </div>
                                     
                                     
@@ -584,6 +584,7 @@
                 </div>
                 </div>
 
+            </div>
             </div>
             </div>
 
