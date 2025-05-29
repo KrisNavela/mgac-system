@@ -501,7 +501,7 @@
 
                                         <div class="mt-4">
                                             <x-input-label for="bonds_status_modal" :value="__('For bonds approval?')" />
-                                            <select name="bonds_status_modal" id="">
+                                            <select name="bonds_status_modal" class="w-full mt-1">
                                                 <option value="no" {{ 'no' === $requisition->bonds_status ? 'selected' : '' }}>No</option>
                                                 <option value="for approval" {{ 'for approval' === $requisition->bonds_status ? 'selected' : '' }}>For Approval</option>
                                                 <option value="approved" {{ 'approved' === $requisition->bonds_status ? 'selected' : '' }}>Approved</option>
