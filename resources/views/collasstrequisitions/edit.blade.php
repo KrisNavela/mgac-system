@@ -510,7 +510,7 @@
 
                                     <div class="mt-4">
                                         <x-input-label for="uw_status_modal" :value="__('For UW approval?')" />
-                                        <select name="uw_status_modal" id="">
+                                        <select name="uw_status_modal" class="w-full mt-1">
                                             <option value="no" {{ 'no' === $requisition->uw_status ? 'selected' : '' }}>No</option>
                                             <option value="for approval" {{ 'for approval' === $requisition->uw_status ? 'selected' : '' }}>For Approval</option>
                                             <option value="approved" {{ 'approved' === $requisition->uw_status ? 'selected' : '' }}>Approved</option>
@@ -521,7 +521,7 @@
 
                                     <div class="mt-4">
                                         <x-input-label for="collasst_status_modal" :value="__('Coll Asst Status?')" />
-                                        <select name="collasst_status_modal" id="">
+                                        <select name="collasst_status_modal" class="w-full mt-1">
                                             <option value="no" {{ 'no' === $requisition->collasst_status ? 'selected' : '' }}>No</option>
                                             <option value="for approval" {{ 'for approval' === $requisition->collasst_status ? 'selected' : '' }}>For Approval</option>
                                             <option value="approved" {{ 'approved' === $requisition->collasst_status ? 'selected' : '' }}>Approved</option>
