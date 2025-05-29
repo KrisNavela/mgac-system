@@ -519,8 +519,8 @@
                                             <x-input-error :messages="$errors->get('treasuryapproval_status')" class="mt-2" />
                                         </div>
                 
-                                        <div class="py-2">
-                                            <button class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">
+                                        <div class="mt-4">
+                                            <button class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
                                                 Save
                                             </button>
                                         </div>
@@ -531,7 +531,7 @@
 
                     </div>
                 </div>
-                
+
             </div>
         </div>
 </div>
