@@ -487,7 +487,7 @@
                     @method('PUT')
                     <div class="mt-4">
                         <x-input-label for="content" :value="__('Content')" />
-                        <x-text-input id="content" class="block mt-1 w-full" type="text" name="content" :value="old('content', $requisition->content)" autofocus autocomplete="content" />
+                        <x-text-input id="content" class="block mt-1 w-full" type="text" name="content" :value="old('content', $requisition->content)" autofocus autocomplete="content" required />
                         <x-input-error :messages="$errors->get('content')" class="mt-2" />
                     </div>
 
