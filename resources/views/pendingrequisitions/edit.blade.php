@@ -565,7 +565,7 @@
 
                                 <!-- Submit Button -->
                                 <div class="mt-4">
-                                    <button class="bg-green-600 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                    <button class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
                                         Save
                                     </button>
                                 </div>
