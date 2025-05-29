@@ -409,42 +409,44 @@
                             }}">
 
 <div class="flex justify-end space-x-4">
-    <div class="flex justify-end">    
-        <!-- Button to open the modal -->
-        <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modalAttachment-id')">Attachment</button>
-    </div>
+        <div class="flex justify-end">    
+            <!-- Button to open the modal -->
+            <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modalAttachment-id')">Attachment</button>
+        </div>
 
-    <div id="modalAttachment-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-center">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-2/3">
-            <div class="flex justify-end"> 
-                <button class="bg-red-500 text-white text-sm px-2 py-1 rounded-md" onclick="toggleModal('modalAttachment-id')">
-                    Close
-                </button>
-            </div>
+        <div id="modalAttachment-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-center">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-2/3">
+                <div class="flex justify-end"> 
+                    <button class="bg-red-500 text-white text-sm px-2 py-1 rounded-md" onclick="toggleModal('modalAttachment-id')">
+                        Close
+                    </button>
+                </div>
 
 
-            <div class="py-2" style="font-size: 16px; font-weight: bold; color: #333;">
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <table class="min-w-full divide-y divide-gray-200 mt-2">
-                            <thead class="bg-gray-50">
-                                <th class="px-3 py-2 text=left text-sm text-gray-500 uppercase">Path</th>
-                                <th class="px-3 py-2 text=left text-sm text-gray-500 uppercase">Action</th>
-                            </thead>                
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                @foreach ($attachments as $attachment)
-                                <tr class="px-4 py-3 whitespace-nowrap">
-                                    <td> <a href="{{ Storage::url($attachment->file_path) }}" target="_blank">{{ $attachment->file_path }}</a> </td>
-                                    <td> <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="bg-green-500 text-white hover:bg-green-700 text-sm px-1 py-1 rounded-md">Download File</a> </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                <div class="py-2" style="font-size: 16px; font-weight: bold; color: #333;">
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                            <table class="min-w-full divide-y divide-gray-200 mt-2">
+                                <thead class="bg-gray-50">
+                                    <th class="px-3 py-2 text=left text-sm text-gray-500 uppercase">Path</th>
+                                    <th class="px-3 py-2 text=left text-sm text-gray-500 uppercase">Action</th>
+                                </thead>                
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    @foreach ($attachments as $attachment)
+                                    <tr class="px-4 py-3 whitespace-nowrap">
+                                        <td> <a href="{{ Storage::url($attachment->file_path) }}" target="_blank">{{ $attachment->file_path }}</a> </td>
+                                        <td> <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="bg-green-500 text-white hover:bg-green-700 text-sm px-1 py-1 rounded-md">Download File</a> </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+
             </div>
+            
         </div>
-    </div>
 
     <div class="flex justify-end">    
         <!-- Button to open the modal -->
@@ -495,7 +497,7 @@
                                             @method('PUT')
                                             <div class="mt-4">
                                                 <x-input-label for="content" :value="__('Content')" />
-                                                <x-text-input id="content" class="block mt-1 w-full" type="text" name="content" :value="old('content', $requisition->content)" autofocus autocomplete="content" required/>
+                                                <x-text-input id="content" class="block mt-1 w-full" type="text" name="content" :value="old('content', $requisition->content)" autofocus autocomplete="content" required />
                                                 <x-input-error :messages="$errors->get('content')" class="mt-2" />
                                             </div>
                     
