@@ -450,46 +450,55 @@
         <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modal-id')">Action</button>
     </div>
 
-    <div id="modal-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-center">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-2/3">
-            <div class="flex justify-end"> 
+    <div id="modal-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-start overflow-y-auto">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-2/3 mt-10 mb-10 max-h-screen overflow-y-auto">
+            <div class="flex justify-end">
                 <button class="bg-red-500 text-white text-sm px-2 py-1 rounded-md" onclick="toggleModal('modal-id')">
                     Close
                 </button>
             </div>
 
-
             <div class="py-2" style="font-size: 11px; font-weight: bold; color: #333;">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <table class="min-w-full divide-y divide-gray-200 mt-2">
+
+                        <!-- Table -->
+                        <table class="min-w-full divide-y divide-gray-200 mt-2 text-xs">
                             <thead class="bg-gray-50">
-                                <th class="px-1 py-1 text=left text-sm text-gray-500 uppercase" style="font-size: 11px; font-weight: bold; color: #333;">Date</th>
-                                <th class="px-1 py-1 text=left text-sm text-gray-500 uppercase" style="font-size: 11px; font-weight: bold; color: #333;">Content</th>
-                                <th class="px-1 py-1 text=left text-sm text-gray-500 uppercase" style="font-size: 11px; font-weight: bold; color: #333;">Name</th>
-                            </thead>                
+                                <tr>
+                                    <th class="px-1 py-1 text-left text-gray-500 uppercase">Date</th>
+                                    <th class="px-1 py-1 text-left text-gray-500 uppercase">Content</th>
+                                    <th class="px-1 py-1 text-left text-gray-500 uppercase">Name</th>
+                                </tr>
+                            </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
                                 @foreach ($remarks as $remark)
                                 <tr class="px-1 py-1 whitespace-nowrap">
-                                    <td> {{ $remark->created_at }}</td>
-                                    <td> {{ $remark->content }}</td>
-                                    <td> {{ $remark->user->first_name }} {{ $remark->user->last_name }}</td>
+                                    <td>{{ $remark->created_at }}</td>
+                                    <td>{{ $remark->content }}</td>
+                                    <td>{{ $remark->user->first_name }} {{ $remark->user->last_name }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        <form method="POST" action="{{ route('foruwapprovalrequisitions.update.uwapproval', $requisition->id) }}" method="POST">
+
+                        <!-- Form -->
+                        <form method="POST" action="{{ route('foruwapprovalrequisitions.update.uwapproval', $requisition->id) }}">
                             @csrf
                             @method('PUT')
+
+                            <!-- Content -->
                             <div class="mt-4">
                                 <x-input-label for="content" :value="__('Content')" />
-                                <x-text-input id="content" class="block mt-1 w-full" type="text" name="content" :value="old('content', $requisition->content)" autofocus autocomplete="content" required />
+                                <x-text-input id="content" class="block mt-1 w-full" type="text" name="content"
+                                    :value="old('content', $requisition->content)" required />
                                 <x-input-error :messages="$errors->get('content')" class="mt-2" />
                             </div>
 
+                            <!-- Status -->
                             <div class="mt-4">
                                 <x-input-label for="uw_status_modal" :value="__('For UW approval?')" />
-                                <select name="uw_status_modal" id="">
+                                <select name="uw_status_modal" id="" class="w-full mt-1">
                                     <option value="no" {{ 'no' === $requisition->uw_status ? 'selected' : '' }}>No</option>
                                     <option value="for approval" {{ 'for approval' === $requisition->uw_status ? 'selected' : '' }}>For Approval</option>
                                     <option value="approved" {{ 'approved' === $requisition->uw_status ? 'selected' : '' }}>Approved</option>
@@ -498,17 +507,20 @@
                                 <x-input-error :messages="$errors->get('uw_status_modal')" class="mt-2" />
                             </div>
 
+                            <!-- Button -->
                             <div class="py-2">
                                 <button class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">
                                     Save
                                 </button>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
-        </div>                            
+        </div>
     </div>
+
 </div>
         <!-- Add this JavaScript for modal functionality -->
         <script>
