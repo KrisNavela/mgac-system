@@ -422,6 +422,7 @@
                         ✕
                     </button>
                 </div>
+                
                 <div class="py-2" style="font-size: 16px; font-weight: bold; color: #333;">
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -457,7 +458,7 @@
 
             <!-- Modal Header -->
             <div class="flex justify-between items-center border-b px-6 py-4">
-                <h2 class="text-lg font-semibold text-gray-800">Attachments</h2>
+                <h2 class="text-lg font-semibold text-gray-800">Action</h2>
                 <button onclick="toggleModal('modal-id')" class="text-gray-500 hover:text-red-600 transition">
                     ✕
                 </button>
