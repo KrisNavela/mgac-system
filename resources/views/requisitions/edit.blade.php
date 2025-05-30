@@ -451,30 +451,35 @@
                     </button>
                 </div>
 
-                <table class="min-w-full divide-y divide-gray-200 text-sm">
-                    <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
-                        <tr>
-                            <th class="px-4 py-2 text-left">Path</th>
-                            <th class="px-4 py-2 text-left">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-200">
-                        @foreach ($attachments as $attachment)
-                        <tr>
-                            <td class="px-4 py-2">
-                                <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="text-blue-600 hover:underline">
-                                    {{ $attachment->file_path }}
-                                </a>
-                            </td>
-                            <td class="px-4 py-2">
-                                <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md transition">
-                                    ⬇ Download
-                                </a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+
+                <div class="max-h-64 overflow-y-auto border border-gray-200 rounded-md">
+                    <table class="min-w-full divide-y divide-gray-200 text-sm">
+                        <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
+                            <tr>
+                                <th class="px-4 py-2 text-left">Path</th>
+                                <th class="px-4 py-2 text-left">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            @foreach ($attachments as $attachment)
+                            <tr>
+                                <td class="px-4 py-2">
+                                    <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="text-blue-600 hover:underline">
+                                        {{ $attachment->file_path }}
+                                    </a>
+                                </td>
+                                <td class="px-4 py-2">
+                                    <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md transition">
+                                        ⬇ Download
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+
             </form>
         </div>
 
