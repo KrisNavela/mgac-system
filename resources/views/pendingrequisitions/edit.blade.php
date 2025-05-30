@@ -450,7 +450,7 @@
             </div>
 
             <!-- Modal Body -->
-            <div class="p-6 overflow-auto max-h-[70vh]">
+            <div class="max-h-64 overflow-y-auto border border-gray-200 rounded-md">
                 <table class="min-w-full divide-y divide-gray-200 text-sm">
                     <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
                         <tr>
