@@ -597,7 +597,7 @@
 
                                         <!-- Modal Footer -->
                                         <div class="flex justify-end border-t px-6 py-4">
-                                            <button onclick="toggleModal('modalAttachment-id')" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition">
+                                            <button onclick="toggleModal('modal-id')" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition">
                                                 Close
                                             </button>
                                         </div>
