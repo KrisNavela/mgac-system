@@ -569,74 +569,65 @@
                         </div>
 
 
+                                <div class="max-h-64 overflow-y-auto border border-gray-200 rounded-md">
+                                    <table class="min-w-full divide-y divide-gray-200 text-xs">
+                                        <thead class="bg-gray-50">
+                                            <tr>
+                                                <th class="p-1 text-gray-500 uppercase text-center">Name</th>
+                                                <th class="p-1 text-gray-500 uppercase text-center">Quantity</th>
+                                                <th class="p-1 text-gray-500 uppercase text-center">Unit</th>
+                                                <th class="p-1 text-gray-500 uppercase text-center">HO Ctrl Start</th>
+                                                <th class="p-1 text-gray-500 uppercase text-center">HO Ctrl End</th>
+                                                <th class="p-1 text-gray-500 uppercase text-center">COC Prefix</th>
+                                                <th class="p-1 text-gray-500 uppercase text-center">Series Start</th>
+                                                <th class="p-1 text-gray-500 uppercase text-center">Series End</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="bg-white divide-y divide-gray-200">
+                                            <template x-for="(item, index) in requisitionItems" :key="index">
+                                                <tr class="hover:bg-gray-200">
+                                                <td class="px-2 py-2">
+                                                        <select class="" x-model="item.item_id" class="w-24 h-7 text-xs">
+                                                            <option value="">Please Select Item</option>
+                                                            @foreach($items as $item)
+                                                                <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
 
-    <table class="min-w-full divide-y divide-gray-200 text-xs">
-        <thead class="bg-gray-50">
-            <tr>
-                <th class="p-1 text-gray-500 uppercase text-center">Name</th>
-                <th class="p-1 text-gray-500 uppercase text-center">Quantity</th>
-                <th class="p-1 text-gray-500 uppercase text-center">Unit</th>
-                <th class="p-1 text-gray-500 uppercase text-center">HO Ctrl Start</th>
-                <th class="p-1 text-gray-500 uppercase text-center">HO Ctrl End</th>
-                <th class="p-1 text-gray-500 uppercase text-center">COC Prefix</th>
-                <th class="p-1 text-gray-500 uppercase text-center">Series Start</th>
-                <th class="p-1 text-gray-500 uppercase text-center">Series End</th>
-            </tr>
-        </thead>
-        <tbody class="bg-white divide-y divide-gray-200">
-            <template x-for="(item, index) in requisitionItems" :key="index">
-                <tr class="hover:bg-gray-200">
-                <td class="px-2 py-2">
-                        <select class="" x-model="item.item_id" class="w-24 h-7 text-xs">
-                            <option value="">Please Select Item</option>
-                            @foreach($items as $item)
-                                <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
-                            @endforeach
-                        </select>
-                    </td>
+                                                    <td class="px-2 py-2">
+                                                        <input type="number" class="w-24 h-7 text-xs" style="width: 80px" x-model="item.quantity"/>
+                                                    </td>
 
-                    <td class="px-2 py-2">
-                        <input type="number" class="w-24 h-7 text-xs" style="width: 80px" x-model="item.quantity"/>
-                    </td>
+                                                    <td class="px-2 py-2">
+                                                        <input type="text" class="w-24 h-7 text-xs" style="width: 50px"x-model="item.quantity_unit "/>
+                                                    </td>
 
-                    <td class="px-2 py-2">
-                        <input type="text" class="w-24 h-7 text-xs" style="width: 50px"x-model="item.quantity_unit "/>
-                    </td>
+                                                    <td class="px-2 py-2">
+                                                        <input type="text" class="w-24 h-7 text-xs" style="width: 140px" x-model="item.ho_ctrl_start "/>
+                                                    </td>
 
-                    <td class="px-2 py-2">
-                        <input type="text" class="w-24 h-7 text-xs" style="width: 140px" x-model="item.ho_ctrl_start "/>
-                    </td>
+                                                    <td class="px-2 py-2">
+                                                        <input type="text" class="w-24 h-7 text-xs" style="width: 140px" x-model="item.ho_ctrl_end "/>
+                                                    </td>
 
-                    <td class="px-2 py-2">
-                        <input type="text" class="w-24 h-7 text-xs" style="width: 140px" x-model="item.ho_ctrl_end "/>
-                    </td>
+                                                    <td class="px-2 py-2">
+                                                        <input type="text" class="w-24 h-7 text-xs" style="width: 50px" x-model="item.coc_prefix "/>
+                                                    </td>
 
-                    <td class="px-2 py-2">
-                        <input type="text" class="w-24 h-7 text-xs" style="width: 50px" x-model="item.coc_prefix "/>
-                    </td>
+                                                    <td class="px-2 py-2">
+                                                        <input type="text" class="w-24 h-7 text-xs" style="width: 140px" x-model="item.series_start "/>
+                                                    </td>
 
-                    <td class="px-2 py-2">
-                        <input type="text" class="w-24 h-7 text-xs" style="width: 140px" x-model="item.series_start "/>
-                    </td>
+                                                    <td class="px-2 py-2">
+                                                        <input type="text" class="w-24 h-7 text-xs" style="width: 140px" x-model="item.series_end "/>
+                                                    </td>
+                                                </tr>
+                                            </template>
+                                        </tbody>
+                                    </table>
 
-                    <td class="px-2 py-2">
-                        <input type="text" class="w-24 h-7 text-xs" style="width: 140px" x-model="item.series_end "/>
-                    </td>
-                </tr>
-            </template>
-    </tbody>
-    </table>
-
-
-
-
-                        <!--
-                        <div class="flex items-center justify-end mt-4">
-                            <a href="{{ route('requisitions.edit', $requisition->id)}}" class="bg-green-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">
-                                Edit Item
-                            </a>
-                        </div> -->
-                </div>
+                                </div>
 
             </div>
         </div>
