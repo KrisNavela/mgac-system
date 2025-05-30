@@ -457,9 +457,12 @@
 
     <div id="modal-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-start overflow-y-auto">
         <div class="bg-white p-6 rounded-lg shadow-lg w-2/3 mt-10 mb-10 max-h-screen overflow-y-auto">
-            <div class="flex justify-end"> 
-                <button class="bg-red-500 text-white text-sm px-2 py-1 rounded-md" onclick="toggleModal('modal-id')">
-                    Close
+            
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center border-b px-6 py-4">
+                <h2 class="text-lg font-semibold text-gray-800">Action</h2>
+                <button onclick="toggleModal('modal-id')" class="text-gray-500 hover:text-red-600 transition">
+                    ✕
                 </button>
             </div>
 
