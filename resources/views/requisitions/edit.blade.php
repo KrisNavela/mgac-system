@@ -424,73 +424,76 @@
                                 <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modal-id')">Attachment</button>
                             </div>
                         
-                                <div id="modal-id" class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center">
-    <div class="bg-white rounded-lg shadow-xl w-full max-w-3xl mx-4">
-        <!-- Modal Header -->
-        <div class="flex justify-between items-center border-b px-6 py-4">
-            <h2 class="text-lg font-semibold text-gray-800">Upload Attachment</h2>
-            <button onclick="toggleModal('modal-id')" class="text-gray-500 hover:text-red-600 transition">
-                ✕
-            </button>
-        </div>
-
-        <!-- Modal Body -->
-        <div class="p-6 overflow-auto max-h-[70vh]">
-            <form action="{{ route('requisitions.storeattachment') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <input type="hidden" name="req_id" value="{{ $requisition->id }}">
-
-                <div class="mb-4">
-                    <label for="file_path" class="block text-sm font-medium text-gray-700 mb-1">Select File</label>
-                    <input type="file" name="file_path" id="file_path" class="block w-full border border-gray-300 rounded-md shadow-sm text-sm focus:ring-blue-500 focus:border-blue-500">
-                </div>
-
-                <div class="flex justify-end mb-6">
-                    <button type="submit" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md text-sm transition">
-                        Upload
-                    </button>
-                </div>
+                                <div id="modal-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-start overflow-y-auto">
+                                    <div class="bg-white p-6 rounded-lg shadow-lg w-2/3 mt-10 mb-10 max-h-screen overflow-y-auto">
 
 
-                <div class="max-h-64 overflow-y-auto border border-gray-200 rounded-md">
-                    <table class="min-w-full divide-y divide-gray-200 text-sm">
-                        <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
-                            <tr>
-                                <th class="px-4 py-2 text-left">Path</th>
-                                <th class="px-4 py-2 text-left">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-200">
-                            @foreach ($attachments as $attachment)
-                            <tr>
-                                <td class="px-4 py-2">
-                                    <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="text-blue-600 hover:underline">
-                                        {{ $attachment->file_path }}
-                                    </a>
-                                </td>
-                                <td class="px-4 py-2">
-                                    <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md transition">
-                                        ⬇ Download
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                                    
+                                        <!-- Modal Header -->
+                                        <div class="flex justify-between items-center border-b px-6 py-4">
+                                            <h2 class="text-lg font-semibold text-gray-800">Upload Attachment</h2>
+                                            <button onclick="toggleModal('modal-id')" class="text-gray-500 hover:text-red-600 transition">
+                                                ✕
+                                            </button>
+                                        </div>
+
+                                        <!-- Modal Body -->
+                                        <div class="p-6 overflow-auto max-h-[70vh]">
+                                            <form action="{{ route('requisitions.storeattachment') }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <input type="hidden" name="req_id" value="{{ $requisition->id }}">
+
+                                                <div class="mb-4">
+                                                    <label for="file_path" class="block text-sm font-medium text-gray-700 mb-1">Select File</label>
+                                                    <input type="file" name="file_path" id="file_path" class="block w-full border border-gray-300 rounded-md shadow-sm text-sm focus:ring-blue-500 focus:border-blue-500">
+                                                </div>
+
+                                                <div class="flex justify-end mb-6">
+                                                    <button type="submit" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md text-sm transition">
+                                                        Upload
+                                                    </button>
+                                                </div>
 
 
-            </form>
-        </div>
+                                                <div class="max-h-64 overflow-y-auto border border-gray-200 rounded-md">
+                                                    <table class="min-w-full divide-y divide-gray-200 text-sm">
+                                                        <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
+                                                            <tr>
+                                                                <th class="px-4 py-2 text-left">Path</th>
+                                                                <th class="px-4 py-2 text-left">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="divide-y divide-gray-200">
+                                                            @foreach ($attachments as $attachment)
+                                                            <tr>
+                                                                <td class="px-4 py-2">
+                                                                    <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="text-blue-600 hover:underline">
+                                                                        {{ $attachment->file_path }}
+                                                                    </a>
+                                                                </td>
+                                                                <td class="px-4 py-2">
+                                                                    <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md transition">
+                                                                        ⬇ Download
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
 
-        <!-- Modal Footer -->
-        <div class="flex justify-end border-t px-6 py-4">
-            <button onclick="toggleModal('modal-id')" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition">
-                Close
-            </button>
-        </div>
-    </div>
-</div>
+
+                                            </form>
+                                        </div>
+
+                                        <!-- Modal Footer -->
+                                        <div class="flex justify-end border-t px-6 py-4">
+                                            <button onclick="toggleModal('modal-id')" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition">
+                                                Close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
 
                         
                         
