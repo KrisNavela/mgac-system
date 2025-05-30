@@ -462,7 +462,7 @@
                     <tbody class="divide-y divide-gray-200">
                         @foreach ($attachments as $attachment)
                         <tr>
-                            <td class="px-4 py-2">
+                            <td class="px-4 py-2 max-w-xs truncate">
                                 <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="text-blue-600 hover:underline">
                                     {{ $attachment->file_path }}
                                 </a>
