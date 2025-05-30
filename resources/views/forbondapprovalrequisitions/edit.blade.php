@@ -599,45 +599,49 @@
                             <x-text-input id="remarks" class="block mt-1 w-full" type="text" name="remarks" :value="$requisition->remarks" disable/>
                         </div>
 
-                        <table class="min-w-full divide-y divide-gray-200 mt-2">
-                            <thead class="bg-gray-50">
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Item Name</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unreported</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Quantity</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unit</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                <template x-for="(item, index) in requisitionItems" :key="index">
-                                    <tr class="hover:bg-gray-200">
-                                        <td class="px-2 py-2">
-                                            <select class="" x-model="item.item_id" :name="'items['+index+'][item_id]'" >
-                                                <option value="">Please Select Item</option>
-                                                @foreach($items as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
-                                                @endforeach
-                                            </select>
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <input type="number" x-model="item.unreported" :name="'items['+index+'][unreported]'">
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <input type="number" x-model="item.quantity" :name="'items['+index+'][quantity]'"> 
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <select class="" x-model="item.quantity_unit" :name="'items['+index+'][quantity_unit]'">
-                                                <option value="Pad" {{ 'pad' === $requisition->quantity_unit ? 'selected' : '' }}>Pad</option>
-                                                <option value="Pcs" {{ 'pcs' === $requisition->quantity_unit ? 'selected' : '' }}>Pcs</option>
-                                                <option value="Set" {{ 'set' === $requisition->quantity_unit ? 'selected' : '' }}>Set</option>
-                                            </select>
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <button type="button" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md" @click="removeItem(index)">Remove</button>
-                                        </td>
-                                    </tr>
-                                </template>
-                            </tbody>
-                        </table>
+                        <div class="max-h-64 overflow-y-auto border border-gray-200 rounded-md">
+                            <table class="min-w-full divide-y divide-gray-200 mt-2">
+                                <thead class="bg-gray-50">
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Item Name</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unreported</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Quantity</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unit</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <template x-for="(item, index) in requisitionItems" :key="index">
+                                        <tr class="hover:bg-gray-200">
+                                            <td class="px-2 py-2">
+                                                <select class="" x-model="item.item_id" :name="'items['+index+'][item_id]'" >
+                                                    <option value="">Please Select Item</option>
+                                                    @foreach($items as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </td>
+                                            <td class="px-2 py-2">
+                                                <input type="number" x-model="item.unreported" :name="'items['+index+'][unreported]'">
+                                            </td>
+                                            <td class="px-2 py-2">
+                                                <input type="number" x-model="item.quantity" :name="'items['+index+'][quantity]'"> 
+                                            </td>
+                                            <td class="px-2 py-2">
+                                                <select class="" x-model="item.quantity_unit" :name="'items['+index+'][quantity_unit]'">
+                                                    <option value="Pad" {{ 'pad' === $requisition->quantity_unit ? 'selected' : '' }}>Pad</option>
+                                                    <option value="Pcs" {{ 'pcs' === $requisition->quantity_unit ? 'selected' : '' }}>Pcs</option>
+                                                    <option value="Set" {{ 'set' === $requisition->quantity_unit ? 'selected' : '' }}>Set</option>
+                                                </select>
+                                            </td>
+                                            <td class="px-2 py-2">
+                                                <button type="button" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md" @click="removeItem(index)">Remove</button>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+
+
                         <div>
                             <button type="button" @click="addItem" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">
                                 Add Item
