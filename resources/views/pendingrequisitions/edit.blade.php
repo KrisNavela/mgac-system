@@ -497,7 +497,7 @@
         <div id="modal-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-start overflow-y-auto">
             <div class="bg-white p-6 rounded-lg shadow-lg w-2/3 mt-10 mb-10 max-h-screen overflow-y-auto">
                 <div class="flex justify-end">
-                    <button class="bg-red-500 text-white text-sm px-2 py-1 rounded-md" onclick="toggleModal('modal-id')">
+                    <button class="text-gray-500 hover:text-red-600 transition" onclick="toggleModal('modal-id')">
                         ✕
                     </button>
                 </div>
