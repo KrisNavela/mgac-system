@@ -463,16 +463,18 @@
                         @foreach ($attachments as $attachment)
                         <tr>
                             
-                            <td class="px-4 py-2 break-words max-w-xs">
-                                <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="text-blue-600 hover:underline">
+                            <td class="px-4 py-2 max-w-xs whitespace-normal break-all">
+                                <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="text-blue-600 hover:underline break-all">
                                     {{ $attachment->file_path }}
                                 </a>
                             </td>
+
                             <td class="px-4 py-2">
                                 <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md transition">
                                     ⬇ Download
                                 </a>
                             </td>
+                            
                         </tr>
                         @endforeach
                     </tbody>
