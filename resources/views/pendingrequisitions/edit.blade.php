@@ -498,7 +498,7 @@
             <div class="bg-white p-6 rounded-lg shadow-lg w-2/3 mt-10 mb-10 max-h-screen overflow-y-auto">
                 <div class="flex justify-end">
                     <button class="bg-red-500 text-white text-sm px-2 py-1 rounded-md" onclick="toggleModal('modal-id')">
-                        Close
+                        ✕
                     </button>
                 </div>
                     
@@ -593,6 +593,13 @@
                                         <div class="mt-4">
                                             <a href="{{ route('pendingrequisitions.update.forcancel', $requisition->id) }}" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded"
                                             onclick="return confirm('Are you sure you want to cancel this requisition?');">Cancel Requisitioin</a>
+                                        </div>
+
+                                        <!-- Modal Footer -->
+                                        <div class="flex justify-end border-t px-6 py-4">
+                                            <button onclick="toggleModal('modalAttachment-id')" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition">
+                                                Close
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
