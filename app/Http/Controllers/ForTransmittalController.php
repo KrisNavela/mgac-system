@@ -532,8 +532,8 @@ class ForTransmittalController extends Controller
             if (
                 $start != 0 &&
                 !(
-                    str_contains($item['item_desc'], 'COC') ||
-                    str_contains($item['item_desc'], 'CTPL')
+                    str_contains($item['item_code'], 'COC') ||
+                    str_contains($item['item_code'], 'CTPL')
                 )
             ) {
                 // Store the series in the database
