@@ -425,7 +425,7 @@
             <!-- Modal Header -->
             <div class="flex justify-between items-center border-b px-6 py-4">
                 <h2 class="text-lg font-semibold text-gray-800">Upload Attachment</h2>
-                <button onclick="toggleModal('modal-id')" class="text-gray-500 hover:text-red-600 transition">
+                <button onclick="toggleModal('modalAttachment-id')" class="text-gray-500 hover:text-red-600 transition">
                     ✕
                 </button>
             </div>
