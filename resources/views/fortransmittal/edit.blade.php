@@ -477,8 +477,9 @@
         <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modal-id')">Remarks</button>
     </div>
 
-        <div id="modal-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-center">
-            <div class="bg-white p-6 rounded-lg shadow-lg w-2/3">
+        <div id="modal-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-start overflow-y-auto">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-2/3 mt-10 mb-10 max-h-screen overflow-y-auto">
+
                 <!-- Modal Header -->
                 <div class="flex justify-between items-center border-b px-6 py-4">
                     <h2 class="text-lg font-semibold text-gray-800">Action</h2>
