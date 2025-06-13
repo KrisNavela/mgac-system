@@ -488,9 +488,9 @@
                 </div>
 
 
-                <div class="py-2" style="font-size: 11px; font-weight: bold; color: #333;">
+                <div class="py-4 text-sm text-gray-800 font-semibold">
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="bg-white shadow-sm sm:rounded-lg p-4">
                             <!-- Remarks Table (Scrollable) -->
                             <div class="overflow-y-auto max-h-60 border border-gray-200 rounded-md">
                                 <table class="min-w-full divide-y divide-gray-200 text-xs">
