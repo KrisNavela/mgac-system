@@ -545,7 +545,7 @@ class ForTransmittalController extends Controller
             $end = $item['series_end'];
 
             // Process only if start is not equal to 0 AND item description is COC or CTPL
-            if ($start != 0 || in_array($item['item_description'], ['COC', 'CTPL'])) {
+            if ($start != 0 || in_array($item['item_desc'], ['COC', 'CTPL'])) {
                 // Store the series in the database
                 for ($i = $start; $i <= $end; $i++) {
                     NumberSeries::create([
