@@ -430,45 +430,46 @@
                 </button>
             </div>
 
+            <!-- Modal Body -->
+            <div class="p-6 overflow-auto max-h-[70vh]">
+                <div class="py-2" style="font-size: 16px; font-weight: bold; color: #333;">
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <div class="py-2" style="font-size: 16px; font-weight: bold; color: #333;">
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-
-                    <div class="max-h-64 overflow-y-auto border border-gray-200 rounded-md">
-                        <table class="min-w-full divide-y divide-gray-200 text-sm">
-                            <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
-                                <tr>
-                                    <th class="px-4 py-2 text-left">Path</th>
-                                    <th class="px-4 py-2 text-left">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-200">
-                                @foreach ($attachments as $attachment)
-                                <tr>
-                                    <td class="px-4 py-2">
-                                        <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="text-blue-600 hover:underline">
-                                            {{ $attachment->file_path }}
-                                        </a>
-                                    </td>
-                                    <td class="px-4 py-2">
-                                        <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md transition">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
-                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
-                                            </svg>
-                                        </a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                        <div class="max-h-64 overflow-y-auto border border-gray-200 rounded-md">
+                            <table class="min-w-full divide-y divide-gray-200 text-sm">
+                                <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
+                                    <tr>
+                                        <th class="px-4 py-2 text-left">Path</th>
+                                        <th class="px-4 py-2 text-left">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                    @foreach ($attachments as $attachment)
+                                    <tr>
+                                        <td class="px-4 py-2">
+                                            <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="text-blue-600 hover:underline">
+                                                {{ $attachment->file_path }}
+                                            </a>
+                                        </td>
+                                        <td class="px-4 py-2">
+                                            <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md transition">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                                                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+                                                </svg>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-                        
+    </div>                    
                         
                                     
     <div class="flex justify-end">    
