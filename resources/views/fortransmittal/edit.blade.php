@@ -487,63 +487,67 @@
                     </button>
                 </div>
 
-
-                <div class="py-4 text-sm text-gray-800 font-semibold">
+                <div class="py-2" style="font-size: 11px; font-weight: bold; color: #333;">
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                        <div class="bg-white shadow-sm sm:rounded-lg p-4">
-                            <!-- Remarks Table (Scrollable) -->
-                            <div class="overflow-y-auto max-h-60 border border-gray-200 rounded-md">
-                                <table class="min-w-full divide-y divide-gray-200 text-xs">
-                                    <thead class="bg-gray-100 uppercase text-gray-600 font-bold">
-                                        <tr>
-                                            <th class="px-2 py-2 text-left">Date</th>
-                                            <th class="px-2 py-2 text-left">Content</th>
-                                            <th class="px-2 py-2 text-left">Name</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="bg-white divide-y divide-gray-200">
-                                        @foreach ($remarks as $remark)
-                                        <tr>
-                                            <td class="px-2 py-1">{{ $remark->created_at }}</td>
-                                            <td class="px-2 py-1">{{ $remark->content }}</td>
-                                            <td class="px-2 py-1">{{ $remark->user->first_name }} {{ $remark->user->last_name }}</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                            <div class="mt-4">
-                                <x-input-label for="content" :value="__('Content')" />
-                                <x-text-input id="content" class="block mt-1 w-full" type="text" name="content" :value="old('content', $requisition->content)" autofocus autocomplete="content" />
-                                <x-input-error :messages="$errors->get('content')" class="mt-2" />
-                            </div>
 
-                            <div class="mt-4">
-                                <x-input-label for="bonds_status_modal" :value="__('For bonds approval?')" />
-                                <select name="bonds_status_modal" id="">
-                                    <option value="no" {{ 'no' === $requisition->bonds_status ? 'selected' : '' }}>No</option>
-                                    <option value="for approval" {{ 'for approval' === $requisition->bonds_status ? 'selected' : '' }}>For Approval</option>
-                                    <option value="approved" {{ 'approved' === $requisition->bonds_status ? 'selected' : '' }}>Approved</option>
-                                    <option value="return" {{ 'return' === $requisition->bonds_status ? 'selected' : '' }}>Return</option>
-                                </select>
-                                <x-input-error :messages="$errors->get('bonds_status_modal')" class="mt-2" />
-                            </div>
+                        <div class="py-4 text-sm text-gray-800 font-semibold">
+                            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                                <div class="bg-white shadow-sm sm:rounded-lg p-4">
+                                    <!-- Remarks Table (Scrollable) -->
+                                    <div class="overflow-y-auto max-h-60 border border-gray-200 rounded-md">
+                                        <table class="min-w-full divide-y divide-gray-200 text-xs">
+                                            <thead class="bg-gray-100 uppercase text-gray-600 font-bold">
+                                                <tr>
+                                                    <th class="px-2 py-2 text-left">Date</th>
+                                                    <th class="px-2 py-2 text-left">Content</th>
+                                                    <th class="px-2 py-2 text-left">Name</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="bg-white divide-y divide-gray-200">
+                                                @foreach ($remarks as $remark)
+                                                <tr>
+                                                    <td class="px-2 py-1">{{ $remark->created_at }}</td>
+                                                    <td class="px-2 py-1">{{ $remark->content }}</td>
+                                                    <td class="px-2 py-1">{{ $remark->user->first_name }} {{ $remark->user->last_name }}</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <div class="mt-4">
+                                        <x-input-label for="content" :value="__('Content')" />
+                                        <x-text-input id="content" class="block mt-1 w-full" type="text" name="content" :value="old('content', $requisition->content)" autofocus autocomplete="content" />
+                                        <x-input-error :messages="$errors->get('content')" class="mt-2" />
+                                    </div>
 
-                            <div class="mt-4">
-                                <x-input-label for="uw_status_modal" :value="__('For UW approval?')" />
-                                <select name="uw_status_modal" id="">
-                                    <option value="no" {{ 'no' === $requisition->uw_status ? 'selected' : '' }}>No</option>
-                                    <option value="for approval" {{ 'for approval' === $requisition->uw_status ? 'selected' : '' }}>For Approval</option>
-                                    <option value="approved" {{ 'approved' === $requisition->uw_status ? 'selected' : '' }}>Approved</option>
-                                    <option value="return" {{ 'return' === $requisition->uw_status ? 'selected' : '' }}>Return</option>
-                                </select>
-                                <x-input-error :messages="$errors->get('uw_status_modal')" class="mt-2" />
-                            </div>
+                                    <div class="mt-4">
+                                        <x-input-label for="bonds_status_modal" :value="__('For bonds approval?')" />
+                                        <select name="bonds_status_modal" id="">
+                                            <option value="no" {{ 'no' === $requisition->bonds_status ? 'selected' : '' }}>No</option>
+                                            <option value="for approval" {{ 'for approval' === $requisition->bonds_status ? 'selected' : '' }}>For Approval</option>
+                                            <option value="approved" {{ 'approved' === $requisition->bonds_status ? 'selected' : '' }}>Approved</option>
+                                            <option value="return" {{ 'return' === $requisition->bonds_status ? 'selected' : '' }}>Return</option>
+                                        </select>
+                                        <x-input-error :messages="$errors->get('bonds_status_modal')" class="mt-2" />
+                                    </div>
 
+                                    <div class="mt-4">
+                                        <x-input-label for="uw_status_modal" :value="__('For UW approval?')" />
+                                        <select name="uw_status_modal" id="">
+                                            <option value="no" {{ 'no' === $requisition->uw_status ? 'selected' : '' }}>No</option>
+                                            <option value="for approval" {{ 'for approval' === $requisition->uw_status ? 'selected' : '' }}>For Approval</option>
+                                            <option value="approved" {{ 'approved' === $requisition->uw_status ? 'selected' : '' }}>Approved</option>
+                                            <option value="return" {{ 'return' === $requisition->uw_status ? 'selected' : '' }}>Return</option>
+                                        </select>
+                                        <x-input-error :messages="$errors->get('uw_status_modal')" class="mt-2" />
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div>            
             </div>
         </div>
 </div>
