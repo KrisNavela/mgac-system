@@ -520,32 +520,22 @@ class ForTransmittalController extends Controller
             //Get specific item_code in parent-child relationship
             $id = $item['item_id'];
             $lineitem = Item::find($id);
-            
-            // Get the start and end values
-            //$start = $item['series_start'];
-            //$end = $item['series_end'];
-
-            // Store the series in the database
-            //for ($i = $start; $i <= $end; $i++) {
-            //    NumberSeries::create([
-            //        'number' => $i,
-            //        'requisition_id' => $fortransmittal->id,
-            //        'branch_code' => $request->branch_code,
-            //        'branch_name' => $request->branch_name,
-                    //'item_code' => $itemid,
-            //        'item_id' => $item['item_id'],
-            //        'item_code' => $lineitem->item_code,
-            //        'number_status' => "Unused",
-            //        'coc_prefix' => $item['coc_prefix'],
-            //    ]);
-            //}
 
             // Get the start and end values
             $start = $item['series_start'];
             $end = $item['series_end'];
 
-            // Process only if start is not equal to 0 AND item description is COC or CTPL
-            if ($start != 0 || in_array($item['item_desc'], ['COC', 'CTPL'])) {
+            // Only run loop if:
+            // - start is NOT zero AND
+            // - item_desc does NOT contain COC or CTPL
+
+            if (
+                $start != 0 &&
+                !(
+                    str_contains($item['item_desc'], 'COC') ||
+                    str_contains($item['item_desc'], 'CTPL')
+                )
+            ) {
                 // Store the series in the database
                 for ($i = $start; $i <= $end; $i++) {
                     NumberSeries::create([
