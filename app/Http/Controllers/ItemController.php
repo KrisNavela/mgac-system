@@ -39,7 +39,7 @@ class ItemController extends Controller
         $items = Item::withSum(['requisitions' => function ($query) 
         { $query->where('status', 'done'); }], 'item_requisition.in_pcs')
         ->withSum('spoiledForms', 'quantity')
-        ->paginate(5)
+        ->paginate(20)
         ->withQueryString();
 
         //$itemsspoiled = Item::withSum('spoiledSeries', 'quantity')

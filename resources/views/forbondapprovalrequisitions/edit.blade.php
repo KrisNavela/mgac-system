@@ -408,126 +408,150 @@
                                 this.requisitionItems.splice(index, 1);
                             }}">
 
-                        <div class="flex justify-end space-x-4">
-                            <div class="flex justify-end">    
-                                <!-- Button to open the modal -->
-                                <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modalAttachment-id')">Attachment</button>
-                            </div>
-                        
-                                <div id="modalAttachment-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-center">
-                                <div class="bg-white p-6 rounded-lg shadow-lg w-2/3">
-                                    <div class="flex justify-end"> 
-                                    <button class="bg-red-500 text-white text-sm px-2 py-1 rounded-md" onclick="toggleModal('modalAttachment-id')">
-                                        Close
-                                    </button>
-                                    </div>
-                        
-                        
-                                        <div class="py-2" style="font-size: 16px; font-weight: bold; color: #333;">
-                                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+<div class="flex justify-end space-x-4">
+    <div class="flex justify-end">    
+        <!-- Button to open the modal -->
+        <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modalAttachment-id')">Attachment</button>
+    </div>
 
-                                                <table class="min-w-full divide-y divide-gray-200 mt-2">
-                                                    <thead class="bg-gray-50">
-                                                        <th class="px-3 py-2 text=left text-sm text-gray-500 uppercase">Path</th>
-                                                        <th class="px-3 py-2 text=left text-sm text-gray-500 uppercase">Action</th>
-                                                    </thead>                
-                                                    <tbody class="bg-white divide-y divide-gray-200">
-                                                        @foreach ($attachments as $attachment)
-                                                        <tr class="px-4 py-3 whitespace-nowrap">
-                                                            <td> <a href="{{ Storage::url($attachment->file_path) }}" target="_blank">{{ $attachment->file_path }}</a> </td>
-                                                            <td> <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="bg-green-500 text-white hover:bg-green-700 text-sm px-1 py-1 rounded-md">Download File</a> </td>
-                                                        </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            
-                        
-                                            
-                                        </div>
-                                        </div>
-                                        </div>
-                                </div>
-                                </div>
-
-<div class="flex justify-end">    
-    <!-- Button to open the modal -->
-    <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modal-id')">Action</button>
-</div>
-
-    <div id="modal-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-center">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-2/3">
-        <div class="flex justify-end"> 
-        <button class="bg-red-500 text-white text-sm px-2 py-1 rounded-md" onclick="toggleModal('modal-id')">
-            Close
-        </button>
-        </div>
+    <div id="modalAttachment-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-start overflow-y-auto">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-2/3 mt-10 mb-10 max-h-screen overflow-y-auto">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center border-b px-6 py-4">
+                <h2 class="text-lg font-semibold text-gray-800">Attachments</h2>
+                <button onclick="toggleModal('modalAttachment-id')" class="text-gray-500 hover:text-red-600 transition">
+                    ✕
+                </button>
+            </div>
 
 
-        <div class="py-2" style="font-size: 11px; font-weight: bold; color: #333;">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <table class="min-w-full divide-y divide-gray-200 mt-2">
-                    <thead class="bg-gray-50">
-                        <th class="px-1 py-1 text=left text-sm text-gray-500 uppercase" style="font-size: 11px; font-weight: bold; color: #333;">Date</th>
-                        <th class="px-1 py-1 text=left text-sm text-gray-500 uppercase" style="font-size: 11px; font-weight: bold; color: #333;">Content</th>
-                        <th class="px-1 py-1 text=left text-sm text-gray-500 uppercase" style="font-size: 11px; font-weight: bold; color: #333;">Name</th>
-                    </thead>                
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        @foreach ($remarks as $remark)
-                        <tr class="px-1 py-1 whitespace-nowrap">
-                            <td> {{ $remark->created_at }}</td>
-                            <td> {{ $remark->content }}</td>
-                            <td> {{ $remark->user->first_name }} {{ $remark->user->last_name }}</td>
+            <!-- Modal Body -->
+            <div class="max-h-64 overflow-y-auto border border-gray-200 rounded-md">
+                <table class="min-w-full divide-y divide-gray-200 text-sm">
+                    <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
+                        <tr>
+                            <th class="px-4 py-2 text-left">Path</th>
+                            <th class="px-4 py-2 text-left">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        @foreach ($attachments as $attachment)
+                        <tr>
+                            <td class="px-4 py-2">
+                                <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="text-blue-600 hover:underline">
+                                    {{ $attachment->file_path }}
+                                </a>
+                            </td>
+                            <td class="px-4 py-2">
+                                <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                                    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+                                    </svg>
+                                </a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-                <form method="POST" action="{{ route('forbondapprovalrequisitions.update.bondapproval', $requisition->id) }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <div class="mt-4">
-                        <x-input-label for="content" :value="__('Content')" />
-                        <x-text-input id="content" class="block mt-1 w-full" type="text" name="content" :value="old('content', $requisition->content)" autofocus autocomplete="content" />
-                        <x-input-error :messages="$errors->get('content')" class="mt-2" />
-                    </div>
-
-                    <div class="mt-4">
-                        <x-input-label for="bonds_status_modal" :value="__('For bonds approval?')" />
-                        <select name="bonds_status_modal" id="">
-                            <option value="no" {{ 'no' === $requisition->bonds_status ? 'selected' : '' }}>No</option>
-                            <option value="for approval" {{ 'for approval' === $requisition->bonds_status ? 'selected' : '' }}>For Approval</option>
-                            <option value="approved" {{ 'approved' === $requisition->bonds_status ? 'selected' : '' }}>Approved</option>
-                            <option value="return" {{ 'return' === $requisition->bonds_status ? 'selected' : '' }}>Return</option>
-                        </select>
-                        <x-input-error :messages="$errors->get('bonds_status_modal')" class="mt-2" />
-                    </div>
-                    <!--
-                    <div class="mt-4">
-                        <x-input-label for="uw_status_modal" :value="__('For UW approval?')" />
-                        <select name="uw_status_modal" id="">
-                            <option value="no" {{ 'no' === $requisition->uw_status ? 'selected' : '' }}>No</option>
-                            <option value="for approval" {{ 'for approval' === $requisition->uw_status ? 'selected' : '' }}>For Approval</option>
-                            <option value="approved" {{ 'approved' === $requisition->uw_status ? 'selected' : '' }}>Approved</option>
-                            <option value="return" {{ 'return' === $requisition->uw_status ? 'selected' : '' }}>Return</option>
-                        </select>
-                        <x-input-error :messages="$errors->get('uw_status_modal')" class="mt-2" />
-                    </div>
-                    -->
-                    <div class="py-2">
-                        <button class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">
-                            Save
-                        </button>
-                    </div>
-                </form>
-
-                
-            </div>
-            </div>
             </div>
         </div>
-        </div>                            
     </div>
+
+    <div class="flex justify-end">    
+        <!-- Button to open the modal -->
+        <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modal-id')">Action</button>
+    </div>
+
+        <div id="modal-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-start overflow-y-auto">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-2/3 mt-10 mb-10 max-h-screen overflow-y-auto">
+                <!-- Modal Header -->
+                <div class="flex justify-between items-center border-b px-6 py-4">
+                    <h2 class="text-lg font-semibold text-gray-800">Action</h2>
+                    <button onclick="toggleModal('modal-id')" class="text-gray-500 hover:text-red-600 transition">
+                        ✕
+                    </button>
+                </div>
+
+
+                <div class="py-2" style="font-size: 11px; font-weight: bold; color: #333;">
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+
+                        <div class="py-4 text-sm text-gray-800 font-semibold">
+                            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                                <div class="bg-white shadow-sm sm:rounded-lg p-4">
+
+                                    <!-- Remarks Table (Scrollable) -->
+                                    <div class="overflow-y-auto max-h-60 border border-gray-200 rounded-md">
+                                        <table class="min-w-full divide-y divide-gray-200 text-xs">
+                                            <thead class="bg-gray-100 uppercase text-gray-600 font-bold">
+                                                <tr>
+                                                    <th class="px-2 py-2 text-left">Date</th>
+                                                    <th class="px-2 py-2 text-left">Content</th>
+                                                    <th class="px-2 py-2 text-left">Name</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="bg-white divide-y divide-gray-200">
+                                                @foreach ($remarks as $remark)
+                                                <tr>
+                                                    <td class="px-2 py-1">{{ $remark->created_at }}</td>
+                                                    <td class="px-2 py-1">{{ $remark->content }}</td>
+                                                    <td class="px-2 py-1">{{ $remark->user->first_name }} {{ $remark->user->last_name }}</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <form method="POST" action="{{ route('forbondapprovalrequisitions.update.bondapproval', $requisition->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="mt-4">
+                                            <x-input-label for="content" :value="__('Content')" />
+                                            <x-text-input id="content" class="block mt-1 w-full" type="text" name="content" :value="old('content', $requisition->content)" autofocus autocomplete="content" required />
+                                            <x-input-error :messages="$errors->get('content')" class="mt-2" />
+                                        </div>
+
+                                        <div class="mt-4">
+                                            <x-input-label for="bonds_status_modal" :value="__('For bonds approval?')" />
+                                            <select name="bonds_status_modal" class="w-full mt-1">
+                                                <option value="no" {{ 'no' === $requisition->bonds_status ? 'selected' : '' }}>No</option>
+                                                <option value="for approval" {{ 'for approval' === $requisition->bonds_status ? 'selected' : '' }}>For Approval</option>
+                                                <option value="approved" {{ 'approved' === $requisition->bonds_status ? 'selected' : '' }}>Approved</option>
+                                                <option value="return" {{ 'return' === $requisition->bonds_status ? 'selected' : '' }}>Return</option>
+                                            </select>
+                                            <x-input-error :messages="$errors->get('bonds_status_modal')" class="mt-2" />
+                                        </div>
+                                        <!--
+                                        <div class="mt-4">
+                                            <x-input-label for="uw_status_modal" :value="__('For UW approval?')" />
+                                            <select name="uw_status_modal" id="">
+                                                <option value="no" {{ 'no' === $requisition->uw_status ? 'selected' : '' }}>No</option>
+                                                <option value="for approval" {{ 'for approval' === $requisition->uw_status ? 'selected' : '' }}>For Approval</option>
+                                                <option value="approved" {{ 'approved' === $requisition->uw_status ? 'selected' : '' }}>Approved</option>
+                                                <option value="return" {{ 'return' === $requisition->uw_status ? 'selected' : '' }}>Return</option>
+                                            </select>
+                                            <x-input-error :messages="$errors->get('uw_status_modal')" class="mt-2" />
+                                        </div>
+                                        -->
+                                        <div class="mt-4">
+                                            <button class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </form>
+
+                            
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>                            
+</div>
         <!-- Add this JavaScript for modal functionality -->
         <script>
             function toggleModal(modalID) {
@@ -589,45 +613,49 @@
                             <x-text-input id="remarks" class="block mt-1 w-full" type="text" name="remarks" :value="$requisition->remarks" disable/>
                         </div>
 
-                        <table class="min-w-full divide-y divide-gray-200 mt-2">
-                            <thead class="bg-gray-50">
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Item Name</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unreported</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Quantity</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unit</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                <template x-for="(item, index) in requisitionItems" :key="index">
-                                    <tr class="hover:bg-gray-200">
-                                        <td class="px-2 py-2">
-                                            <select class="" x-model="item.item_id" :name="'items['+index+'][item_id]'" >
-                                                <option value="">Please Select Item</option>
-                                                @foreach($items as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
-                                                @endforeach
-                                            </select>
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <input type="number" x-model="item.unreported" :name="'items['+index+'][unreported]'">
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <input type="number" x-model="item.quantity" :name="'items['+index+'][quantity]'"> 
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <select class="" x-model="item.quantity_unit" :name="'items['+index+'][quantity_unit]'">
-                                                <option value="Pad" {{ 'pad' === $requisition->quantity_unit ? 'selected' : '' }}>Pad</option>
-                                                <option value="Pcs" {{ 'pcs' === $requisition->quantity_unit ? 'selected' : '' }}>Pcs</option>
-                                                <option value="Set" {{ 'set' === $requisition->quantity_unit ? 'selected' : '' }}>Set</option>
-                                            </select>
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <button type="button" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md" @click="removeItem(index)">Remove</button>
-                                        </td>
-                                    </tr>
-                                </template>
-                            </tbody>
-                        </table>
+                        <div class="max-h-64 overflow-y-auto border border-gray-200 rounded-md">
+                            <table class="min-w-full divide-y divide-gray-200 mt-2">
+                                <thead class="bg-gray-50">
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Item Name</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unreported</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Quantity</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unit</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <template x-for="(item, index) in requisitionItems" :key="index">
+                                        <tr class="hover:bg-gray-200">
+                                            <td class="px-2 py-2">
+                                                <select class="" x-model="item.item_id" :name="'items['+index+'][item_id]'" >
+                                                    <option value="">Please Select Item</option>
+                                                    @foreach($items as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </td>
+                                            <td class="px-2 py-2">
+                                                <input type="number" x-model="item.unreported" :name="'items['+index+'][unreported]'">
+                                            </td>
+                                            <td class="px-2 py-2">
+                                                <input type="number" x-model="item.quantity" :name="'items['+index+'][quantity]'"> 
+                                            </td>
+                                            <td class="px-2 py-2">
+                                                <select class="" x-model="item.quantity_unit" :name="'items['+index+'][quantity_unit]'">
+                                                    <option value="Pad" {{ 'pad' === $requisition->quantity_unit ? 'selected' : '' }}>Pad</option>
+                                                    <option value="Pcs" {{ 'pcs' === $requisition->quantity_unit ? 'selected' : '' }}>Pcs</option>
+                                                    <option value="Set" {{ 'set' === $requisition->quantity_unit ? 'selected' : '' }}>Set</option>
+                                                </select>
+                                            </td>
+                                            <td class="px-2 py-2">
+                                                <button type="button" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md" @click="removeItem(index)">Remove</button>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+
+
                         <div>
                             <button type="button" @click="addItem" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">
                                 Add Item

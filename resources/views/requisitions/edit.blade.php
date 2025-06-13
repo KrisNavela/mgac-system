@@ -8,6 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900"  x-data="">
 
         @if ($requisition->coc_request_status == 'yes')
             @if ($requisition->type_request == 'Replenishment')
@@ -423,57 +424,79 @@
                                 <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modal-id')">Attachment</button>
                             </div>
                         
-                                <div id="modal-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-center">
-                                <div class="bg-white p-6 rounded-lg shadow-lg w-2/3">
-                                    <div class="flex justify-end"> 
-                                    <button class="bg-red-500 text-white text-sm px-2 py-1 rounded-md" onclick="toggleModal('modal-id')">
-                                        Close
-                                    </button>
-                                    </div>
-                        
-                        
-                                        <div class="py-2" style="font-size: 11px; font-weight: bold; color: #333;">
-                                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                                <div id="modal-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-start overflow-y-auto">
+                                    <div class="bg-white p-6 rounded-lg shadow-lg w-2/3 mt-10 mb-10 max-h-screen overflow-y-auto">
 
 
+                                    
+                                        <!-- Modal Header -->
+                                        <div class="flex justify-between items-center border-b px-6 py-4">
+                                            <h2 class="text-lg font-semibold text-gray-800">Upload Attachment</h2>
+                                            <button onclick="toggleModal('modal-id')" class="text-gray-500 hover:text-red-600 transition">
+                                                ✕
+                                            </button>
+                                        </div>
+
+                                        <!-- Modal Body -->
+                                        <div class="p-6 overflow-auto max-h-[70vh]">
                                             <form action="{{ route('requisitions.storeattachment') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
-                                                <div class="mt-4">
-                                                    <x-text-input id="req_id" class="block mt-1 w-full" type="hidden" name="req_id" :value="$requisition->id" disable/>
+                                                <input type="hidden" name="req_id" value="{{ $requisition->id }}">
+
+                                                <div class="mb-4">
+                                                    <label for="file_path" class="block text-sm font-medium text-gray-700 mb-1">Select File</label>
+                                                    <input type="file" name="file_path" id="file_path" class="block w-full border border-gray-300 rounded-md shadow-sm text-sm focus:ring-blue-500 focus:border-blue-500">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="file">Path</label>
-                                                    <input type="file" name="file_path" id="file_path" class="form-control">
-                                                </div>
-                                                <div class="flex items-center justify-end mt-4">
-                                                    <button class="bg-green-500 text-white hover:bg-green-700 text-sm px-1 py-1 rounded-md">
-                                                        Upload
+
+                                                <div class="flex justify-end mb-6">
+                                                    <button type="submit" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md text-sm transition">
+
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+                                                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                                                    <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z"/>
+                                                    </svg>
+
                                                     </button>
                                                 </div>
-                        
-                                                <table class="min-w-full divide-y divide-gray-200 mt-2">
-                                                    <thead class="bg-gray-50">
-                                                        <th class="px-1 py-1 text=left text-sm text-gray-500 uppercase" style="font-size: 11px; font-weight: bold; color: #333;">Path</th>
-                                                        <th class="px-1 py-1 text=left text-sm text-gray-500 uppercase" style="font-size: 11px; font-weight: bold; color: #333;">Action</th>
-                                                    </thead>                
-                                                    <tbody class="bg-white divide-y divide-gray-200">
-                                                        @foreach ($attachments as $attachment)
-                                                        <tr class="px-1 py-1 whitespace-nowrap">
-                                                            <td> <a href="{{ Storage::url($attachment->file_path) }}" target="_blank">{{ $attachment->file_path }}</a> </td>
-                                                            <td> <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Download File</a> </td>
-                                                        </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
+
+
+                                                <div class="max-h-64 overflow-y-auto border border-gray-200 rounded-md">
+                                                    <table class="min-w-full divide-y divide-gray-200 text-sm">
+                                                        <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
+                                                            <tr>
+                                                                <th class="px-4 py-2 text-left">Path</th>
+                                                                <th class="px-4 py-2 text-left">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="divide-y divide-gray-200">
+                                                            @foreach ($attachments as $attachment)
+                                                            <tr>
+                                                                <td class="px-4 py-2">
+                                                                    <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="text-blue-600 hover:underline">
+                                                                        {{ $attachment->file_path }}
+                                                                    </a>
+                                                                </td>
+                                                                <td class="px-4 py-2">
+                                                                    <a href="{{ Storage::url($attachment->file_path) }}" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md transition">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                                                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                                                                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+                                                                        </svg>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+
                                             </form>
-                        
-                                            
                                         </div>
-                                        </div>
-                                        </div>
+
                                     </div>
-                                    </div>
+                                </div>
+
                         
                         
                                     <!-- Add this JavaScript for modal functionality -->
@@ -572,49 +595,52 @@
                             <x-text-input id="remarks" class="block mt-1 w-full" type="text" name="remarks" :value="$requisition->remarks" disable/>
                         </div>
 
-                        <table class="min-w-full divide-y divide-gray-200 mt-2">
-                            <thead class="bg-gray-50">
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Item Name</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unreported</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Quantity</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unit</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                <template x-for="(item, index) in requisitionItems" :key="index">
-                                    <tr class="hover:bg-gray-200">
-                                        <td class="px-2 py-2">
-                                            <select class="" x-model="item.item_id" :name="'items['+index+'][item_id]'" >
-                                                <option value="">Please Select Item</option>
-                                                @foreach($items as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
-                                                @endforeach
-                                            </select>
-                                        </td>
+                            <div class="max-h-64 overflow-y-auto border border-gray-200 rounded-md">
+                                <table class="min-w-full divide-y divide-gray-200 mt-2">
+                                    <thead class="bg-gray-50">
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Item Name</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unreported</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Quantity</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Unit</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <template x-for="(item, index) in requisitionItems" :key="index">
+                                            <tr class="hover:bg-gray-200">
+                                                <td class="px-2 py-2">
+                                                    <select class="" x-model="item.item_id" :name="'items['+index+'][item_id]'" >
+                                                        <option value="">Please Select Item</option>
+                                                        @foreach($items as $item)
+                                                            <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
 
-                                        <td class="px-2 py-2">
-                                            <input type="number" x-model="item.unreported" :name="'items['+index+'][unreported]'">
-                                        </td>
+                                                <td class="px-2 py-2">
+                                                    <input type="number" x-model="item.unreported" :name="'items['+index+'][unreported]'">
+                                                </td>
 
-                                        <td class="px-2 py-2">
-                                            <input type="number" x-model="item.quantity" :name="'items['+index+'][quantity]'">
-                                        </td>
+                                                <td class="px-2 py-2">
+                                                    <input type="number" x-model="item.quantity" :name="'items['+index+'][quantity]'">
+                                                </td>
 
-                                        <td class="px-2 py-2">
-                                            <select class="" x-model="item.quantity_unit" :name="'items['+index+'][quantity_unit]'">
-                                                <option value="Pad" {{ 'pad' === $requisition->quantity_unit ? 'selected' : '' }}>Pad</option>
-                                                <option value="Pcs" {{ 'pcs' === $requisition->quantity_unit ? 'selected' : '' }}>Pcs</option>
-                                                <option value="Set" {{ 'set' === $requisition->quantity_unit ? 'selected' : '' }}>Set</option>
-                                            </select>
-                                        </td>
+                                                <td class="px-2 py-2">
+                                                    <select class="" x-model="item.quantity_unit" :name="'items['+index+'][quantity_unit]'">
+                                                        <option value="Pad" {{ 'pad' === $requisition->quantity_unit ? 'selected' : '' }}>Pad</option>
+                                                        <option value="Pcs" {{ 'pcs' === $requisition->quantity_unit ? 'selected' : '' }}>Pcs</option>
+                                                        <option value="Set" {{ 'set' === $requisition->quantity_unit ? 'selected' : '' }}>Set</option>
+                                                    </select>
+                                                </td>
 
-                                        <td class="px-2 py-2">
-                                            <button type="button" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md" @click="removeItem(index)">Remove</button>
-                                        </td>
-                                    </tr>
-                                </template>
-                            </tbody>
-                        </table>
+                                                <td class="px-2 py-2">
+                                                    <button type="button" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md" @click="removeItem(index)">Remove</button>
+                                                </td>
+                                            </tr>
+                                        </template>
+                                    </tbody>
+                                </table>
+                            </div>
+
                         <div>
                             <button type="button" @click="addItem" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">
                                 Add Item

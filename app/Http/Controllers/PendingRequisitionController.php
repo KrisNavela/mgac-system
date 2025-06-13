@@ -572,6 +572,10 @@ class PendingRequisitionController extends Controller
         $userId = $user->id;
         $rolename = $user->role->name;
 
+        $request->validate([
+            'content' => 'required|string|max:1000',
+        ]);
+
         RequisitionRemarks::create([
             'requisition_id' => $pendingrequisition->id,
             'content' => $request->content,
