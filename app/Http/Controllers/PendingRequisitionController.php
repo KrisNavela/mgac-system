@@ -365,6 +365,128 @@ class PendingRequisitionController extends Controller
             ]);
         }
 
+        //Initial Approver TMEC Access
+         elseif ($roleId === 15){
+            $branches = branch::all();
+            $users = User::all();
+
+            $requisitionsCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'TMEC');}
+            );})
+            ->count();
+
+            $pendingrequisitionCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'TMEC');}
+            );})
+            ->where('status', '=', 'pending')
+            ->where('finalapproval_status', '=', 'no')
+            ->orWhere('finalapproval_status', '=', 'return')
+            ->count();
+
+            $uwapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'TMEC');}
+            );})
+            ->where('status', '=', 'pending')
+            ->where('uw_status', '=', 'for approval')
+            ->count();
+
+            $bondsapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'TMEC');}
+            );})
+            ->where('status', '=', 'pending')
+            ->where('bonds_status', '=', 'for approval')
+            ->count();
+
+            $collasstapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'TMEC');}
+            );})
+            ->where('type_request', '=', 'replenishment')
+            ->where('collasst_status', '=', 'for approval')
+            ->where('collmanager_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
+            ->count();
+
+            $collmngapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'TMEC');}
+            );})
+            ->where('type_request', '=', 'replenishment')
+            ->where('collasst_status', '=', 'approved')
+            ->where('collmanager_status', '=', 'for approval')
+            ->where('finalapproval_status', '=', 'approved')
+            ->count();
+
+            $cancelrequisitionsCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'TMEC');}
+            );})
+            ->where('status', '=', 'Cancelled')
+            ->count();
+
+            $approvedrequisitionsCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'TMEC');}
+            );})
+            ->where('finalapproval_status', '=', 'for approval')
+            ->count();
+
+            $fortransmittalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'TMEC');}
+            );})
+            ->where('status', '=', 'approved')
+            ->count();
+
+            $treasuryapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'TMEC');}
+            );})
+            ->where('treasuryapproval_status', '=', 'for approval')
+            //->where('finalapproval_status', '=', 'approved')
+            ->count();
+
+            $cocapprovalCount = Requisition::whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'TMEC');}
+            );})
+            ->where('cocapproval_status', '=', 'for approval')
+            //->where('finalapproval_status', '=', 'approved')
+            ->count();;
+
+            $requisitions = Requisition::withCount('items')
+            ->whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'TMEC');}
+            );})
+            ->where('status', '=', 'pending')
+            ->orderBy('id', 'desc')
+            ->paginate(10)
+            ->withQueryString();
+
+            return view('pendingrequisitions.index', [
+                'requisitions' => $requisitions,
+                'branches'=> $branches,
+                'users'=> $users,
+                'requisitionsCount' => $requisitionsCount,
+                'pendingrequisitionCount' => $pendingrequisitionCount,
+                'uwapprovalCount' => $uwapprovalCount,
+                'bondsapprovalCount' => $bondsapprovalCount,
+                'collasstapprovalCount' => $collasstapprovalCount,
+                'collmngapprovalCount' => $collmngapprovalCount,
+                'cancelrequisitionsCount' => $cancelrequisitionsCount,
+                'approvedrequisitionsCount' => $approvedrequisitionsCount,
+                'roleId' => $roleId,
+                'fortransmittalCount' => $fortransmittalCount,
+                'treasuryapprovalCount' => $treasuryapprovalCount,
+                'cocapprovalCount' => $cocapprovalCount,
+            ]);
+        }
+
         $branches = branch::all();
         $users = User::all();
 
