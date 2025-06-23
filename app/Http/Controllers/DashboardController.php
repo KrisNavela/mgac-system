@@ -116,13 +116,13 @@ class DashboardController extends Controller
 
             $requisitionsCount = Requisition::whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
-                    $query1->where('type_office', ['Branch', 'TMEC']);}
+                    $query1->whereIn('type_office', ['Branch', 'TMEC']);}
             );})
             ->count();
 
             $pendingrequisitionCount = Requisition::whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
-                    $query1->where('type_office', ['Branch', 'TMEC']);}
+                    $query1->whereIn('type_office', ['Branch', 'TMEC']);}
             );})
             ->where('status', '=', 'pending')
             ->where('finalapproval_status', '=', 'no')
@@ -131,7 +131,7 @@ class DashboardController extends Controller
 
             $uwapprovalCount = Requisition::whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
-                    $query1->where('type_office', ['Branch', 'TMEC']);}
+                    $query1->whereIn('type_office', ['Branch', 'TMEC']);}
             );})
             ->where('status', '=', 'pending')
             ->where('uw_status', '=', 'for approval')
@@ -139,7 +139,7 @@ class DashboardController extends Controller
 
             $bondsapprovalCount = Requisition::whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
-                    $query1->where('type_office', ['Branch', 'TMEC']);}
+                    $query1->whereIn('type_office', ['Branch', 'TMEC']);}
             );})
             ->where('status', '=', 'pending')
             ->where('bonds_status', '=', 'for approval')
@@ -147,7 +147,7 @@ class DashboardController extends Controller
 
             $collasstapprovalCount = Requisition::whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
-                    $query1->where('type_office', ['Branch', 'TMEC']);}
+                    $query1->whereIn('type_office', ['Branch', 'TMEC']);}
             );})
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'for approval')
@@ -157,7 +157,7 @@ class DashboardController extends Controller
 
             $collmngapprovalCount = Requisition::whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
-                    $query1->where('type_office', ['Branch', 'TMEC']);}
+                    $query1->whereIn('type_office', ['Branch', 'TMEC']);}
             );})
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'approved')
@@ -167,28 +167,28 @@ class DashboardController extends Controller
 
             $cancelrequisitionsCount = Requisition::whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
-                    $query1->where('type_office', ['Branch', 'TMEC']);}
+                    $query1->whereIn('type_office', ['Branch', 'TMEC']);}
             );})
             ->where('status', '=', 'Cancelled')
             ->count();
 
             $approvedrequisitionsCount = Requisition::whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
-                    $query1->where('type_office', ['Branch', 'TMEC']);}
+                    $query1->whereIn('type_office', ['Branch', 'TMEC']);}
             );})
             ->where('finalapproval_status', '=', 'for approval')
             ->count();
 
             $fortransmittalCount = Requisition::whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
-                    $query1->where('type_office', ['Branch', 'TMEC']);}
+                    $query1->whereIn('type_office', ['Branch', 'TMEC']);}
             );})
             ->where('status', '=', 'approved')
             ->count();
 
             $treasuryapprovalCount = Requisition::whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
-                    $query1->where('type_office', ['Branch', 'TMEC']);}
+                    $query1->whereIn('type_office', ['Branch', 'TMEC']);}
             );})
             ->where('treasuryapproval_status', '=', 'for approval')
             //->where('finalapproval_status', '=', 'approved')
@@ -196,7 +196,7 @@ class DashboardController extends Controller
 
             $cocapprovalCount = Requisition::whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
-                    $query1->where('type_office', ['Branch', 'TMEC']);}
+                    $query1->whereIn('type_office', ['Branch', 'TMEC']);}
             );})
             ->where('cocapproval_status', '=', 'for approval')
             //->where('finalapproval_status', '=', 'approved')
@@ -205,7 +205,7 @@ class DashboardController extends Controller
             $requisitions = Requisition::withCount('items')
             ->whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
-                    $query1->where('type_office', ['Branch', 'TMEC']);}
+                    $query1->whereIn('type_office', ['Branch', 'TMEC']);}
             );})
             ->orderBy('id', 'desc')
             ->paginate(10)
