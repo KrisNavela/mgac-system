@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(10); // Change 10 to how many per page you want
 
         return view('users.index', [
             'users' => $users,
