@@ -56,7 +56,7 @@
                         </table>
                     </div>
 
-                    
+                    {{ $branches->links() }}
 
                 </div>
             </div>

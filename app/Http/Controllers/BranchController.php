@@ -14,7 +14,8 @@ class BranchController extends Controller
      */
     public function index()
     {
-        $branches = branch::all();
+        $branches = Branch::paginate(10); // or any number per page
+        
         return view('branches.index', [
             'branches' => $branches
         ]);
