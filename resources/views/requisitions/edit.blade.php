@@ -322,7 +322,7 @@
                         <div class="items-center p-4 rounded-lg bg-red-500 text-white">
                     @endif
 
-                        <p class="text-center font-bold">Coll Manager</p>
+                        <p class="text-center font-bold">Coll Manager 11</p>
                         <p class="uppercase text-center text-sm">{{ $requisition->collmanager_status }}</p>
                         <p class="uppercase text-center text-sm">{{ $requisition->collmanager_date }}</p>
                     </div>
