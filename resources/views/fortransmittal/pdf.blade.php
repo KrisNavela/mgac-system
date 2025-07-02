@@ -121,7 +121,8 @@
                     <th>Unit</th>
                     <th>HO Ctrl Start</th>
                     <th>HO Ctrl End</th>
-                    <th>Series Start</th>
+                    <th>HO Ctrl End</th>
+                    <th>COC Prefix</th>
                     <th>Series End</th>
                     <th>Unreported</th>
                 </tr>
@@ -134,6 +135,7 @@
                         <td>{{ $item->quantity_unit }}</td>
                         <td>{{ $item->ho_ctrl_start }}</td>
                         <td>{{ $item->ho_ctrl_end }}</td>
+                        <td>{{ $item->coc_prefix }}</td>
                         <td>{{ $item->series_start }}</td>
                         <td>{{ $item->series_end }}</td>
                         <td>{{ $item->unreported }}</td>

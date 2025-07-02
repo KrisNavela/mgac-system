@@ -626,6 +626,7 @@
                                 :value="old('delivery_date', $requisition->delivery_date ? \Carbon\Carbon::parse($requisition->delivery_date)->format('Y-m-d\TH:i') : '')" />
                         </div>
 
+                        <div class="overflow-x-auto">
 
                         <table class="min-w-full divide-y divide-gray-200 mt-2">
                             <thead class="bg-gray-50">
@@ -689,7 +690,8 @@
                                 </template>
                             </tbody>
                         </table>
-
+                        
+                        </div>
 
                         <div class="flex justify-end space-x-4">
                             <div class="flex items-center justify-end mt-4">
