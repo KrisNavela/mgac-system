@@ -121,8 +121,8 @@
                     <th>Unit</th>
                     <th>HO Ctrl Start</th>
                     <th>HO Ctrl End</th>
-                    <th>HO Ctrl End</th>
                     <th>COC Prefix</th>
+                    <th>Series Start</th>
                     <th>Series End</th>
                     <th>Unreported</th>
                 </tr>
