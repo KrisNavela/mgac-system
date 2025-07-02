@@ -626,71 +626,70 @@
                                 :value="old('delivery_date', $requisition->delivery_date ? \Carbon\Carbon::parse($requisition->delivery_date)->format('Y-m-d\TH:i') : '')" />
                         </div>
 
-                        <div class="overflow-x-auto">
+                        <div style="overflow-x: auto; width: 100%;">
+                            <table style="min-width: 1200px; font-size: 12px;">
+                                <thead class="bg-gray-50">
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Item Name</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Unreported</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Quantity</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Unit</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">HO Ctrl Start</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">HO Ctrl End</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">COC Prefix</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Series Start</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Series End</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;"></th>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <template x-for="(item, index) in requisitionItems" :key="index">
+                                        <tr class="hover:bg-gray-200">
+                                            <td class="px-1 py-1">
+                                                <select class="" x-model="item.item_id" :name="'items['+index+'][item_id]'" >
+                                                    <option value="">Please Select Item</option>
+                                                    @foreach($items as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </td>
+                                            <td class="px-2 py-2">
+                                                <input type="number" x-model="item.unreported" :name="'items['+index+'][unreported]'" style="width: 100px;">
+                                            </td>
+                                            <td class="px-1 py-1">
+                                                <input type="number" style="width: 100px" x-model="item.quantity" :name="'items['+index+'][quantity]'"> 
+                                            </td>
+                                            <td class="px-1 py-1">
+                                                <select class="" x-model="item.quantity_unit" :name="'items['+index+'][quantity_unit]'">
+                                                    <option value="Pad" {{ 'pad' === $requisition->quantity_unit ? 'selected' : '' }}>Pad</option>
+                                                    <option value="Pcs" {{ 'pcs' === $requisition->quantity_unit ? 'selected' : '' }}>Pcs</option>
+                                                    <option value="Set" {{ 'set' === $requisition->quantity_unit ? 'selected' : '' }}>Set</option>
+                                                </select>
+                                            </td>
 
-                        <table class="min-w-full divide-y divide-gray-200 mt-2">
-                            <thead class="bg-gray-50">
-                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Item Name</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Unreported</th>
-                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Quantity</th>
-                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Unit</th>
-                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">HO Ctrl Start</th>
-                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">HO Ctrl End</th>
-                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">COC Prefix</th>
-                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Series Start</th>
-                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Series End</th>
-                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;"></th>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                <template x-for="(item, index) in requisitionItems" :key="index">
-                                    <tr class="hover:bg-gray-200">
-                                        <td class="px-1 py-1">
-                                            <select class="" x-model="item.item_id" :name="'items['+index+'][item_id]'" >
-                                                <option value="">Please Select Item</option>
-                                                @foreach($items as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->item_desc }}</option>
-                                                @endforeach
-                                            </select>
-                                        </td>
-                                        <td class="px-2 py-2">
-                                            <input type="number" x-model="item.unreported" :name="'items['+index+'][unreported]'" style="width: 100px;">
-                                        </td>
-                                        <td class="px-1 py-1">
-                                            <input type="number" style="width: 100px" x-model="item.quantity" :name="'items['+index+'][quantity]'"> 
-                                        </td>
-                                        <td class="px-1 py-1">
-                                            <select class="" x-model="item.quantity_unit" :name="'items['+index+'][quantity_unit]'">
-                                                <option value="Pad" {{ 'pad' === $requisition->quantity_unit ? 'selected' : '' }}>Pad</option>
-                                                <option value="Pcs" {{ 'pcs' === $requisition->quantity_unit ? 'selected' : '' }}>Pcs</option>
-                                                <option value="Set" {{ 'set' === $requisition->quantity_unit ? 'selected' : '' }}>Set</option>
-                                            </select>
-                                        </td>
+                                            <td class="px-1 py-1">
+                                                <input type="number" style="width: 100px" x-model="item.ho_ctrl_start" :name="'items['+index+'][ho_ctrl_start]'"> 
+                                            </td>
 
-                                        <td class="px-1 py-1">
-                                            <input type="number" style="width: 100px" x-model="item.ho_ctrl_start" :name="'items['+index+'][ho_ctrl_start]'"> 
-                                        </td>
+                                            <td class="px-1 py-1">
+                                                <input type="number" style="width: 100px" x-model="item.ho_ctrl_end" :name="'items['+index+'][ho_ctrl_end]'"> 
+                                            </td>
 
-                                        <td class="px-1 py-1">
-                                            <input type="number" style="width: 100px" x-model="item.ho_ctrl_end" :name="'items['+index+'][ho_ctrl_end]'"> 
-                                        </td>
+                                            <td class="px-1 py-1">
+                                                <input type="text" style="width: 100px" x-model="item.coc_prefix" :name="'items['+index+'][coc_prefix]'"> 
+                                            </td>
 
-                                        <td class="px-1 py-1">
-                                            <input type="text" style="width: 100px" x-model="item.coc_prefix" :name="'items['+index+'][coc_prefix]'"> 
-                                        </td>
+                                            <td class="px-1 py-1">
+                                                <input type="number" style="width: 100px" x-model="item.series_start" :name="'items['+index+'][series_start]'"> 
+                                            </td>
 
-                                        <td class="px-1 py-1">
-                                            <input type="number" style="width: 100px" x-model="item.series_start" :name="'items['+index+'][series_start]'"> 
-                                        </td>
+                                            <td class="px-1 py-1">
+                                                <input type="number" style="width: 100px" x-model="item.series_end" :name="'items['+index+'][series_end]'"> 
+                                            </td>
 
-                                        <td class="px-1 py-1">
-                                            <input type="number" style="width: 100px" x-model="item.series_end" :name="'items['+index+'][series_end]'"> 
-                                        </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
 
-                                    </tr>
-                                </template>
-                            </tbody>
-                        </table>
-                        
                         </div>
 
                         <div class="flex justify-end space-x-4">
