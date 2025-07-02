@@ -143,6 +143,7 @@
                                                 <option value="Pad">Pad</option>
                                                 <option value="Pcs">Pcs</option>
                                                 <option value="Set">Set</option>
+                                                <option value="Ream">Ream</option>
                                             </select>
                                         </td>
                                         <td class="px-2 py-2">
