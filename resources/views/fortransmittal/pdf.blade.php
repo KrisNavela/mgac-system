@@ -50,11 +50,11 @@
             width: 100%;
             margin-top: 30px;
             border-collapse: collapse;
-            font-size: 12px;
+            font-size: 10px; /* changed from 12px to 10px */
         }
         .items-table th, .items-table td {
             border: 1px solid #ddd;
-            padding: 10px;
+            padding: 6px; /* reduce padding from 10px */
             text-align: left;
         }
         .items-table th {
