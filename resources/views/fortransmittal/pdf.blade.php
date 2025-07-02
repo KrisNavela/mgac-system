@@ -108,6 +108,7 @@
         <!-- Requisition Details using Paragraphs -->
         <div class="details">
             <p><span>Requisition No.:</span> {{ $requisition->req_no }}</p>
+            <p><span>Branch:</span> {{ $requisition->user->branch->branch_name }}</p>
             <p><span>Date:</span> {{ $requisition->req_date }}</p>
         </div>
 
