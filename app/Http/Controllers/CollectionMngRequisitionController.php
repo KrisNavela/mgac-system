@@ -30,7 +30,7 @@ class CollectionMngRequisitionController extends Controller
         $type_request = $request->type_request;
         
         //Admin, Final Approver Agencies and Branches, Coll Assistant and Collection Manager Access
-        if ($roleId === 1 || $roleId === 5 || $roleId === 7 || $roleId === 8 || $roleId === 9 || $roleId === 10 || $roleId === 11 || $roleId === 12 || $roleId === 13) {
+        if ($roleId === 1 || $roleId === 5 || $roleId === 7 || $roleId === 8 || $roleId === 9 || $roleId === 10 || $roleId === 11 || $roleId === 12 || $roleId === 13 || $roleId === 14) {
             $branches = branch::all();
             $users = User::all();
 
