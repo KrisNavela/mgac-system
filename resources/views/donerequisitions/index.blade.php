@@ -31,7 +31,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-gray-200 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                @if ($roleId == 1 || $roleId == 2 || $roleId == 3 || $roleId == 4 || $roleId == 5 || $roleId == 6 || $roleId == 7 || $roleId == 8 || $roleId == 9 || $roleId == 10 || $roleId == 11 || $roleId == 12 || $roleId == 13)
+                @if ($roleId == 1 || $roleId == 2 || $roleId == 3 || $roleId == 4 || $roleId == 5 || $roleId == 6 || $roleId == 7 || $roleId == 8 || $roleId == 9 || $roleId == 10 || $roleId == 11 || $roleId == 12 || $roleId == 13 || $roleId == 14)
                     <x-nav-link :href="route('requisitions.index')" :active="request()->routeIs('requisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('All') }}  
                         <div class="font-bold px-1 py-1 rounded relative" role="alert">
@@ -94,7 +94,7 @@
                     </x-nav-link>
                 @endif
 
-                @if ($roleId == 1 || $roleId == 11)
+                @if ($roleId == 1 || $roleId == 11 || $roleId == 14)
                     <x-nav-link :href="route('fortransmittal.index')" :active="request()->routeIs('fortransmittal.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('For Transmittal') }}
                         <div class="font-bold px-1 py-1 rounded relative" role="alert">
@@ -103,7 +103,7 @@
                     </x-nav-link>
                 @endif
 
-                @if ($roleId == 1 || $roleId == 2 || $roleId == 3 || $roleId == 4 || $roleId == 5 || $roleId == 6 || $roleId == 7 || $roleId == 8 || $roleId == 9 || $roleId == 10 || $roleId == 11 || $roleId == 12 || $roleId == 13)
+                @if ($roleId == 1 || $roleId == 2 || $roleId == 3 || $roleId == 4 || $roleId == 5 || $roleId == 6 || $roleId == 7 || $roleId == 8 || $roleId == 9 || $roleId == 10 || $roleId == 11 || $roleId == 12 || $roleId == 13 || $roleId == 14)
                     <x-nav-link :href="route('cancelrequisitions.index')" :active="request()->routeIs('cancelrequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('Cancel') }}
                         <div class="font-bold px-1 py-1 rounded relative" role="alert">
@@ -130,7 +130,7 @@
                     </x-nav-link>
                 @endif
 
-                @if ($roleId == 1 || $roleId == 2 || $roleId == 3 || $roleId == 4 || $roleId == 5 || $roleId == 6 || $roleId == 7 || $roleId == 8 || $roleId == 9 || $roleId == 10 || $roleId == 11 || $roleId == 12 || $roleId == 13)
+                @if ($roleId == 1 || $roleId == 2 || $roleId == 3 || $roleId == 4 || $roleId == 5 || $roleId == 6 || $roleId == 7 || $roleId == 8 || $roleId == 9 || $roleId == 10 || $roleId == 11 || $roleId == 12 || $roleId == 13 || $roleId == 14)
                     <x-nav-link :href="route('donerequisitions.index')" :active="request()->routeIs('donerequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('Done') }}
                     </x-nav-link>
