@@ -662,7 +662,7 @@
                                                     <option value="Pad" {{ 'pad' === $requisition->quantity_unit ? 'selected' : '' }}>Pad</option>
                                                     <option value="Pcs" {{ 'pcs' === $requisition->quantity_unit ? 'selected' : '' }}>Pcs</option>
                                                     <option value="Set" {{ 'set' === $requisition->quantity_unit ? 'selected' : '' }}>Set</option>
-                                                    <option value="Set" {{ 'ream' === $requisition->quantity_unit ? 'selected' : '' }}>Ream</option>
+                                                    <option value="Ream" {{ 'ream' === $requisition->quantity_unit ? 'selected' : '' }}>Ream</option>
                                                 </select>
                                             </td>
 
