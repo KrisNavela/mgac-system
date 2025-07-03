@@ -802,7 +802,7 @@ class PendingRequisitionController extends Controller
 
         RequisitionRemarks::create([
             'requisition_id' => $pendingrequisition->id,
-            'content' => 'cancelled',//$request->content,
+            'content' => $request->content,
             'user_id' => Auth::id(),
             'role_name' => $rolename,
         ]);

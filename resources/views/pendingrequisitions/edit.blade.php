@@ -604,6 +604,17 @@
                                                 </button>
                                             </div>
                                         </form>
+                                        
+                                        
+                                        <form method="POST" action="{{ route('pendingrequisitions.update.forcancel', $requisition->id) }}"
+                                            onsubmit="return confirm('Are you sure you want to cancel this requisition?');">
+                                            @csrf
+                                            <input type="hidden" name="content" id="cancel-content">
+                                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                                Cancel Requisition
+                                            </button>
+                                        </form>
+
 
                                         <form method="POST" action="{{ route('pendingrequisitions.re.submitcoll', $requisition->id) }}" 
                                             onsubmit="return confirm('Are you sure you want to re-submit this requisition?');">
@@ -615,9 +626,12 @@
                                         </form>
 
                                         <script>
-                                            document.querySelector('form[action*="re-submit"]').addEventListener('submit', function (e) {
-                                                const contentValue = document.getElementById('content').value;
-                                                document.getElementById('resubmit-content').value = contentValue;
+                                            document.querySelectorAll('form[action*="cancel"], form[action*="re-submit"]').forEach(function (form) {
+                                                form.addEventListener('submit', function () {
+                                                    const content = document.getElementById('content')?.value || '';
+                                                    const hiddenInput = form.querySelector('input[name="content"]');
+                                                    if (hiddenInput) hiddenInput.value = content;
+                                                });
                                             });
                                         </script>
 
