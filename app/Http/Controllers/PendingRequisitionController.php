@@ -109,7 +109,8 @@ class PendingRequisitionController extends Controller
                 ->whereIn('status', ['pending', 'return'])
                 ->where(function ($query) {
                     $query->where('finalapproval_status', 'no')
-                        ->orWhere('finalapproval_status', 'return');
+                        ->orWhere('finalapproval_status', 'return')
+                        ->orWhere('finalapproval_status', 'approved');
                 })
                 ->orderBy('id', 'desc')
                 ->paginate(10)
