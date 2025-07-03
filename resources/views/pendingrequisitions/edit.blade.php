@@ -549,7 +549,7 @@
 
                                         <div class="mt-6 flex flex-row space-x-3">
                                             <!-- Save Button -->
-                                            <form method="POST" action="{{ route('pendingrequisitions.update.forapproval', $requisition->id) }}" style="display: inline-block; margin-right: 12px;">
+                                            <form method="POST" action="{{ route('pendingrequisitions.update.forapproval', $requisition->id) }}">
                                                 @csrf
                                                 @method('PUT')
 
