@@ -789,7 +789,7 @@ class PendingRequisitionController extends Controller
         return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition created successfully');
     }
 
-    public function updateforcancel($id)
+    public function updateforcancel(UpdateRequisitionRequest $request, $id)
     {
         $pendingrequisition = Requisition::findOrFail($id);
         $pendingrequisition->status = 'cancelled';
@@ -813,7 +813,7 @@ class PendingRequisitionController extends Controller
         return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition cancelled successfully');
     }
 
-    public function resubmit($id)
+    public function resubmit(UpdateRequisitionRequest $request, $id)
     {
         $pendingrequisition = Requisition::findOrFail($id);
         $pendingrequisition->status = 'pending';
