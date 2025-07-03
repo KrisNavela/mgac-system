@@ -548,83 +548,84 @@
 
 
                                         <!-- Remarks Form -->
-                                        <form method="POST" action="{{ route('pendingrequisitions.update.forapproval', $requisition->id) }}">
-                                            @csrf
-                                            @method('PUT')
+                                        <div class="mt-6 flex flex-col space-y-4">
+                                            <form method="POST" action="{{ route('pendingrequisitions.update.forapproval', $requisition->id) }}">
+                                                @csrf
+                                                @method('PUT')
 
-                                            <!-- Content Field -->
-                                            <div class="mt-4">
-                                                <x-input-label for="content" :value="__('Content')" />
-                                                <x-text-input id="content" class="mt-1 w-full" type="text" name="content"
-                                                    :value="old('content', $requisition->content)" required />
-                                                <x-input-error :messages="$errors->get('content')" class="mt-2" />
-                                            </div>
+                                                <!-- Content Field -->
+                                                <div class="mt-4">
+                                                    <x-input-label for="content" :value="__('Content')" />
+                                                    <x-text-input id="content" class="mt-1 w-full" type="text" name="content"
+                                                        :value="old('content', $requisition->content)" required />
+                                                    <x-input-error :messages="$errors->get('content')" class="mt-2" />
+                                                </div>
 
-                                            <!-- Conditional Approval Fields -->
-                                            @if ($requisition->type_request == 'Replenishment' && $requisition->coc_request_status == 'no')
-                                                @include('components.select-approval', [
-                                                    'field' => 'bonds_status_modal',
-                                                    'label' => 'For bonds approval?',
-                                                    'options' => ['no'],
-                                                    'selected' => $requisition->bonds_status
-                                                ])
-                                                @include('components.select-approval', [
-                                                    'field' => 'uw_status_modal',
-                                                    'label' => 'For UW approval?',
-                                                    'options' => ['no'],
-                                                    'selected' => $requisition->uw_status
-                                                ])
-                                            @else
-                                                @include('components.select-approval', [
-                                                    'field' => 'bonds_status_modal',
-                                                    'label' => 'For bonds approval?',
-                                                    'options' => ['no', 'for approval', 'approved', 'return'],
-                                                    'selected' => $requisition->bonds_status
-                                                ])
-                                                @include('components.select-approval', [
-                                                    'field' => 'uw_status_modal',
-                                                    'label' => 'For UW approval?',
-                                                    'options' => ['no', 'for approval', 'approved', 'return'],
-                                                    'selected' => $requisition->uw_status
-                                                ])
-                                            @endif
+                                                <!-- Conditional Approval Fields -->
+                                                @if ($requisition->type_request == 'Replenishment' && $requisition->coc_request_status == 'no')
+                                                    @include('components.select-approval', [
+                                                        'field' => 'bonds_status_modal',
+                                                        'label' => 'For bonds approval?',
+                                                        'options' => ['no'],
+                                                        'selected' => $requisition->bonds_status
+                                                    ])
+                                                    @include('components.select-approval', [
+                                                        'field' => 'uw_status_modal',
+                                                        'label' => 'For UW approval?',
+                                                        'options' => ['no'],
+                                                        'selected' => $requisition->uw_status
+                                                    ])
+                                                @else
+                                                    @include('components.select-approval', [
+                                                        'field' => 'bonds_status_modal',
+                                                        'label' => 'For bonds approval?',
+                                                        'options' => ['no', 'for approval', 'approved', 'return'],
+                                                        'selected' => $requisition->bonds_status
+                                                    ])
+                                                    @include('components.select-approval', [
+                                                        'field' => 'uw_status_modal',
+                                                        'label' => 'For UW approval?',
+                                                        'options' => ['no', 'for approval', 'approved', 'return'],
+                                                        'selected' => $requisition->uw_status
+                                                    ])
+                                                @endif
 
-                                            <!-- Final Approval Field -->
-                                            @include('components.select-approval', [
-                                                'field' => 'finalapproval_status_modal',
-                                                'label' => 'For final approval?',
-                                                'options' => ['no', 'for approval', 'return'],
-                                                'selected' => $requisition->finalapproval_status
-                                            ])
+                                                <!-- Final Approval Field -->
+                                                @include('components.select-approval', [
+                                                    'field' => 'finalapproval_status_modal',
+                                                    'label' => 'For final approval?',
+                                                    'options' => ['no', 'for approval', 'return'],
+                                                    'selected' => $requisition->finalapproval_status
+                                                ])
 
-                                            <!-- Submit Button -->
-                                            <div class="mt-4">
-                                                <button class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
-                                                    Save
+                                                <!-- Submit Button -->
+                                                <div class="mt-4">
+                                                    <button class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                                        Save
+                                                    </button>
+                                                </div>
+                                            </form>
+                                            
+                                            
+                                            <form method="POST" action="{{ route('pendingrequisitions.update.forcancel', $requisition->id) }}"
+                                                onsubmit="return confirm('Are you sure you want to cancel this requisition?');">
+                                                @csrf
+                                                <input type="hidden" name="content" id="cancel-content">
+                                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                                    Cancel Requisition
                                                 </button>
-                                            </div>
-                                        </form>
-                                        
-                                        
-                                        <form method="POST" action="{{ route('pendingrequisitions.update.forcancel', $requisition->id) }}"
-                                            onsubmit="return confirm('Are you sure you want to cancel this requisition?');">
-                                            @csrf
-                                            <input type="hidden" name="content" id="cancel-content">
-                                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded">
-                                                Cancel Requisition
-                                            </button>
-                                        </form>
+                                            </form>
 
 
-                                        <form method="POST" action="{{ route('pendingrequisitions.re.submitcoll', $requisition->id) }}" 
-                                            onsubmit="return confirm('Are you sure you want to re-submit this requisition?');">
-                                            @csrf
-                                            <input type="hidden" name="content" id="resubmit-content">
-                                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded">
-                                                Re-submit Requisition to Coll Department
-                                            </button>
-                                        </form>
-
+                                            <form method="POST" action="{{ route('pendingrequisitions.re.submitcoll', $requisition->id) }}" 
+                                                onsubmit="return confirm('Are you sure you want to re-submit this requisition?');">
+                                                @csrf
+                                                <input type="hidden" name="content" id="resubmit-content">
+                                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                                    Re-submit Requisition to Coll Department
+                                                </button>
+                                            </form>
+                                        </div>
                                         <script>
                                             document.querySelectorAll('form[action*="cancel"], form[action*="re-submit"]').forEach(function (form) {
                                                 form.addEventListener('submit', function () {
