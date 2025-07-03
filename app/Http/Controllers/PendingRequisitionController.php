@@ -794,11 +794,47 @@ class PendingRequisitionController extends Controller
         $pendingrequisition = Requisition::findOrFail($id);
         $pendingrequisition->status = 'cancelled';
         $pendingrequisition->save(); // Save the changes
+
+
+        $user = auth()->user(); // Get the authenticated user
+        $userId = $user->id;
+        $rolename = $user->role->name;
+
+        RequisitionRemarks::create([
+            'requisition_id' => $pendingrequisition->id,
+            'content' => $request->content,
+            'user_id' => Auth::id(),
+            'role_name' => $rolename,
+        ]);
         
-        $emailto = $pendingrequisition->user->email;
-        Mail::to($emailto )->send(new CancelRequisitionMail($pendingrequisition));
+        //$emailto = $pendingrequisition->user->email;
+        //Mail::to($emailto )->send(new CancelRequisitionMail($pendingrequisition));
 
         return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition cancelled successfully');
+    }
+
+    public function resubmit($id)
+    {
+        $pendingrequisition = Requisition::findOrFail($id);
+        $pendingrequisition->status = 'pending';
+        $pendingrequisition->save(); // Save the changes
+
+
+        $user = auth()->user(); // Get the authenticated user
+        $userId = $user->id;
+        $rolename = $user->role->name;
+
+        RequisitionRemarks::create([
+            'requisition_id' => $pendingrequisition->id,
+            'content' => $request->content,
+            'user_id' => Auth::id(),
+            'role_name' => $rolename,
+        ]);
+        
+        //$emailto = $pendingrequisition->user->email;
+        //Mail::to($emailto )->send(new CancelRequisitionMail($pendingrequisition));
+
+        return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition Re-submit successfully');
     }
 
     public function getUnreportedCountReviewer(Request $request)

@@ -58,7 +58,8 @@ Route::middleware('auth')->group(function () {
 
     Route::put('/pendingrequisitions/{id}/update-forapproval', [PendingRequisitionController::class, 'updateforapproval'])->name('pendingrequisitions.update.forapproval');
     Route::get('/pendingrequisitions/{id}/update-forcancel', [PendingRequisitionController::class, 'updateforcancel'])->name('pendingrequisitions.update.forcancel');
-
+    Route::get('/pendingrequisitions/{id}/re-submit', [PendingRequisitionController::class, 'resubmit'])->name('pendingrequisitions.re.submit');
+    
     Route::put('/approvedrequisitions/{id}/update-approval', [ApprovedRequisitionController::class, 'updateapproval'])->name('approvedrequisitions.update.approval');
     Route::put('/foruwapprovalrequisitions/{id}/update-uwapproval', [ForUWApprovalRequisitionController::class, 'updateuwapproval'])->name('foruwapprovalrequisitions.update.uwapproval');
     Route::put('/forbondapprovalrequisitions/{id}/update-bondapproval', [ForBondApprovalRequisitionController::class, 'updatebondapproval'])->name('forbondapprovalrequisitions.update.bondapproval');
