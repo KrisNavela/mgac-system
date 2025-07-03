@@ -564,7 +564,7 @@
                                                 @csrf
                                                 <input type="hidden" name="content" id="cancel-content">
                                                 <button type="submit" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded">
-                                                    Cancel
+                                                    Cancel Requisition
                                                 </button>
                                             </form>
 
@@ -574,7 +574,7 @@
                                                 @csrf
                                                 <input type="hidden" name="content" id="resubmit-content">
                                                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded">
-                                                    Re-submit
+                                                    Re-submit to C&C Department
                                                 </button>
                                             </form>
                                         </div>
