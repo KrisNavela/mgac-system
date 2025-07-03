@@ -508,15 +508,44 @@ class COCApprovalController extends Controller
             'cocapproval_status' => 'required|string|max:255', // Password is optional, but must be confirmed
         ]);
         
-        
-
         // Find the user record in the database
         $cocapprovalrequisition = Requisition::findOrFail($id);
 
-        
             // Update the user's basic information
             $cocapprovalrequisition->cocapproval_status = $validatedData['cocapproval_status'];
             $cocapprovalrequisition->status = $validatedData['cocapproval_status'];
+            $cocapprovalrequisition->cocapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
+            $cocapprovalrequisition->save(); // Save the changes
+
+        $user = auth()->user(); // Get the authenticated user
+        $userId = $user->id;
+        $rolename = $user->role->name;
+
+        RequisitionRemarks::create([
+            'requisition_id' => $cocapprovalrequisition->id,
+            'content' => $request->content,
+            'user_id' => Auth::id(),
+            'role_name' => $rolename,
+        ]);
+
+            Mail::to('cristine.ferrer@milestoneguaranty.com')->send(new ForTransmittalMail($cocapprovalrequisition));
+
+         return redirect()->route('cocapprovalrequisitions.index')->with('success', 'Requisition created successfully');
+    }
+
+    public function approvedcocapproval(UpdateRequisitionRequest $request, Requisition $cocapprovalrequisition, RequisitionRemarks $remarks, $id)
+    {
+        // Validate the incoming request data
+        $validatedData = $request->validate([
+            'cocapproval_status' => 'required|string|max:255', // Password is optional, but must be confirmed
+        ]);
+        
+        // Find the user record in the database
+        $cocapprovalrequisition = Requisition::findOrFail($id);
+
+            // Update the user's basic information
+            $cocapprovalrequisition->cocapproval_status = 'approved';
+            $cocapprovalrequisition->status = 'approved';
             $cocapprovalrequisition->cocapproval_date = Carbon::now('Asia/Manila')->format('Y-m-d H:i:s');
             $cocapprovalrequisition->save(); // Save the changes
 
