@@ -93,17 +93,27 @@ class PendingRequisitionController extends Controller
             ->where('cocapproval_status', '=', 'for approval')
             ->count();
 
+            //$requisitions = Requisition::withCount('items')
+            //->where(function ($query) {
+            //    $query->where('status', '=', 'pending')
+            //        ->where('finalapproval_status', '=', 'no');
+            //})->orWhere(function ($query) {
+            //    $query->where('status', '=', 'pending')
+            //    ->where('finalapproval_status', '=', 'return');
+            //})
+            //->orderBy('id', 'desc')
+            //->paginate(10)
+            //->withQueryString();
+
             $requisitions = Requisition::withCount('items')
-            ->where(function ($query) {
-                $query->where('status', '=', 'pending')
-                    ->where('finalapproval_status', '=', 'no');
-            })->orWhere(function ($query) {
-                $query->where('status', '=', 'pending')
-                ->where('finalapproval_status', '=', 'return');
-            })
-            ->orderBy('id', 'desc')
-            ->paginate(10)
-            ->withQueryString();
+                ->whereIn('status', ['pending', 'return'])
+                ->where(function ($query) {
+                    $query->where('finalapproval_status', 'no')
+                        ->orWhere('finalapproval_status', 'return');
+                })
+                ->orderBy('id', 'desc')
+                ->paginate(10)
+                ->withQueryString();
 
             return view('pendingrequisitions.index', [
                 'requisitions' => $requisitions,
