@@ -226,12 +226,28 @@ class PendingRequisitionController extends Controller
             //->where('finalapproval_status', '=', 'approved')
             ->count();
 
+            //$requisitions = Requisition::withCount('items')
+            //->whereHas('user', function ($query) {
+            //    $query->whereHas('branch', function ($query1) {
+            //        $query1->whereIn('type_office', ['Branch', 'TMEC']);}
+            //);})
+            //->where('status', '=', 'pending')
+            //->orderBy('id', 'desc')
+            //->paginate(10)
+            //->withQueryString();
+
             $requisitions = Requisition::withCount('items')
             ->whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
-                    $query1->whereIn('type_office', ['Branch', 'TMEC']);}
-            );})
-            ->where('status', '=', 'pending')
+                    $query1->whereIn('type_office', ['Branch', 'TMEC']);
+                });
+            })
+            ->whereIn('status', ['pending', 'return'])
+            ->where(function ($query) {
+                $query->where('finalapproval_status', 'no')
+                    ->orWhere('finalapproval_status', 'return')
+                    ->orWhere('finalapproval_status', 'approved');
+            })
             ->orderBy('id', 'desc')
             ->paginate(10)
             ->withQueryString();
@@ -347,15 +363,32 @@ class PendingRequisitionController extends Controller
             //->where('finalapproval_status', '=', 'approved')
             ->count();;
 
+            //$requisitions = Requisition::withCount('items')
+            //->whereHas('user', function ($query) {
+            //    $query->whereHas('branch', function ($query1) {
+            //        $query1->where('type_office', 'Agency');}
+            //);})
+            //->where('status', '=', 'pending')
+            //->orderBy('id', 'desc')
+            //->paginate(10)
+            //->withQueryString();
+
             $requisitions = Requisition::withCount('items')
             ->whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
-                    $query1->where('type_office', 'Agency');}
-            );})
-            ->where('status', '=', 'pending')
+                    $query1->where('type_office', 'Agency');
+                });
+            })
+            ->whereIn('status', ['pending', 'return'])
+            ->where(function ($query) {
+                $query->where('finalapproval_status', 'no')
+                    ->orWhere('finalapproval_status', 'return')
+                    ->orWhere('finalapproval_status', 'approved');
+            })
             ->orderBy('id', 'desc')
             ->paginate(10)
             ->withQueryString();
+
 
             return view('pendingrequisitions.index', [
                 'requisitions' => $requisitions,
@@ -469,15 +502,32 @@ class PendingRequisitionController extends Controller
             //->where('finalapproval_status', '=', 'approved')
             ->count();;
 
+            //$requisitions = Requisition::withCount('items')
+            //->whereHas('user', function ($query) {
+            //    $query->whereHas('branch', function ($query1) {
+            //        $query1->where('type_office', 'TMEC');}
+            //);})
+            //->where('status', '=', 'pending')
+            //->orderBy('id', 'desc')
+            //->paginate(10)
+            //->withQueryString();
+
             $requisitions = Requisition::withCount('items')
             ->whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
-                    $query1->where('type_office', 'TMEC');}
-            );})
-            ->where('status', '=', 'pending')
+                    $query1->where('type_office', 'TMEC');
+                });
+            })
+            ->whereIn('status', ['pending', 'return'])
+            ->where(function ($query) {
+                $query->where('finalapproval_status', 'no')
+                    ->orWhere('finalapproval_status', 'return')
+                    ->orWhere('finalapproval_status', 'approved');
+            })
             ->orderBy('id', 'desc')
             ->paginate(10)
             ->withQueryString();
+
 
             return view('pendingrequisitions.index', [
                 'requisitions' => $requisitions,
