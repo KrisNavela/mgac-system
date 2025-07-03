@@ -213,7 +213,7 @@ class COCApprovalController extends Controller
                     $query1->whereIn('type_office', ['Branch', 'TMEC']);}
             );})
             ->where('cocapproval_status', '=', 'for approval')
-            ->where('finalapproval_status', '=', 'approved')
+            //->where('finalapproval_status', '=', 'approved')
             ->count();
 
             $requisitions = Requisition::whereHas('user', function ($query) {
