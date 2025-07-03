@@ -57,7 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/numberseries/{id}/update-forreported', [NumberSeriesController::class, 'updateforreported'])->name('numberseries.update.forreported');
 
     Route::put('/pendingrequisitions/{id}/update-forapproval', [PendingRequisitionController::class, 'updateforapproval'])->name('pendingrequisitions.update.forapproval');
-    Route::get('/pendingrequisitions/{id}/update-forcancel', [PendingRequisitionController::class, 'updateforcancel'])
+    Route::post('/pendingrequisitions/{id}/update-forcancel', [PendingRequisitionController::class, 'updateforcancel'])
     ->name('pendingrequisitions.update.forcancel');
     Route::post('/pendingrequisitions/{id}/re-submitcoll', [PendingRequisitionController::class, 'resubmitcoll'])
     ->name('pendingrequisitions.re.submitcoll');
