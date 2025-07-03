@@ -547,32 +547,18 @@
                                         </div>
 
 
-                                        <!-- Remarks Form -->
-                                        <form method="POST" action="{{ route('pendingrequisitions.update.forapproval', $requisition->id) }}">
-                                            @csrf
-                                            @method('PUT')
-
-                                            <!-- Content Field -->
-                                            <div class="mt-4">
-                                                <x-input-label for="content" :value="__('Content')" />
-                                                <x-text-input id="content" class="mt-1 w-full" type="text" name="content"
-                                                    :value="old('content', $requisition->content)" required />
-                                                <x-input-error :messages="$errors->get('content')" class="mt-2" />
-                                            </div>
-
-                                            <!-- Approval Fields -->
-                                            {{-- your @include(...) fields here --}}
-
-                                            <!-- Buttons in a row -->
-                                            <div class="mt-6 flex flex-row space-x-3">
-
-                                                <!-- Save Button -->
+                                        <div class="mt-6 flex flex-row space-x-3">
+                                            <!-- Save Button -->
+                                            <form method="POST" action="{{ route('pendingrequisitions.update.forapproval', $requisition->id) }}">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="content" id="save-content">
                                                 <button type="submit" class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
                                                     Save
                                                 </button>
-                                        </form>
+                                            </form>
 
-                                            <!-- Cancel Form -->
+                                            <!-- Cancel Button -->
                                             <form method="POST" action="{{ route('pendingrequisitions.update.forcancel', $requisition->id) }}"
                                                 onsubmit="return confirm('Are you sure you want to cancel this requisition?');">
                                                 @csrf
@@ -582,7 +568,7 @@
                                                 </button>
                                             </form>
 
-                                            <!-- Re-submit Form -->
+                                            <!-- Re-submit Button -->
                                             <form method="POST" action="{{ route('pendingrequisitions.re.submitcoll', $requisition->id) }}"
                                                 onsubmit="return confirm('Are you sure you want to re-submit this requisition?');">
                                                 @csrf
@@ -592,6 +578,7 @@
                                                 </button>
                                             </form>
                                         </div>
+
 
 
                                         <script>
