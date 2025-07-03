@@ -547,7 +547,7 @@
                                         </div>
 
 
-                                        <!-- Remarks Form: Save -->
+                                        <!-- Remarks Form -->
                                         <form method="POST" action="{{ route('pendingrequisitions.update.forapproval', $requisition->id) }}">
                                             @csrf
                                             @method('PUT')
@@ -560,47 +560,39 @@
                                                 <x-input-error :messages="$errors->get('content')" class="mt-2" />
                                             </div>
 
-                                            <!-- Approval Dropdowns (unchanged) -->
+                                            <!-- Approval Fields -->
+                                            {{-- your @include(...) fields here --}}
 
-                                            <!-- Final Approval Field -->
-                                            @include('components.select-approval', [
-                                                'field' => 'finalapproval_status_modal',
-                                                'label' => 'For final approval?',
-                                                'options' => ['no', 'for approval', 'return'],
-                                                'selected' => $requisition->finalapproval_status
-                                            ])
+                                            <!-- Buttons in a row -->
+                                            <div class="mt-6 flex flex-row space-x-3">
 
-                                            <!-- Save Button -->
-                                            <div class="mt-6">
-                                                <button class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded w-full">
+                                                <!-- Save Button -->
+                                                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
                                                     Save
                                                 </button>
-                                            </div>
                                         </form>
 
-                                        <!-- Other Actions: Cancel and Re-submit -->
-                                        <div class="mt-6 flex flex-col space-y-4">
-
-                                            <!-- Cancel Requisition -->
+                                            <!-- Cancel Form -->
                                             <form method="POST" action="{{ route('pendingrequisitions.update.forcancel', $requisition->id) }}"
                                                 onsubmit="return confirm('Are you sure you want to cancel this requisition?');">
                                                 @csrf
                                                 <input type="hidden" name="content" id="cancel-content">
-                                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded w-full">
-                                                    Cancel Requisition
+                                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                                    Cancel
                                                 </button>
                                             </form>
 
-                                            <!-- Re-submit Requisition -->
+                                            <!-- Re-submit Form -->
                                             <form method="POST" action="{{ route('pendingrequisitions.re.submitcoll', $requisition->id) }}"
                                                 onsubmit="return confirm('Are you sure you want to re-submit this requisition?');">
                                                 @csrf
                                                 <input type="hidden" name="content" id="resubmit-content">
-                                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded w-full">
-                                                    Re-submit Requisition to Coll Department
+                                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                                    Re-submit
                                                 </button>
                                             </form>
                                         </div>
+
 
                                         <script>
                                             document.querySelectorAll('form[action*="cancel"], form[action*="re-submit"]').forEach(function (form) {
