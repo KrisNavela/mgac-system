@@ -627,7 +627,7 @@
                         </div>
 
                         <div style="overflow-x: auto; width: 100%;">
-                            <table style="min-width: 1200px; font-size: 12px;">
+                            <table class="min-w-[1200px] text-xs border" style="border-collapse: collapse;">
                                 <thead class="bg-gray-50">
                                     <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Item Name</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase" style="text-align: center;">Unreported</th>
