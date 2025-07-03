@@ -554,7 +554,7 @@
                                                 @method('PUT')
 
                                                 <!-- Content Field -->
-                                                <div class="mt-4">
+                                                <div class="mt-4 w-full">
                                                     <x-input-label for="content" :value="__('Content')" />
                                                     <x-text-input id="content" class="mt-1 w-full" type="text" name="content"
                                                         :value="old('content', $requisition->content)" required />
