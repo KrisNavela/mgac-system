@@ -549,35 +549,42 @@
 
                                         <div class="mt-6 flex flex-row space-x-3">
                                             <!-- Save Button -->
-                                            <form method="POST" action="{{ route('pendingrequisitions.update.forapproval', $requisition->id) }}">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="content" id="save-content">
-                                                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
-                                                    Save
-                                                </button>
-                                            </form>
+                                            <div>
+                                                <form method="POST" action="{{ route('pendingrequisitions.update.forapproval', $requisition->id) }}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="content" id="save-content">
+                                                    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                                        Save
+                                                    </button>
+                                                </form>
+                                            </div>
 
                                             <!-- Cancel Button -->
-                                            <form method="POST" action="{{ route('pendingrequisitions.update.forcancel', $requisition->id) }}"
-                                                onsubmit="return confirm('Are you sure you want to cancel this requisition?');">
-                                                @csrf
-                                                <input type="hidden" name="content" id="cancel-content">
-                                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded">
-                                                    Cancel
-                                                </button>
-                                            </form>
+                                            <div>
+                                                <form method="POST" action="{{ route('pendingrequisitions.update.forcancel', $requisition->id) }}"
+                                                    onsubmit="return confirm('Are you sure you want to cancel this requisition?');">
+                                                    @csrf
+                                                    <input type="hidden" name="content" id="cancel-content">
+                                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                                        Cancel
+                                                    </button>
+                                                </form>
+                                            </div>
 
                                             <!-- Re-submit Button -->
-                                            <form method="POST" action="{{ route('pendingrequisitions.re.submitcoll', $requisition->id) }}"
-                                                onsubmit="return confirm('Are you sure you want to re-submit this requisition?');">
-                                                @csrf
-                                                <input type="hidden" name="content" id="resubmit-content">
-                                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded">
-                                                    Re-submit
-                                                </button>
-                                            </form>
+                                            <div>
+                                                <form method="POST" action="{{ route('pendingrequisitions.re.submitcoll', $requisition->id) }}"
+                                                    onsubmit="return confirm('Are you sure you want to re-submit this requisition?');">
+                                                    @csrf
+                                                    <input type="hidden" name="content" id="resubmit-content">
+                                                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                                        Re-submit
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </div>
+
 
 
 
