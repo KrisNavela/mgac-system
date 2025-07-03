@@ -547,7 +547,7 @@
                                         </div>
 
 
-                                        <div class="mt-6 flex flex-row space-x-3">
+                                        <div>
                                             <!-- Save Button -->
                                             <form method="POST" action="{{ route('pendingrequisitions.update.forapproval', $requisition->id) }}">
                                                 @csrf
