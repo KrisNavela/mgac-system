@@ -692,6 +692,7 @@ class RequisitionController extends Controller
         $coc_request_status = $request->coc_request_status;
         
         if ($type_request === 'Replenishment'){
+            
             $requisition = Requisition::create([
                 'req_date' => Carbon::now('Asia/Manila')->format('Y-m-d H:i:s'),
                 'type_request' => $request->type_request,
@@ -705,20 +706,43 @@ class RequisitionController extends Controller
                 'user_id' => Auth::id(),
                 'remarks' => $request->remarks,
             ]);
+
+
         } else {
-            $requisition = Requisition::create([
-                'req_date' => Carbon::now('Asia/Manila')->format('Y-m-d H:i:s'),
-                'type_request' => $request->type_request,
-                'coc_request_status' => $request->coc_request_status,
-                'collasst_status' => 'no',
-                'collmanager_status' => 'no',
-                'replenishment_month' => $request->replenishment_month,
-                'replenishment_year' => $request->replenishment_year,
-                'cocapproval_status' =>  'no',
-                'treasuryapproval_status' => 'no',
-                'user_id' => Auth::id(),
-                'remarks' => $request->remarks,
-            ]);
+
+            if ($roleId === 14){
+
+                $requisition = Requisition::create([
+                    'req_date' => Carbon::now('Asia/Manila')->format('Y-m-d H:i:s'),
+                    'type_request' => $request->type_request,
+                    'coc_request_status' => $request->coc_request_status,
+                    'replenishment_month' => $request->replenishment_month,
+                    'replenishment_year' => $request->replenishment_year,
+                    'collasst_status' => 'no',
+                    'collmanager_status' => 'no',
+                    'cocapproval_status' =>  'no',
+                    'treasuryapproval_status' => 'for approval',
+                    'user_id' => Auth::id(),
+                    'remarks' => $request->remarks,
+                ]);
+
+            } else {
+
+                $requisition = Requisition::create([
+                    'req_date' => Carbon::now('Asia/Manila')->format('Y-m-d H:i:s'),
+                    'type_request' => $request->type_request,
+                    'coc_request_status' => $request->coc_request_status,
+                    'replenishment_month' => $request->replenishment_month,
+                    'replenishment_year' => $request->replenishment_year,
+                    'collasst_status' => 'no',
+                    'collmanager_status' => 'no',
+                    'cocapproval_status' =>  'no',
+                    'treasuryapproval_status' => 'no',
+                    'user_id' => Auth::id(),
+                    'remarks' => $request->remarks,
+                ]);
+            }
+
         }
 
         foreach($request->items as $item) {
