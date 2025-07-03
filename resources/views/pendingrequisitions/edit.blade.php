@@ -604,15 +604,22 @@
                                                 </button>
                                             </div>
                                         </form>
-                                        <div class="mt-4">
-                                            <a href="{{ route('pendingrequisitions.update.forcancel', $requisition->id) }}" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded"
-                                            onclick="return confirm('Are you sure you want to cancel this requisition?');">Cancel Requisitioin</a>
-                                        </div>
 
-                                        <div class="mt-4">
-                                            <a href="{{ route('pendingrequisitions.re.submit', $requisition->id) }}" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded"
-                                            onclick="return confirm('Are you sure you want to re-submit this requisition?');">Re-submit Requisitioin</a>
-                                        </div>
+                                        <form method="POST" action="{{ route('pendingrequisitions.re.submitcoll', $requisition->id) }}" 
+                                            onsubmit="return confirm('Are you sure you want to re-submit this requisition?');">
+                                            @csrf
+                                            <input type="hidden" name="content" id="resubmit-content">
+                                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                                Re-submit Requisition to Coll Department
+                                            </button>
+                                        </form>
+
+                                        <script>
+                                            document.querySelector('form[action*="re-submit"]').addEventListener('submit', function (e) {
+                                                const contentValue = document.getElementById('content').value;
+                                                document.getElementById('resubmit-content').value = contentValue;
+                                            });
+                                        </script>
 
                                     </div>
                                 </div>

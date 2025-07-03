@@ -725,7 +725,7 @@ class PendingRequisitionController extends Controller
 
 
 
-    // Method to update additional user information (password, profile picture)
+    
     public function updateforapproval(UpdateRequisitionRequest $request, Requisition $pendingrequisition, RequisitionRemarks $remarks, $id)
     {
         // Validate the incoming request data
@@ -813,10 +813,15 @@ class PendingRequisitionController extends Controller
         return redirect()->route('pendingrequisitions.index')->with('success', 'Requisition cancelled successfully');
     }
 
-    public function resubmit(UpdateRequisitionRequest $request, $id)
+    public function resubmitcoll(UpdateRequisitionRequest $request, $id)
     {
+
+        $type_request = $request->type_request;
+
         $pendingrequisition = Requisition::findOrFail($id);
         $pendingrequisition->status = 'pending';
+        $pendingrequisition->collasst_status = 'for approval';
+        $pendingrequisition->collmanager_status = 'for approval';
         $pendingrequisition->save(); // Save the changes
 
 
@@ -826,7 +831,7 @@ class PendingRequisitionController extends Controller
 
         RequisitionRemarks::create([
             'requisition_id' => $pendingrequisition->id,
-            'content' => 'resubmit',//$request->content,
+            'content' => $request->content, // now coming from the hidden input
             'user_id' => Auth::id(),
             'role_name' => $rolename,
         ]);
