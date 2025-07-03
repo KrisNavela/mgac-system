@@ -606,6 +606,8 @@
                                                 </div>
                                             </form>
                                         </div>
+
+                                        <div class="mt-6 flex flex-row space-x-3">
                                             <!-- Cancel Button -->
                                             <form method="POST" action="{{ route('pendingrequisitions.update.forcancel', $requisition->id) }}"
                                                 onsubmit="return confirm('Are you sure you want to cancel this requisition?');" style="display: inline-block; margin-right: 12px;">
@@ -625,7 +627,7 @@
                                                     Re-submit to C&C Department
                                                 </button>
                                             </form>
-                                        
+                                        </div>
 
 
 
