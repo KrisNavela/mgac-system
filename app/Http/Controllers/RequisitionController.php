@@ -694,7 +694,8 @@ class RequisitionController extends Controller
         if ($type_request === 'Replenishment'){
             
             $requisition = Requisition::create([
-                'req_date' => Carbon::now('Asia/Manila')->format('Y-m-d H:i:s'),
+                //'req_date' => Carbon::now('Asia/Manila')->format('Y-m-d H:i:s'),
+                'req_date' => now()->format('Y-m-d H:i:s'),
                 'type_request' => $request->type_request,
                 'coc_request_status' => $request->coc_request_status,
                 'collasst_status' => 'for approval',
@@ -713,7 +714,8 @@ class RequisitionController extends Controller
             if ($roleId === 14){
 
                 $requisition = Requisition::create([
-                    'req_date' => Carbon::now('Asia/Manila')->format('Y-m-d H:i:s'),
+                    //'req_date' => Carbon::now('Asia/Manila')->format('Y-m-d H:i:s'),
+                    'req_date' => now()->format('Y-m-d H:i:s'),
                     'type_request' => $request->type_request,
                     'coc_request_status' => $request->coc_request_status,
                     'replenishment_month' => $request->replenishment_month,
@@ -729,7 +731,8 @@ class RequisitionController extends Controller
             } else {
 
                 $requisition = Requisition::create([
-                    'req_date' => Carbon::now('Asia/Manila')->format('Y-m-d H:i:s'),
+                    //'req_date' => Carbon::now('Asia/Manila')->format('Y-m-d H:i:s'),
+                    'req_date' => now()->format('Y-m-d H:i:s'),
                     'type_request' => $request->type_request,
                     'coc_request_status' => $request->coc_request_status,
                     'replenishment_month' => $request->replenishment_month,
