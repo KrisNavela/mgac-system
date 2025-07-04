@@ -437,13 +437,13 @@
         }
     }">
 
-<div class="flex justify-end space-x-4">
-    <div class="flex justify-end">    
+                        <div class="flex justify-end space-x-4">
+                            <div class="flex justify-end">    
                                 <!-- Button to open the modal -->
-                                <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modal-id')">Attachment</button>
+                                <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="toggleModal('modalAttachment-id')">Attachment</button>
                             </div>
                         
-                                <div id="modal-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-start overflow-y-auto">
+                                <div id="modalAttachment-id" class="fixed z-50 inset-0 hidden bg-black bg-opacity-50 flex justify-center items-start overflow-y-auto">
                                     <div class="bg-white p-6 rounded-lg shadow-lg w-2/3 mt-10 mb-10 max-h-screen overflow-y-auto">
 
 
@@ -451,7 +451,7 @@
                                         <!-- Modal Header -->
                                         <div class="flex justify-between items-center border-b px-6 py-4">
                                             <h2 class="text-lg font-semibold text-gray-800">Upload Attachment</h2>
-                                            <button onclick="toggleModal('modal-id')" class="text-gray-500 hover:text-red-600 transition">
+                                            <button onclick="toggleModal('modalAttachment-id')" class="text-gray-500 hover:text-red-600 transition">
                                                 ✕
                                             </button>
                                         </div>
@@ -516,8 +516,6 @@
                                     </div>
                                 </div>
 
-                        
-                        
                                 <!-- Add this JavaScript for modal functionality -->
                                 <script>
                                     function toggleModal(modalID) {
