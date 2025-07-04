@@ -766,7 +766,7 @@ class RequisitionController extends Controller
         }
 
         //For Reviewer Email Notification
-        if ($typeOffice === 'Branch'){
+        if ($typeOffice === 'Branch' || $typeOffice === 'TMEC'){
             Mail::to('hannahfaith.yamano@milestoneguaranty.com')->send(new RequisitionCreatedMail($requisition));
         } else {
             Mail::to('hazel.cruz@milestoneguaranty.com')->send(new RequisitionCreatedMail($requisition));
