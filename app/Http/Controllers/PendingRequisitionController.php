@@ -863,4 +863,26 @@ class PendingRequisitionController extends Controller
         return response()->json(['count' => $count]);
     }
 
+    public function iastoreattachment(Request $request, Requisition $requisition)
+    {
+        // Validate the request data, including the file
+        $validated = $request->validate([
+            'file_path' => 'required|mimes:xlsx,xls,csv,pdf|max:2048',  // Validate file type and size
+        ]);
+
+        // Handle the file upload
+        if ($request->hasFile('file_path')) {
+            // Store the file in the 'uploads' folder in the 'public' disk
+            $filePath = $request->file('file_path')->store('uploads', 'public');
+        }
+
+        // Create the requisition with the file path
+        $pendingrequisitionAttachment = RequisitionAttachment::create([
+            'requisition_id' => $request->req_id,
+            'file_path' => $filePath ?? null, // Save the file path in the database
+        ]);
+
+        return back()->with('success', 'File has been uploaded successfully!');
+    }
+
 }

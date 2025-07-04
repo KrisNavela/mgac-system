@@ -74,6 +74,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::post('/requisitions/storeattachment', [RequisitionController::class, 'storeattachment'])->name('requisitions.storeattachment');
+    Route::post('/pendingrequisitions/iastoreattachment', [PendingRequisitionController::class, 'iastoreattachment'])->name('pendingrequisitions.iastoreattachment');
 
     Route::get('/fortransmittal/{id}/print', [ForTransmittalController::class, 'printPDF'])->name('fortransmittal.printPDF');
     
