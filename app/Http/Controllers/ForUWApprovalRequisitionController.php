@@ -549,7 +549,9 @@ class ForUWApprovalRequisitionController extends Controller
         if ($collasststatus === 'no'){
             //For Reviewer Email Notification
             if ($typeOffice === 'Branch'){
-                Mail::to('hannahfaith.yamano@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
+                Mail::to('hannahfaith.yamano@milestoneguaranty.com')
+                ->cc('rainierjohn.jose@milestoneguaranty.com')
+                ->send(new ApprovedbyUWMail($foruwapprovalrequisition));
             } else {
                 Mail::to('hazel.cruz@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
             }
@@ -587,7 +589,9 @@ class ForUWApprovalRequisitionController extends Controller
         if ($collasststatus === 'no'){
             //For Reviewer Email Notification
             if ($typeOffice === 'Branch'){
-                Mail::to('hannahfaith.yamano@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
+                Mail::to('hannahfaith.yamano@milestoneguaranty.com')
+                ->cc('rainierjohn.jose@milestoneguaranty.com')
+                ->send(new ApprovedbyUWMail($foruwapprovalrequisition));
             } else {
                 Mail::to('hazel.cruz@milestoneguaranty.com')->send(new ApprovedbyUWMail($foruwapprovalrequisition));
             }

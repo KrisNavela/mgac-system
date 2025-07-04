@@ -601,8 +601,10 @@ class ApprovedRequisitionController extends Controller
         ]);
 
         //For Reviewer Email Notification
-        if ($typeOffice === 'Branch'){
-            Mail::to('hannahfaith.yamano@milestoneguaranty.com')->send(new ApprovedbyApproverMail($approvedrequisition));
+        if ($typeOffice === 'Branch' || $typeOffice === 'TMEC'){
+            Mail::to('hannahfaith.yamano@milestoneguaranty.com')
+            ->cc('rainierjohn.jose@milestoneguaranty.com')
+            ->send(new ApprovedbyApproverMail($approvedrequisition));
         } else {
             Mail::to('hazel.cruz@milestoneguaranty.com')->send(new ApprovedbyApproverMail($approvedrequisition));
         }
@@ -683,8 +685,10 @@ class ApprovedRequisitionController extends Controller
         ]);
 
         //For Reviewer Email Notification
-        if ($typeOffice === 'Branch'){
-            Mail::to('hannahfaith.yamano@milestoneguaranty.com')->send(new ApprovedbyApproverMail($approvedrequisition));
+        if ($typeOffice === 'Branch' || $typeOffice === 'TMEC'){
+            Mail::to('hannahfaith.yamano@milestoneguaranty.com')
+            ->cc('rainierjohn.jose@milestoneguaranty.com')
+            ->send(new ApprovedbyApproverMail($approvedrequisition));
         } else {
             Mail::to('hazel.cruz@milestoneguaranty.com')->send(new ApprovedbyApproverMail($approvedrequisition));
         }

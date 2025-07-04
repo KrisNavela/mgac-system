@@ -532,7 +532,11 @@ class TreasuryApprovalController extends Controller
             'role_name' => $rolename,
         ]);
 
-        Mail::to('knavela@milestoneguaranty.com')->send(new ForApprovalCOC($treasuryapprovalrequisition));
+        Mail::to([
+            'victor.peco@milestoneguaranty.com',
+            'jairo.aquino@milestoneguaranty.com'
+        ])
+        ->send(new ForApprovalCOC($treasuryapprovalrequisition));
 
          return redirect()->route('treasuryapprovalrequisitions.index')->with('success', 'Requisition created successfully');
     }
