@@ -210,7 +210,7 @@ class ApprovedRequisitionController extends Controller
             
             $requisitions = Requisition::whereHas('user', function ($query) {
                 $query->whereHas('branch', function ($query1) {
-                    $query1->whereIn('type_office', ['Branch', 'TMEC']);}
+                    $query1->whereIn('type_office', ['Branch', 'TMEC', 'Agency']);}
             );})
             ->where('finalapproval_status', '=', 'for approval')
             ->orderBy('id', 'desc')
