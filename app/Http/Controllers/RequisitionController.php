@@ -874,7 +874,7 @@ class RequisitionController extends Controller
     {
         $requisition->update([
             'req_no' => $request->req_no,
-            'req_date' => $request->req_date,
+            //'req_date' => $request->req_date,
             'status' => $request->status,
             'coc_request_status' => $request->coc_request_status,
             'type_request' => $request->type_request,
