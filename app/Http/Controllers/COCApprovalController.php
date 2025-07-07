@@ -555,7 +555,7 @@ class COCApprovalController extends Controller
 
         RequisitionRemarks::create([
             'requisition_id' => $cocapprovalrequisition->id,
-            'content' => $request->content,
+            'content' => 'Approved.',
             'user_id' => Auth::id(),
             'role_name' => $rolename,
         ]);
