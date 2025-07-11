@@ -153,7 +153,22 @@
                     <div class="mt-4">
                         <a href="{{ route('cocapprovalrequisitions.show', $requisition->id) }}" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Show</a>
                         <a href="{{ route('cocapprovalrequisitions.edit', $requisition->id)}}" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Edit</a>
-                        <a href="{{ route('cocapprovalrequisitions.approved.cocapproval', $requisition->id)}}" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Approved</a>
+
+                        <a href="{{ route('cocapprovalrequisitions.approved.cocapproval', $requisition->id) }}"
+                        class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md"
+                        onclick="disableCocApprovalLink(this);"
+                        id="cocApprovalLink">
+                        Approved
+                        </a>
+
+                        <script>
+                            function disableCocApprovalLink(link) {
+                                link.innerText = 'Approving...';
+                                link.style.pointerEvents = 'none';
+                                link.style.opacity = '0.6';
+                            }
+                        </script>
+                    
                     </div>
                 </div>
                 @endforeach

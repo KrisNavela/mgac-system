@@ -499,7 +499,7 @@
                                     </table>
                                 </div>
                                 
-                                <form method="POST" action="{{ route('cocapprovalrequisitions.update.cocapproval', $requisition->id) }}" method="POST">
+                                <form method="POST" action="{{ route('cocapprovalrequisitions.update.cocapproval', $requisition->id) }}" onsubmit="return disableCocButton(this);">
                                     @csrf
                                     @method('PUT')
                                     <div class="mt-4">
@@ -531,12 +531,21 @@
                                     </div>
             
                                     <div class="mt-4">
-                                        <button class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                        <button id="cocSubmitBtn" type="submit" 
+                                                class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
                                             Save
                                         </button>
                                     </div>
                                 </form>
-    
+                                
+                                <script>
+                                    function disableCocButton(form) {
+                                        const btn = form.querySelector('#cocSubmitBtn');
+                                        btn.disabled = true;
+                                        btn.innerText = 'Saving...';
+                                        return true;
+                                    }
+                                </script>
                         
                             </div>
                         </div>

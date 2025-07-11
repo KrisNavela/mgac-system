@@ -501,7 +501,7 @@
                                 </div>
 
                                 <!-- Form -->
-                                <form method="POST" action="{{ route('foruwapprovalrequisitions.update.uwapproval', $requisition->id) }}">
+                                <form method="POST" action="{{ route('foruwapprovalrequisitions.update.uwapproval', $requisition->id) }}" onsubmit="return disableUwButton(this);">
                                     @csrf
                                     @method('PUT')
 
@@ -527,11 +527,23 @@
 
                                     <!-- Button -->
                                     <div class="mt-4">
-                                        <button class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                        <button id="uwSubmitBtn"
+                                                type="submit"
+                                                class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
                                             Save
                                         </button>
                                     </div>
                                 </form>
+
+                                <!-- Script to disable button -->
+                                <script>
+                                    function disableUwButton(form) {
+                                        const btn = form.querySelector('#uwSubmitBtn');
+                                        btn.disabled = true;
+                                        btn.innerText = 'Saving...'; // Optional
+                                        return true;
+                                    }
+                                </script>
 
                             </div>
                         </div>

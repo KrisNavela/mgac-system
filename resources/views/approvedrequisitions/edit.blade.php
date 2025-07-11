@@ -505,7 +505,7 @@
                                 </div>
 
 
-                                <form method="POST" action="{{ route('approvedrequisitions.update.approval', $requisition->id) }}" method="POST">
+                                <form method="POST" action="{{ route('approvedrequisitions.update.approval', $requisition->id) }}" onsubmit="return disableFinalApprovalBtn(this);">
                                     @csrf
                                     @method('PUT')
                                     <div class="mt-4">
@@ -526,11 +526,22 @@
                                     </div>
 
                                     <div class="mt-4">
-                                        <button class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                        <button id="finalApprovalBtn" type="submit" 
+                                                class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
                                             Save
                                         </button>
                                     </div>
                                 </form>
+
+                                <!-- Script to disable final approval button -->
+                                <script>
+                                    function disableFinalApprovalBtn(form) {
+                                        const btn = form.querySelector('#finalApprovalBtn');
+                                        btn.disabled = true;
+                                        btn.innerText = 'Saving...';
+                                        return true;
+                                    }
+                                </script>
                             </div>
 
                         </div>

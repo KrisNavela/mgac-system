@@ -501,7 +501,7 @@
                                     </table>
                                 </div>
 
-                                <form method="POST" action="{{ route('collasstrequisitions.update.collasstapproval', $requisition->id) }}" method="POST">
+                                <form method="POST" action="{{ route('collasstrequisitions.update.collasstapproval', $requisition->id) }}" onsubmit="return disableCollAsstButton(this);">
                                     @csrf
                                     @method('PUT')
                                     <div class="mt-4">
@@ -544,11 +544,21 @@
                                     </div>
 
                                     <div class="mt-4">
-                                        <button class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                        <button id="collAsstSubmitBtn" type="submit" 
+                                                class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
                                             Save
                                         </button>
                                     </div>
                                 </form>
+
+                                <script>
+                                    function disableCollAsstButton(form) {
+                                        const btn = form.querySelector('#collAsstSubmitBtn');
+                                        btn.disabled = true;
+                                        btn.innerText = 'Saving...';
+                                        return true;
+                                    }
+                                </script>
                             </div>
                         </div>
                     </div>
