@@ -662,12 +662,21 @@
                                             <!-- Script (can be placed after both forms or in a script section) -->
                                             <script>
                                                 function confirmAndDisableCancel(form) {
+                                                    const reason = prompt('Please enter the reason for cancellation:');
+                                                    if (!reason) {
+                                                        alert('Cancellation reason is required.');
+                                                        return false;
+                                                    }
+
+                                                    document.getElementById('cancel-content').value = reason;
+
                                                     if (!confirm('Are you sure you want to cancel this requisition?')) {
                                                         return false;
                                                     }
+
                                                     const cancelButton = form.querySelector('#cancelBtn');
                                                     cancelButton.disabled = true;
-                                                    cancelButton.innerText = 'Cancelling...'; // Optional
+                                                    cancelButton.innerText = 'Cancelling...';
                                                     return true;
                                                 }
                                             </script>
