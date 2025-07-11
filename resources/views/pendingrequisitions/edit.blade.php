@@ -573,7 +573,7 @@
 
                                         <div>
                                             <!-- Save Button -->
-                                            <form method="POST" action="{{ route('pendingrequisitions.update.forapproval', $requisition->id) }}">
+                                            <form method="POST" action="{{ route('pendingrequisitions.update.forapproval', $requisition->id) }}" onsubmit="return confirmAndDisableSave(this)">
                                                 @csrf
                                                 @method('PUT')
 
@@ -624,33 +624,79 @@
 
                                                 <!-- Submit Button -->
                                                 <div class="mt-4">
-                                                    <button class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                                    <button id="submitBtn" type="submit"
+                                                        class="bg-green-500 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded">
                                                         Save
                                                     </button>
                                                 </div>
                                             </form>
+
+                                            <!-- Confirmation Script -->
+                                            <script>
+                                                function confirmAndDisableSave(form) {
+                                                    if (confirm('Are you sure you want to save this requisition?')) {
+                                                        const button = form.querySelector('#submitBtn');
+                                                        button.disabled = true;
+                                                        button.innerText = 'Saving...';
+                                                        return true; // Proceed with submission
+                                                    }
+                                                    return false; // Cancel submission
+                                                }
+                                            </script>
+
                                         </div>
 
                                         <div class="mt-6 flex flex-row space-x-3">
                                             <!-- Cancel Button -->
                                             <form method="POST" action="{{ route('pendingrequisitions.update.forcancel', $requisition->id) }}"
-                                                onsubmit="return confirm('Are you sure you want to cancel this requisition?');" style="display: inline-block; margin-right: 12px;">
+                                                onsubmit="return confirmAndDisableCancel(this);" 
+                                                style="display: inline-block; margin-right: 12px;">
                                                 @csrf
                                                 <input type="hidden" name="content" id="cancel-content">
-                                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                                <button type="submit" id="cancelBtn"
+                                                    class="bg-red-500 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded">
                                                     Cancel Requisition
                                                 </button>
                                             </form>
 
+                                            <!-- Script (can be placed after both forms or in a script section) -->
+                                            <script>
+                                                function confirmAndDisableCancel(form) {
+                                                    if (!confirm('Are you sure you want to cancel this requisition?')) {
+                                                        return false;
+                                                    }
+                                                    const cancelButton = form.querySelector('#cancelBtn');
+                                                    cancelButton.disabled = true;
+                                                    cancelButton.innerText = 'Cancelling...'; // Optional
+                                                    return true;
+                                                }
+                                            </script>
+
                                             <!-- Re-submit Button -->
                                             <form method="POST" action="{{ route('pendingrequisitions.re.submitcoll', $requisition->id) }}"
-                                                onsubmit="return confirm('Are you sure you want to re-submit this requisition?');" style="display: inline-block; margin-right: 12px;">
+                                                onsubmit="return confirmAndDisableResubmit(this);" 
+                                                style="display: inline-block; margin-right: 12px;">
                                                 @csrf
                                                 <input type="hidden" name="content" id="resubmit-content">
-                                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded">
+                                                <button type="submit" id="resubmitBtn"
+                                                    class="bg-blue-500 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded">
                                                     Re-submit to C&C Department
                                                 </button>
                                             </form>
+
+                                            <!-- Script -->
+                                            <script>
+                                                function confirmAndDisableResubmit(form) {
+                                                    if (!confirm('Are you sure you want to re-submit this requisition?')) {
+                                                        return false;
+                                                    }
+
+                                                    const btn = form.querySelector('#resubmitBtn');
+                                                    btn.disabled = true;
+                                                    btn.innerText = 'Re-submitting...';
+                                                    return true;
+                                                }
+                                            </script>
                                         </div>
 
 
