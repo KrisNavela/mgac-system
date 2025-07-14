@@ -84,7 +84,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/foruwapprovalrequisitions/{id}/approved-uwapproval', [ForUWApprovalRequisitionController::class, 'approveduwapproval'])->name('foruwapprovalrequisitions.approved.uwapproval');
     Route::get('/forbondapprovalrequisitions/{id}/approved-bondapproval', [ForBondApprovalRequisitionController::class, 'approvedbondapproval'])->name('forbondapprovalrequisitions.approved.bondapproval');
     Route::get('/approvedrequisitions/{id}/approved-finalapproval', [ApprovedRequisitionController::class, 'approvedfinalapproval'])->name('approvedrequisitions.approved.finalapproval');
-    Route::get('/cocapprovalrequisitions/{id}/approved-cocapproval', [COCApprovalController::class, 'approvedcocapproval'])->name('cocapprovalrequisitions.approved.cocapproval');
+    //Route::get('/cocapprovalrequisitions/{id}/approved-cocapproval', [COCApprovalController::class, 'approvedcocapproval'])->name('cocapprovalrequisitions.approved.cocapproval');
+    Route::post('/cocapprovalrequisitions/{id}/approved-cocapproval', [COCApprovalController::class, 'approvedcocapproval'])->name('cocapprovalrequisitions.approved.cocapproval');
+
 });
 
 require __DIR__.'/auth.php';
