@@ -154,26 +154,18 @@
                         <a href="{{ route('cocapprovalrequisitions.show', $requisition->id) }}" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Show</a>
                         <a href="{{ route('cocapprovalrequisitions.edit', $requisition->id)}}" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Edit</a>
 
-                        <!-- Link that looks like a button -->
-                        <a href="#" 
-                        onclick="event.preventDefault(); approveRequisition();"
-                        class="text-green-600 hover:text-green-800 underline text-sm"
+                        <a href="{{ route('cocapprovalrequisitions.approved.cocapproval', $requisition->id) }}"
+                        class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md"
+                        onclick="disableCocApprovalLink(this);"
                         id="cocApprovalLink">
                         Approved
                         </a>
 
-                        <!-- Hidden form -->
-                        <form id="approveForm" method="POST" action="{{ route('cocapprovalrequisitions.approved.cocapproval', $requisition->id) }}" style="display: none;">
-                            @csrf
-                        </form>
-
                         <script>
-                            function approveRequisition() {
-                                const link = document.getElementById('cocApprovalLink');
+                            function disableCocApprovalLink(link) {
                                 link.innerText = 'Approving...';
                                 link.style.pointerEvents = 'none';
                                 link.style.opacity = '0.6';
-                                document.getElementById('approveForm').submit();
                             }
                         </script>
                     
