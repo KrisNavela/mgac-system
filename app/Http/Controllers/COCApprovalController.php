@@ -536,9 +536,9 @@ class COCApprovalController extends Controller
     public function approvedcocapproval(UpdateRequisitionRequest $request, Requisition $cocapprovalrequisition, RequisitionRemarks $remarks, $id)
     {
         // Validate the incoming request data
-        $validatedData = $request->validate([
-            'cocapproval_status' => 'required|string|max:255', // Password is optional, but must be confirmed
-        ]);
+        //$validatedData = $request->validate([
+        //    'cocapproval_status' => 'required|string|max:255', // Password is optional, but must be confirmed
+        //]);
         
         // Find the user record in the database
         $cocapprovalrequisition = Requisition::findOrFail($id);
