@@ -100,11 +100,11 @@ class COCApprovalController extends Controller
             ->count();
 
             $requisitions = Requisition::withCount('items')
-            //->where('finalapproval_status', '=', 'approved')
-            ->where('cocapproval_status', '=', 'for approval')
-            ->orderBy('id', 'desc')
-            ->paginate(5)
-            ->withQueryString();
+                ->where('status', 'pending')
+                ->where('cocapproval_status', 'for approval')
+                ->orderBy('id', 'desc')
+                ->paginate(5)
+                ->withQueryString();
 
             return view('cocapprovalrequisitions.index', [
                 'requisitions' => $requisitions,
@@ -220,7 +220,7 @@ class COCApprovalController extends Controller
                 $query->whereHas('branch', function ($query1) {
                     $query1->whereIn('type_office', ['Branch', 'TMEC']);}
             );})
-            //->where('finalapproval_status', '=', 'approved')
+            ->where('status', '=', 'pending')
             ->where('cocapproval_status', '=', 'for approval')
             ->orderBy('id', 'desc')
             ->paginate(10)
@@ -342,7 +342,7 @@ class COCApprovalController extends Controller
                 $query->whereHas('branch', function ($query1) {
                     $query1->where('type_office', 'Agency');}
             );})
-            //->where('finalapproval_status', '=', 'approved')
+            ->where('status', '=', 'pending')
             ->where('cocapproval_status', '=', 'for approval')
             ->orderBy('id', 'desc')
             ->paginate(10)
@@ -439,7 +439,7 @@ class COCApprovalController extends Controller
             ->count();
 
         $requisitions = Requisition::withCount('items')
-            ->where('finalapproval_status', '=', 'approved')
+            ->where('status', '=', 'pending')
             ->where('cocapproval_status', '=', 'for approval')
             ->orderBy('id', 'desc')
             ->paginate(5)
