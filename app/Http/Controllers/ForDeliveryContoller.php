@@ -103,7 +103,7 @@ class ForDeliveryContoller extends Controller
                         ->orWhere('status', 'like', "%$search%");
                 })
                 ->where('status', '=', 'done')
-                 ->whereNull('delivery_status') // 👈 this line filters only records where delivery_status is null
+                ->whereNull('delivery_status') // 👈 this line filters only records where delivery_status is null
                 ->orderBy('id', 'desc')
                 ->paginate(10)
                 ->withQueryString();
