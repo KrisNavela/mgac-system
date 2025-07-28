@@ -518,19 +518,19 @@ class ForDeliveryContoller extends Controller
             ]);
     }
 
-    public function edit(Requisition $donerequisition)
+    public function edit(Requisition $fordeliverrequisition)
     {
-        $requisitionid = $donerequisition->id;
+        $requisitionid = $fordeliverrequisition->id;
         $branches = branch::all();
         $users = User::all();
 
         $attachments = RequisitionAttachment::where('requisition_id',$requisitionid)->get();
         $remarks = RequisitionRemarks::where('requisition_id',$requisitionid)->get();
         $items = Item::all();
-        $requisitionItems = $donerequisition->items->pluck('pivot');
+        $requisitionItems = $fordeliverrequisition->items->pluck('pivot');
 
         return view('fordelivery.edit', [
-            'requisition' => $donerequisition,
+            'requisition' => $fordeliverrequisition,
             'branches'=> $branches,
             'users'=> $users,
             'items' => $items,
