@@ -517,4 +517,69 @@ class ForDeliveryContoller extends Controller
                 'search' => $search,
             ]);
     }
+
+    public function edit(Requisition $donerequisition)
+    {
+        $requisitionid = $donerequisition->id;
+        $branches = branch::all();
+        $users = User::all();
+
+        $attachments = RequisitionAttachment::where('requisition_id',$requisitionid)->get();
+        $remarks = RequisitionRemarks::where('requisition_id',$requisitionid)->get();
+        $items = Item::all();
+        $requisitionItems = $donerequisition->items->pluck('pivot');
+
+        return view('fordeliveryrequisitions.edit', [
+            'requisition' => $donerequisition,
+            'branches'=> $branches,
+            'users'=> $users,
+            'items' => $items,
+            'requisitionItems' => $requisitionItems,
+            'remarks' => $remarks,
+            'attachments' => $attachments,
+        ]);
+    }
+
+    public function update(UpdateRequisitionRequest $request, Requisition $fordeliverrequisition)
+    {
+        $fordeliverrequisition->update([
+            //'req_no' => $request->req_no,
+            //'req_date' => $request->req_date,
+            'delivery_status' => $request->delivery_status,
+            'delivery_no' => $request->delivery_no,
+            'delivery_name' => $request->delivery_name,
+            'delivery_date' => $request->delivery_date,
+            //'bonds_status' => $request->bonds_status,
+            //'uw_status' => $request->uw_status,
+            //'type_request' => $request->type_request,
+            //'replenishment_month' => $request->replenishment_month,
+            //'replenishment_year' => $request->replenishment_year,
+        ]);
+
+        $requisitionid = $fordeliverrequisition->id;
+        $branches = branch::all();
+        $users = User::all();
+
+        $attachments = RequisitionAttachment::where('requisition_id',$requisitionid)->get();
+        $remarks = RequisitionRemarks::where('requisition_id',$requisitionid)->get();
+        $items = Item::all();
+        $requisitionItems = $fordeliverrequisition->items->pluck('pivot');
+
+        $emailto = $fordeliverrequisition->user->email;
+        Mail::to($emailto)->send(new ForDeliveryRequisitionMail($fordeliverrequisition));
+
+        return view('fordeliveryrequisitions.edit', [
+            'requisition' => $fordeliverrequisition,
+            'branches'=> $branches,
+            'users'=> $users,
+            'items' => $items,
+            'requisitionItems' => $requisitionItems,
+            'remarks' => $remarks,
+            'attachments' => $attachments,
+        ]);
+
+
+
+        return redirect()->route('fordeliveryrequisitions.index')->with('success', 'Requisition created successfully');
+    }
 }
