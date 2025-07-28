@@ -1,9 +1,29 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('For Delivery') }}
         </h2>
     </x-slot>
+
+        <!-- Success Notification -->
+        @if (session('success'))
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                <strong class="font-bold">Success!</strong>
+                <span class="block sm:inline">{{ session('success') }}</span>
+            </div>
+        <!-- Optional Auto-Close JavaScript -->
+        <script>
+            setTimeout(function() {
+                let alert = document.querySelector('[role="alert"]');
+                if (alert) {
+                    alert.style.transition = "opacity 0.5s ease";
+                    alert.style.opacity = "0";
+                    setTimeout(() => alert.remove(), 500);
+                }
+            }, 3000); // Hide after 3 seconds
+        </script>
+        @endif
+
 
 <div class="py-7">
     <!-- Navigation Links -->
@@ -11,8 +31,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-gray-200 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-
-                @if ($roleId == 1 || $roleId == 2 || $roleId == 3 || $roleId == 4 || $roleId == 5 || $roleId == 6 || $roleId == 7 || $roleId == 8 || $roleId == 9 || $roleId == 10 || $roleId == 11 || $roleId == 12 || $roleId == 13|| $roleId == 14 || $roleId == 15)
+                @if ($roleId == 1 || $roleId == 2 || $roleId == 3 || $roleId == 4 || $roleId == 5 || $roleId == 6 || $roleId == 7 || $roleId == 8 || $roleId == 9 || $roleId == 10 || $roleId == 11 || $roleId == 12 || $roleId == 13 || $roleId == 14)
                     <x-nav-link :href="route('requisitions.index')" :active="request()->routeIs('requisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('All') }}  
                         <div class="font-bold px-1 py-1 rounded relative" role="alert">
@@ -21,7 +40,7 @@
                     </x-nav-link>
                 @endif
 
-                @if ($roleId == 1 || $roleId == 3 || $roleId == 4 || $roleId == 15)
+                @if ($roleId == 1 || $roleId == 3 || $roleId == 4)
                     <x-nav-link :href="route('pendingrequisitions.index')" :active="request()->routeIs('pendingrequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('Review') }} 
                         <div class="font-bold px-1 py-1 rounded relative" role="alert">
@@ -75,7 +94,7 @@
                     </x-nav-link>
                 @endif
 
-                @if ($roleId == 1 || $roleId == 11)
+                @if ($roleId == 1 || $roleId == 11 || $roleId == 14)
                     <x-nav-link :href="route('fortransmittal.index')" :active="request()->routeIs('fortransmittal.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('For Transmittal') }}
                         <div class="font-bold px-1 py-1 rounded relative" role="alert">
@@ -84,7 +103,7 @@
                     </x-nav-link>
                 @endif
 
-                @if ($roleId == 1 || $roleId == 2 || $roleId == 3 || $roleId == 4 || $roleId == 5 || $roleId == 6 || $roleId == 7 || $roleId == 8 || $roleId == 9 || $roleId == 10 || $roleId == 11 || $roleId == 12 || $roleId == 13)
+                @if ($roleId == 1 || $roleId == 2 || $roleId == 3 || $roleId == 4 || $roleId == 5 || $roleId == 6 || $roleId == 7 || $roleId == 8 || $roleId == 9 || $roleId == 10 || $roleId == 11 || $roleId == 12 || $roleId == 13 || $roleId == 14)
                     <x-nav-link :href="route('cancelrequisitions.index')" :active="request()->routeIs('cancelrequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('Cancel') }}
                         <div class="font-bold px-1 py-1 rounded relative" role="alert">
@@ -111,62 +130,62 @@
                     </x-nav-link>
                 @endif
 
-                @if ($roleId == 1 || $roleId == 2 || $roleId == 3 || $roleId == 4 || $roleId == 5 || $roleId == 6 || $roleId == 7 || $roleId == 8 || $roleId == 9 || $roleId == 10 || $roleId == 11 || $roleId == 12 || $roleId == 13)
+                @if ($roleId == 1 || $roleId == 2 || $roleId == 3 || $roleId == 4 || $roleId == 5 || $roleId == 6 || $roleId == 7 || $roleId == 8 || $roleId == 9 || $roleId == 10 || $roleId == 11 || $roleId == 12 || $roleId == 13 || $roleId == 14)
                     <x-nav-link :href="route('donerequisitions.index')" :active="request()->routeIs('donerequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('Done') }}
                     </x-nav-link>
                 @endif
-
-                
-
-                </div>  
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-    <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-        <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-            <div class="pt-2 pb-3 space-y-1">
-                <x-responsive-nav-link :href="route('requisitions.index')" :active="request()->routeIs('requisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
-                    {{ __('All') }}
-                </x-responsive-nav-link>
-            </div>
-        </div>
-    </nav>
-
-   
+    
+    
 
     <!-- Card view for mobile screens -->
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
         <div class="space-y-4">
+            
+        <form method="GET" action="{{ route('requisitions.index') }}">
+            <input type="text" name="search" placeholder="Search..." value="{{ request('search') }}">
+            <button type="submit" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Search</button>
+        </form>
 
             <div class="flex justify-end">
                 <a href="{{ route('requisitions.create') }}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Create</a>
             </div>
 
+           
+            
             <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                 @foreach ($requisitions as $requisition)
                 <div class="bg-white shadow-md rounded-lg p-6">
                     <h2 class="text-lg font-semibold text-gray-900">{{ $requisition->id }}</h2>
                     <p class="text-sm text-gray-600">Requestion Number: {{ $requisition->req_no }}</p>
                     <p class="text-sm text-gray-600">Date: {{ $requisition->req_date }}</p>
-                    <p class="text-sm text-gray-600">Status: {{ $requisition->status }}</p>
+
+                    @if ($requisition->status == 'pending')
+                        <p class="text-sm text-gray-600">Status: <a href="" class="bg-gray-500 text-white hover:bg-gray-700 text-sm px-2 py-1 rounded-md uppercase">{{ $requisition->status }}</a></p>
+                    @elseif ($requisition->status == 'approved')
+                        <p class="text-sm text-gray-600">Status: <a href="" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md uppercase">{{ $requisition->status }}</a></p>
+                    @elseif ($requisition->status == 'done')
+                        <p class="text-sm text-gray-600">Status: <a href="" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md uppercase">{{ $requisition->status }}</a></p>
+                    @elseif ($requisition->status == 'cancelled')
+                        <p class="text-sm text-gray-600">Status: <a href="" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md uppercase">{{ $requisition->status }}</a></p>
+                    @endif
+
                     <p class="text-sm text-gray-600">Request By: {{ $requisition->user->first_name }} {{ $requisition->user->last_name }}</p>
                     <p class="text-sm text-gray-600"># Items: {{ $requisition->items_count }}</p>
                     <p class="text-sm text-gray-600">Branch: {{ $requisition->user->branch->branch_name }}</p>
                     <p class="text-sm text-gray-600">Type: {{ $requisition->user->branch->type_office }}</p>
+                    <p class="text-sm text-gray-600">COC Request: <label class="text-sm text-gray-600 uppercase">{{ $requisition->coc_request_status }}</p> 
+                    @if ($requisition->delivery_status == 'delivered')
+                        <p class="text-sm text-gray-600">Delivery Status: <a href="" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md uppercase">{{ $requisition->delivery_status }}</a></p>
+                    @endif
                     <div class="mt-4">
-                    <a href="{{ route('requisitions.show', $requisition->id) }}" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Show</a>
-                        @can('view', $requisition)
-                            <a href="{{ route('requisitions.edit', $requisition->id)}}" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Edit</a>
-
-                            <form action="{{ route('requisitions.destroy', $requisition->id) }}" method="POST" class="inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md">Delete</button> 
-                            </form>
-                        @endcan
+                        <a href="{{ route('donerequisitions.show', $requisition->id) }}" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Show</a>
+                        <a href="{{ route('donerequisitions.edit', $requisition->id)}}" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md" >Edit</a>
                     </div>
                 </div>
                 @endforeach
@@ -177,4 +196,9 @@
         </div>
     </div>
 
+                    
 </x-app-layout>
+
+
+    
+
