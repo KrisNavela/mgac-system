@@ -518,19 +518,19 @@ class ForDeliveryContoller extends Controller
             ]);
     }
 
-    public function edit(Requisition $fordeliverrequisition)
+    public function edit(Requisition $fordelivery)
     {
-        $requisitionid = $fordeliverrequisition->id;
+        $requisitionid = $fordelivery->id;
         $branches = branch::all();
         $users = User::all();
 
         $attachments = RequisitionAttachment::where('requisition_id',$requisitionid)->get();
         $remarks = RequisitionRemarks::where('requisition_id',$requisitionid)->get();
         $items = Item::all();
-        $requisitionItems = $fordeliverrequisition->items->pluck('pivot');
+        $requisitionItems = $fordelivery->items->pluck('pivot');
 
         return view('fordelivery.edit', [
-            'requisition' => $fordeliverrequisition,
+            'requisition' => $fordelivery,
             'branches'=> $branches,
             'users'=> $users,
             'items' => $items,
@@ -540,9 +540,9 @@ class ForDeliveryContoller extends Controller
         ]);
     }
 
-    public function update(UpdateRequisitionRequest $request, Requisition $fordeliverrequisition)
+    public function update(UpdateRequisitionRequest $request, Requisition $fordelivery)
     {
-        $fordeliverrequisition->update([
+        $fordelivery->update([
             //'req_no' => $request->req_no,
             //'req_date' => $request->req_date,
             'delivery_status' => $request->delivery_status,
@@ -556,20 +556,20 @@ class ForDeliveryContoller extends Controller
             //'replenishment_year' => $request->replenishment_year,
         ]);
 
-        $requisitionid = $fordeliverrequisition->id;
+        $requisitionid = $fordelivery->id;
         $branches = branch::all();
         $users = User::all();
 
         $attachments = RequisitionAttachment::where('requisition_id',$requisitionid)->get();
         $remarks = RequisitionRemarks::where('requisition_id',$requisitionid)->get();
         $items = Item::all();
-        $requisitionItems = $fordeliverrequisition->items->pluck('pivot');
+        $requisitionItems = $fordelivery->items->pluck('pivot');
 
-        $emailto = $fordeliverrequisition->user->email;
-        Mail::to($emailto)->send(new ForDeliveryRequisitionMail($fordeliverrequisition));
+        $emailto = $fordelivery->user->email;
+        Mail::to($emailto)->send(new ForDeliveryRequisitionMail($fordelivery));
 
         return view('fordelivery.edit', [
-            'requisition' => $fordeliverrequisition,
+            'requisition' => $fordelivery,
             'branches'=> $branches,
             'users'=> $users,
             'items' => $items,
