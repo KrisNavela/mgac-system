@@ -106,6 +106,7 @@ class DoneRequisitionController extends Controller
                         ->orWhere('status', 'like', "%$search%");
                 })
                 ->where('status', '=', 'done')
+                ->where('delivery_status', '=', 'delivered')
                 ->orderBy('id', 'desc')
                 ->paginate(10)
                 ->withQueryString();
