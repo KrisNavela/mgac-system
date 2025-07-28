@@ -522,6 +522,25 @@ class ForDeliveryContoller extends Controller
             ]);
     }
 
+    public function show(Requisition $fordelivery)
+    {
+
+        $requisitionid = $fordelivery->id;
+
+        $attachments = RequisitionAttachment::where('requisition_id',$requisitionid)->get();
+        $remarks = RequisitionRemarks::where('requisition_id',$requisitionid)->get();
+        $items = Item::all();
+        $requisitionItems = $fordelivery->items->pluck('pivot');
+
+        return view('fordelivery.show', [
+            'requisition' => $fordelivery,
+            'items' => $items,
+            'requisitionItems' => $requisitionItems,
+            'remarks' => $remarks,
+            'attachments' => $attachments,
+        ]);
+    }
+
     public function edit(Requisition $fordelivery)
     {
         $requisitionid = $fordelivery->id;

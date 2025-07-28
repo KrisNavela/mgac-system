@@ -191,9 +191,16 @@
                     @if ($requisition->delivery_status == 'delivered')
                         <p class="text-sm text-gray-600">Delivery Status: <a href="" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md uppercase">{{ $requisition->delivery_status }}</a></p>
                     @endif
+
                     <div class="mt-4">
-                        <a href="{{ route('fordelivery.edit', $requisition->id)}}" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md" >Edit</a>
+                        <a href="{{ route('fordelivery.show', $requisition->id)}}" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md" >Show</a>
                     </div>
+
+                    @if ($roleId == 11 || $roleId == 14)
+                        <div class="mt-4">
+                            <a href="{{ route('fordelivery.edit', $requisition->id)}}" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md" >Edit</a>
+                        </div>
+                    @endif
                 </div>
                 @endforeach
             </div>
