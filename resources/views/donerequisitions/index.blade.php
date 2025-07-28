@@ -189,7 +189,9 @@
                     @endif
                     <div class="mt-4">
                         <a href="{{ route('donerequisitions.show', $requisition->id) }}" class="bg-blue-300 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Show</a>
+                    @if ($roleId == 1 || $roleId == 11 || $roleId == 14)
                         <a href="{{ route('donerequisitions.edit', $requisition->id)}}" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md" >Edit</a>
+                    @endif
                     </div>
                 </div>
                 @endforeach
