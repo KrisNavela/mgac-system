@@ -541,7 +541,7 @@
             </script>
 
 
-                <form action="{{ route('donerequisitions.update', $requisition->id) }}" method="POST">
+                <form action="{{ route('fordeliveryrequisitions.update', $requisition->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="mt-4">
