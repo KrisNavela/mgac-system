@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('numberseries', NumberSeriesController::class);
     Route::resource('donerequisitions', DoneRequisitionController::class);
     Route::resource('fordelivery', ForDeliveryContoller::class);
+    Route::put('/fordelivery/{fordelivery}', [Controller::class, 'update'])->name('fordelivery.update');
     
     Route::put('/numberseries/{id}/update-forreported', [NumberSeriesController::class, 'updateforreported'])->name('numberseries.update.forreported');
 
