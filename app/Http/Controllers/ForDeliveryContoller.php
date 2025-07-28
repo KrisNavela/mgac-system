@@ -245,6 +245,7 @@ class ForDeliveryContoller extends Controller
                         ->orWhere('status', 'like', "%$search%"); // Searching by status
                 })
                 ->where('status', '=', 'done')
+                ->whereNull('delivery_status')
                 ->orderBy('id', 'desc')
                 ->paginate(10)
                 ->withQueryString();
@@ -386,6 +387,7 @@ class ForDeliveryContoller extends Controller
                         });
                 })
                 ->where('status', '=', 'done')
+                ->whereNull('delivery_status')
                 ->orderBy('id', 'desc')
                 ->paginate(10)
                 ->withQueryString();
@@ -495,6 +497,7 @@ class ForDeliveryContoller extends Controller
                     ->orWhere('status', 'like', "%$search%");
             })
             ->where('status', '=', 'done')
+            ->whereNull('delivery_status')
             ->orderBy('id', 'desc')
             ->paginate(5)
             ->withQueryString();
