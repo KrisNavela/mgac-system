@@ -107,7 +107,7 @@ class ForDeliveryContoller extends Controller
                 ->paginate(10)
                 ->withQueryString();
 
-            return view('fordeliveryrequisitions.index', [
+            return view('fordelivery.index', [
                 'requisitions' => $requisitions,
                 'branches'=> $branches,
                 'users'=> $users,
@@ -248,7 +248,7 @@ class ForDeliveryContoller extends Controller
                 ->paginate(10)
                 ->withQueryString();
 
-            return view('fordeliveryrequisitions.index', [
+            return view('fordelivery.index', [
                 'requisitions' => $requisitions,
                 'branches'=> $branches,
                 'users'=> $users,
@@ -389,7 +389,7 @@ class ForDeliveryContoller extends Controller
                 ->paginate(10)
                 ->withQueryString();
 
-            return view('fordeliveryrequisitions.index', [
+            return view('fordelivery.index', [
                 'requisitions' => $requisitions,
                 'branches'=> $branches,
                 'users'=> $users,
@@ -498,7 +498,7 @@ class ForDeliveryContoller extends Controller
             ->paginate(5)
             ->withQueryString();
 
-            return view('fordeliveryrequisitions.index', [
+            return view('fordelivery.index', [
                 'requisitions' => $requisitions,
                 'branches'=> $branches,
                 'users'=> $users,
@@ -529,7 +529,7 @@ class ForDeliveryContoller extends Controller
         $items = Item::all();
         $requisitionItems = $donerequisition->items->pluck('pivot');
 
-        return view('fordeliveryrequisitions.edit', [
+        return view('fordelivery.edit', [
             'requisition' => $donerequisition,
             'branches'=> $branches,
             'users'=> $users,
@@ -568,7 +568,7 @@ class ForDeliveryContoller extends Controller
         $emailto = $fordeliverrequisition->user->email;
         Mail::to($emailto)->send(new ForDeliveryRequisitionMail($fordeliverrequisition));
 
-        return view('fordeliveryrequisitions.edit', [
+        return view('fordelivery.edit', [
             'requisition' => $fordeliverrequisition,
             'branches'=> $branches,
             'users'=> $users,
@@ -580,6 +580,6 @@ class ForDeliveryContoller extends Controller
 
 
 
-        return redirect()->route('fordeliveryrequisitions.index')->with('success', 'Requisition created successfully');
+        return redirect()->route('fordelivery.index')->with('success', 'Requisition created successfully');
     }
 }

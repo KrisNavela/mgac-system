@@ -118,7 +118,7 @@
                 @endif
 
                 @if ($roleId == 1 || $roleId == 11)
-                    <x-nav-link :href="route('fordeliveryrequisitions.index')" :active="request()->routeIs('fordeliveryrequisitions.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
+                    <x-nav-link :href="route('fordelivery.index')" :active="request()->routeIs('fordelivery.index')" class="bg-gray-500 text-white hover:bg-green-400 text-sm px-2 py-1 rounded-md">
                         {{ __('For Delivery') }}
                         <div class="font-bold px-1 py-1 rounded relative" role="alert">
                             <span class="block sm:inline">(0)</span>
