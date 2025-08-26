@@ -108,43 +108,52 @@
 
                 <!-- Results Section -->
                 @if(!request()->hasAny(['item_id']))
-                    <p>No records to display. Please apply filters.</p>
+                    <div class="mt-4 p-4 bg-yellow-100 text-yellow-800 border border-yellow-300 rounded">
+                        No records to display. Please apply filters.
+                    </div>
                 @else
-                <table class="min-w-full divide-y divide-gray-200 mt-2">
-                        <thead class="bg-gray-50">
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">ID</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Req No</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Date</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Line</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Branch</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Series Number</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Status</th>
-                            <th class="px-6 py-3 text=left text-xs font-medium text-black uppercase">Used?</th>
-                        </thead>                
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ($numberseries as $newnumberseries)
-                                <tr class="px-6 py-4 whitespace-nowrap">
-                                    <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->id }}</td>
-                                    <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->requisition->req_no }}</td>
-                                    <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->requisition->req_date }}</td>
-                                    <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->item->item_desc }}</td>
-                                    <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->branch_name }}</td>
-                                    <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->number }}</td>
-                                    <td class="px-6 py-3 text=left text-xs font-medium text-gray-800 uppercase">{{ $newnumberseries->number_status }}</td>
-                                    <td>
-                                    
-
-                                    <form action="{{ route('numberseries.update.forreported', $newnumberseries->id) }}?{{ http_build_query(request()->all()) }}" method="POST">
-                                        @csrf
-                                        @method('PUT') <!-- Specify PUT for update -->
-                                        <button type="submit" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md"
-                                        onclick="return confirm('Are you sure you want to proceed this?');">Yes</button>
-                                    </form>
-
+                    <div class="mt-4 overflow-x-auto bg-white shadow rounded-lg">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase">ID</th>
+                                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase">Req No</th>
+                                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase">Date</th>
+                                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase">Line</th>
+                                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase">Branch</th>
+                                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase">Series Number</th>
+                                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase">Used?</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                @foreach ($numberseries as $newnumberseries)
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-6 py-3 text-sm text-gray-800">{{ $newnumberseries->id }}</td>
+                                        <td class="px-6 py-3 text-sm text-gray-800">{{ $newnumberseries->requisition->req_no }}</td>
+                                        <td class="px-6 py-3 text-sm text-gray-800">{{ $newnumberseries->requisition->req_date }}</td>
+                                        <td class="px-6 py-3 text-sm text-gray-800">{{ $newnumberseries->item->item_desc }}</td>
+                                        <td class="px-6 py-3 text-sm text-gray-800">{{ $newnumberseries->branch_name }}</td>
+                                        <td class="px-6 py-3 text-sm text-gray-800">{{ $newnumberseries->number }}</td>
+                                        <td class="px-6 py-3 text-sm text-gray-800">{{ $newnumberseries->number_status }}</td>
+                                        <td class="px-6 py-3">
+                                            <form action="{{ route('numberseries.update.forreported', $newnumberseries->id) }}?{{ http_build_query(request()->all()) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit"
+                                                    class="bg-green-500 hover:bg-green-700 text-white text-xs px-3 py-1 rounded"
+                                                    onclick="return confirm('Are you sure you want to proceed this?');">
+                                                    Yes
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @endif
+
 
                 </div>
             </div>
