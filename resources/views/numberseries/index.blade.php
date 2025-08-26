@@ -29,9 +29,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                <div style="display: flex; gap: 20px; justify-content: left;">
+                <div class="flex flex-wrap gap-6 justify-start items-start">
                     <!-- resources/views/numberseries/index.blade.php -->
-                    <form method="GET" action="{{ route('numberseries.index') }}" style="flex: 1; max-width: 400px;">
+                    <form method="GET" action="{{ route('numberseries.index') }}" class="flex-1 max-w-md p-4 bg-white shadow rounded">
                         <div class="">
                             <x-input-label for="item_id" :value="__('Line')" />
                             <select class="" id="item_id" name="item_id">
@@ -89,7 +89,7 @@
 
                     @if ($roleId == 1 || $roleId == 11)
 
-                    <form action="{{ route('import.series') }}" method="POST" enctype="multipart/form-data" style="flex: 1; max-width: 400px;">
+                    <form action="{{ route('import.series') }}" method="POST" enctype="multipart/form-data" class="flex-1 max-w-md p-4 bg-white shadow rounded">
                         @csrf
                         <div class="">
                             <x-input-label :value="__('Import Series')" />
