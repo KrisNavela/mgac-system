@@ -344,6 +344,7 @@ class CollectionAsstRequisitionController extends Controller
             ->where('type_request', '=', 'replenishment')
             ->where('collasst_status', '=', 'for approval')
             ->where('collmanager_status', '=', 'for approval')
+            ->where('status', '!=', 'cancelled') // exclude cancelled
             ->orderBy('id', 'desc')
             ->paginate(5)
             ->withQueryString();
