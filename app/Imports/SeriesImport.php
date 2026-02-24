@@ -4,21 +4,28 @@ namespace App\Imports;
 
 use App\Models\NumberSeries;
 use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
-class SeriesImport implements ToCollection
+class SeriesImport implements ToCollection, WithHeadingRow
 {
     public function collection(Collection $rows)
     {
-        foreach ($rows as $row) {
-            $lineCode = $row[0];
-            $branchCode = $row[1];
-            $seriesNumber = $row[2];
+        DB::transaction(function () use ($rows) {
 
-            NumberSeries::where('item_code', $lineCode)
-                ->where('branch_code', $branchCode)
-                ->where('number', $seriesNumber)
-                ->update(['number_status' => 'Used']);
-        }
+            foreach ($rows as $row) {
+
+                DB::table('number_series')
+                    ->where('item_code', $row['item_code'])
+                    ->where('branch_code', $row['branch_code'])
+                    ->where('number', $row['number'])
+                    ->where('number_status', 'Unreported')
+                    ->update([
+                        'number_status' => 'Used'
+                    ]);
+            }
+
+        });
     }
 }
