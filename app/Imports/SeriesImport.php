@@ -26,7 +26,7 @@ class SeriesImport implements ToCollection, WithHeadingRow
                 ->where('item_code', $itemCode)
                 ->where('branch_code', $branchCode)
                 ->whereIn('number', $numbers)
-                ->where('number_status', 'Unreported')
+                ->where('number_status', 'Unused')
                 ->update([
                     'number_status' => 'Used'
                 ]);
