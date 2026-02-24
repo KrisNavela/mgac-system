@@ -12,20 +12,24 @@ class SeriesImport implements ToCollection, WithHeadingRow
 {
     public function collection(Collection $rows)
     {
-        DB::transaction(function () use ($rows) {
-
-            foreach ($rows as $row) {
-
-                DB::table('number_series')
-                    ->where('item_code', $row['item_code'])
-                    ->where('branch_code', $row['branch_code'])
-                    ->where('number', $row['number'])
-                    ->where('number_status', 'Unreported')
-                    ->update([
-                        'number_status' => 'Used'
-                    ]);
-            }
-
+        $grouped = $rows->groupBy(function ($row) {
+            return $row['item_code'] . '|' . $row['branch_code'];
         });
+
+        foreach ($grouped as $key => $group) {
+
+            [$itemCode, $branchCode] = explode('|', $key);
+
+            $numbers = $group->pluck('number')->toArray();
+
+            DB::table('number_series')
+                ->where('item_code', $itemCode)
+                ->where('branch_code', $branchCode)
+                ->whereIn('number', $numbers)
+                ->where('number_status', 'Unreported')
+                ->update([
+                    'number_status' => 'Used'
+                ]);
+        }
     }
 }
