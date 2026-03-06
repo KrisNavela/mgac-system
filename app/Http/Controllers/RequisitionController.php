@@ -107,8 +107,17 @@ class RequisitionController extends Controller
 
             $requisitions = Requisition::withCount('items')
                 ->when($search, function ($query) use ($search) {
-                    $query->where('req_no', 'like', "%$search%")
-                        ->orWhere('status', 'like', "%$search%");
+
+                    $query->where(function ($q) use ($search) {
+
+                        $q->where('req_no', 'like', "%$search%")
+                        ->orWhere('status', 'like', "%$search%")
+                        ->orWhereHas('user.branch', function ($branch) use ($search) {
+                                $branch->where('branch_name', 'like', "%$search%");
+                        });
+
+                    });
+
                 })
                 ->orderBy('id', 'desc')
                 ->paginate(10)
@@ -244,11 +253,23 @@ class RequisitionController extends Controller
                     });
                 })
                 ->when($search, function ($query) use ($search) {
-                    $query->where('req_no', 'like', "%$search%")
-                        ->orWhereHas('user', function ($q) use ($search) {
-                            $q->where('name', 'like', "%$search%"); // Searching by user name
+
+                    $query->where(function ($q) use ($search) {
+
+                        $q->where('req_no', 'like', "%$search%")
+
+                        ->orWhereHas('user', function ($u) use ($search) {
+                                $u->where('name', 'like', "%$search%");
                         })
-                        ->orWhere('status', 'like', "%$search%"); // Searching by status
+
+                        ->orWhereHas('user.branch', function ($b) use ($search) {
+                                $b->where('branch_name', 'like', "%$search%");
+                        })
+
+                        ->orWhere('status', 'like', "%$search%");
+
+                    });
+
                 })
                 ->orderBy('id', 'desc')
                 ->paginate(10)
@@ -384,11 +405,22 @@ class RequisitionController extends Controller
                     });
                 })
                 ->when($search, function ($query) use ($search) {
-                    $query->where('req_no', 'like', "%$search%")
+
+                    $query->where(function ($q) use ($search) {
+
+                        $q->where('req_no', 'like', "%$search%")
                         ->orWhere('status', 'like', "%$search%")
-                        ->orWhereHas('user', function ($q) use ($search) {
-                            $q->where('name', 'like', "%$search%"); // Adjust based on your column
+
+                        ->orWhereHas('user', function ($u) use ($search) {
+                                $u->where('name', 'like', "%$search%");
+                        })
+
+                        ->orWhereHas('user.branch', function ($b) use ($search) {
+                                $b->where('branch_name', 'like', "%$search%");
                         });
+
+                    });
+
                 })
                 ->orderBy('id', 'desc')
                 ->paginate(10)
@@ -519,21 +551,32 @@ class RequisitionController extends Controller
             $search = request('search');
 
             $requisitions = Requisition::withCount('items')
-                ->whereHas('user', function ($query) {
-                    $query->whereHas('branch', function ($query1) {
-                        $query1->where('type_office', 'TMEC');
+            ->whereHas('user', function ($query) {
+                $query->whereHas('branch', function ($query1) {
+                    $query1->where('type_office', 'TMEC');
+                });
+            })
+            ->when($search, function ($query) use ($search) {
+
+                $query->where(function ($q) use ($search) {
+
+                    $q->where('req_no', 'like', "%$search%")
+                    ->orWhere('status', 'like', "%$search%")
+
+                    ->orWhereHas('user', function ($u) use ($search) {
+                            $u->where('name', 'like', "%$search%");
+                    })
+
+                    ->orWhereHas('user.branch', function ($b) use ($search) {
+                            $b->where('branch_name', 'like', "%$search%");
                     });
-                })
-                ->when($search, function ($query) use ($search) {
-                    $query->where('req_no', 'like', "%$search%")
-                        ->orWhere('status', 'like', "%$search%")
-                        ->orWhereHas('user', function ($q) use ($search) {
-                            $q->where('name', 'like', "%$search%"); // Adjust based on your column
-                        });
-                })
-                ->orderBy('id', 'desc')
-                ->paginate(10)
-                ->withQueryString();
+
+                });
+
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(10)
+            ->withQueryString();
 
             return view('requisitions.index', [
                 'requisitions' => $requisitions,
@@ -636,8 +679,18 @@ class RequisitionController extends Controller
         $requisitions = Requisition::withCount('items')
             ->where('user_id', $userId)
             ->when($search, function ($query) use ($search) {
-                $query->where('req_no', 'like', "%$search%")
-                    ->orWhere('status', 'like', "%$search%");
+
+                $query->where(function ($q) use ($search) {
+
+                    $q->where('req_no', 'like', "%$search%")
+                    ->orWhere('status', 'like', "%$search%")
+
+                    ->orWhereHas('user.branch', function ($branch) use ($search) {
+                            $branch->where('branch_name', 'like', "%$search%");
+                    });
+
+                });
+
             })
             ->orderBy('id', 'desc')
             ->paginate(5)

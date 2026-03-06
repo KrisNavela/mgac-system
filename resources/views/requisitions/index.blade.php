@@ -153,9 +153,30 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
         <div class="space-y-4">
             
-        <form method="GET" action="{{ route('requisitions.index') }}">
-            <input type="text" name="search" placeholder="Search..." value="{{ request('search') }}">
-            <button type="submit" class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-2 py-1 rounded-md">Search</button>
+        <form method="GET" action="{{ route('requisitions.index') }}" class="flex items-center gap-2 mb-3">
+
+            <input 
+                type="text" 
+                name="search" 
+                placeholder="Search Req No, Status, User, Branch..." 
+                value="{{ request('search') }}"
+                class="border border-gray-300 rounded-md px-3 py-2 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            >
+
+            <button 
+                type="submit" 
+                class="bg-blue-500 text-white hover:bg-blue-700 text-sm px-3 py-2 rounded-md"
+            >
+                Search
+            </button>
+
+            <a 
+                href="{{ route('requisitions.index') }}" 
+                class="bg-gray-300 text-gray-800 hover:bg-gray-400 text-sm px-3 py-2 rounded-md"
+            >
+                Reset
+            </a>
+
         </form>
 
             <div class="flex justify-end">
