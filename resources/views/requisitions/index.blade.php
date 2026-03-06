@@ -172,7 +172,7 @@
 
             <a 
                 href="{{ route('requisitions.index') }}" 
-                class="bg-gray-300 text-gray-800 hover:bg-gray-400 text-sm px-3 py-2 rounded-md"
+                class="bg-red-500 text-white hover:bg-red-700 text-sm px-3 py-2 rounded-md"
             >
                 Reset
             </a>
