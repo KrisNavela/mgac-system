@@ -434,7 +434,6 @@ Reports
 <!-- KYC -->
 
 
-
 <!-- SYSTEM -->
 
 @if(in_array(Auth::user()->role_id,[1,2]))
