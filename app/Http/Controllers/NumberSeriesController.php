@@ -75,8 +75,9 @@ class NumberSeriesController extends Controller
 
     public function printSeriesPdf(Request $request)
     {
-        $query = NumberSeries::query();
+        $query = NumberSeries::with(['item', 'requisition']);
 
+        // FILTERS
         if ($request->filled('item_id')) {
             $query->where('item_id', $request->item_id);
         }
@@ -89,27 +90,23 @@ class NumberSeriesController extends Controller
             $query->where('number_status', $request->number_status);
         }
 
-        $numberseries = $query->get();
+        // IMPORTANT
+        // use chunk-safe smaller dataset approach
+        $numberseries = $query
+            ->orderBy('item_id')
+            ->orderBy('number')
+            ->get();
 
-        // GROUPING
-        $summary = $numberseries->groupBy('item_id')->map(function ($items) {
-
-            $first = $items->first();
-
-            return [
-                'line' => $first->item->item_desc ?? 'N/A',
-
-                'used' => $items->where('number_status', 'Used')->count(),
-
-                'unused' => $items->where('number_status', 'Unused')->count(),
-
-                'total' => $items->count(),
-            ];
+        // GROUP BY LINE
+        $groupedSeries = $numberseries->groupBy(function ($item) {
+            return $item->item->item_desc ?? 'No Line';
         });
 
-        $pdf = Pdf::loadView('numberseries.pdf', compact('summary'))
-            ->setPaper('a4', 'portrait');
+        $pdf = Pdf::loadView(
+            'numberseries.pdf',
+            compact('groupedSeries')
+        )->setPaper('a4', 'landscape');
 
-        return $pdf->stream('series-summary-report.pdf');
+        return $pdf->stream('series-report.pdf');
     }
 }
