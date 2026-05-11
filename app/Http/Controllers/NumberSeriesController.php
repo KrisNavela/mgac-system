@@ -109,4 +109,65 @@ class NumberSeriesController extends Controller
 
         return $pdf->stream('series-report.pdf');
     }
+
+    public function exportCsv(Request $request)
+    {
+        $fileName = 'series-report.csv';
+
+        $headers = [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => "attachment; filename=$fileName",
+        ];
+
+        $callback = function () use ($request) {
+
+            $file = fopen('php://output', 'w');
+
+            // CSV HEADER
+            fputcsv($file, [
+                'Line',
+                'Req No',
+                'Date',
+                'Branch',
+                'Series Number',
+                'Status',
+            ]);
+
+            $query = NumberSeries::with(['item', 'requisition']);
+
+            // FILTERS
+            if ($request->filled('item_id')) {
+                $query->where('item_id', $request->item_id);
+            }
+
+            if ($request->filled('branch_code')) {
+                $query->where('branch_code', $request->branch_code);
+            }
+
+            if ($request->filled('number_status')) {
+                $query->where('number_status', $request->number_status);
+            }
+
+            // CHUNKING = MEMORY SAFE
+            $query->orderBy('item_id')
+                ->chunk(1000, function ($rows) use ($file) {
+
+                    foreach ($rows as $row) {
+
+                        fputcsv($file, [
+                            $row->item->item_desc ?? '',
+                            $row->requisition->req_no ?? '',
+                            $row->requisition->req_date ?? '',
+                            $row->branch_name,
+                            $row->number,
+                            $row->number_status,
+                        ]);
+                    }
+                });
+
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
 }

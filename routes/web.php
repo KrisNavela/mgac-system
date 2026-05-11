@@ -90,7 +90,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/numberseries/print/pdf', [NumberSeriesController::class, 'printSeriesPdf'])
     ->name('numberseries.print.pdf');
-    
+
+    Route::get('/numberseries/export/csv',
+        [NumberSeriesController::class, 'exportCsv']
+    )->name('numberseries.export.csv');
+
 });
 
 require __DIR__.'/auth.php';
