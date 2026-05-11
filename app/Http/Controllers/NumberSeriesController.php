@@ -123,16 +123,6 @@ class NumberSeriesController extends Controller
 
             $file = fopen('php://output', 'w');
 
-            // CSV HEADER
-            fputcsv($file, [
-                'Line',
-                'Req No',
-                'Date',
-                'Branch',
-                'Series Number',
-                'Status',
-            ]);
-
             $query = NumberSeries::with(['item', 'requisition']);
 
             // FILTERS
@@ -148,19 +138,57 @@ class NumberSeriesController extends Controller
                 $query->where('number_status', $request->number_status);
             }
 
-            // CHUNKING = MEMORY SAFE
             $query->orderBy('item_id')
+                ->orderBy('number')
                 ->chunk(1000, function ($rows) use ($file) {
 
-                    foreach ($rows as $row) {
+                    // GROUP PER LINE
+                    $grouped = $rows->groupBy(function ($row) {
+                        return optional($row->item)->item_desc ?? 'NO LINE';
+                    });
 
+                    foreach ($grouped as $line => $series) {
+
+                        // LINE HEADER
+                        fputcsv($file, []);
+                        fputcsv($file, ["LINE: $line"]);
+                        fputcsv($file, []);
+
+                        // TABLE HEADER
                         fputcsv($file, [
-                            $row->item->item_desc ?? '',
-                            $row->requisition->req_no ?? '',
-                            $row->requisition->req_date ?? '',
-                            $row->branch_name,
-                            $row->number,
-                            $row->number_status,
+                            'Req No',
+                            'Date',
+                            'Branch',
+                            'Series Number',
+                            'Status',
+                        ]);
+
+                        foreach ($series as $row) {
+
+                            fputcsv($file, [
+                                $row->requisition->req_no ?? '',
+                                $row->requisition->req_date ?? '',
+                                $row->branch_name,
+                                $row->number,
+                                $row->number_status,
+                            ]);
+                        }
+
+                        // TOTALS
+                        $used = $series->where('number_status', 'Used')->count();
+
+                        $unused = $series->where('number_status', 'Unused')->count();
+
+                        $total = $series->count();
+
+                        fputcsv($file, []);
+                        fputcsv($file, ['TOTAL USED', $used]);
+                        fputcsv($file, ['TOTAL UNUSED', $unused]);
+                        fputcsv($file, ['GRAND TOTAL', $total]);
+
+                        fputcsv($file, []);
+                        fputcsv($file, [
+                            '==================================================='
                         ]);
                     }
                 });
