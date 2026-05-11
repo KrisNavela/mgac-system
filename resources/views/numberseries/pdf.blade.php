@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Series Report</title>
+    <title>Series Summary Report</title>
 
     <style>
         body {
@@ -20,12 +20,17 @@
         }
 
         th {
-            background: #f3f3f3;
+            background: #f2f2f2;
             padding: 8px;
+            text-align: center;
         }
 
         td {
-            padding: 6px;
+            padding: 8px;
+        }
+
+        .text-center {
+            text-align: center;
         }
 
         h2 {
@@ -35,33 +40,68 @@
 </head>
 <body>
 
-    <h2>Series Status Report</h2>
+    <h2>Series Summary Report</h2>
 
     <table>
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Req No</th>
-                <th>Date</th>
                 <th>Line</th>
-                <th>Branch</th>
-                <th>Series Number</th>
-                <th>Status</th>
+                <th>Used</th>
+                <th>Unused</th>
+                <th>Total</th>
             </tr>
         </thead>
 
         <tbody>
-            @foreach ($numberseries as $series)
+
+            @php
+                $grandUsed = 0;
+                $grandUnused = 0;
+                $grandTotal = 0;
+            @endphp
+
+            @foreach ($summary as $row)
+
+                @php
+                    $grandUsed += $row['used'];
+                    $grandUnused += $row['unused'];
+                    $grandTotal += $row['total'];
+                @endphp
+
                 <tr>
-                    <td>{{ $series->id }}</td>
-                    <td>{{ $series->requisition->req_no ?? '' }}</td>
-                    <td>{{ $series->requisition->req_date ?? '' }}</td>
-                    <td>{{ $series->item->item_desc ?? '' }}</td>
-                    <td>{{ $series->branch_name }}</td>
-                    <td>{{ $series->number }}</td>
-                    <td>{{ $series->number_status }}</td>
+                    <td>{{ $row['line'] }}</td>
+
+                    <td class="text-center">
+                        {{ $row['used'] }}
+                    </td>
+
+                    <td class="text-center">
+                        {{ $row['unused'] }}
+                    </td>
+
+                    <td class="text-center">
+                        {{ $row['total'] }}
+                    </td>
                 </tr>
+
             @endforeach
+
+            <tr>
+                <td><strong>GRAND TOTAL</strong></td>
+
+                <td class="text-center">
+                    <strong>{{ $grandUsed }}</strong>
+                </td>
+
+                <td class="text-center">
+                    <strong>{{ $grandUnused }}</strong>
+                </td>
+
+                <td class="text-center">
+                    <strong>{{ $grandTotal }}</strong>
+                </td>
+            </tr>
+
         </tbody>
     </table>
 

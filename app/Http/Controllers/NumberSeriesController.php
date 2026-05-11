@@ -91,9 +91,25 @@ class NumberSeriesController extends Controller
 
         $numberseries = $query->get();
 
-        $pdf = Pdf::loadView('numberseries.pdf', compact('numberseries'))
-            ->setPaper('a4', 'landscape');
+        // GROUPING
+        $summary = $numberseries->groupBy('item_id')->map(function ($items) {
 
-        return $pdf->stream('series-report.pdf');
+            $first = $items->first();
+
+            return [
+                'line' => $first->item->item_desc ?? 'N/A',
+
+                'used' => $items->where('number_status', 'Used')->count(),
+
+                'unused' => $items->where('number_status', 'Unused')->count(),
+
+                'total' => $items->count(),
+            ];
+        });
+
+        $pdf = Pdf::loadView('numberseries.pdf', compact('summary'))
+            ->setPaper('a4', 'portrait');
+
+        return $pdf->stream('series-summary-report.pdf');
     }
 }
