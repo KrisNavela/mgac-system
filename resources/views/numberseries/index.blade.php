@@ -81,9 +81,22 @@
                             </select>
                         </div>
 
-                        <div class="mt-4">
-                            <button type="submit" class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">Filter</button>
-                            <a href="{{ route('numberseries.index') }}" class="bg-gray-500 text-white hover:bg-gray-700 text-sm px-2 py-1 rounded-md">Reset</a> <!-- Reset filter -->
+                        <div class="mt-4 flex gap-2">
+                            <button type="submit"
+                                class="bg-green-500 text-white hover:bg-green-700 text-sm px-2 py-1 rounded-md">
+                                Filter
+                            </button>
+
+                            <a href="{{ route('numberseries.index') }}"
+                                class="bg-gray-500 text-white hover:bg-gray-700 text-sm px-2 py-1 rounded-md">
+                                Reset
+                            </a>
+
+                            <a href="{{ route('numberseries.print.pdf', request()->query()) }}"
+                                target="_blank"
+                                class="bg-red-500 text-white hover:bg-red-700 text-sm px-2 py-1 rounded-md">
+                                Print PDF
+                            </a>
                         </div>
                     </form>
 
@@ -103,8 +116,7 @@
                     
                     @endif
                     
-                </div>    
-
+                </div>
 
                 <!-- Results Section -->
                 @if(!request()->hasAny(['item_id']))

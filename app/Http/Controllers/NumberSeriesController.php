@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\NumberSeries;
 use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class NumberSeriesController extends Controller
 {
@@ -28,7 +29,6 @@ class NumberSeriesController extends Controller
         $items = Item::all();
 
 
-        
         // Apply item id filter if provided
         if ($request->filled('item_id')) {
             $query->where('item_id', $request->input('item_id'));
@@ -71,5 +71,29 @@ class NumberSeriesController extends Controller
 
         return redirect()->route('numberseries.index', $request->query())
                      ->with('success', 'Record updated successfully.');
+    }
+
+    public function printSeriesPdf(Request $request)
+    {
+        $query = NumberSeries::query();
+
+        if ($request->filled('item_id')) {
+            $query->where('item_id', $request->item_id);
+        }
+
+        if ($request->filled('branch_code')) {
+            $query->where('branch_code', $request->branch_code);
+        }
+
+        if ($request->filled('number_status')) {
+            $query->where('number_status', $request->number_status);
+        }
+
+        $numberseries = $query->get();
+
+        $pdf = Pdf::loadView('numberseries.pdf', compact('numberseries'))
+            ->setPaper('a4', 'landscape');
+
+        return $pdf->stream('series-report.pdf');
     }
 }

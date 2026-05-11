@@ -87,6 +87,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/forbondapprovalrequisitions/{id}/approved-bondapproval', [ForBondApprovalRequisitionController::class, 'approvedbondapproval'])->name('forbondapprovalrequisitions.approved.bondapproval');
     Route::get('/approvedrequisitions/{id}/approved-finalapproval', [ApprovedRequisitionController::class, 'approvedfinalapproval'])->name('approvedrequisitions.approved.finalapproval');
     Route::get('/cocapprovalrequisitions/{id}/approved-cocapproval', [COCApprovalController::class, 'approvedcocapproval'])->name('cocapprovalrequisitions.approved.cocapproval');
+
+    Route::get('/numberseries/print/pdf', [NumberSeriesController::class, 'printSeriesPdf'])
+    ->name('numberseries.print.pdf');
+    
 });
 
 require __DIR__.'/auth.php';
